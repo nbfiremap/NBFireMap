@@ -35,7 +35,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 204.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757705203
+        "FETCHED_FROM_ERD": 1757709133
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69564,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.91196922876277,
+          46.017029437288976
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69564,
+        "FIRE_NUMBER": "2025341",
+        "FIRE_NUMBER_SHORT": "341",
+        "FIRE_NAME": "341",
+        "DEGREES_LAT": 46.017019999999995,
+        "DEGREES_LONG": 66.91197,
+        "FIRE_STAT_ID": 2,
+        "FIRE_STAT_DESC_E": "Contained",
+        "FIRE_STAT_DESC_F": "Contenu ",
+        "TIME_DETECTED": 1757692200000,
+        "FIRE_STAT_DATE": 1757696580000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1757709133
       }
     },
     {
@@ -66,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 205.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757705203
+        "FETCHED_FROM_ERD": 1757709133
       }
     },
     {
@@ -97,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757705203
+        "FETCHED_FROM_ERD": 1757709133
       }
     },
     {
@@ -126,9 +157,9 @@
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 1.0,
+        "FIRE_SIZE": 0.4,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757705203
+        "FETCHED_FROM_ERD": 1757709133
       }
     },
     {
@@ -159,38 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757705203
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69563,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.75442880881903,
-          45.59140938938448
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69563,
-        "FIRE_NUMBER": "2025340",
-        "FIRE_NUMBER_SHORT": "340",
-        "FIRE_NAME": "bloomfield 124",
-        "DEGREES_LAT": 45.5914,
-        "DEGREES_LONG": 65.75443,
-        "FIRE_STAT_ID": 1,
-        "FIRE_STAT_DESC_E": "Out of Control",
-        "FIRE_STAT_DESC_F": "Hors contrôle",
-        "TIME_DETECTED": 1757679000000,
-        "FIRE_STAT_DATE": 1757694400000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": null,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757705203
+        "FETCHED_FROM_ERD": 1757709133
       }
     }
   ]
