@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "24_hour_spots_20250913",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "lat": 46.00446, "lon": -65.02517, "rep_date": "2025-09-12T18:11:00Z", "source": "NASA10", "sensor": "VIIRS-I", "satellite": "NOAA-21", "agency": "NB", "temp": 17.33, "rh": 47, "ws": 11.2, "wd": 178, "pcp": 0, "ffmc": 88.418, "dmc": 34.819, "dc": 491.085, "isi": 6.006, "bui": 59.15, "fwi": 16.75, "fuel": "M2_50", "ros": 3.621, "sfc": 1.73, "tfc": 1.73, "bfc": 5.6694922, "hfi": 1879, "cfb": 0, "age": 12, "pcuring": 42, "greenup": 1, "elev": 22, "ecozone": "7", "sfl": null, "cfl": 0.25462577, "frp": 5.05, "estarea": 5.3693185, "pconif": 50 }, "geometry": { "type": "Point", "coordinates": [ -65.02516937, 46.00445938 ] } },
+{ "type": "Feature", "properties": { "lat": 45.59289, "lon": -65.74792, "rep_date": "2025-09-12T13:59:00Z", "source": "NASA_usa", "sensor": "MODIS", "satellite": "Terra", "agency": "NB", "temp": 17.94, "rh": 43, "ws": 12.37, "wd": 155, "pcp": 0, "ffmc": 89.246, "dmc": 38.697, "dc": 510.71, "isi": 7.175, "bui": 65.07, "fwi": 20.09, "fuel": "M2_50", "ros": 4.687, "sfc": 1.839, "tfc": 1.839, "bfc": 6.0075355, "hfi": 2586, "cfb": 0, "age": 16, "pcuring": 39, "greenup": 1, "elev": 17, "ecozone": "7", "sfl": null, "cfl": 0.3649394, "frp": 5.09, "estarea": 5.3693185, "pconif": 50 }, "geometry": { "type": "Point", "coordinates": [ -65.74791718, 45.59289169 ] } },
+{ "type": "Feature", "properties": { "lat": 45.59452, "lon": -65.76155, "rep_date": "2025-09-12T13:59:00Z", "source": "NASA_usa", "sensor": "MODIS", "satellite": "Terra", "agency": "NB", "temp": 17.94, "rh": 43, "ws": 12.37, "wd": 155, "pcp": 0, "ffmc": 89.246, "dmc": 38.697, "dc": 510.71, "isi": 7.175, "bui": 65.07, "fwi": 20.09, "fuel": "M2_50", "ros": 4.687, "sfc": 1.839, "tfc": 1.839, "bfc": 6.0075355, "hfi": 2586, "cfb": 0, "age": 16, "pcuring": 41, "greenup": 1, "elev": 45, "ecozone": "7", "sfl": null, "cfl": 0.35356018, "frp": 5.06, "estarea": 5.3693185, "pconif": 50 }, "geometry": { "type": "Point", "coordinates": [ -65.7615509, 45.59452057 ] } }
+]
+}
