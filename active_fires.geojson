@@ -35,7 +35,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 204.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757770249
+        "FETCHED_FROM_ERD": 1757773755
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69582,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.0048685677226,
+          46.016949480105225
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69582,
+        "FIRE_NUMBER": "2025343",
+        "FIRE_NUMBER_SHORT": "343",
+        "FIRE_NAME": "Rt 895",
+        "DEGREES_LAT": 46.01695,
+        "DEGREES_LONG": 65.00487,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1757689200000,
+        "FIRE_STAT_DATE": 1757762400000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1757773755
       }
     },
     {
@@ -66,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.4,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757770249
+        "FETCHED_FROM_ERD": 1757773755
       }
     },
     {
@@ -97,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 205.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757770249
+        "FETCHED_FROM_ERD": 1757773755
       }
     },
     {
@@ -128,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757770249
+        "FETCHED_FROM_ERD": 1757773755
       }
     },
     {
@@ -159,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757770249
+        "FETCHED_FROM_ERD": 1757773755
       }
     },
     {
@@ -190,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757770249
+        "FETCHED_FROM_ERD": 1757773755
       }
     }
   ]
