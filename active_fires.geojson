@@ -35,7 +35,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 204.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757767932
+        "FETCHED_FROM_ERD": 1757770249
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69562,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.02641857500771,
+          46.00398947744913
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69562,
+        "FIRE_NUMBER": "2025339",
+        "FIRE_NUMBER_SHORT": "339",
+        "FIRE_NAME": "Grub Road",
+        "DEGREES_LAT": 46.00398,
+        "DEGREES_LONG": 65.02642,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1757689200000,
+        "FIRE_STAT_DATE": 1757753700000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.4,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1757770249
       }
     },
     {
@@ -66,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 205.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757767932
+        "FETCHED_FROM_ERD": 1757770249
       }
     },
     {
@@ -97,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757767932
+        "FETCHED_FROM_ERD": 1757770249
       }
     },
     {
@@ -120,46 +151,15 @@
         "FIRE_STAT_ID": 3,
         "FIRE_STAT_DESC_E": "Under Control",
         "FIRE_STAT_DESC_F": "Maîtrisé ",
-        "TIME_DETECTED": 1757692800000,
+        "TIME_DETECTED": 1757691000000,
         "FIRE_STAT_DATE": 1757753040000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.5,
+        "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757767932
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69562,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.02641857500771,
-          46.00398947744913
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69562,
-        "FIRE_NUMBER": "2025339",
-        "FIRE_NUMBER_SHORT": "339",
-        "FIRE_NAME": "Grub Road",
-        "DEGREES_LAT": 46.00398,
-        "DEGREES_LONG": 65.02642,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1757689200000,
-        "FIRE_STAT_DATE": 1757693940000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.4,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757767932
+        "FETCHED_FROM_ERD": 1757770249
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757767932
+        "FETCHED_FROM_ERD": 1757770249
       }
     }
   ]
