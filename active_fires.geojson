@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 204.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757889079
+        "FETCHED_FROM_ERD": 1757892496
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757889079
+        "FETCHED_FROM_ERD": 1757892496
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757889079
+        "FETCHED_FROM_ERD": 1757892496
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.4,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757889079
+        "FETCHED_FROM_ERD": 1757892496
       }
     },
     {
@@ -159,7 +159,7 @@
         "PERCENT_CONTAINED": 80,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757889079
+        "FETCHED_FROM_ERD": 1757892496
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757889079
+        "FETCHED_FROM_ERD": 1757892496
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 205.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757889079
+        "FETCHED_FROM_ERD": 1757892496
       }
     },
     {
@@ -252,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757889079
+        "FETCHED_FROM_ERD": 1757892496
       }
     },
     {
@@ -276,14 +276,14 @@
         "FIRE_STAT_DESC_E": "Out of Control",
         "FIRE_STAT_DESC_F": "Hors contrôle",
         "TIME_DETECTED": 1757865600000,
-        "FIRE_STAT_DATE": 1757878276000,
+        "FIRE_STAT_DATE": 1757881693000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": null,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757889079
+        "FETCHED_FROM_ERD": 1757892496
       }
     }
   ]
