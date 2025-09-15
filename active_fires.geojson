@@ -9,64 +9,33 @@
   "features": [
     {
       "type": "Feature",
-      "id": 68687,
+      "id": 69584,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -66.28782909653758,
-          47.7023397388585
+          -66.91269922997235,
+          46.04589944224776
         ]
       },
       "properties": {
-        "OBJECTID": 68687,
-        "FIRE_NUMBER": "2025281",
-        "FIRE_NUMBER_SHORT": "281",
-        "FIRE_NAME": "Rocky Brook",
-        "DEGREES_LAT": 47.702329999999996,
-        "DEGREES_LONG": 66.28783,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1755359340000,
-        "FIRE_STAT_DATE": 1757846820000,
+        "OBJECTID": 69584,
+        "FIRE_NUMBER": "2025345",
+        "FIRE_NUMBER_SHORT": "345",
+        "FIRE_NAME": "345",
+        "DEGREES_LAT": 46.04589,
+        "DEGREES_LONG": 66.9127,
+        "FIRE_STAT_ID": 1,
+        "FIRE_STAT_DESC_E": "Out of Control",
+        "FIRE_STAT_DESC_F": "Hors contrôle",
+        "TIME_DETECTED": 1757769300000,
+        "FIRE_STAT_DATE": 1757834520000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 204.0,
+        "PERCENT_CONTAINED": 80,
+        "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757892496
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69582,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.0048685677226,
-          46.016949480105225
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69582,
-        "FIRE_NUMBER": "2025343",
-        "FIRE_NUMBER_SHORT": "343",
-        "FIRE_NAME": "Rt 895",
-        "DEGREES_LAT": 46.01695,
-        "DEGREES_LONG": 65.00487,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1757689200000,
-        "FIRE_STAT_DATE": 1757863800000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757892496
+        "FETCHED_FROM_ERD": 1757906183
       }
     },
     {
@@ -97,7 +66,69 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757892496
+        "FETCHED_FROM_ERD": 1757906183
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68687,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.28782909653758,
+          47.7023397388585
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68687,
+        "FIRE_NUMBER": "2025281",
+        "FIRE_NUMBER_SHORT": "281",
+        "FIRE_NAME": "Rocky Brook",
+        "DEGREES_LAT": 47.702329999999996,
+        "DEGREES_LONG": 66.28783,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1755359340000,
+        "FIRE_STAT_DATE": 1757846820000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 204.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1757906183
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69582,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.0048685677226,
+          46.016949480105225
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69582,
+        "FIRE_NUMBER": "2025343",
+        "FIRE_NUMBER_SHORT": "343",
+        "FIRE_NAME": "Rt 895",
+        "DEGREES_LAT": 46.01695,
+        "DEGREES_LONG": 65.00487,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1757689200000,
+        "FIRE_STAT_DATE": 1757863800000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1757906183
       }
     },
     {
@@ -128,38 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.4,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757892496
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69584,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.91269922997235,
-          46.04589944224776
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69584,
-        "FIRE_NUMBER": "2025345",
-        "FIRE_NUMBER_SHORT": "345",
-        "FIRE_NAME": "345",
-        "DEGREES_LAT": 46.04589,
-        "DEGREES_LONG": 66.9127,
-        "FIRE_STAT_ID": 1,
-        "FIRE_STAT_DESC_E": "Out of Control",
-        "FIRE_STAT_DESC_F": "Hors contrôle",
-        "TIME_DETECTED": 1757769300000,
-        "FIRE_STAT_DATE": 1757834520000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 80,
-        "FIRE_SIZE": 1.5,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757892496
+        "FETCHED_FROM_ERD": 1757906183
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757892496
+        "FETCHED_FROM_ERD": 1757906183
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 205.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757892496
+        "FETCHED_FROM_ERD": 1757906183
       }
     },
     {
@@ -252,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757892496
+        "FETCHED_FROM_ERD": 1757906183
       }
     },
     {
@@ -276,14 +276,14 @@
         "FIRE_STAT_DESC_E": "Out of Control",
         "FIRE_STAT_DESC_F": "Hors contrôle",
         "TIME_DETECTED": 1757865600000,
-        "FIRE_STAT_DATE": 1757881693000,
+        "FIRE_STAT_DATE": 1757895380000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": null,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757892496
+        "FETCHED_FROM_ERD": 1757906183
       }
     }
   ]
