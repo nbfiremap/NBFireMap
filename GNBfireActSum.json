@@ -1,6 +1,6 @@
 {
   "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf",
-  "fetched_utc": 1757954496,
+  "fetched_utc": 1757957524,
   "pages": 1,
   "tables": [
     {
@@ -150,6 +150,40 @@
           "Updated": "Sep-14",
           "Latitude": "46.01695",
           "Longitude": "65.00487",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "341",
+          "Fire Name": "341",
+          "Updated": "Sep-13",
+          "Latitude": "46.01702",
+          "Longitude": "66.91197",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "344",
+          "Fire Name": "Brittain Road Hillside",
+          "Updated": "Sep-13",
+          "Latitude": "45.49004",
+          "Longitude": "66.15554",
           "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
