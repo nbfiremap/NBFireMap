@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757932715
+        "FETCHED_FROM_ERD": 1757935708
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 205.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757932715
+        "FETCHED_FROM_ERD": 1757935708
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757932715
+        "FETCHED_FROM_ERD": 1757935708
       }
     },
     {
@@ -121,14 +121,45 @@
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1757691000000,
-        "FIRE_STAT_DATE": 1757844540000,
+        "FIRE_STAT_DATE": 1757922540000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757932715
+        "FETCHED_FROM_ERD": 1757935708
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69602,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.56732910146485,
+          45.85083941649788
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69602,
+        "FIRE_NUMBER": "2025346",
+        "FIRE_NUMBER_SHORT": "346",
+        "FIRE_NAME": "Lincoln",
+        "DEGREES_LAT": 45.850829999999995,
+        "DEGREES_LONG": 66.56733,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1757865600000,
+        "FIRE_STAT_DATE": 1757923380000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1757935708
       }
     },
     {
@@ -159,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.4,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757932715
+        "FETCHED_FROM_ERD": 1757935708
       }
     },
     {
@@ -190,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 204.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757932715
+        "FETCHED_FROM_ERD": 1757935708
       }
     },
     {
@@ -221,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757932715
+        "FETCHED_FROM_ERD": 1757935708
       }
     },
     {
@@ -252,38 +283,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757932715
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69602,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.56732910146485,
-          45.85083941649788
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69602,
-        "FIRE_NUMBER": "2025346",
-        "FIRE_NUMBER_SHORT": "346",
-        "FIRE_NAME": "Lincoln",
-        "DEGREES_LAT": 45.850829999999995,
-        "DEGREES_LONG": 66.56733,
-        "FIRE_STAT_ID": 1,
-        "FIRE_STAT_DESC_E": "Out of Control",
-        "FIRE_STAT_DESC_F": "Hors contrôle",
-        "TIME_DETECTED": 1757865600000,
-        "FIRE_STAT_DATE": 1757921911000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": null,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757932715
+        "FETCHED_FROM_ERD": 1757935708
       }
     }
   ]
