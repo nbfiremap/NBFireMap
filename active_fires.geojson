@@ -9,192 +9,6 @@
   "features": [
     {
       "type": "Feature",
-      "id": 69622,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.64842911694339,
-          45.58932936859191
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69622,
-        "FIRE_NUMBER": "2025347",
-        "FIRE_NUMBER_SHORT": "347",
-        "FIRE_NAME": "347",
-        "DEGREES_LAT": 45.58932,
-        "DEGREES_LONG": 66.64842999999999,
-        "FIRE_STAT_ID": 2,
-        "FIRE_STAT_DESC_E": "Contained",
-        "FIRE_STAT_DESC_F": "Contenu ",
-        "TIME_DETECTED": 1757935800000,
-        "FIRE_STAT_DATE": 1757941440000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.3,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757997367
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69584,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.91269922997235,
-          46.04589944224776
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69584,
-        "FIRE_NUMBER": "2025345",
-        "FIRE_NUMBER_SHORT": "345",
-        "FIRE_NAME": "345",
-        "DEGREES_LAT": 46.04589,
-        "DEGREES_LONG": 66.9127,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1757769300000,
-        "FIRE_STAT_DATE": 1757943540000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 1.5,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757997367
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 68307,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.43247876838464,
-          47.15278966673053
-        ]
-      },
-      "properties": {
-        "OBJECTID": 68307,
-        "FIRE_NUMBER": "2025208",
-        "FIRE_NUMBER_SHORT": "208",
-        "FIRE_NAME": "Old Field Road",
-        "DEGREES_LAT": 47.15278,
-        "DEGREES_LONG": 65.43248,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1754492640000,
-        "FIRE_STAT_DATE": 1757919000000,
-        "FIRE_OF_NOTE_INDCTR": 1,
-        "FIRE_NOTE_ENG": "Yes",
-        "FIRE_NOTE_FR": "Oui",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 1403.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757997367
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69642,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.0439989084824,
-          45.59809938367244
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69642,
-        "FIRE_NUMBER": "2025348",
-        "FIRE_NUMBER_SHORT": "348",
-        "FIRE_NAME": "348",
-        "DEGREES_LAT": 45.59809,
-        "DEGREES_LONG": 66.044,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1757940600000,
-        "FIRE_STAT_DATE": 1757949300000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.2,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757997367
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 68687,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.28782909653758,
-          47.7023397388585
-        ]
-      },
-      "properties": {
-        "OBJECTID": 68687,
-        "FIRE_NUMBER": "2025281",
-        "FIRE_NUMBER_SHORT": "281",
-        "FIRE_NAME": "Rocky Brook",
-        "DEGREES_LAT": 47.702329999999996,
-        "DEGREES_LONG": 66.28783,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1755359340000,
-        "FIRE_STAT_DATE": 1757919180000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 204.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757997367
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69582,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.0048685677226,
-          46.016949480105225
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69582,
-        "FIRE_NUMBER": "2025343",
-        "FIRE_NUMBER_SHORT": "343",
-        "FIRE_NAME": "343",
-        "DEGREES_LAT": 46.01695,
-        "DEGREES_LONG": 65.00487,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1757688900000,
-        "FIRE_STAT_DATE": 1757943900000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757997367
-      }
-    },
-    {
-      "type": "Feature",
       "id": 69565,
       "geometry": {
         "type": "Point",
@@ -221,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757997367
+        "FETCHED_FROM_ERD": 1758000828
       }
     },
     {
@@ -252,7 +66,100 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.4,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757997367
+        "FETCHED_FROM_ERD": 1758000828
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68687,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.28782909653758,
+          47.7023397388585
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68687,
+        "FIRE_NUMBER": "2025281",
+        "FIRE_NUMBER_SHORT": "281",
+        "FIRE_NAME": "Rocky Brook",
+        "DEGREES_LAT": 47.702329999999996,
+        "DEGREES_LONG": 66.28783,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1755359340000,
+        "FIRE_STAT_DATE": 1757919180000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 204.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758000828
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69582,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.0048685677226,
+          46.016949480105225
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69582,
+        "FIRE_NUMBER": "2025343",
+        "FIRE_NUMBER_SHORT": "343",
+        "FIRE_NAME": "343",
+        "DEGREES_LAT": 46.01695,
+        "DEGREES_LONG": 65.00487,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1757688900000,
+        "FIRE_STAT_DATE": 1757943900000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758000828
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69622,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.64842911694339,
+          45.58932936859191
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69622,
+        "FIRE_NUMBER": "2025347",
+        "FIRE_NUMBER_SHORT": "347",
+        "FIRE_NAME": "347",
+        "DEGREES_LAT": 45.58932,
+        "DEGREES_LONG": 66.64842999999999,
+        "FIRE_STAT_ID": 2,
+        "FIRE_STAT_DESC_E": "Contained",
+        "FIRE_STAT_DESC_F": "Contenu ",
+        "TIME_DETECTED": 1757935800000,
+        "FIRE_STAT_DATE": 1757941440000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.3,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758000828
       }
     },
     {
@@ -283,7 +190,100 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1757997367
+        "FETCHED_FROM_ERD": 1758000828
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68307,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.43247876838464,
+          47.15278966673053
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68307,
+        "FIRE_NUMBER": "2025208",
+        "FIRE_NUMBER_SHORT": "208",
+        "FIRE_NAME": "Old Field Road",
+        "DEGREES_LAT": 47.15278,
+        "DEGREES_LONG": 65.43248,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1754492640000,
+        "FIRE_STAT_DATE": 1757919000000,
+        "FIRE_OF_NOTE_INDCTR": 1,
+        "FIRE_NOTE_ENG": "Yes",
+        "FIRE_NOTE_FR": "Oui",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 1403.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758000828
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69642,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.0439989084824,
+          45.59809938367244
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69642,
+        "FIRE_NUMBER": "2025348",
+        "FIRE_NUMBER_SHORT": "348",
+        "FIRE_NAME": "348",
+        "DEGREES_LAT": 45.59809,
+        "DEGREES_LONG": 66.044,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1757940600000,
+        "FIRE_STAT_DATE": 1757949300000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.2,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758000828
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69584,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.91269922997235,
+          46.04589944224776
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69584,
+        "FIRE_NUMBER": "2025345",
+        "FIRE_NUMBER_SHORT": "345",
+        "FIRE_NAME": "345",
+        "DEGREES_LAT": 46.04589,
+        "DEGREES_LONG": 66.9127,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1757769300000,
+        "FIRE_STAT_DATE": 1757943540000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 1.5,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758000828
       }
     }
   ]
