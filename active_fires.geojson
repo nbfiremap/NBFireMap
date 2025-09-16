@@ -9,95 +9,33 @@
   "features": [
     {
       "type": "Feature",
-      "id": 69565,
+      "id": 69582,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -66.96334923899268,
-          45.86038940819759
+          -65.0048685677226,
+          46.016949480105225
         ]
       },
       "properties": {
-        "OBJECTID": 69565,
-        "FIRE_NUMBER": "2025342",
-        "FIRE_NUMBER_SHORT": "342",
-        "FIRE_NAME": "342",
-        "DEGREES_LAT": 45.86038,
-        "DEGREES_LONG": 66.96334999999999,
+        "OBJECTID": 69582,
+        "FIRE_NUMBER": "2025343",
+        "FIRE_NUMBER_SHORT": "343",
+        "FIRE_NAME": "343",
+        "DEGREES_LAT": 46.01695,
+        "DEGREES_LONG": 65.00487,
         "FIRE_STAT_ID": 4,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1757691000000,
-        "FIRE_STAT_DATE": 1758012660000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.8,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758048150
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69662,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.79111890634228,
-          47.40605970107678
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69662,
-        "FIRE_NUMBER": "2025349",
-        "FIRE_NUMBER_SHORT": "349",
-        "FIRE_NAME": "Nepisiguit Gorge",
-        "DEGREES_LAT": 47.40605,
-        "DEGREES_LONG": 65.79111999999999,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758013200000,
-        "FIRE_STAT_DATE": 1758019800000,
+        "TIME_DETECTED": 1757688900000,
+        "FIRE_STAT_DATE": 1757943900000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758048150
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 68585,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.47542912698799,
-          46.99147961517266
-        ]
-      },
-      "properties": {
-        "OBJECTID": 68585,
-        "FIRE_NUMBER": "2025256",
-        "FIRE_NUMBER_SHORT": "256",
-        "FIRE_NAME": "Beaver Lake Stream",
-        "DEGREES_LAT": 46.99147,
-        "DEGREES_LONG": 66.47543,
-        "FIRE_STAT_ID": 2,
-        "FIRE_STAT_DESC_E": "Contained",
-        "FIRE_STAT_DESC_F": "Contenu ",
-        "TIME_DETECTED": 1755166920000,
-        "FIRE_STAT_DATE": 1758008280000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 456.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758048150
+        "FETCHED_FROM_ERD": 1758050830
       }
     },
     {
@@ -128,7 +66,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758048150
+        "FETCHED_FROM_ERD": 1758050830
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69565,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.96334923899268,
+          45.86038940819759
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69565,
+        "FIRE_NUMBER": "2025342",
+        "FIRE_NUMBER_SHORT": "342",
+        "FIRE_NAME": "342",
+        "DEGREES_LAT": 45.86038,
+        "DEGREES_LONG": 66.96334999999999,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1757691000000,
+        "FIRE_STAT_DATE": 1758012660000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.8,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758050830
       }
     },
     {
@@ -159,38 +128,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.4,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758048150
+        "FETCHED_FROM_ERD": 1758050830
       }
     },
     {
       "type": "Feature",
-      "id": 68307,
+      "id": 69662,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65.43247876838464,
-          47.15278966673053
+          -65.79111890634228,
+          47.40605970107678
         ]
       },
       "properties": {
-        "OBJECTID": 68307,
-        "FIRE_NUMBER": "2025208",
-        "FIRE_NUMBER_SHORT": "208",
-        "FIRE_NAME": "Old Field Road",
-        "DEGREES_LAT": 47.15278,
-        "DEGREES_LONG": 65.43248,
+        "OBJECTID": 69662,
+        "FIRE_NUMBER": "2025349",
+        "FIRE_NUMBER_SHORT": "349",
+        "FIRE_NAME": "Nepisiguit Gorge",
+        "DEGREES_LAT": 47.40605,
+        "DEGREES_LONG": 65.79111999999999,
         "FIRE_STAT_ID": 4,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1754492640000,
-        "FIRE_STAT_DATE": 1758008340000,
-        "FIRE_OF_NOTE_INDCTR": 1,
-        "FIRE_NOTE_ENG": "Yes",
-        "FIRE_NOTE_FR": "Oui",
+        "TIME_DETECTED": 1758013200000,
+        "FIRE_STAT_DATE": 1758019800000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 1403.0,
+        "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758048150
+        "FETCHED_FROM_ERD": 1758050830
       }
     },
     {
@@ -221,38 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.6,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758048150
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69582,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.0048685677226,
-          46.016949480105225
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69582,
-        "FIRE_NUMBER": "2025343",
-        "FIRE_NUMBER_SHORT": "343",
-        "FIRE_NAME": "343",
-        "DEGREES_LAT": 46.01695,
-        "DEGREES_LONG": 65.00487,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1757688900000,
-        "FIRE_STAT_DATE": 1757943900000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758048150
+        "FETCHED_FROM_ERD": 1758050830
       }
     },
     {
@@ -283,7 +221,100 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758048150
+        "FETCHED_FROM_ERD": 1758050830
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68585,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.47542912698799,
+          46.99147961517266
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68585,
+        "FIRE_NUMBER": "2025256",
+        "FIRE_NUMBER_SHORT": "256",
+        "FIRE_NAME": "Beaver Lake Stream",
+        "DEGREES_LAT": 46.99147,
+        "DEGREES_LONG": 66.47543,
+        "FIRE_STAT_ID": 2,
+        "FIRE_STAT_DESC_E": "Contained",
+        "FIRE_STAT_DESC_F": "Contenu ",
+        "TIME_DETECTED": 1755166920000,
+        "FIRE_STAT_DATE": 1758008280000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 456.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758050830
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68307,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.43247876838464,
+          47.15278966673053
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68307,
+        "FIRE_NUMBER": "2025208",
+        "FIRE_NUMBER_SHORT": "208",
+        "FIRE_NAME": "Old Field Road",
+        "DEGREES_LAT": 47.15278,
+        "DEGREES_LONG": 65.43248,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1754492640000,
+        "FIRE_STAT_DATE": 1758008340000,
+        "FIRE_OF_NOTE_INDCTR": 1,
+        "FIRE_NOTE_ENG": "Yes",
+        "FIRE_NOTE_FR": "Oui",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 1403.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758050830
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69682,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.72798912037538,
+          45.089789277687856
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69682,
+        "FIRE_NUMBER": "2025350",
+        "FIRE_NUMBER_SHORT": "350",
+        "FIRE_NAME": "350",
+        "DEGREES_LAT": 45.08978,
+        "DEGREES_LONG": 66.72798999999999,
+        "FIRE_STAT_ID": 1,
+        "FIRE_STAT_DESC_E": "Out of Control",
+        "FIRE_STAT_DESC_F": "Hors contrôle",
+        "TIME_DETECTED": 1758036600000,
+        "FIRE_STAT_DATE": 1758040023000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": null,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758050830
       }
     }
   ]
