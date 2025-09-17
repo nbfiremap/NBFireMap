@@ -1,6 +1,6 @@
 {
   "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf",
-  "fetched_utc": 1758148206,
+  "fetched_utc": 1758151704,
   "pages": 1,
   "tables": [
     {
@@ -260,23 +260,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "0"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "354",
-          "Fire Name": "354",
-          "Updated": "Sep-17",
-          "Latitude": "45.15225",
-          "Longitude": "66.77029",
-          "Size": "0.1",
-          "Pers": "4",
-          "Eng": "1",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "1"
         }
       ]
     }
