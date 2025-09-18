@@ -9,37 +9,6 @@
   "features": [
     {
       "type": "Feature",
-      "id": 69702,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.81582889738944,
-          47.04080963925789
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69702,
-        "FIRE_NUMBER": "2025351",
-        "FIRE_NUMBER_SHORT": "351",
-        "FIRE_NAME": "Quigly",
-        "DEGREES_LAT": 47.040800000000004,
-        "DEGREES_LONG": 65.81582999999999,
-        "FIRE_STAT_ID": 2,
-        "FIRE_STAT_DESC_E": "Contained",
-        "FIRE_STAT_DESC_F": "Contenu ",
-        "TIME_DETECTED": 1758051420000,
-        "FIRE_STAT_DATE": 1758178920000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
-      }
-    },
-    {
-      "type": "Feature",
       "id": 68307,
       "geometry": {
         "type": "Point",
@@ -66,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
+        "FETCHED_FROM_ERD": 1758213607
       }
     },
     {
@@ -97,7 +66,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
+        "FETCHED_FROM_ERD": 1758213607
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69702,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.81582889738944,
+          47.04080963925789
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69702,
+        "FIRE_NUMBER": "2025351",
+        "FIRE_NUMBER_SHORT": "351",
+        "FIRE_NAME": "Quigly",
+        "DEGREES_LAT": 47.040800000000004,
+        "DEGREES_LONG": 65.81582999999999,
+        "FIRE_STAT_ID": 3,
+        "FIRE_STAT_DESC_E": "Under Control",
+        "FIRE_STAT_DESC_F": "Maîtrisé ",
+        "TIME_DETECTED": 1758051420000,
+        "FIRE_STAT_DATE": 1758201060000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758213607
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
+        "FETCHED_FROM_ERD": 1758213607
       }
     },
     {
@@ -159,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
+        "FETCHED_FROM_ERD": 1758213607
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
+        "FETCHED_FROM_ERD": 1758213607
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.6,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
+        "FETCHED_FROM_ERD": 1758213607
       }
     },
     {
@@ -252,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.3,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
+        "FETCHED_FROM_ERD": 1758213607
       }
     },
     {
@@ -283,7 +283,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
+        "FETCHED_FROM_ERD": 1758213607
       }
     },
     {
@@ -314,7 +314,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758209595
+        "FETCHED_FROM_ERD": 1758213607
       }
     }
   ]
