@@ -52,7 +52,9 @@
       const OPEN_SKY_URL = 'https://opensky-network.org/api/states/all';
       const PLANES_REFRESH_MS = 250_000;
 
-      const NOAA_SMOKE_URL = 'https://mapservices.weather.noaa.gov/raster/rest/services/air_quality/ndgd_smoke_sfc_1hr_avg_time/ImageServer';
+      // NEW: WMS endpoint + layer for surface smoke (direct WMS access)
+      const NOAA_SMOKE_WMS = 'https://mapservices.weather.noaa.gov/raster/services/air_quality/ndgd_smoke_sfc_1hr_avg_time/ImageServer/WMSServer';
+      const NOAA_SMOKE_WMS_LAYER = 'ndgd_smoke_sfc_1hr_avg_time';
       const SMOKE_HOURS_EACH_SIDE = 24;
       const SMOKE_FRAME_MS = 1_200;
 
@@ -697,7 +699,7 @@ const legendURLForLayer = (fullyQualifiedLayer)=>{
   });
 
       // ---- NOAA Smoke timeline ----------------------------------------------
-      const smokeLayer = L.esri.imageMapLayer({ url: NOAA_SMOKE_URL, format:'png32', transparent:true, opacity:0.72, pane:'smokePane' }).addTo(map);
+      const smokeLayer = L.tileLayer.wms(NOAA_SMOKE_WMS, { layers: NOAA_SMOKE_WMS_LAYER, format:'image/png', transparent:true, version:'1.3.0', opacity:0.72, pane:'smokePane'}).addTo(map);
 
       const smokeControls   = $('#smokeControls');
       const smokePlayBtn    = $('#smokePlay');
@@ -718,7 +720,7 @@ const legendURLForLayer = (fullyQualifiedLayer)=>{
         smokeIdx = Math.max(0, Math.min(smokeTimesMs.length - 1, i));
         const t = smokeTimesMs[smokeIdx];
         const dt = new Date(t);
-        smokeLayer.setTimeRange(dt, dt);
+        smokeLayer.setParams({ time: dt.toISOString() });
         smokeSlider.value = String(smokeIdx);
         smokeTsLabel.textContent = smokeFmt(t);
       }
@@ -733,53 +735,102 @@ const legendURLForLayer = (fullyQualifiedLayer)=>{
 
       const nearestIndex = (arr, target) => { let bestI = 0, bestD = Infinity; for (let i=0;i<arr.length;i++){ const d = Math.abs(arr[i]-target); if(d<bestD){ bestD=d; bestI=i; } } return bestI; };
 
-      async function initSmokeTimes(){
-        try{
-          smokeTsLabel.textContent = 'Loading…';
-          const r = await fetch(NOAA_SMOKE_URL + '/slices?f=json');
-          if(!r.ok) throw new Error('Failed to load time slices');
-          const json = await r.json();
-          const allTimes = (json.slices || [])
-            .map(s => s.multidimensionalDefinition?.[0]?.values?.[0])
-            .filter(v => typeof v === 'number')
-            .sort((a,b)=>a-b);
-
-          if(!allTimes.length){ smokeTsLabel.textContent = 'No time frames available'; return; }
-
-          const now = Date.now();
-          const windowMs = SMOKE_HOURS_EACH_SIDE * 3600 * 1000;
-          let within = allTimes.filter(t => t >= (now - windowMs) && t <= (now + windowMs));
-
-          if(within.length === 0){
-            let lo=0, hi=allTimes.length-1, best=0, bestDiff=Infinity;
-            while(lo<=hi){ const mid=(lo+hi)>>1, diff=Math.abs(allTimes[mid]-now);
-              if(diff<bestDiff){ bestDiff=diff; best=mid; }
-              if(allTimes[mid] < now) lo=mid+1; else hi=mid-1;
-            }
-            const start = Math.max(0, best - SMOKE_HOURS_EACH_SIDE);
-            const end   = Math.min(allTimes.length - 1, best + SMOKE_HOURS_EACH_SIDE);
-            within = allTimes.slice(start, end+1);
-          }
-
-          smokeTimesMs = within;
-          smokeSlider.max = String(within.length - 1);
-          smokeIdx = nearestIndex(within, now);
-          smokeSlider.value = String(smokeIdx);
-
-          if (map.hasLayer(smokeLayer)) {
-            smokeSetIndex(smokeIdx);
-            if (smokePendingAutoplay || smokeShouldAutoplayNextOn) {
-              smokePlay(); smokePendingAutoplay = false; smokeShouldAutoplayNextOn = false;
+      
+async function initSmokeTimes(){
+  // Prefer WMS GetCapabilities (TIME dimension). Fallback to ImageServer /slices JSON if needed.
+  const setLabel = (txt)=> smokeTsLabel.textContent = txt;
+  try{
+    setLabel('Loading…');
+    // 1) Try WMS GetCapabilities
+    const capUrl = NOAA_SMOKE_WMS + '?service=WMS&request=GetCapabilities';
+    let times = [];
+    try {
+      const r = await fetch(capUrl, { cache: 'no-store' });
+      if (r.ok) {
+        const xml = await r.text();
+        const doc = new DOMParser().parseFromString(xml, 'text/xml');
+        // Support WMS 1.1/1.3: Dimension or Extent element with name="time"
+        const dimNode = doc.querySelector('Dimension[name="time"], Extent[name="time"]');
+        if (dimNode && dimNode.textContent) {
+          const raw = dimNode.textContent.trim();
+          // Cases:
+          // - comma-separated ISO times
+          // - start/end/period: 2025-09-19T03:00:00Z/2025-09-21T06:00:00Z/PT1H
+          if (raw.includes('/')){
+            const parts = raw.split('/');
+            if (parts.length >= 3){
+              const start = Date.parse(parts[0]);
+              const end   = Date.parse(parts[1]);
+              const step  = parts[2]; // e.g., PT1H
+              // parse ISO8601 duration PTnH , PTnM, PTnS (we expect hours)
+              let stepMs = 3600000; // default 1h
+              const m = step.match(/^P(T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)$/i);
+              if (m){
+                const h = parseInt(m[2] || '0', 10);
+                const mm= parseInt(m[3] || '0', 10);
+                const s = parseInt(m[4] || '0', 10);
+                stepMs = (h*3600 + mm*60 + s) * 1000;
+              }
+              if (Number.isFinite(start) && Number.isFinite(end) && stepMs > 0){
+                for (let t=start; t<=end+1; t+=stepMs){ times.push(t); }
+              }
             }
           } else {
-            smokeTsLabel.textContent = smokeFmt(within[smokeIdx]);
+            times = raw.split(',').map(s => Date.parse(s.trim())).filter(Number.isFinite).sort((a,b)=>a-b);
           }
-        } catch (e){
-          console.error('Smoke slices error:', e);
-          smokeTsLabel.textContent = 'Error loading smoke timeline';
         }
       }
-      initSmokeTimes();
+    } catch (e){ /* ignore; will try fallback */ }
+
+    // 2) Fallback to ImageServer slices JSON (works cross-domain and is reliable)
+    if (!times.length){
+      const r = await fetch(NOAA_SMOKE_URL + '/slices?f=json', { cache: 'no-store' });
+      if(!r.ok) throw new Error('Failed to load time slices');
+      const json = await r.json();
+      times = (json.slices || [])
+        .map(s => s.multidimensionalDefinition?.[0]?.values?.[0])
+        .filter(v => typeof v === 'number')
+        .sort((a,b)=>a-b);
+    }
+
+    if(!times.length){ setLabel('No time frames available'); return; }
+
+    const now = Date.now();
+    const windowMs = SMOKE_HOURS_EACH_SIDE * 3600 * 1000;
+    let within = times.filter(t => t >= (now - windowMs) && t <= (now + windowMs));
+
+    if(within.length === 0){
+      // choose a centered window around the nearest time
+      let lo=0, hi=times.length-1, best=0, bestDiff=Infinity;
+      while(lo<=hi){ const mid=(lo+hi)>>1, diff=Math.abs(times[mid]-now);
+        if(diff<bestDiff){ bestDiff=diff; best=mid; }
+        if(times[mid] < now) lo=mid+1; else hi=mid-1;
+      }
+      const start = Math.max(0, best - SMOKE_HOURS_EACH_SIDE);
+      const end   = Math.min(times.length - 1, best + SMOKE_HOURS_EACH_SIDE);
+      within = times.slice(start, end+1);
+    }
+
+    smokeTimesMs = within;
+    smokeSlider.max = String(within.length - 1);
+    smokeIdx = nearestIndex(within, now);
+    smokeSlider.value = String(smokeIdx);
+
+    if (map.hasLayer(smokeLayer)) {
+      smokeSetIndex(smokeIdx);
+      if (smokePendingAutoplay || smokeShouldAutoplayNextOn) {
+        smokePlay(); smokePendingAutoplay = false; smokeShouldAutoplayNextOn = false;
+      }
+    } else {
+      setLabel(smokeFmt(within[smokeIdx]));
+    }
+  } catch (e){
+    console.error('Smoke timeline load failed:', e);
+    smokeTsLabel.textContent = 'Error loading smoke timeline';
+  }
+}
+initSmokeTimes();
+
 
       // ---- Mobile stacking & legend sizing ---------------------------------
       const safeProbe = $('#sai-probe');

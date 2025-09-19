@@ -368,7 +368,6 @@
 }
 
 
-}
 
 /* Reset any previous absolute positioning now that buttons live in header */
 .map-toggle-btn,
@@ -391,7 +390,7 @@
   white-space: nowrap !important;
   overflow: visible !important;
   text-overflow: clip !important;
-  font-size: clamp(10px, 2.8vw, var(--fs-18, 18px))) !important;
+  font-size: clamp(10px, 2.8vw, var(--fs-18, 18px)) !important;
 }
 
 /* Mobile tightening so text fits without wrapping/ellipses */
