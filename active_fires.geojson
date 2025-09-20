@@ -9,33 +9,33 @@
   "features": [
     {
       "type": "Feature",
-      "id": 68307,
+      "id": 69763,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65.43247876838464,
-          47.15278966673053
+          -66.35889903657309,
+          45.99142944577178
         ]
       },
       "properties": {
-        "OBJECTID": 68307,
-        "FIRE_NUMBER": "2025208",
-        "FIRE_NUMBER_SHORT": "208",
-        "FIRE_NAME": "Old Field Road",
-        "DEGREES_LAT": 47.15278,
-        "DEGREES_LONG": 65.43248,
+        "OBJECTID": 69763,
+        "FIRE_NUMBER": "2025355",
+        "FIRE_NUMBER_SHORT": "355",
+        "FIRE_NAME": "355",
+        "DEGREES_LAT": 45.99142,
+        "DEGREES_LONG": 66.3589,
         "FIRE_STAT_ID": 4,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1754492640000,
-        "FIRE_STAT_DATE": 1758270180000,
-        "FIRE_OF_NOTE_INDCTR": 1,
-        "FIRE_NOTE_ENG": "Yes",
-        "FIRE_NOTE_FR": "Oui",
+        "TIME_DETECTED": 1758118200000,
+        "FIRE_STAT_DATE": 1758271200000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 1403.0,
+        "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758350490
+        "FETCHED_FROM_ERD": 1758353309
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758350490
+        "FETCHED_FROM_ERD": 1758353309
       }
     },
     {
@@ -97,38 +97,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.6,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758350490
+        "FETCHED_FROM_ERD": 1758353309
       }
     },
     {
       "type": "Feature",
-      "id": 69763,
+      "id": 68307,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -66.35889903657309,
-          45.99142944577178
+          -65.43247876838464,
+          47.15278966673053
         ]
       },
       "properties": {
-        "OBJECTID": 69763,
-        "FIRE_NUMBER": "2025355",
-        "FIRE_NUMBER_SHORT": "355",
-        "FIRE_NAME": "355",
-        "DEGREES_LAT": 45.99142,
-        "DEGREES_LONG": 66.3589,
+        "OBJECTID": 68307,
+        "FIRE_NUMBER": "2025208",
+        "FIRE_NUMBER_SHORT": "208",
+        "FIRE_NAME": "Old Field Road",
+        "DEGREES_LAT": 47.15278,
+        "DEGREES_LONG": 65.43248,
         "FIRE_STAT_ID": 4,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758118200000,
-        "FIRE_STAT_DATE": 1758271200000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
+        "TIME_DETECTED": 1754492640000,
+        "FIRE_STAT_DATE": 1758270180000,
+        "FIRE_OF_NOTE_INDCTR": 1,
+        "FIRE_NOTE_ENG": "Yes",
+        "FIRE_NOTE_FR": "Oui",
         "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.8,
+        "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758350490
+        "FETCHED_FROM_ERD": 1758353309
       }
     }
   ]
