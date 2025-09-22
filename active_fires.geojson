@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 1,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -159,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.3,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -252,7 +252,7 @@
         "PERCENT_CONTAINED": 5,
         "FIRE_SIZE": 10.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -283,7 +283,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -314,7 +314,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -345,7 +345,7 @@
         "PERCENT_CONTAINED": 1,
         "FIRE_SIZE": 40.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -376,7 +376,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -407,7 +407,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -438,7 +438,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     },
     {
@@ -469,7 +469,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758512863
+        "FETCHED_FROM_ERD": 1758515876
       }
     }
   ]
