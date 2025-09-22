@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 20,
         "FIRE_SIZE": 27.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -159,7 +159,7 @@
         "PERCENT_CONTAINED": 1,
         "FIRE_SIZE": 50.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 1,
         "FIRE_SIZE": 0.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -252,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -283,7 +283,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -314,7 +314,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -345,7 +345,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.8,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -376,7 +376,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     },
     {
@@ -407,7 +407,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758559265
+        "FETCHED_FROM_ERD": 1758562321
       }
     }
   ]
