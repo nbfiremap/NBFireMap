@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -66,38 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69869,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.48161939661202,
-          45.449079323425835
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69869,
-        "FIRE_NUMBER": "2025370",
-        "FIRE_NUMBER_SHORT": "370",
-        "FIRE_NAME": "Saint Croix River",
-        "DEGREES_LAT": 45.44907,
-        "DEGREES_LONG": 67.48161999999999,
-        "FIRE_STAT_ID": 2,
-        "FIRE_STAT_DESC_E": "Contained",
-        "FIRE_STAT_DESC_F": "Contenu ",
-        "TIME_DETECTED": 1758387600000,
-        "FIRE_STAT_DATE": 1758531960000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 1.5,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -128,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -159,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -190,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -221,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -252,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -280,10 +249,10 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 25,
+        "PERCENT_CONTAINED": 10,
         "FIRE_SIZE": 35.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -314,7 +283,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -345,7 +314,38 @@
         "PERCENT_CONTAINED": 1,
         "FIRE_SIZE": 1.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69869,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.48161939661202,
+          45.449079323425835
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69869,
+        "FIRE_NUMBER": "2025370",
+        "FIRE_NUMBER_SHORT": "370",
+        "FIRE_NAME": "Saint Croix River",
+        "DEGREES_LAT": 45.44907,
+        "DEGREES_LONG": 67.48161999999999,
+        "FIRE_STAT_ID": 2,
+        "FIRE_STAT_DESC_E": "Contained",
+        "FIRE_STAT_DESC_F": "Contenu ",
+        "TIME_DETECTED": 1758387600000,
+        "FIRE_STAT_DATE": 1758618000000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 7.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -376,7 +376,7 @@
         "PERCENT_CONTAINED": 30,
         "FIRE_SIZE": 430.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -407,7 +407,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -438,7 +438,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     },
     {
@@ -469,7 +469,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758626906
+        "FETCHED_FROM_ERD": 1758632332
       }
     }
   ]
