@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -66,38 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69923,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.75951917846491,
-          46.06917945011333
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69923,
-        "FIRE_NUMBER": "2025381",
-        "FIRE_NUMBER_SHORT": "381",
-        "FIRE_NAME": "Kinglsey",
-        "DEGREES_LAT": 46.06917,
-        "DEGREES_LONG": 66.75952,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758549300000,
-        "FIRE_STAT_DATE": 1758553620000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -128,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -159,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -190,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -221,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -252,7 +221,7 @@
         "PERCENT_CONTAINED": 10,
         "FIRE_SIZE": 35.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -283,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -314,7 +283,7 @@
         "PERCENT_CONTAINED": 1,
         "FIRE_SIZE": 1.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -345,7 +314,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -376,38 +345,7 @@
         "PERCENT_CONTAINED": 30,
         "FIRE_SIZE": 430.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69862,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.60352914010343,
-          46.391059509537214
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69862,
-        "FIRE_NUMBER": "2025363",
-        "FIRE_NUMBER_SHORT": "363",
-        "FIRE_NAME": "363",
-        "DEGREES_LAT": 46.39105,
-        "DEGREES_LONG": 66.60352999999999,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758367500000,
-        "FIRE_STAT_DATE": 1758538260000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -438,7 +376,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     },
     {
@@ -469,7 +407,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758638290
+        "FETCHED_FROM_ERD": 1758641662
       }
     }
   ]
