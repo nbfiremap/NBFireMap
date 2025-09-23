@@ -35,38 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69882,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.78237882555908,
-          45.7571394180102
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69882,
-        "FIRE_NUMBER": "2025372",
-        "FIRE_NUMBER_SHORT": "372",
-        "FIRE_NAME": "East Scotch",
-        "DEGREES_LAT": 45.75713,
-        "DEGREES_LONG": 65.78238,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758456360000,
-        "FIRE_STAT_DATE": 1758531060000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -97,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -128,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -159,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -190,7 +159,7 @@
         "PERCENT_CONTAINED": 10,
         "FIRE_SIZE": 35.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -221,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -252,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -283,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -314,7 +283,7 @@
         "PERCENT_CONTAINED": 1,
         "FIRE_SIZE": 1.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -345,7 +314,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -376,7 +345,7 @@
         "PERCENT_CONTAINED": 30,
         "FIRE_SIZE": 430.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
       }
     },
     {
@@ -407,7 +376,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758648640
+        "FETCHED_FROM_ERD": 1758653008
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69882,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.78237882555908,
+          45.7571394180102
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69882,
+        "FIRE_NUMBER": "2025372",
+        "FIRE_NUMBER_SHORT": "372",
+        "FIRE_NAME": "East Scotch",
+        "DEGREES_LAT": 45.75713,
+        "DEGREES_LONG": 65.78238,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1758456360000,
+        "FIRE_STAT_DATE": 1758642120000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758653008
       }
     }
   ]
