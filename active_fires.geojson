@@ -35,38 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69925,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -64.92143860852352,
-          47.57556974864164
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69925,
-        "FIRE_NUMBER": "2025383",
-        "FIRE_NUMBER_SHORT": "383",
-        "FIRE_NAME": "Chemin de la Baie",
-        "DEGREES_LAT": 47.575559999999996,
-        "DEGREES_LONG": 64.92144,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758561300000,
-        "FIRE_STAT_DATE": 1758635160000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -97,38 +66,7 @@
         "PERCENT_CONTAINED": 40,
         "FIRE_SIZE": 1.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69869,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.48161939661202,
-          45.449079323425835
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69869,
-        "FIRE_NUMBER": "2025370",
-        "FIRE_NUMBER_SHORT": "370",
-        "FIRE_NAME": "Saint Croix River",
-        "DEGREES_LAT": 45.44907,
-        "DEGREES_LONG": 67.48161999999999,
-        "FIRE_STAT_ID": 2,
-        "FIRE_STAT_DESC_E": "Contained",
-        "FIRE_STAT_DESC_F": "Contenu ",
-        "TIME_DETECTED": 1758387600000,
-        "FIRE_STAT_DATE": 1758618000000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 7.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -159,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -190,7 +128,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69925,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.92143860852352,
+          47.57556974864164
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69925,
+        "FIRE_NUMBER": "2025383",
+        "FIRE_NUMBER_SHORT": "383",
+        "FIRE_NAME": "Chemin de la Baie",
+        "DEGREES_LAT": 47.575559999999996,
+        "DEGREES_LONG": 64.92144,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1758561300000,
+        "FIRE_STAT_DATE": 1758721140000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -221,7 +190,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69869,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.48161939661202,
+          45.449079323425835
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69869,
+        "FIRE_NUMBER": "2025370",
+        "FIRE_NUMBER_SHORT": "370",
+        "FIRE_NAME": "Saint Croix River",
+        "DEGREES_LAT": 45.44907,
+        "DEGREES_LONG": 67.48161999999999,
+        "FIRE_STAT_ID": 2,
+        "FIRE_STAT_DESC_E": "Contained",
+        "FIRE_STAT_DESC_F": "Contenu ",
+        "TIME_DETECTED": 1758387600000,
+        "FIRE_STAT_DATE": 1758720900000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 7.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -252,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -283,7 +283,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1403.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -314,7 +314,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.2,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -345,7 +345,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -376,7 +376,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -407,7 +407,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 35.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -438,7 +438,7 @@
         "PERCENT_CONTAINED": 60,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     },
     {
@@ -462,14 +462,14 @@
         "FIRE_STAT_DESC_E": "Out of Control",
         "FIRE_STAT_DESC_F": "Hors contrôle",
         "TIME_DETECTED": 1758702840000,
-        "FIRE_STAT_DATE": 1758717272000,
+        "FIRE_STAT_DATE": 1758721336000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": null,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1758728076
+        "FETCHED_FROM_ERD": 1758732139
       }
     }
   ]
