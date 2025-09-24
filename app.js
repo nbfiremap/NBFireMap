@@ -462,7 +462,7 @@
             {permanent:true,className:'perimeter-label-tooltip',direction:'center',opacity:0});
           perimeterLabelLayers.add(layer);
         }
-      }).addTo(map);
+      });
       const setPerimeterLabels = ()=> {
         const show = map.getZoom() >= 11;
         perimeterLabelLayers.forEach((l)=>l.getTooltip()?.setOpacity(show?1:0));
