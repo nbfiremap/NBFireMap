@@ -285,7 +285,7 @@ window.NBFireMapLayerManager = {
      */
     createClusterGroup(CONFIG, statusColor1, severityRank) {
       return L.markerClusterGroup({
-        maxClusterRadius: 25,  // Reduce clustering distance from default 80px to 25px
+        maxClusterRadius: 35,  // Set clustering distance to 35px for optimal balance
         disableClusteringAtZoom: CONFIG.CLUSTERING.DISABLE_AT_ZOOM,
         spiderfyOnMaxZoom: CONFIG.CLUSTERING.SPIDERFY_ON_MAX,
         zoomToBoundsOnClick: CONFIG.CLUSTERING.ZOOM_TO_BOUNDS_ON_CLICK,
