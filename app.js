@@ -2268,33 +2268,44 @@ doc.autoTable({
 
   // Final composed help HTML
   return `
-    <h2>How to Use This Map</h2>
-    <p>Drag to move, scroll or use <b>+</b>/<b>−</b> to zoom. The <b>Overview</b> panel lets you toggle layers. Time-series layers (Smoke, Fire Risk, Fire Weather, Fire Behavior) show inline controls under their row: use ▶ play, the slider, or drag the handle to change the date.</p>
-    <p><b>Nearby Fires:</b> Click a city/town label or your location to list active fires within 30&nbsp;km, with distance lines; click any entry to zoom to that fire.</p>
-    <h3>Layers Available</h3>
+    <h2>🗺️ How to Use This Map</h2>
+    
+    <p><strong>⚠️ Important:</strong> <em>This is an unofficial viewer created for educational and informational purposes. For official emergency information, always consult <a href="https://www.gnb.ca/en/topic/laws-safety/emergency-preparedness-alerts/fire-watch.html" target="_blank" rel="noopener">GNB Fire Watch</a>.</em></p>
+    
+    <p>🖱️ <strong>Navigation:</strong> Drag to move, scroll or use <b>+</b>/<b>−</b> to zoom. The <b>🔗 Overview</b> panel lets you toggle layers.</p>
+    <p>⏰ <strong>Time Controls:</strong> Time-series layers (Smoke, Fire Risk, Fire Weather, Fire Behavior) show inline controls under their row: use ▶ play, the slider, or drag the handle to change the date.</p>
+    <p>📍 <strong>Nearby Fires:</strong> Click a city/town label or your location to list active fires within 30&nbsp;km, with distance lines; click any entry to zoom to that fire.</p>
+    <p>📊 <strong>Fire Summary:</strong> Use the <b>🔥 Summary</b> button in the bottom panel to view current fire statistics for New Brunswick, including total active fires, area burned, and fires by status. The summary updates automatically with the latest data.</p>
+    
+    <h3>📊 Available Layers</h3>
     ${layersHTML}
-    <h3>Fire States</h3>
+    
+    <h3>🔥 Fire Status Guide</h3>
     ${fireStatesHTML}
+    
     ${glossaryHTML}
-    <h3>Map Credits & Sources</h3>
-    <p><strong>Base Maps:</strong></p>
+    
+    <h3>📚 Map Credits & Data Sources</h3>
+    <p><strong>🗺️ Base Maps:</strong></p>
     <ul>
-      <li><strong>Imagery:</strong> Esri World Imagery © Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community</li>
-      <li><strong>Street Map:</strong> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></li>
+      <li><strong>🛰️ Satellite Imagery:</strong> Esri World Imagery © Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community</li>
+      <li><strong>🛣️ Street Map:</strong> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></li>
     </ul>
-    <p><strong>Data Sources:</strong></p>
+    
+    <p><strong>🔗 Data Sources:</strong></p>
     <ul>
-      <li><strong>Fire Data:</strong> <a href="https://cwfis.cfs.nrcan.gc.ca" target="_blank" rel="noopener">CWFIS (Natural Resources Canada)</a></li>
-      <li><strong>Hotspots:</strong> <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" rel="noopener">NASA FIRMS</a> (VIIRS/MODIS)</li>
-      <li><strong>Weather Data:</strong> <a href="https://weather.gc.ca/" target="_blank" rel="noopener">Environment and Climate Change Canada</a></li>
-      <li><strong>Smoke Forecast:</strong> <a href="https://www.arl.noaa.gov/hysplit/smoke-forecasting/" target="_blank" rel="noopener">NOAA Air Resources Laboratory</a></li>
-      <li><strong>Weather Radar:</strong> <a href="https://www.weather.gov/" target="_blank" rel="noopener">NOAA National Weather Service</a></li>
-      <li><strong>Aircraft Tracking:</strong> <a href="https://opensky-network.org/" target="_blank" rel="noopener">OpenSky Network</a></li>
-      <li><strong>Provincial Data:</strong> Government of New Brunswick - Emergency Management Organization</li>
-      <li><strong>Satellite Imagery:</strong> <a href="https://www.esri.com/arcgis-blog/products/arcgis-living-atlas/imagery/sentinel-2-landsat/" target="_blank" rel="noopener">Esri Living Atlas</a> (Sentinel-2)</li>
+      <li><strong>🔥 Fire Data:</strong> <a href="https://cwfis.cfs.nrcan.gc.ca/interactive-map" target="_blank" rel="noopener">CWFIS Interactive Map</a> & <a href="https://cwfis.cfs.nrcan.gc.ca/datamart" target="_blank" rel="noopener">Data Services</a></li>
+      <li><strong>🌡️ Thermal Hotspots:</strong> <a href="https://firms.modaps.eosdis.nasa.gov/" target="_blank" rel="noopener">NASA Fire Information for Resource Management System (FIRMS)</a></li>
+      <li><strong>🌤️ Weather Data:</strong> <a href="https://weather.gc.ca/" target="_blank" rel="noopener">Environment and Climate Change Canada (ECCC)</a></li>
+      <li><strong>💨 Smoke Forecasts:</strong> <a href="https://firesmoke.ca/" target="_blank" rel="noopener">Canadian Smoke Forecast</a> & <a href="https://www.arl.noaa.gov/hysplit/smoke-forecasting/" target="_blank" rel="noopener">NOAA HYSPLIT</a></li>
+      <li><strong>📡 Weather Radar:</strong> <a href="https://weather.gc.ca/satellite/index_e.html" target="_blank" rel="noopener">ECCC Weather Radar & Satellite</a></li>
+      <li><strong>✈️ Aircraft Tracking:</strong> <a href="https://opensky-network.org/" target="_blank" rel="noopener">OpenSky Network</a></li>
+      <li><strong>🏛️ Provincial Data:</strong> <a href="https://www.gnb.ca/en/topic/laws-safety/emergency-preparedness-alerts" target="_blank" rel="noopener">GNB Emergency Management</a></li>
+      <li><strong>🛰️ High-Res Imagery:</strong> <a href="https://livingatlas.arcgis.com/en/browse/" target="_blank" rel="noopener">Esri Living Atlas</a> (Sentinel-2 & Landsat)</li>
+      <li><strong>⚡ Lightning Data:</strong> <a href="https://weather.gc.ca/" target="_blank" rel="noopener">ECCC Weather & Lightning</a></li>
     </ul>
-    <p><strong>Map Technology:</strong> Powered by <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a> mapping library</p>
-    <p><em>This is an unofficial viewer for educational and informational purposes.</em></p>
+    
+    <p><strong>⚙️ Technology:</strong> Powered by <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a> open-source mapping library</p>
   `;
 }
 
