@@ -332,7 +332,7 @@ window.NBFireMapLayerManager = {
                 <div class="marker-badge" style="--ring:${ring};width:28px;height:28px">
                   <i class="fa-solid fa-fire"></i>
                 </div>
-                <div style="position:absolute;bottom:-4px;right:-4px;background:var(--panel-strong);border:2px solid ${ring};border-radius:999px;font:800 10px/1.1 Inter,system-ui,Arial;padding:2px 5px;box-shadow:0 2px 8px rgba(0,0,0,.18)">
+                <div style="position:absolute;bottom:-4px;right:-4px;background:var(--panel-strong);border:1px solid rgba(0,0,0,0.1);border-radius:999px;font:800 10px/1.1 Inter,system-ui,Arial;padding:2px 5px;box-shadow:0 2px 8px rgba(0,0,0,.18)">
                   ${count}
                 </div>
               </div>`,
