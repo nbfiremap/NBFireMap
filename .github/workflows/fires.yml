@@ -39,6 +39,8 @@ jobs:
         shell: python
         run: |
           import os, time, json, hashlib, requests
+          url1=os.environ["OUT_FIRES_URL"]
+          cache_busted_url = f"{url1}?t={int(time.time())}"
 
           SESSION = requests.Session()
           SESSION.headers.update({"User-Agent": "github-actions ERD fetcher"})
@@ -213,7 +215,7 @@ jobs:
           )
           ok &= attempt_fetch_geojson_with_full_attrs(
               kind="out_fires (layer 1)",
-              url=os.environ["OUT_FIRES_URL"],
+              url=cache_busted_url,
               outfile=os.environ["OUT_FIRES_FILE"]
           )
           ok &= attempt_fetch_table_json(
