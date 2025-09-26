@@ -1,6 +1,6 @@
 {
   "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf",
-  "fetched_utc": 1758876086,
+  "fetched_utc": 1758879214,
   "pages": 1,
   "tables": [
     {
@@ -229,7 +229,7 @@
         },
         {
           "Region": "West",
-          "Status": "Being Patrolled",
+          "Status": "Out",
           "Number": "372",
           "Fire Name": "East Scotch",
           "Updated": "Sep-25",
@@ -242,7 +242,7 @@
           "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "1"
+          "Ovr": "0"
         },
         {
           "Region": "West",
@@ -266,7 +266,7 @@
           "Status": "Out",
           "Number": "385",
           "Fire Name": "385",
-          "Updated": "Sep-24",
+          "Updated": "Sep-25",
           "Latitude": "45.35278",
           "Longitude": "66.24877",
           "Size": "0.1",
