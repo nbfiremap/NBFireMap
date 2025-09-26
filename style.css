@@ -34,7 +34,7 @@
     #map{height:100%}
     body{
       background:var(--bg);color:var(--text);
-      font:var(--fs-14)/1.45 Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;letter-spacing:.1px;
+      font:var(--fs-14)/1.45 'Open Sans',system-ui,-apple-system,sans-serif;letter-spacing:.1px;
       -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale
     }
 
@@ -42,14 +42,26 @@
     .leaflet-bar a,.leaflet-bar a:hover{background:var(--panel);border:1px solid var(--border);color:var(--text);box-shadow:var(--shadow-soft)}
     .leaflet-bar a{width:34px;height:34px;line-height:34px;font-size:16px}
     .leaflet-control-attribution{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:var(--shadow-soft);padding:4px 8px}
-    .leaflet-top.leaflet-left{top:112px!important}
-    .leaflet-top.leaflet-right{top:112px!important}
+    .leaflet-top.leaflet-left{top:80px!important}
+    .leaflet-top.leaflet-right{top:80px!important}
 
     /* Overview (legend) */
     .leaflet-control-layers{
       background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);
       font-size:var(--fs-14);padding:8px 40px 8px 14px;backdrop-filter:blur(6px);min-width:260px;
-      width:fit-content;max-width:calc(100vw - 24px);white-space:nowrap;overflow-x:auto
+      width:fit-content;max-width:calc(100vw - 24px);white-space:nowrap;overflow-x:auto;
+    }
+    
+    /* Ensure legend draws over bottom panel when visible */
+    body:not(.map-ui-hidden) .leaflet-control-layers,
+    .leaflet-control-layers-expanded {
+      z-index: 3000 !important;
+    }
+    
+    /* Also set z-index on the parent leaflet control container */
+    body:not(.map-ui-hidden) .leaflet-top.leaflet-right,
+    body:not(.map-ui-hidden) .leaflet-top.leaflet-left {
+      z-index: 3000 !important;
     }
     .leaflet-control-layers-expanded,.leaflet-control-layers-list{max-height:none;overflow:visible}
     .leaflet-control-layers-overlays label{display:grid;grid-template-columns:18px 26px auto;align-items:center;column-gap:8px;min-width:0;line-height:1.25}
@@ -60,7 +72,10 @@
     @media (max-width: 640px){
       .leaflet-control-layers{
         width:fit-content;max-width:calc(100vw - 24px);min-width:0!important;white-space:nowrap;overflow-x:auto;
-        max-height:calc(100dvh - var(--legend-bottom-reserve, 180px));overflow-y:auto;-webkit-overflow-scrolling:touch
+        max-height:calc(100dvh - var(--legend-bottom-reserve, 180px));overflow-y:auto;-webkit-overflow-scrolling:touch;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
       }
       .leaflet-control-layers-overlays label{grid-template-columns:18px 26px auto}
       .leaflet-control-layers-overlays .text{white-space:nowrap;min-width:max-content}
@@ -89,27 +104,10 @@
       margin:8px -40px -8px -14px;padding:10px 14px 8px;border-top:1px solid var(--border);z-index:1;backdrop-filter:blur(6px)
     }
 
-    /* Buttons */
-    .map-btn{position:absolute;z-index:1001;background:var(--btn-bg);border:1px solid var(--btn-border);border-radius:999px;padding:10px 14px;
-      font-size:var(--fs-14);font-weight:700;color:var(--text);cursor:pointer;box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:8px;
-      transition:background .2s,transform .06s,box-shadow .2s}
-    .map-btn:hover{background:var(--btn-hover);box-shadow:0 8px 22px rgba(0,0,0,.08)}
-    .map-btn:active{transform:translateY(1px)}
-    .map-btn:focus-visible{outline:none;box-shadow:var(--focus)}
-    .map-toggle-btn{top:64px;right:12px}
-    .reset-view-btn{top:64px;left:12px;z-index:1002}
-    .map-btn .icon{width:18px;height:18px;display:inline-grid;place-items:center}
+    /* Legacy map UI hidden state */
     .map-ui-hidden .leaflet-control-layers{opacity:0;pointer-events:none}
 
-    /* Title */
-    .map-title{
-      position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:1003;pointer-events:none;cursor:default;
-      background:var(--btn-bg);border:1px solid var(--btn-border);border-radius:999px;padding:10px 16px;font-weight:800;box-shadow:var(--shadow);
-      white-space:nowrap;width:max-content;overflow:hidden;text-overflow:ellipsis;text-wrap:nowrap
-    }
-
-    /* Summary button (moved into legend on wide UI) */
-    .fire-summary-btn{position:fixed;left:12px;z-index:2001;bottom:calc(var(--fs-bottom, 86px) + env(safe-area-inset-bottom))}
+    /* Summary button (now in bottom panel) */
     .fire-summary-btn.in-legend{position:static!important;left:auto;bottom:auto;width:100%;margin:0;justify-content:center;box-shadow:var(--shadow-soft);border-radius:var(--radius-sm)}
 
     /* Help button */
@@ -124,6 +122,8 @@
     .city-label-tooltip,.perimeter-label-tooltip,.distance-label-tooltip,.county-label-tooltip{
       background:none!important;border:none!important;box-shadow:none!important;padding:0!important
     }
+    .city-label-tooltip::before{display:none!important}
+    .city-label-tooltip::after{display:none!important}
     .city-label{font-size:15px;font-weight:800;color:#fff;text-shadow:0 0 2px rgba(0,0,0,.7),0 0 8px rgba(0,0,0,.6),1px 1px 0 rgba(0,0,0,.9)}
     .perimeter-label{font-size:12px;font-weight:800;pointer-events:none;padding:2px 6px;border-radius:6px;background:rgba(239,68,68,.12);backdrop-filter:blur(2px)}
     .distance-label{
@@ -194,9 +194,55 @@
     .legend-badge i{font-size:11px;color:var(--ring)}
     .legend-modis-dot{width:10px;height:10px;border-radius:999px;background:var(--modis);display:inline-block;box-shadow:0 0 0 1.5px #111827 inset}
 
-    /* Footer */
-    .nb-footer{position:fixed;left:0;width:100%;text-align:center;z-index:2000;bottom:calc(10px + env(safe-area-inset-bottom))}
-    .nb-footer a{background:var(--btn-bg);border:1px solid var(--btn-border);border-radius:12px;padding:10px 18px;box-shadow:var(--shadow);color:var(--link);font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+    /* =======================
+       Bottom Action Panel
+       ======================= */
+    .bottom-panel {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2001;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 25px;
+      padding: 15px 25px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .action-btn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      padding: 8px 12px;
+      border-radius: 12px;
+    }
+    
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    .action-btn i {
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+    
+    .action-btn span {
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+      white-space: nowrap;
+    }
 
     /* Weather-station text inside inline SVGs */
     .ws-svg text{fill:#fff;stroke:rgba(0,0,0,.45);stroke-width:.9px;paint-order:stroke;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
@@ -288,6 +334,8 @@
     /* Safe-area probe (for iOS) */
     #sai-probe{position:fixed;left:0;bottom:0;width:0;height:env(safe-area-inset-bottom);pointer-events:none;opacity:0}
 
+
+
         /* Nearby fires bottom sheet */
     .nearby-panel{
       position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));
@@ -308,6 +356,7 @@
     /* Summary table + pie */
     .pro-table{width:100%;border-collapse:separate;border-spacing:0;margin:10px 0 4px;background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-soft)}
     .pro-table th,.pro-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+    .pro-table th:nth-child(2),.pro-table td:nth-child(2){text-align:right}
     .pro-table th{font:800 12px/1.2 Inter,system-ui,Arial;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;background:color-mix(in srgb, var(--panel) 80%, #fff 20%)}
     .pro-table tr:last-child td{border-bottom:none}
     .pro-kpi{font:800 16px/1.2 Inter,system-ui,Arial}
@@ -328,111 +377,134 @@
 
 
 /* =======================
-   Merged Map Header (title + buttons)
+   Centered Logo
    ======================= */
-.map-header{
-  font-size: clamp(11px, 2.6vw, 16px);
+.map-logo {
   position: fixed;
-  top: 12px;
+  top: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2001;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  background: var(--btn-bg, rgba(255,255,255,0.8));
-  border: 1px solid var(--btn-border, rgba(0,0,0,0.1));
-  border-radius: 999px;
-  padding: 8px 10px;
-  box-shadow: var(--shadow, 0 6px 20px rgba(0,0,0,0.15));
-  backdrop-filter: blur(6px);
-  max-width: min(980px, calc(100vw - 24px));
+  gap: 6px;
+  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 42px;
+  color: white;
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
-.map-header .map-btn{ position: static; box-shadow: var(--shadow-soft, 0 2px 10px rgba(0,0,0,0.08)); }
-.map-header .reset-view-btn{ justify-self: start; }
-.map-header .map-toggle-btn{ justify-self: end; }
+.map-logo i {
+  font-size: 32px;
+  color: white;
+  margin-right: 2px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
 
-.map-header .map-title{
-  position: static;
-  transform: none;
-  white-space: nowrap;
-  text-wrap: nowrap;
-  text-align: center;
-  font-weight: 800;
-  padding: 8px 12px;
-  border: 0;
-  box-shadow: none;
-  font-size: clamp(10px, 2.8vw, var(--fs-18, 18px));
+/* =======================
+   Left Control Panel
+   ======================= */
+.left-controls {
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(20px);
+  transition: all 0.2s ease;
+  color: white;
+  font-size: 16px;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  color: white;
+}
+
+.control-btn:active {
+  transform: translateY(0);
 }
 
 
 
-/* Reset any previous absolute positioning now that buttons live in header */
-.map-toggle-btn,
-.reset-view-btn{
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
+/* Push Leaflet controls to accommodate left panel */
+.leaflet-top.leaflet-left {
+  top: 80px !important;
+  left: 80px !important;
 }
 
-/* Push Leaflet controls below the header */
-.leaflet-top.leaflet-left,
-.leaflet-top.leaflet-right{
-  top: 84px !important;
+.leaflet-top.leaflet-right {
+  top: 80px !important;
 }
 
-
-/* --- Adjustments: mobile font sizing for header title --- */
-.map-header .map-title{
-  white-space: nowrap !important;
-  overflow: visible !important;
-  text-overflow: clip !important;
-  font-size: clamp(10px, 2.8vw, var(--fs-18, 18px)) !important;
-}
-
-/* Mobile tightening so text fits without wrapping/ellipses */
-@media (max-width: 420px){
-  .map-header{ gap: 6px; padding: 6px 8px; }
-  .map-header .map-title{ padding: 6px 8px; }
-  .map-header .map-btn{ padding: 6px 8px; }
-}
-@media (max-width: 360px){
-  .map-header{ gap: 4px; padding: 4px 6px; }
-  .map-header .map-title{ font-size: clamp(10px, 2.9vw, 16px); }
-}
-
-/* Ensure button labels shrink a bit more than the title on small screens */
-.map-header .map-btn{
-  white-space: nowrap;
-}
-.map-header .map-btn .icon{ flex: 0 0 auto; }
-.map-header .map-btn .icon i{ font-size: 1em; } /* scale with header font-size */
-.map-header .map-btn span:not(.icon){
-  display: inline-block;
-  font-size: clamp(10px, 2.6vw, 1em); /* slightly more aggressive shrink */
-  line-height: 1.1;
-}
-
-/* Tighter still on very small widths */
-@media (max-width: 360px){
-  .map-header .map-btn span:not(.icon){
-    font-size: clamp(9px, 2.4vw, 1em);
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  .left-controls {
+    left: 15px;
+    top: 70px;
   }
-  .map-header .map-btn{ padding: 4px 6px; }
+  
+  .control-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+  .map-logo {
+    padding: 10px 16px;
+    font-size: 32px;
+  }
+  
+  .bottom-panel {
+    bottom: 20px;
+    padding: 12px 20px;
+    gap: 20px;
+  }
+  
+  .action-btn i {
+    font-size: 18px;
+  }
+  
+  .action-btn span {
+    font-size: 11px;
+  }
 }
 
-/* Shrink button label text on small screens */
-@media (max-width: 480px){
-  .map-header .map-btn span:not(.icon){ font-size: 0.9em; }
-}
-@media (max-width: 400px){
-  .map-header .map-btn span:not(.icon){ font-size: 0.8em; }
-}
-@media (max-width: 340px){
-  .map-header .map-btn span:not(.icon){ font-size: 0.7em; }
+@media (max-width: 480px) {
+  .left-controls {
+    gap: 6px;
+  }
+  
+  .control-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+  
+  .bottom-panel {
+    gap: 15px;
+    padding: 10px 15px;
+  }
 }
 
 /* Webcams popup styles (from webcams.html parity) */

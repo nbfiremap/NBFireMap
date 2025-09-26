@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>NB Fire Map</title>
+  <title>nbfiremap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
 
@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -110,29 +111,47 @@
     <div id="fbpErr" class="cwfis-err">Layer for this date/metric may be unavailable.</div>
   </div>
 
-  <!-- Title -->
-  <!-- Map Header -->
-<div id="mapHeader" class="map-header" role="banner" aria-label="NB Fire Map header">
-  <button id="resetViewBtn" class="map-btn reset-view-btn" type="button" title="Reset map view">
-    <span class="icon"><i class="fa-solid fa-compass"></i></span><span>Reset Map View</span>
-  </button>
-
-  <div id="mapTitle" class="map-title" aria-hidden="true">
-    <i class="fa-solid fa-fire"></i> NB Fire Map
+  <!-- Centered Logo -->
+  <div id="mapLogo" class="map-logo">
+    <i class="fa-solid fa-fire"></i>
+    <span>nbfiremap</span>
   </div>
 
-  <button id="mapToggleBtn" class="map-btn map-toggle-btn" type="button" aria-pressed="false" title="Show Overview">
-    <span class="icon"><i class="fa-solid fa-layer-group"></i></span><span id="mtb-text">Show Overview</span>
-  </button>
-</div>
+  <!-- Left Control Panel -->
+  <div id="leftControls" class="left-controls">
+    <button id="resetViewBtn" class="control-btn" type="button" title="Reset map view">
+      <i class="fa-solid fa-refresh"></i>
+    </button>
+    <button class="control-btn" type="button" title="Zoom in">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+    <button class="control-btn" type="button" title="Zoom out">
+      <i class="fa-solid fa-minus"></i>
+    </button>
+    <button id="mapToggleBtn" class="control-btn" type="button" aria-pressed="false" title="Toggle layers">
+      <i class="fa-solid fa-layer-group"></i>
+    </button>
+    <button class="control-btn" type="button" title="Find my location">
+      <i class="fa-solid fa-location-crosshairs"></i>
+    </button>
+  </div>
 
 
-  <!-- Overview toggle / reset / summary -->
-  
-  
-  <button id="fireSummaryBtn" class="map-btn fire-summary-btn" type="button" title="Open summary">
-    <span class="icon"><i class="fa-solid fa-fire"></i></span><span>View Fire Summary</span>
-  </button>
+  <!-- Bottom Action Panel -->
+  <div id="bottomPanel" class="bottom-panel">
+    <button id="fireWatchBtn" class="action-btn" type="button">
+      <i class="fa-solid fa-fire"></i>
+      <span>nb fire watch</span>
+    </button>
+    <button id="fireSummaryBtn" class="action-btn" type="button">
+      <i class="fa-solid fa-list"></i>
+      <span>fire summary</span>
+    </button>
+    <button id="helpBtn" class="action-btn" type="button">
+      <i class="fa-solid fa-question"></i>
+      <span>help</span>
+    </button>
+  </div>
 
   <!-- Fire Summary Modal -->
   <div id="fireSummaryOverlay" class="fire-summary-overlay" role="presentation" hidden>
@@ -175,14 +194,12 @@
     <div id="nearbyBody"></div>
   </div>
 
-  <div class="nb-footer">
-    <a href="https://www.gnb.ca/en/topic/laws-safety/emergency-preparedness-alerts/fire-watch.html" target="_blank" rel="noopener">
-      <i class="fa-solid fa-up-right-from-square"></i> NB Fire Watch &amp; Burn Restrictions
-    </a>
-  </div>
+
 
   <!-- Safe-area probe -->
   <div id="sai-probe" aria-hidden="true"></div>
+
+
 
   <!-- JS (deferred) -->
   <script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -196,6 +213,13 @@
   <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
   <script defer src="https://unpkg.com/@mapbox/polyline@1.2.1/src/polyline.js"></script>
+  <script defer src="constants.js"></script>
+  <script defer src="utils.js"></script>
+  <script defer src="popupUtils.js"></script>
+  <script defer src="fireDataManager.js"></script>
+  <script defer src="layerManager.js"></script>
+  <script defer src="uiPanelManager.js"></script>
+  <script defer src="dataLoadingManager.js"></script>
   <script defer src="app.js"></script>
 </body>
 </html>
