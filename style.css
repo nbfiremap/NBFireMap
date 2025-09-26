@@ -194,6 +194,47 @@
     .legend-badge i{font-size:11px;color:var(--ring)}
     .legend-modis-dot{width:10px;height:10px;border-radius:999px;background:var(--modis);display:inline-block;box-shadow:0 0 0 1.5px #111827 inset}
 
+    /* Event marker icons - circular (original) */
+    .event-marker {
+      width: var(--size, 28px);
+      height: var(--size, 28px);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--panel-strong);
+      border: var(--weight, 2px) solid var(--color, #6b7280);
+      box-shadow: 0 2px 10px rgba(0,0,0,.18);
+      position: relative;
+    }
+    
+    /* Event marker icons - square markers for visual distinction from circular fire markers */
+    .event-marker-square {
+      width: var(--size, 28px);
+      height: var(--size, 28px);
+      background: var(--color, #6b7280);
+      border: var(--weight, 2px) solid white;
+      border-radius: 6px; /* Rounded corners for softer look */
+      box-shadow: 0 2px 10px rgba(0,0,0,.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .event-marker-square i {
+      font-size: calc(var(--size, 28px) * 0.5);
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .event-badge-icon .event-marker-square {
+      transition: transform 0.15s ease;
+    }
+    
+    .event-badge-icon:hover .event-marker-square {
+      transform: scale(1.1);
+    }
+
     /* =======================
        Bottom Action Panel
        ======================= */
@@ -539,6 +580,80 @@
     padding: 4px 6px !important;
   }
 }
+
+/* Enhanced event popup styles */
+.leaflet-popup-content {
+  line-height: 1.4;
+}
+
+/* Event status indicators */
+.event-status-full-closure {
+  background: #fee2e2;
+  border-left: 4px solid #dc2626;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.event-status-partial {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+}
+
+.event-status-open {
+  background: #dcfce7;
+  border-left: 4px solid #059669;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+}
+
+/* Event info boxes */
+.event-restrictions {
+  background: #fef3c7;
+  border-left: 3px solid #f59e0b;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.event-detour {
+  background: #ede9fe;
+  border-left: 3px solid #7c3aed;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.event-comment {
+  background: #f0f9ff;
+  border-left: 3px solid #0284c7;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* Severity badges */
+.severity-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+  color: white;
+}
+
+.severity-major { background: #dc2626; }
+.severity-minor { background: #f59e0b; }
+.severity-none { background: #6b7280; }
 
 /* Webcams popup styles (from webcams.html parity) */
 .popup h3 { margin: 0 0 .25rem; font-size: 1rem; }

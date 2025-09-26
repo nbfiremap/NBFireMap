@@ -284,115 +284,96 @@ window.NBFireMapLayerManager = {
      * Create fire cluster group with configuration
      */
     createClusterGroup(CONFIG, statusColor1, severityRank) {
-      // Create a custom cluster group class that positions clusters at the most significant fire
-      const CustomFireClusterGroup = L.MarkerClusterGroup.extend({
-        _getExpandedBounds: function(bounds) {
-          // Override to position cluster at most significant fire
-          const expandedBounds = L.MarkerClusterGroup.prototype._getExpandedBounds.call(this, bounds);
-          return expandedBounds;
-        },
-        
-        _createMarkerCluster: function(markers) {
-          // This is called when creating individual clusters - override positioning here
-          const cluster = L.MarkerClusterGroup.prototype._createMarkerCluster.call(this, markers);
-          
-          if (markers.length > 1) {
-            let bestMarker = markers[0];
-            let bestScore = -1;
-            
-            for (const marker of markers) {
-              const severity = Number.isFinite(marker.options._severity) ? marker.options._severity : severityRank(marker.options._statusKey || 'extinguished');
-              const area = Number(marker.options._area) || 0;
-              // Score combines severity (0-3) and normalized area
-              const score = severity * 10 + Math.min(area / 1000, 1) * 5;
-              
-              if (score > bestScore) {
-                bestScore = score;
-                bestMarker = marker;
-              }
-            }
-            
-            // Set cluster position to most significant fire's location
-            const bestPos = bestMarker.getLatLng();
-            cluster._latlng = bestPos;
-            console.log(`Positioned cluster at most significant fire #${bestMarker.options.fireId || '?'}: severity=${bestMarker.options._severity}, area=${bestMarker.options._area}ha, pos=[${bestPos.lat.toFixed(5)}, ${bestPos.lng.toFixed(5)}]`);
-          }
-          
-          return cluster;
-        }
-      });
-
-      const clusterGroup = new CustomFireClusterGroup({
+      // Create standard cluster group first
+      const clusterGroup = L.markerClusterGroup({
         maxClusterRadius: 35,  // Set clustering distance to 35px for optimal balance
         disableClusteringAtZoom: CONFIG.CLUSTERING.DISABLE_AT_ZOOM,
         spiderfyOnMaxZoom: CONFIG.CLUSTERING.SPIDERFY_ON_MAX,
         zoomToBoundsOnClick: CONFIG.CLUSTERING.ZOOM_TO_BOUNDS_ON_CLICK,
         showCoverageOnHover: CONFIG.CLUSTERING.SHOW_COVERAGE_ON_HOVER,
-        iconCreateFunction: (cluster) => {
-          const markers = cluster.getAllChildMarkers();
-          let worstSev = -2, worstKey = 'extinguished';
-          
-          for (const m of markers) {
-            const k = m.options._statusKey || 'extinguished';
-            const sev = Number.isFinite(m.options._severity) ? m.options._severity : severityRank(k);
-            if (sev > worstSev) { 
-              worstSev = sev; 
-              worstKey = k; 
-            }
-          }
-          
-          const ring = statusColor1(worstKey);
-          const count = cluster.getChildCount();
-          
-          return L.divIcon({
-            className: 'fire-cluster-icon',
-            html: `
-              <div style="position:relative;display:inline-grid;place-items:center">
-                <div class="marker-badge" style="--ring:${ring};width:28px;height:28px">
-                  <i class="fa-solid fa-fire"></i>
-                </div>
-                <div style="position:absolute;bottom:-4px;right:-4px;background:var(--panel-strong);border:1px solid rgba(0,0,0,0.1);border-radius:999px;font:800 10px/1.1 Inter,system-ui,Arial;padding:2px 5px;box-shadow:0 2px 8px rgba(0,0,0,.18)">
-                  ${count}
-                </div>
-              </div>`,
-            iconSize: [28, 28], 
-            iconAnchor: [14, 19], 
-            popupAnchor: [0, -15]
-          });
-        },
         pane: 'firesPane',
         clusterPane: 'firesPane'
       });
 
-      // Add event listener to reposition clusters after they're created/updated
-      clusterGroup.on('animationend', function() {
-        this.eachLayer(function(layer) {
-          if (layer instanceof L.MarkerCluster) {
-            const markers = layer.getAllChildMarkers();
-            
-            if (markers.length > 1) {
-              let bestMarker = markers[0];
-              let bestScore = -1;
+      // Remove the animationend event listener since we'll try a different approach
+      clusterGroup.on('clusteringstart', function() {
+        console.log('Clustering started...');
+      });
+      
+      clusterGroup.on('clusteringend', function() {
+        console.log('Clustering ended, repositioning clusters...');
+        
+        // Wait a bit for clusters to be fully rendered, then reposition
+        setTimeout(() => {
+          this.eachLayer(function(layer) {
+            if (layer instanceof L.MarkerCluster) {
+              const markers = layer.getAllChildMarkers();
               
-              for (const marker of markers) {
-                const severity = Number.isFinite(marker.options._severity) ? marker.options._severity : severityRank(marker.options._statusKey || 'extinguished');
-                const area = Number(marker.options._area) || 0;
-                const score = severity * 10 + Math.min(area / 1000, 1) * 5;
+              if (markers.length > 1) {
+                let bestMarker = markers[0];
+                let bestScore = -1;
                 
-                if (score > bestScore) {
-                  bestScore = score;
-                  bestMarker = marker;
+                for (const marker of markers) {
+                  const severity = Number.isFinite(marker.options._severity) ? marker.options._severity : severityRank(marker.options._statusKey || 'extinguished');
+                  const area = Number(marker.options._area) || 0;
+                  const score = severity * 10 + Math.min(area / 1000, 1) * 5;
+                  
+                  if (score > bestScore) {
+                    bestScore = score;
+                    bestMarker = marker;
+                  }
+                }
+                
+                // Force reposition the cluster
+                const bestPos = bestMarker.getLatLng();
+                const currentPos = layer.getLatLng();
+                
+                if (Math.abs(currentPos.lat - bestPos.lat) > 0.001 || Math.abs(currentPos.lng - bestPos.lng) > 0.001) {
+                  layer._latlng = bestPos;
+                  layer.update();
+                  console.log(`Repositioned cluster from [${currentPos.lat.toFixed(5)}, ${currentPos.lng.toFixed(5)}] to [${bestPos.lat.toFixed(5)}, ${bestPos.lng.toFixed(5)}] for fire: severity=${bestMarker.options._severity}, area=${bestMarker.options._area}ha`);
                 }
               }
-              
-              // Move cluster to best marker position
-              const bestPos = bestMarker.getLatLng();
-              layer.setLatLng(bestPos);
-              console.log(`Repositioned cluster to fire #${bestMarker.options.fireId || bestMarker.options._statusKey}: severity=${bestMarker.options._severity}, area=${bestMarker.options._area}ha`);
             }
-          }
-        });
+          }.bind(this));
+        }, 100);
       });
+
+      // Set up icon creation function
+      clusterGroup.options.iconCreateFunction = (cluster) => {
+        const markers = cluster.getAllChildMarkers();
+        let worstSev = -2, worstKey = 'extinguished';
+        
+        for (const m of markers) {
+          const k = m.options._statusKey || 'extinguished';
+          const sev = Number.isFinite(m.options._severity) ? m.options._severity : severityRank(k);
+          if (sev > worstSev) { 
+            worstSev = sev; 
+            worstKey = k; 
+          }
+        }
+        
+        const ring = statusColor1(worstKey);
+        const count = cluster.getChildCount();
+        
+        return L.divIcon({
+          className: 'fire-cluster-icon',
+          html: `
+            <div style="position:relative;display:inline-grid;place-items:center">
+              <div class="marker-badge" style="--ring:${ring};width:28px;height:28px">
+                <i class="fa-solid fa-fire"></i>
+              </div>
+              <div style="position:absolute;bottom:-4px;right:-4px;background:var(--panel-strong);border:1px solid rgba(0,0,0,0.1);border-radius:999px;font:800 10px/1.1 Inter,system-ui,Arial;padding:2px 5px;box-shadow:0 2px 8px rgba(0,0,0,.18)">
+                ${count}
+              </div>
+            </div>`,
+          iconSize: [28, 28], 
+          iconAnchor: [14, 19], 
+          popupAnchor: [0, -15]
+        });
+      };
+
+
 
       return clusterGroup;
     },

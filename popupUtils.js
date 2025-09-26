@@ -7,7 +7,7 @@ window.NBFireMapPopupUtils = (() => {
   'use strict';
 
   // Import required utilities
-  const { escHTML, epochToLocal } = window.NBFireMapUtils;
+  const { escHTML, fmtDateTimeTz } = window.NBFireMapUtils;
 
   // ---- Generic Popup Creation Functions ---------------------------------
 
@@ -15,12 +15,12 @@ window.NBFireMapPopupUtils = (() => {
    * Create a styled popup container with header and body
    */
   function createPopupContainer(title, content, options = {}) {
-    const { className = 'popup', headerIcon = '', maxWidth = 300 } = options;
+    const { className = 'popup', headerIcon = '', maxWidth = 300, escapeTitle = true } = options;
     
     return `
       <div class="${className}" style="min-width:240px;max-width:${maxWidth}px">
         <div class="popup-header">
-          ${headerIcon} ${escHTML(title)}
+          ${headerIcon} ${escapeTitle ? escHTML(title) : title}
         </div>
         <div class="popup-body">
           ${content}
@@ -35,7 +35,9 @@ window.NBFireMapPopupUtils = (() => {
   function createTableRow(label, value, options = {}) {
     const { className = 'label' } = options;
     const displayValue = value != null ? escHTML(String(value)) : '—';
-    return `<tr><td class="${className}">${escHTML(label)}</td><td>${displayValue}</td></tr>`;
+    // Don't escape if label contains HTML tags (like Font Awesome icons)
+    const labelContent = label.includes('<') ? label : escHTML(label);
+    return `<tr><td class="${className}">${labelContent}</td><td>${displayValue}</td></tr>`;
   }
 
   // ---- Events Popup Functions -------------------------------------------
@@ -44,40 +46,85 @@ window.NBFireMapPopupUtils = (() => {
    * Build popup content for road events
    */
   function buildEventPopup(event) {
+    if (!event) return 'No event data';
+
+    // Get event type icon and better display names
+    const getEventIcon = (type, subType, isFullClosure) => {
+      if (isFullClosure) return '<i class="fas fa-ban" style="color: #dc2626;"></i>';
+      if (type === 'accidentsAndIncidents') return '<i class="fas fa-exclamation-triangle" style="color: #ea580c;"></i>';
+      if (type === 'closures') {
+        if (subType && subType.includes('Bridge Out')) return '<i class="fas fa-water" style="color: #0891b2;"></i>';
+        if (subType && subType.includes('Washout')) return '<i class="fas fa-tint" style="color: #0284c7;"></i>';
+        return '<i class="fas fa-road" style="color: #dc2626;"></i>';
+      }
+      if (type === 'roadwork') {
+        if (subType && subType.includes('Bridge')) return '<i class="fas fa-wrench" style="color: #0891b2;"></i>';
+        return '<i class="fas fa-hard-hat" style="color: #0891b2;"></i>';
+      }
+      return '<i class="fas fa-route" style="color: #6b7280;"></i>';
+    };
+
+    const getSeverityBadge = (severity) => {
+      if (!severity || severity === 'None') return '';
+      const color = severity === 'Major' ? '#dc2626' : severity === 'Minor' ? '#f59e0b' : '#6b7280';
+      return `<span style="background: ${color}; color: white; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; margin-left: 6px;">${severity.toUpperCase()}</span>`;
+    };
+
+    const getClosureStatus = (isFullClosure, lanesAffected) => {
+      if (isFullClosure) return '<strong style="color: #dc2626;"><i class="fas fa-ban"></i> FULL CLOSURE</strong>';
+      if (lanesAffected && lanesAffected !== 'No Data') return `<span style="color: #f59e0b;"><i class="fas fa-exclamation-triangle"></i> ${lanesAffected}</span>`;
+      return '<span style="color: #059669;"><i class="fas fa-check-circle"></i> Partial/Restrictions Only</span>';
+    };
+
+    // Format restrictions with better presentation
     const restrictions = event.Restrictions || {};
-    
-    const restrictionsText = [
-      restrictions.Lanes ? ("Lanes: " + restrictions.Lanes) : "",
-      restrictions.AllowedVehicles ? ("Allowed: " + restrictions.AllowedVehicles) : "",
-      restrictions.HeavyVehicles ? ("Heavy: " + restrictions.HeavyVehicles) : "",
-      restrictions.Width ? ("Width: " + restrictions.Width) : "",
-      restrictions.Height ? ("Height: " + restrictions.Height) : "",
-      restrictions.Length ? ("Length: " + restrictions.Length) : "",
-      restrictions.Weight ? ("Weight: " + restrictions.Weight) : "",
-      restrictions.Speed != null ? ("Speed: " + restrictions.Speed + " km/h") : ""
-    ].filter(Boolean).join(" · ") || "—";
+    const restrictionItems = [
+      restrictions.Width ? `Width: ${restrictions.Width}m` : "",
+      restrictions.Height ? `Height: ${restrictions.Height}m` : "",
+      restrictions.Length ? `Length: ${restrictions.Length}m` : "",
+      restrictions.Weight ? `Weight: ${restrictions.Weight}kg` : "",
+      restrictions.Speed ? `Speed: ${restrictions.Speed} km/h` : ""
+    ].filter(Boolean);
+
+    const restrictionsHTML = restrictionItems.length > 0 ? 
+      `<div style="margin: 6px 0; padding: 6px; background: #fef3c7; border-left: 3px solid #f59e0b; border-radius: 3px;">
+        <strong><i class="fas fa-hand" style="color: #f59e0b;"></i> Vehicle Restrictions:</strong><br/>
+        ${restrictionItems.join(' • ')}
+      </div>` : '';
+
+    // Format detour information
+    const detourHTML = (event.DetourInstructions && event.DetourInstructions.length) ? 
+      `<div style="margin: 6px 0; padding: 6px; background: #ede9fe; border-left: 3px solid #7c3aed; border-radius: 3px;">
+        <strong><i class="fas fa-route" style="color: #7c3aed;"></i> Detour:</strong><br/>
+        ${escHTML(Array.isArray(event.DetourInstructions) ? 
+          event.DetourInstructions.join(' ') : event.DetourInstructions)}
+      </div>` : '';
 
     const tableContent = `
+      <div style="margin: 8px 0;">
+        ${getClosureStatus(event.IsFullClosure, event.LanesAffected)}
+      </div>
       <table>
-        ${createTableRow('Type', event.EventType + (event.EventSubType ? ' · ' + event.EventSubType : ''))}
-        ${createTableRow('Closure?', event.IsFullClosure ? 'Yes' : 'No')}
-        ${createTableRow('Severity', event.Severity || '—')}
-        ${createTableRow('Reported', epochToLocal(event.Reported))}
-        ${createTableRow('Updated', epochToLocal(event.LastUpdated))}
-        ${createTableRow('Starts', epochToLocal(event.StartDate))}
-        ${createTableRow('Planned End', epochToLocal(event.PlannedEndDate))}
-        ${event.DetourInstructions && event.DetourInstructions.length ? 
-          createTableRow('Detour', Array.isArray(event.DetourInstructions) ? 
-            event.DetourInstructions.join(' ') : event.DetourInstructions) : ''}
-        ${createTableRow('Restrictions', restrictionsText)}
+        ${createTableRow('<i class="fas fa-map-marker-alt" style="color: #dc2626;"></i> Location', `${escHTML(event.RoadwayName || '—')} · ${escHTML(event.DirectionOfTravel || '—')}`)}
+        ${createTableRow('<i class="fas fa-calendar-plus" style="color: #059669;"></i> Reported', event.Reported ? fmtDateTimeTz(event.Reported * 1000) : '—')}
+        ${createTableRow('<i class="fas fa-sync-alt" style="color: #0284c7;"></i> Updated', event.LastUpdated ? fmtDateTimeTz(event.LastUpdated * 1000) : '—')}
+        ${event.StartDate ? createTableRow('<i class="fas fa-play-circle" style="color: #059669;"></i> Starts', fmtDateTimeTz(event.StartDate * 1000)) : ''}
+        ${event.PlannedEndDate ? createTableRow('<i class="fas fa-flag-checkered" style="color: #7c3aed;"></i> Planned End', fmtDateTimeTz(event.PlannedEndDate * 1000)) : ''}
+        ${event.Organization ? createTableRow('<i class="fas fa-building" style="color: #6b7280;"></i> Reported By', escHTML(event.Organization)) : ''}
       </table>
-      ${event.Comment ? '<div style="margin-top:6px">' + escHTML(event.Comment) + '</div>' : ''}
+      ${restrictionsHTML}
+      ${detourHTML}
+      ${event.Comment ? `<div style="margin-top: 8px; padding: 6px; background: #f0f9ff; border-left: 3px solid #0284c7; border-radius: 3px;"><strong><i class="fas fa-comment" style="color: #0284c7;"></i> Notes:</strong><br/>${escHTML(event.Comment)}</div>` : ''}
     `;
 
-    const title = event.Description || 'Event';
-    const subtitle = `<div class="muted">${escHTML(event.RoadwayName || '')} · ${escHTML(event.DirectionOfTravel || '')}</div>`;
+    const icon = getEventIcon(event.EventType, event.EventSubType, event.IsFullClosure);
+    const displayType = escHTML(event.EventSubType || event.EventType);
+    const severityBadge = getSeverityBadge(event.Severity);
     
-    return createPopupContainer(title, subtitle + tableContent);
+    const title = `${icon} ${displayType}${severityBadge}`;
+    const subtitle = `<div class="muted" style="font-size: 13px; color: #6b7280; margin-bottom: 4px;">${escHTML(event.Description || 'Road Event')}</div>`;
+    
+    return createPopupContainer(title, subtitle + tableContent, { escapeTitle: false });
   }
 
   // ---- Webcam Popup Functions -------------------------------------------

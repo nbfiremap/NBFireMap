@@ -97,6 +97,73 @@ window.NBFireMapDataLoadingManager = (() => {
     });
   }
 
+  /**
+   * Create Font Awesome icon for road events using square markers
+   */
+  function createEventIcon(event) {
+    const startDate = event.StartDate ? event.StartDate * 1000 : null; // Convert to milliseconds
+    const color = getColorForType(event.EventType, event.EventSubType, event.IsFullClosure, startDate);
+    const severity = event.Severity || 'None';
+    const severityStyle = SEVERITY_STYLES[severity] || SEVERITY_STYLES.default;
+    
+    // Choose appropriate Font Awesome icon based on event category
+    const getIconClass = () => {
+      const category = getEventCategory(event.EventType, event.EventSubType, startDate);
+      
+      // All closures (current and future) use prohibition sign
+      if (category === 'closures' || category === 'futureClosures') {
+        return 'fa-solid fa-ban';
+      }
+      
+      // Incidents use exclamation mark
+      if (category === 'incidents') {
+        return 'fa-solid fa-triangle-exclamation';
+      }
+      
+      // Construction (current and future) uses construction pylon
+      if (category === 'construction' || category === 'futureConstruction') {
+        return 'fa-solid fa-person-digging';
+      }
+      
+      // Flooding uses water/wave icon
+      if (category === 'flooding') {
+        return 'fa-solid fa-water';
+      }
+      
+      // Default road icon
+      return 'fa-solid fa-road';
+    };
+    
+    const iconClass = getIconClass();
+    const size = 28; // Match fire marker size for consistency
+    const weight = event.IsFullClosure ? 3 : 2; // Only full closures get thicker border
+    
+    return L.divIcon({
+      className: 'event-badge-icon',
+      html: `<div class="event-marker-square" style="--color:${color}; --size:${size}px; --weight:${weight}px;"><i class="${iconClass}"></i></div>`,
+      iconSize: [size + 10, size + 10], // Add padding like fire markers
+      iconAnchor: [(size + 10) / 2, (size + 10) / 2],
+      popupAnchor: [0, -(size / 2 + 5)]
+    });
+  }
+
+  /**
+   * Get severity ranking for clustering (higher = more severe)
+   */
+  function getEventSeverityRank(event) {
+    // Full closures are always most severe
+    if (event.IsFullClosure) return 100;
+    
+    // Then by event type severity
+    if (event.EventType === 'accidentsAndIncidents') return 90;
+    if (event.EventType === 'closures') return 80;
+    if (event.Severity === 'Major') return 70;
+    if (event.Severity === 'Minor') return 60;
+    if (event.EventType === 'roadwork' || event.EventType === 'construction') return 50;
+    
+    return 40; // Default for restrictions and other
+  }
+
   // ---- Color Mapping Functions ------------------------------------------
 
   /**
@@ -132,15 +199,54 @@ window.NBFireMapDataLoadingManager = (() => {
   }
 
   /**
-   * Road event type colors
+   * Road event type colors - updated for consistent red/blue scheme
    */
   const POINT_COLORS = {
-    closures: '#e11d48',       // red
-    restrictions: '#f59e0b',   // amber
-    incidents: '#f97316',      // orange
-    construction: '#8e44ad',   // purple
-    other: '#1f6feb',          // blue
-    default: '#1f6feb'         // fallback
+    // Current/Active Events
+    closures: '#dc2626',           // red - current road closures
+    futureClosures: '#2563eb',     // blue - future road closures
+    incidents: '#dc2626',          // red - accidents & incidents
+    accidentsAndIncidents: '#dc2626', // red - active incidents (exact match)
+    emergency: '#dc2626',          // red - emergency situations
+    
+    // Construction & Work
+    construction: '#ea580c',       // orange - current construction
+    futureConstruction: '#2563eb', // blue - future construction
+    roadwork: '#ea580c',           // orange - current roadwork (alias)
+    maintenance: '#0369a1',        // dark blue - maintenance work
+    
+    // Flooding
+    flooding: '#0891b2',           // cyan - flooding/washouts
+    
+    // Restrictions & Traffic (amber/yellow family)
+    restrictions: '#d97706',       // dark amber - vehicle restrictions
+    traffic: '#f59e0b',           // amber - traffic issues
+    
+    // Weather & Conditions (purple family)
+    weather: '#7c3aed',           // violet - weather related
+    seasonal: '#8b5cf6',          // purple - seasonal conditions
+    
+    // Events & Advisories (green/teal family)
+    event: '#0d9488',             // teal - special events
+    advisory: '#059669',          // emerald - advisories
+    
+    // Detours & Routes (brown family)
+    detour: '#7c2d12',           // brown - detour routes
+    alternateRoute: '#a16207',    // yellow-brown - alternate routes
+    
+    // Default
+    other: '#1f6feb',            // blue - other/info
+    default: '#6b7280'           // gray - fallback
+  };
+
+  /**
+   * Severity-based styling adjustments
+   */
+  const SEVERITY_STYLES = {
+    'Major': { radius: 8, weight: 3, opacity: 1.0 },
+    'Minor': { radius: 6, weight: 2, opacity: 0.9 },
+    'None': { radius: 5, weight: 1, opacity: 0.8 },
+    'default': { radius: 5, weight: 1, opacity: 0.8 }
   };
 
   /**
@@ -159,16 +265,111 @@ window.NBFireMapDataLoadingManager = (() => {
   };
 
   /**
-   * Get color for event/road type
+   * Categorize event by type for the 5 specific subcategories
    */
-  function getColorForType(type) {
-    if (!type) return POINT_COLORS.default;
+  function getEventCategory(type, subType = '', startDate = null) {
+    if (!type) return 'incidents';
+    
     const t = type.toLowerCase();
-    if (t.includes('closure') || t.includes('closed')) return POINT_COLORS.closures;
-    if (t.includes('restriction') || t.includes('limit')) return POINT_COLORS.restrictions;
-    if (t.includes('incident') || t.includes('accident')) return POINT_COLORS.incidents;
-    if (t.includes('construction') || t.includes('maintenance')) return POINT_COLORS.construction;
+    const st = (subType || '').toLowerCase();
+    
+    // Determine if this is a future event - check if start date is in the future
+    // Convert startDate to milliseconds if it's in seconds
+    const startTime = startDate ? (startDate < 9999999999 ? startDate * 1000 : startDate) : null;
+    const isFuture = startTime && startTime > Date.now();
+    
+    // Flooding - washouts and flood-related events
+    if (t.includes('flood') || st.includes('flood') || 
+        st.includes('washout') || t.includes('washout') ||
+        st.includes('bridge out')) {
+      return 'flooding';
+    }
+    
+    // Closures - road closures, bridge closures, breakups, etc.
+    if (t === 'closures' || t.includes('closure') || t.includes('closed') ||
+        st.includes('bridge repair') || st.includes('road breakup') ||
+        st.includes('breakup') || st.includes('bridge restrictions') ||
+        st.includes('traffic flow restriction')) {
+      return isFuture ? 'futureClosures' : 'closures';
+    }
+    
+    // Construction & Roadwork - repairs, paving, construction, etc.
+    if (t === 'roadwork' || t.includes('construction') || t.includes('roadwork') ||
+        st.includes('construction') || st.includes('paving') || 
+        st.includes('repair') || st.includes('restrictions') ||
+        st.includes('grading') || st.includes('patching') ||
+        st.includes('inspection') || st.includes('maintenance') ||
+        st.includes('gathering') || st.includes('parade') ||
+        st.includes('festival') || st.includes('weight restrictions')) {
+      return isFuture ? 'futureConstruction' : 'construction';
+    }
+    
+    // Incidents - accidents, emergencies, traffic incidents
+    if (t === 'accidentsandincidents' || t.includes('incident') || 
+        t.includes('accident') || t.includes('emergency') ||
+        st.includes('traffic flow restriction')) {
+      return 'incidents';
+    }
+    
+    // Default to construction for unknown roadwork-related events
+    if (t.includes('road') || t.includes('bridge') || t.includes('highway')) {
+      return isFuture ? 'futureConstruction' : 'construction';
+    }
+    
+    // Final fallback
+    return 'incidents';
+  }
+
+  /**
+   * Get color for event/road type with enhanced logic
+   */
+  function getColorForType(type, subType = '', isFullClosure = false, startDate = null) {
+    if (!type) return POINT_COLORS.default;
+    
+    // Use category-based logic for consistent colors
+    const category = getEventCategory(type, subType, startDate);
+    
+    // Map categories to colors
+    if (category === 'closures') return POINT_COLORS.closures;
+    if (category === 'futureClosures') return POINT_COLORS.futureClosures;
+    if (category === 'incidents') return POINT_COLORS.incidents;
+    if (category === 'construction') return POINT_COLORS.construction;
+    if (category === 'futureConstruction') return POINT_COLORS.futureConstruction;
+    if (category === 'flooding') return POINT_COLORS.flooding;
+    
+    // Fallback to old logic for any unmapped types
+    const t = type.toLowerCase();
+    const st = (subType || '').toLowerCase();
+    
+    if (t.includes('restriction') || st.includes('restriction')) return POINT_COLORS.restrictions;
+    if (t.includes('maintenance') || st.includes('maintenance')) return POINT_COLORS.maintenance;
+    if (t.includes('weather') || st.includes('weather')) return POINT_COLORS.weather;
+    if (t.includes('seasonal') || st.includes('seasonal')) return POINT_COLORS.seasonal;
+    if (t.includes('emergency') || st.includes('emergency')) return POINT_COLORS.emergency;
+    if (t.includes('event') || st.includes('event')) return POINT_COLORS.event;
+    if (t.includes('advisory') || st.includes('advisory')) return POINT_COLORS.advisory;
+    if (t.includes('detour') || st.includes('detour')) return POINT_COLORS.detour;
+    if (t.includes('alternate') || st.includes('alternate')) return POINT_COLORS.alternateRoute;
+    if (t.includes('traffic') || st.includes('traffic')) return POINT_COLORS.traffic;
+    
     return POINT_COLORS.other;
+  }
+
+  /**
+   * Get styling based on severity and closure type
+   */
+  function getEventStyle(event) {
+    const baseColor = getColorForType(event.EventType, event.EventSubType, event.IsFullClosure);
+    const severity = event.Severity || 'None';
+    const severityStyle = SEVERITY_STYLES[severity] || SEVERITY_STYLES.default;
+    
+    return {
+      radius: severityStyle.radius,
+      color: '#374151', // dark gray border
+      weight: severityStyle.weight,
+      fillColor: baseColor,
+      fillOpacity: severityStyle.opacity
+    };
   }
 
   /**
@@ -591,10 +792,14 @@ window.NBFireMapDataLoadingManager = (() => {
     // Icon creation
     createFerryIcon,
     createWebcamIcon,
+    createEventIcon,
+    getEventSeverityRank,
 
     // Color utilities
     getStatusColor,
     getColorForType,
+    getEventCategory,
+    getEventStyle,
     getWinterRoadColor,
     POINT_COLORS,
     WINTER_COLORS,

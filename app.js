@@ -322,13 +322,67 @@
       const cwfis24 = L.geoJSON(null, {
         pane: 'viirsPane',
         pointToLayer: (_f, latlng) =>
-          L.circleMarker(latlng, { radius: 5, color: 'var(--modis)', fillColor: 'var(--modis)', fillOpacity: 0.9 })
+          L.circleMarker(latlng, { radius: 5, color: 'var(--modis)', fillColor: 'var(--modis)', fillOpacity: 0.9 }),
+        onEachFeature: (feature, layer) => {
+          const props = feature.properties || {};
+          const formatHotspotDate = (dateStr) => {
+            if (!dateStr) return 'N/A';
+            try {
+              return new Date(dateStr).toLocaleString('en-CA', {
+                year: 'numeric', month: 'short', day: 'numeric',
+                hour: '2-digit', minute: '2-digit'
+              });
+            } catch {
+              return dateStr;
+            }
+          };
+          
+          const popupContent = `
+            <div class="popup-header">CWFIS Hotspot (24hr)</div>
+            <div class="popup-body">
+              <p><strong>Coordinates:</strong> ${props.lat || 'N/A'}, ${props.lon || 'N/A'}</p>
+              <p><strong>Report Date:</strong> ${formatHotspotDate(props.rep_date)}</p>
+              <p><strong>Source:</strong> ${props.source || 'N/A'}</p>
+              <p><strong>Sensor:</strong> ${props.sensor || 'N/A'}</p>
+              <p><strong>Satellite:</strong> ${props.satellite || 'N/A'}</p>
+              <p><small>Source: CWFIS © Natural Resources Canada</small></p>
+            </div>
+          `;
+          layer.bindPopup(popupContent);
+        }
       }).addTo(map);
 
       const cwfis7 = L.geoJSON(null, {
         pane: 'viirsPane',
         pointToLayer: (_f, latlng) =>
-          L.circleMarker(latlng, { radius: 4, color: 'var(--modis)', fillColor: 'var(--modis)', fillOpacity: 0.65 })
+          L.circleMarker(latlng, { radius: 4, color: 'var(--modis)', fillColor: 'var(--modis)', fillOpacity: 0.65 }),
+        onEachFeature: (feature, layer) => {
+          const props = feature.properties || {};
+          const formatHotspotDate = (dateStr) => {
+            if (!dateStr) return 'N/A';
+            try {
+              return new Date(dateStr).toLocaleString('en-CA', {
+                year: 'numeric', month: 'short', day: 'numeric',
+                hour: '2-digit', minute: '2-digit'
+              });
+            } catch {
+              return dateStr;
+            }
+          };
+          
+          const popupContent = `
+            <div class="popup-header">CWFIS Hotspot (7-day)</div>
+            <div class="popup-body">
+              <p><strong>Coordinates:</strong> ${props.lat || 'N/A'}, ${props.lon || 'N/A'}</p>
+              <p><strong>Report Date:</strong> ${formatHotspotDate(props.rep_date)}</p>
+              <p><strong>Source:</strong> ${props.source || 'N/A'}</p>
+              <p><strong>Sensor:</strong> ${props.sensor || 'N/A'}</p>
+              <p><strong>Satellite:</strong> ${props.satellite || 'N/A'}</p>
+              <p><small>Source: CWFIS © Natural Resources Canada</small></p>
+            </div>
+          `;
+          layer.bindPopup(popupContent);
+        }
       });
 
       // CWFIS loading functions now use DataLoadingManager
@@ -346,9 +400,40 @@
         style:()=>({color:FireDataManager.getColorConfig().perimeter,weight:1.2,fillOpacity:.18}),
         onEachFeature:(feature,layer)=>{
           const ha = feature?.properties?.AREA;
+          const props = feature.properties || {};
+          
+          // Add tooltip for area label
           layer.bindTooltip(`<span class="perimeter-label" style="color:${FireDataManager.getColorConfig().perimeter}">${toNum(ha,1)} ha</span>`,
             {permanent:true,className:'perimeter-label-tooltip',direction:'center',opacity:0});
           perimeterLabelLayers.add(layer);
+          
+          // Add popup with detailed information
+          const formatDate = (timestamp) => {
+            if (!timestamp) return 'N/A';
+            try {
+              // Convert from epoch milliseconds to readable date
+              return new Date(parseInt(timestamp)).toLocaleDateString('en-CA', {
+                year: 'numeric', month: 'short', day: 'numeric'
+              });
+            } catch {
+              return 'N/A';
+            }
+          };
+          
+          const popupContent = `
+            <div class="popup-header">Fire Perimeter</div>
+            <div class="popup-body">
+              <p><strong>Area:</strong> ${toNum(ha,1)} hectares</p>
+              <p><strong>Object ID:</strong> ${props.OBJECTID || 'N/A'}</p>
+              <p><strong>UID:</strong> ${props.UID || 'N/A'}</p>
+              <p><strong>Province:</strong> ${props.Province || 'N/A'}</p>
+              <p><strong>Hot Count:</strong> ${props.HCOUNT || 'N/A'}</p>
+              <p><strong>First Date:</strong> ${formatDate(props.FIRSTDATE)}</p>
+              <p><strong>Last Date:</strong> ${formatDate(props.LASTDATE)}</p>
+              <p><small>Source: Natural Resources Canada</small></p>
+            </div>
+          `;
+          layer.bindPopup(popupContent);
         }
       });
       const setPerimeterLabels = LayerManager.labels.createZoomLabelUpdater(map, perimeterLabelLayers, 11);
@@ -1114,7 +1199,75 @@ const webcamsLayer = L.markerClusterGroup({
     });
   }
 });
-const eventsPointLayer = L.layerGroup({ pane: 'firesPane' });
+const eventsPointLayer = L.markerClusterGroup({
+  pane: 'firesPane',
+  disableClusteringAtZoom: 15,
+  spiderfyOnMaxZoom: true,
+  zoomToBoundsOnClick: false,
+  showCoverageOnHover: false,
+  maxClusterRadius: 80,
+  iconCreateFunction: (cluster) => {
+    const markers = cluster.getAllChildMarkers();
+    const count = markers.length;
+    
+    // Find the most severe event for the cluster icon
+    let mostSevere = null;
+    let highestRank = -1;
+    
+    for (const marker of markers) {
+      const event = marker.options._eventData;
+      if (event) {
+        try {
+          const rank = getEventSeverityRank(event);
+          if (rank > highestRank) {
+            highestRank = rank;
+            mostSevere = event;
+          }
+        } catch (e) {
+          console.warn('Error getting severity rank:', e);
+        }
+      }
+    }
+    
+    // Use the most severe event for styling, or default
+    let color = '#6b7280';
+    let iconClass = 'fa-solid fa-road';
+    
+    if (mostSevere) {
+      try {
+        const startDate = mostSevere.StartDate ? mostSevere.StartDate * 1000 : null;
+        color = getColorForType(mostSevere.EventType, mostSevere.EventSubType, mostSevere.IsFullClosure, startDate);
+        
+        // Choose icon based on category (same logic as individual markers)
+        const category = getEventCategory(mostSevere.EventType, mostSevere.EventSubType, startDate);
+        
+        if (category === 'closures' || category === 'futureClosures') {
+          iconClass = 'fa-solid fa-ban';
+        } else if (category === 'incidents') {
+          iconClass = 'fa-solid fa-triangle-exclamation';
+        } else if (category === 'construction' || category === 'futureConstruction') {
+          iconClass = 'fa-solid fa-person-digging';
+        } else if (category === 'flooding') {
+          iconClass = 'fa-solid fa-water';
+        } else {
+          iconClass = 'fa-solid fa-road';
+        }
+      } catch (e) {
+        console.warn('Error creating cluster icon:', e);
+      }
+    }
+    
+    return L.divIcon({
+      className: 'event-cluster-icon',
+      html: `<div class="cluster-square" style="--color:${color};--size:28px;width:28px;height:28px;background:${color};border:2px solid white;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;position:relative;">
+               <i class="${iconClass}" style="font-size:14px;color:white;text-shadow:0 1px 2px rgba(0,0,0,0.3);"></i>
+               <b style="position:absolute;right:-6px;bottom:-6px;font:700 12px/1 Inter,system-ui,sans-serif;background:#fff;border:2px solid ${color};padding:2px 5px;border-radius:999px;min-width:20px;text-align:center">${count}</b>
+             </div>`,
+      iconSize: [38, 38],
+      iconAnchor: [19, 26]
+    });
+  }
+});
 const eventsLineLayer = L.layerGroup({ pane: 'firesPane' });
 const eventsDetourLayer = L.layerGroup({ pane: 'firesPane' });
 const eventsCombined = L.layerGroup({ pane: 'firesPane' });
@@ -1125,7 +1278,7 @@ const cityProximityLayer = L.layerGroup({ pane: 'firesPane' });
 const statusColor = DataLoadingManager.getStatusColor;
 const POINT_COLORS = DataLoadingManager.POINT_COLORS;
 const WINTER_COLORS = DataLoadingManager.WINTER_COLORS;
-const colorForType = DataLoadingManager.getColorForType;
+const { getColorForType, getEventStyle, createEventIcon, getEventSeverityRank, getEventCategory } = DataLoadingManager;
 const epochToLocal = DataLoadingManager.epochToLocal;
 const webcamIcon = DataLoadingManager.createWebcamIcon();
 
@@ -1171,38 +1324,86 @@ async function loadWebcams(){
 async function loadEvents(){
 
   if (_eventsLoaded) return;
+  
+  // Initialize storage arrays for category filtering BEFORE processing events
+  if (!window._eventMarkersByCategory) {
+    window._eventMarkersByCategory = {
+      closures: [],
+      futureClosures: [],
+      incidents: [],
+      construction: [],
+      futureConstruction: [],
+      flooding: []
+    };
+  }
+  
+  if (!window._eventLinesByCategory) {
+    window._eventLinesByCategory = {
+      closures: [],
+      futureClosures: [],
+      incidents: [],  
+      construction: [],
+      futureConstruction: [],
+      flooding: []
+    };
+  }
+  
   try {
     const r = await fetch('events.json',{cache:'no-store'});
     const data = await r.json();
+    console.log(`Loaded ${data.length} events from events.json`);
 
     function addPoint(e){
       if (typeof e.Latitude !== 'number' || typeof e.Longitude !== 'number') return;
-      const marker = L.circleMarker([e.Latitude, e.Longitude], {
-        radius: 6, color: '#111827', weight: 1,
-        fillColor: colorForType(e.EventType), fillOpacity: 0.9
-      }).bindPopup(window.NBFireMapPopupUtils.buildEventPopup(e));
-      marker.addTo(eventsPointLayer).addTo(eventsCombined);
-      if (typeof e.LatitudeSecondary==='number' && typeof e.LongitudeSecondary==='number'){
-        const sec = L.circleMarker([e.LatitudeSecondary, e.LongitudeSecondary], {
-          radius:5, color:'#6b7280', fillColor:'#9ca3af', fillOpacity: 0.7
-        }).bindPopup('<b>Secondary location</b>');
-        sec.addTo(eventsPointLayer).addTo(eventsCombined);
-        L.polyline([[e.Latitude,e.Longitude],[e.LatitudeSecondary,e.LongitudeSecondary]],{color:'#6b7280', dashArray:'4,4', weight:2, opacity: .8}).addTo(eventsLineLayer).addTo(eventsCombined);
+      const icon = createEventIcon(e);
+      const marker = L.marker([e.Latitude, e.Longitude], { icon })
+        .bindPopup(window.NBFireMapPopupUtils.buildEventPopup(e));
+      
+      // Store event data for clustering and filtering
+      marker.options._eventData = e;
+      const category = window.NBFireMapDataLoadingManager.getEventCategory(e.EventType, e.EventSubType, e.StartDate);
+      marker._eventCategory = category;
+      
+      console.log(`Adding marker for event: ${e.EventType}/${e.EventSubType} -> category: ${category}`);
+      
+      // Add to category tracking
+      if (window._eventMarkersByCategory && window._eventMarkersByCategory[category]) {
+        window._eventMarkersByCategory[category].push(marker);
+        console.log(`Stored marker in ${category} category, now has ${window._eventMarkersByCategory[category].length} markers`);
+      } else {
+        console.warn(`Could not store marker - category ${category} not found in storage`, Object.keys(window._eventMarkersByCategory || {}));
       }
+      
+      marker.addTo(eventsPointLayer);
+      // Removed secondary points and connecting lines for cleaner display
     }
 
     
 const LINE_STYLES = {
-  encoded: { color: '#111827', weight: 4, opacity: 0.8 },      // event geometry (matches events.html)
-  detour:  { color: '#8b5cf6', weight: 3, dashArray: '6,6', opacity: 0.9 } // detours (matches events.html)
+  fullClosure: { color: '#dc2626', weight: 6, opacity: 1.0 },      // bright red for full closures
+  partialClosure: { color: '#f59e0b', weight: 4, opacity: 0.9 },   // amber for partial closures  
+  detour: { color: '#0891b2', weight: 4, dashArray: '12,8', opacity: 1.0 } // bright cyan for detours
 };
 function addEncodedLine(encoded, event){
       try{
         const coords = polyline.decode(encoded).map(([lat, lng]) => [lat, lng]);
         if (coords && coords.length){
-          const pl = L.polyline(coords, LINE_STYLES.encoded);
+          const lineStyle = event.IsFullClosure ? LINE_STYLES.fullClosure : LINE_STYLES.partialClosure;
+          const pl = L.polyline(coords, lineStyle);
           pl.bindPopup(window.NBFireMapPopupUtils.buildEventPopup(event));
-          pl.addTo(eventsLineLayer).addTo(eventsCombined);
+          
+          // Store event data for category filtering
+          const category = window.NBFireMapDataLoadingManager.getEventCategory(event.EventType, event.EventSubType, event.StartDate);
+          pl._eventCategory = category;
+          pl._isDetour = false;
+          
+          // Add to category tracking
+          if (window._eventLinesByCategory && window._eventLinesByCategory[category]) {
+            window._eventLinesByCategory[category].push(pl);
+          }
+          
+          // Add only to individual line layer - zoom control will manage combined layer
+          pl.addTo(eventsLineLayer);
         }
       }catch(e){}
     }
@@ -1212,9 +1413,21 @@ function addEncodedLine(encoded, event){
         const coords = polyline.decode(encoded).map(([lat, lng]) => [lat, lng]);
         if (coords && coords.length){
           const pl = L.polyline(coords, LINE_STYLES.detour);
-          const detourPopup = '<b>Detour</b><br/>' + window.NBFireMapPopupUtils.buildEventPopup(event);
+          const detourPopup = '<b><i class="fas fa-route" style="color: #0891b2;"></i> Detour</b><br/>' + window.NBFireMapPopupUtils.buildEventPopup(event);
           pl.bindPopup(detourPopup);
-          pl.addTo(eventsDetourLayer).addTo(eventsCombined);
+          
+          // Store event data for category filtering
+          const category = window.NBFireMapDataLoadingManager.getEventCategory(event.EventType, event.EventSubType, event.StartDate);
+          pl._eventCategory = category;
+          pl._isDetour = true;
+          
+          // Add to category tracking
+          if (window._eventLinesByCategory && window._eventLinesByCategory[category]) {
+            window._eventLinesByCategory[category].push(pl);
+          }
+          
+          // Add only to individual detour layer - zoom control will manage combined layer
+          pl.addTo(eventsDetourLayer);
         }
       }catch(e){}
     }
@@ -1224,7 +1437,53 @@ function addEncodedLine(encoded, event){
       if (e.EncodedPolyline && e.EncodedPolyline.trim()) addEncodedLine(e.EncodedPolyline.trim(), e);
       if (e.DetourPolyline && e.DetourPolyline.trim()) addDetourLine(e.DetourPolyline.trim(), e);
     });
+    
+    // Add the clustering layer to the combined layer
+    eventsCombined.addLayer(eventsPointLayer);
+    
+    // Initialize line layer control states
+    if (typeof window._eventsLinesEnabled === 'undefined') window._eventsLinesEnabled = true;
+    if (typeof window._eventsDetoursEnabled === 'undefined') window._eventsDetoursEnabled = true;
+    
+    // Set up zoom-based line visibility control
+    window.updateLineVisibility = () => {
+      const currentZoom = map.getZoom();
+      const showLines = currentZoom >= 11;
+      
+      // Show/hide line layers based on zoom level
+      if (showLines) {
+        if (!eventsCombined.hasLayer(eventsLineLayer)) {
+          eventsCombined.addLayer(eventsLineLayer);
+        }
+        if (!eventsCombined.hasLayer(eventsDetourLayer)) {
+          eventsCombined.addLayer(eventsDetourLayer);
+        }
+      } else {
+        if (eventsCombined.hasLayer(eventsLineLayer)) {
+          eventsCombined.removeLayer(eventsLineLayer);
+        }
+        if (eventsCombined.hasLayer(eventsDetourLayer)) {
+          eventsCombined.removeLayer(eventsDetourLayer);
+        }
+      }
+    };
+    
+    // Set up zoom event listener and initial visibility
+    map.off('zoomend', window.updateLineVisibility); // Remove any existing listeners
+    map.on('zoomend', window.updateLineVisibility);
+    window.updateLineVisibility(); // Set initial state
+    
     _eventsLoaded = true;
+    zoomUtils.setupClusterZoomControl(eventsPointLayer);
+    
+    // Apply initial filtering based on legend toggle states if filtering function exists
+    setTimeout(() => {
+      if (window.filterMarkersAndLinesByCategory) {
+        console.log('Applying initial event filtering...');
+        window.filterMarkersAndLinesByCategory();
+      }
+    }, 500); // Wait for legend to be mounted
+    
   } catch(e) { console.error('Events layer load failed', e); }
 
 }
@@ -1271,7 +1530,7 @@ const overlays = {
         'Ferries': ferriesLayer,
         'Road Webcams': webcamsLayer,
         'Road Events': eventsCombined,
-        'Road Conditions': winterRoadsLayer,
+        'Winter Road Conditions': winterRoadsLayer,
         Aircraft: planesLayer,
         'Weather Stations': weatherStations,
         'AQHI Risk': aqhiLayer,
@@ -2492,8 +2751,8 @@ doc.autoTable({
 
       
   
-      // === Inline legend for "Road Conditions" ==============================
-      const WINTER_LABEL = 'Road Conditions';
+      // === Inline legend for "Winter Road Conditions" ==============================
+      const WINTER_LABEL = 'Winter Road Conditions';
       let winterLegendEl = null;
 
       function buildWinterLegendEl(){
@@ -2511,7 +2770,7 @@ doc.autoTable({
         `).join('');
 
         wrap.innerHTML = `
-          <div style="font-weight:800;margin:6px 0 4px">Road Conditions</div>
+          <div style="font-weight:800;margin:6px 0 4px">Winter Road Conditions</div>
           ${rowsHtml}
         `;
         winterLegendEl = wrap;
@@ -2554,18 +2813,44 @@ doc.autoTable({
         el.id = 'eventsLegend';
         el.className = 'inline-legend';
         el.style.cssText = [
-          'display:none;margin:6px 0 0 0;padding:6px 8px;',
+          'display:none;margin:6px 0 0 0;padding:8px;',
           'border:1px solid var(--btn-border);border-radius:8px;background:var(--btn-bg);',
-          'font-size:12px;line-height:1.25'
+          'font-size:11px;line-height:1.2'
         ].join('');
         el.innerHTML = [
-          '<div style="font-weight:800;margin-bottom:4px">Legend</div>',
-          '<div style="display:flex;align-items:center;gap:8px;margin:3px 0;"><span style="width:12px;height:12px;border-radius:50%;border:1px solid #0003;background:#e11d48;display:inline-block"></span> Closures</div>',
-          '<div style="display:flex;align-items:center;gap:8px;margin:3px 0;"><span style="width:12px;height:12px;border-radius:50%;border:1px solid #0003;background:#f59e0b;display:inline-block"></span> Roadwork</div>',
-          '<div style="display:flex;align-items:center;gap:8px;margin:3px 0;"><span style="width:12px;height:12px;border-radius:50%;border:1px solid #0003;background:#3b82f6;display:inline-block"></span> Incidents</div>',
-          '<div style="display:flex;align-items:center;gap:8px;margin:3px 0;"><span style="width:12px;height:12px;border-radius:50%;border:1px solid #0003;background:#10b981;display:inline-block"></span> Other</div>',
-          '<div style="display:flex;align-items:center;gap:8px;margin:3px 0;"><span style="width:12px;height:12px;border-radius:2px;border:1px solid #0003;background:#111827;display:inline-block"></span> Event geometry</div>',
-          '<div style="display:flex;align-items:center;gap:8px;margin:3px 0;"><span style="width:12px;height:12px;border-radius:2px;border:1px solid #0003;background:#8b5cf6;display:inline-block"></span> Detour</div>'
+          '<div style="font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:6px;">',
+          '<i class="fas fa-road" style="color:#fd7e14;"></i> Road Events Legend</div>',
+          
+          // 5 Simple Subcategories - Square markers to match map icons
+          '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
+          '<input type="checkbox" id="closuresToggle" checked style="margin:0;">',
+          '<div style="width:16px;height:16px;background:#dc2626;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:8px;font-weight:bold;"><i class="fa-solid fa-ban"></i></div>',
+          'Closures</label>',
+          
+          '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
+          '<input type="checkbox" id="futureClosuresToggle" style="margin:0;">',
+          '<div style="width:16px;height:16px;background:#2563eb;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:8px;font-weight:bold;"><i class="fa-solid fa-ban"></i></div>',
+          'Future Closures</label>',
+          
+          '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
+          '<input type="checkbox" id="incidentsToggle" checked style="margin:0;">',
+          '<div style="width:16px;height:16px;background:#dc2626;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:7px;font-weight:bold;"><i class="fa-solid fa-triangle-exclamation"></i></div>',
+          'Incidents</label>',
+          
+          '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
+          '<input type="checkbox" id="constructionToggle" checked style="margin:0;">',
+          '<div style="width:16px;height:16px;background:#ea580c;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:7px;font-weight:bold;"><i class="fa-solid fa-person-digging"></i></div>',
+          'Construction</label>',
+          
+          '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
+          '<input type="checkbox" id="futureConstructionToggle" style="margin:0;">',
+          '<div style="width:16px;height:16px;background:#2563eb;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:7px;font-weight:bold;"><i class="fa-solid fa-person-digging"></i></div>',
+          'Future Construction</label>',
+          
+          '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
+          '<input type="checkbox" id="floodingToggle" checked style="margin:0;">',
+          '<div style="width:16px;height:16px;background:#0891b2;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:7px;font-weight:bold;"><i class="fa-solid fa-water"></i></div>',
+          'Flooding</label>'
         ].join('');
         return el;
       }
@@ -2576,6 +2861,105 @@ doc.autoTable({
         if (!document.getElementById('eventsLegend')){
           const el = buildEventsLegendEl();
           row.insertAdjacentElement('afterend', el);
+          
+          // Add event listeners for layer controls
+          setTimeout(() => {
+            
+            // Storage arrays are already initialized in loadEvents() function
+            // Don't reinitialize them here or we'll lose all the stored markers!
+            
+            // Simple category toggles - each controls both points and lines
+            const categoryMappings = [
+              { id: 'closuresToggle', category: 'closures' },
+              { id: 'futureClosuresToggle', category: 'futureClosures' },
+              { id: 'incidentsToggle', category: 'incidents' },
+              { id: 'constructionToggle', category: 'construction' },
+              { id: 'futureConstructionToggle', category: 'futureConstruction' },
+              { id: 'floodingToggle', category: 'flooding' }
+            ];
+            
+            // Use setTimeout to ensure DOM elements are ready and use event delegation
+            setTimeout(() => {
+              const eventsLegend = document.getElementById('eventsLegend');
+              if (eventsLegend && !window._eventsLegendDelegationSetup) {
+                eventsLegend.addEventListener('change', (e) => {
+                  console.log('Checkbox changed in events legend:', e.target.id, 'type:', e.target.type, 'checked:', e.target.checked);
+                  if (e.target.type === 'checkbox' && e.target.id.endsWith('Toggle')) {
+                    console.log(`PROCESSING Toggle changed: ${e.target.id}, checked:`, e.target.checked);
+                    console.log('Current storage state:', Object.keys(window._eventMarkersByCategory || {}));
+                    setTimeout(() => {
+                      console.log('About to call filterMarkersAndLinesByCategory');
+                      filterMarkersAndLinesByCategory();
+                    }, 10);
+                  } else {
+                    console.log('IGNORING checkbox change - does not end with Toggle or not a checkbox');
+                  }
+                });
+                window._eventsLegendDelegationSetup = true;
+                console.log('Event delegation setup for events legend');
+              }
+            }, 100);
+            
+            // Combined marker and line filtering function
+            window.filterMarkersAndLinesByCategory = function() {
+              if (!window._eventMarkersByCategory || !window._eventLinesByCategory) {
+                console.warn('Event storage objects not initialized yet');
+                return;
+              }
+              
+              console.log('Filtering markers and lines by category...');
+              
+              // Clear all markers and lines
+              eventsPointLayer.clearLayers();
+              eventsLineLayer.clearLayers();
+              eventsDetourLayer.clearLayers();
+              
+              // Re-add markers and lines based on category settings
+              Object.keys(window._eventMarkersByCategory).forEach(category => {
+                const toggle = document.getElementById(category + 'Toggle');
+                const shouldShow = toggle?.checked === true;
+                console.log(`Category: ${category}, toggle found:`, !!toggle, 'checked:', toggle?.checked, 'shouldShow:', shouldShow);
+                
+                if (shouldShow && window._eventMarkersByCategory[category]) {
+                  console.log(`Adding ${category}: ${window._eventMarkersByCategory[category].length} markers, ${window._eventLinesByCategory[category]?.length || 0} lines`);
+                  
+                  // Add markers
+                  let addedMarkers = 0;
+                  window._eventMarkersByCategory[category].forEach(marker => {
+                    if (marker && eventsPointLayer) {
+                      eventsPointLayer.addLayer(marker);
+                      addedMarkers++;
+                    }
+                  });
+                  console.log(`Actually added ${addedMarkers} markers for ${category}`);
+                  
+                  // Add lines
+                  let addedLines = 0;
+                  if (window._eventLinesByCategory[category]) {
+                    window._eventLinesByCategory[category].forEach(line => {
+                      if (line) {
+                        if (line._isDetour && eventsDetourLayer) {
+                          eventsDetourLayer.addLayer(line);
+                          addedLines++;
+                        } else if (!line._isDetour && eventsLineLayer) {
+                          eventsLineLayer.addLayer(line);
+                          addedLines++;
+                        }
+                      }
+                    });
+                  }
+                  console.log(`Actually added ${addedLines} lines for ${category}`);
+                } else if (shouldShow) {
+                  console.log(`Category ${category} shouldShow but no markers in storage`);
+                }
+              });
+              
+              // Update line visibility based on zoom
+              if (window.updateLineVisibility) {
+                window.updateLineVisibility();
+              }
+            };
+          }, 100);
         }
       }
 
@@ -2595,6 +2979,8 @@ doc.autoTable({
         if (e.layer === eventsCombined){
           setEventsLegendVisible(false);
           requestAnimationFrame(sizeLegend);
+          // Reset delegation flag to allow re-initialization if layer is re-added
+          window._eventsLegendDelegationSetup = false;
         }
       });
       if (map.hasLayer(eventsCombined)){
