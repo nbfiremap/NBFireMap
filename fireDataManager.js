@@ -12,6 +12,58 @@ window.NBFireMapFireDataManager = (() => {
   // ---- Internal State & Storage ----------------------------------------
   const fireStore = new Map();
   
+  // GNB Fire Activity Summary data store
+  let gnbFireActivityData = null;
+  
+  // Store the full GNB data including metadata
+  let gnbFullData = null;
+  
+  // Load GNB fire activity data
+  async function loadGNBFireActivityData() {
+    if (gnbFireActivityData !== null) return gnbFireActivityData;
+    try {
+      const response = await fetch('GNBfireActSum.json', { cache: 'no-store' });
+      const data = await response.json();
+      gnbFullData = data; // Store full data for timestamp access
+      gnbFireActivityData = data?.tables?.[0]?.rows || [];
+      console.log(`Loaded ${gnbFireActivityData.length} GNB fire activity records`);
+      return gnbFireActivityData;
+    } catch (error) {
+      console.warn('Failed to load GNB fire activity data:', error);
+      gnbFireActivityData = [];
+      gnbFullData = null;
+      return [];
+    }
+  }
+  
+  // Match fire with GNB activity data
+  function findGNBFireActivity(fireProps) {
+    if (!gnbFireActivityData || !Array.isArray(gnbFireActivityData)) return null;
+    
+    const fireNumber = fireProps?.FIRE_NUMBER_SHORT || fireProps?.FIRE_NUMBER || fireProps?.FIRE_ID || fireProps?.ID;
+    const fireName = fireProps?.FIRE_NAME || fireProps?.NAME;
+    
+    if (!fireNumber && !fireName) return null;
+    
+    // Try to match by fire number first (most reliable)
+    if (fireNumber) {
+      const match = gnbFireActivityData.find(row => 
+        row.Number && row.Number.toString() === fireNumber.toString()
+      );
+      if (match) return match;
+    }
+    
+    // Try to match by fire name if no number match
+    if (fireName && fireName !== 'Unnamed Fire') {
+      const match = gnbFireActivityData.find(row => 
+        row['Fire Name'] && row['Fire Name'].toLowerCase().includes(fireName.toLowerCase())
+      );
+      if (match) return match;
+    }
+    
+    return null;
+  }
+  
   // ---- Fire Status & Color Management -----------------------------------
   
   /**
@@ -210,7 +262,9 @@ window.NBFireMapFireDataManager = (() => {
   /**
    * Create fire popup content HTML
    */
-  function createFirePopupContent(props, explicitStatus, isOutFire = false) {
+  async function createFirePopupContent(props, explicitStatus, isOutFire = false) {
+    // Ensure GNB data is loaded
+    await loadGNBFireActivityData();
     const status = explicitStatus || props.FIRE_STAT_DESC_E || 'Unknown';
     const name = getFireName(props);
     const id = getFireId(props);
@@ -222,11 +276,23 @@ window.NBFireMapFireDataManager = (() => {
     const pctStr = pct != null ? `${Math.round(pct)}%` : '—';
     const showContained = !isOutFire; // Show containment for active fires only
     
-    // Get retrieved information
-    const retrieved = getRetrievedInfo(props);
-    const retrievedStr = (retrieved.ms != null)
-      ? fmtDateTime(retrieved.ms)
-      : (retrieved.bool != null ? (retrieved.bool ? 'Yes' : 'No') : (retrieved.raw ?? '—'));
+    // Try to match with GNB fire activity data
+    const gnbActivity = findGNBFireActivity(props);
+    
+    // Get retrieved information - use GNB timestamp when there's a match, otherwise ERD
+    let retrievedStr;
+    if (gnbActivity && gnbFullData?.fetched_utc) {
+      // Use GNB fetched timestamp when we have activity data for this fire
+      retrievedStr = fmtDateTime(gnbFullData.fetched_utc * 1000); // Convert Unix timestamp to milliseconds
+      console.log('Using GNB timestamp:', gnbFullData.fetched_utc, 'formatted:', retrievedStr);
+    } else {
+      // Fall back to ERD retrieved info
+      const retrieved = getRetrievedInfo(props);
+      retrievedStr = (retrieved.ms != null)
+        ? fmtDateTime(retrieved.ms)
+        : (retrieved.bool != null ? (retrieved.bool ? 'Yes' : 'No') : (retrieved.raw ?? '—'));
+      console.log('Using ERD timestamp:', retrievedStr);
+    }
     
     // Determine appropriate date field and label
     const extinguishedMs = getExtinguishedMs(props);
@@ -239,6 +305,37 @@ window.NBFireMapFireDataManager = (() => {
     // For out fires, prefer extinguished date if available, otherwise fall back to status date
     if (isOutFire && extinguishedMs) {
       dateValue = extinguishedMs;
+    }
+    
+    // Build GNB activity section if available
+    let gnbActivityHTML = '';
+    if (gnbActivity) {
+      const resources = [];
+      const pers = parseInt(gnbActivity.Pers);
+      const eng = parseInt(gnbActivity.Eng);
+      const tend = parseInt(gnbActivity.Tend);
+      const trac = parseInt(gnbActivity.Trac);
+      const air = parseInt(gnbActivity.Air);
+      const heli = parseInt(gnbActivity.Heli);
+      const ovr = parseInt(gnbActivity.Ovr);
+      
+      if (pers > 0) resources.push(`${pers} Firefighter${pers > 1 ? 's' : ''}`);
+      if (eng > 0) resources.push(`${eng} Engine${eng > 1 ? 's' : ''}`);
+      if (tend > 0) resources.push(`${tend} Tender${tend > 1 ? 's' : ''}`);
+      if (trac > 0) resources.push(`${trac} Tractor${trac > 1 ? 's' : ''}`);
+      if (air > 0) resources.push(`${air} Air Tanker${air > 1 ? 's' : ''}`);
+      if (heli > 0) resources.push(`${heli} Helicopter${heli > 1 ? 's' : ''}`);
+      if (ovr > 0) resources.push(`${ovr} Overhead`);
+      
+      if (resources.length > 0) {
+        gnbActivityHTML = `
+          <div style="margin-top:4px;padding:4px 6px;background-color:#fff3cd;border:1px solid #ffeaa7;border-radius:3px">
+            <div style="font-size:10px;line-height:1.2;color:#333">
+              <strong style="color:#856404">Resources:</strong> ${resources.join(' • ')}
+            </div>
+          </div>
+        `;
+      }
     }
     
     return `
@@ -256,6 +353,7 @@ window.NBFireMapFireDataManager = (() => {
           ${showContained ? `<div style="margin-bottom:4px"><b>Contained:</b> ${pctStr}</div>` : ''}
           ${detectedMs ? `<div style="margin-bottom:4px"><b>Detected:</b> ${fmtDateTime(detectedMs)}</div>` : ''}
           ${dateValue ? `<div style="margin-bottom:4px"><b>${dateLabel}:</b> ${fmtDateTime(dateValue)}</div>` : ''}
+          ${gnbActivityHTML}
           <div style="margin-top:8px;padding:6px 8px;background-color:#f8f9fa;border-radius:4px;font-size:11px;color:#6c757d;text-align:center;font-style:italic">
             Downloaded from ERD • ${retrievedStr}
           </div>
@@ -268,10 +366,22 @@ window.NBFireMapFireDataManager = (() => {
    * Bind popup to fire marker and store in fire registry
    */
   function bindFirePopup(props, layer, explicitStatus, isOutFire = false) {
-    const content = createFirePopupContent(props, explicitStatus, isOutFire);
-    layer.bindPopup(content, { 
-      maxWidth: 300, 
-      className: 'fire-popup-container' 
+    // Create popup with loading placeholder and async update
+    layer.bindPopup('Loading...', { 
+      maxWidth: 240, 
+      minWidth: 200,
+      maxHeight: 350,
+      className: 'fire-popup-container',
+      autoPan: true,
+      autoPanPaddingTopLeft: [80, 80], // Account for left controls and header
+      autoPanPaddingBottomRight: [80, 70], // Account for right edge and bottom controls
+      keepInView: true
+    });
+    
+    // Update popup content when opened
+    layer.on('popupopen', async () => {
+      const content = await createFirePopupContent(props, explicitStatus, isOutFire);
+      layer.setPopupContent(content);
     });
     
     // Store fire data in registry
@@ -466,8 +576,15 @@ window.NBFireMapFireDataManager = (() => {
     filterFiresByStatus,
     findFiresNearPoint,
     
+    // GNB activity data
+    loadGNBFireActivityData,
+    findGNBFireActivity,
+    
     // Status configuration
     getStatusConfig: () => STATUS,
     getColorConfig: () => COLORS
   };
+  
+  // Initialize GNB fire activity data loading
+  loadGNBFireActivityData();
 })();

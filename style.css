@@ -507,6 +507,39 @@
   }
 }
 
+/* Fire popup styles */
+.fire-popup .popup-body > div:last-child {
+  white-space: nowrap !important;
+}
+
+/* Prevent wrapping for status and resource lines */
+.fire-popup .popup-body > div {
+  white-space: nowrap;
+}
+
+/* Allow wrapping for the resource details section only */
+.fire-popup .popup-body > div[style*="background-color:#fff3cd"] {
+  white-space: normal;
+}
+
+/* Ensure popup has reasonable min-width on mobile */
+@media (max-width: 640px) {
+  .leaflet-popup-content {
+    min-width: 250px !important;
+    max-width: calc(100vw - 40px) !important;
+  }
+  
+  .fire-popup .popup-body {
+    font-size: 12px !important;
+  }
+  
+  /* Keep footer text compact on mobile */
+  .fire-popup .popup-body > div:last-child {
+    font-size: 10px !important;
+    padding: 4px 6px !important;
+  }
+}
+
 /* Webcams popup styles (from webcams.html parity) */
 .popup h3 { margin: 0 0 .25rem; font-size: 1rem; }
 .popup .meta { font-size: .85rem; color: #555; margin-bottom: .5rem; }
