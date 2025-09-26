@@ -40,9 +40,6 @@ jobs:
         run: |
           import os, time, json, hashlib, requests
 
-          url1=os.environ["GNB_PDF_URL"]
-          cache_busted_url = f"{url1}?t={int(time.time())}"
-
           SESSION = requests.Session()
           SESSION.headers.update({"User-Agent": "github-actions ERD fetcher"})
 
@@ -230,6 +227,9 @@ jobs:
         shell: python
         run: |
           import os, io, time, json, re, requests, pdfplumber
+
+          url1=os.environ["GNB_PDF_URL"]
+          cache_busted_url = f"{url1}?t={int(time.time())}"
 
           pdf_url = cache_busted_url
           out_json = os.environ["GNB_SUM_FILE"]
