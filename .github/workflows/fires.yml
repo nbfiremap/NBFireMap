@@ -39,7 +39,8 @@ jobs:
         shell: python
         run: |
           import os, time, json, hashlib, requests
-          url1=os.environ["OUT_FIRES_URL"]
+
+          url1=os.environ["GNB_PDF_URL"]
           cache_busted_url = f"{url1}?t={int(time.time())}"
 
           SESSION = requests.Session()
@@ -215,7 +216,7 @@ jobs:
           )
           ok &= attempt_fetch_geojson_with_full_attrs(
               kind="out_fires (layer 1)",
-              url=cache_busted_url,
+              url=os.environ["OUT_FIRES_URL"],
               outfile=os.environ["OUT_FIRES_FILE"]
           )
           ok &= attempt_fetch_table_json(
@@ -230,7 +231,7 @@ jobs:
         run: |
           import os, io, time, json, re, requests, pdfplumber
 
-          pdf_url = os.environ["GNB_PDF_URL"]
+          pdf_url = cache_busted_url
           out_json = os.environ["GNB_SUM_FILE"]
           ts = int(time.time())
 
