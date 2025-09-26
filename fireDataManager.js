@@ -297,9 +297,9 @@ window.NBFireMapFireDataManager = (() => {
       icon: L.divIcon({
         className: 'fire-badge-icon',
         html: `<div class="marker-badge" style="--ring:${getStatusColor(statusKey)}"><i class="fa-solid fa-fire"></i></div>`,
-        iconSize: [38, 38],
-        iconAnchor: [19, 26],
-        popupAnchor: [0, -22]
+        iconSize: [28, 28],
+        iconAnchor: [14, 19],
+        popupAnchor: [0, -15]
       }),
       keyboard: false
     });
@@ -307,6 +307,7 @@ window.NBFireMapFireDataManager = (() => {
     // Store metadata on marker for filtering and clustering
     marker.options._statusKey = statusKey;
     marker.options._severity = getSeverityRank(statusKey);
+    marker.options._area = getFireSize(props);  // Store fire area for cluster positioning
     
     // Bind popup and register fire
     bindFirePopup(props, marker, explicitStatus, isOutFire);

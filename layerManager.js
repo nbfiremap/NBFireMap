@@ -285,10 +285,30 @@ window.NBFireMapLayerManager = {
      */
     createClusterGroup(CONFIG, statusColor1, severityRank) {
       return L.markerClusterGroup({
+        maxClusterRadius: 25,  // Reduce clustering distance from default 80px to 25px
         disableClusteringAtZoom: CONFIG.CLUSTERING.DISABLE_AT_ZOOM,
         spiderfyOnMaxZoom: CONFIG.CLUSTERING.SPIDERFY_ON_MAX,
         zoomToBoundsOnClick: CONFIG.CLUSTERING.ZOOM_TO_BOUNDS_ON_CLICK,
         showCoverageOnHover: CONFIG.CLUSTERING.SHOW_COVERAGE_ON_HOVER,
+        // Position cluster at the most significant fire (highest severity + largest area)
+        clusterPositionFunction: (markers) => {
+          let bestMarker = markers[0];
+          let bestScore = -1;
+          
+          for (const marker of markers) {
+            const severity = Number.isFinite(marker.options._severity) ? marker.options._severity : 0;
+            const area = Number(marker.options._area) || 0;
+            // Score combines severity (0-3) and normalized area (0-1000+ ha -> 0-1 scale)
+            const score = severity * 10 + Math.min(area / 1000, 1) * 5;
+            
+            if (score > bestScore) {
+              bestScore = score;
+              bestMarker = marker;
+            }
+          }
+          
+          return bestMarker.getLatLng();
+        },
         iconCreateFunction: (cluster) => {
           const markers = cluster.getAllChildMarkers();
           let worstSev = -2, worstKey = 'extinguished';
@@ -309,16 +329,16 @@ window.NBFireMapLayerManager = {
             className: 'fire-cluster-icon',
             html: `
               <div style="position:relative;display:inline-grid;place-items:center">
-                <div class="marker-badge" style="--ring:${ring};width:42px;height:42px">
+                <div class="marker-badge" style="--ring:${ring};width:28px;height:28px">
                   <i class="fa-solid fa-fire"></i>
                 </div>
-                <div style="position:absolute;bottom:-6px;right:-6px;background:var(--panel-strong);border:2px solid ${ring};border-radius:999px;font:800 12px/1.1 Inter,system-ui,Arial;padding:4px 7px;box-shadow:0 2px 8px rgba(0,0,0,.18)">
+                <div style="position:absolute;bottom:-4px;right:-4px;background:var(--panel-strong);border:2px solid ${ring};border-radius:999px;font:800 10px/1.1 Inter,system-ui,Arial;padding:2px 5px;box-shadow:0 2px 8px rgba(0,0,0,.18)">
                   ${count}
                 </div>
               </div>`,
-            iconSize: [42, 42], 
-            iconAnchor: [21, 28], 
-            popupAnchor: [0, -24]
+            iconSize: [28, 28], 
+            iconAnchor: [14, 19], 
+            popupAnchor: [0, -15]
           });
         },
         pane: 'firesPane',
