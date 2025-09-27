@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1758972408",
-  "fetched_utc": 1758972408,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1758977586",
+  "fetched_utc": 1758977586,
   "pages": 1,
   "tables": [
     {
@@ -25,27 +25,27 @@
       "rows": [
         {
           "Region": "East",
-          "Status": "Contained",
+          "Status": "Under Control",
           "Number": "365",
           "Fire Name": "365",
-          "Updated": "Sep-26",
+          "Updated": "Sep-27",
           "Latitude": "46.98138",
           "Longitude": "64.97792",
           "Size": "95.0",
-          "Pers": "42",
+          "Pers": "23",
           "Eng": "0",
-          "Tend": "12",
-          "Trac": "2",
+          "Tend": "9",
+          "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "5"
+          "Ovr": "4"
         },
         {
           "Region": "East",
           "Status": "Being Patrolled",
           "Number": "256",
           "Fire Name": "Beaver Lake Stream",
-          "Updated": "Sep-26",
+          "Updated": "Sep-27",
           "Latitude": "46.99147",
           "Longitude": "66.47543",
           "Size": "456.0",
@@ -147,7 +147,7 @@
           "Status": "Being Patrolled",
           "Number": "371",
           "Fire Name": "371",
-          "Updated": "Sep-26",
+          "Updated": "Sep-27",
           "Latitude": "46.18374",
           "Longitude": "67.35226",
           "Size": "7.0",
