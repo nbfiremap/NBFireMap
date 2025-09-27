@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759001170
+        "FETCHED_FROM_ERD": 1759005101
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 75,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759001170
+        "FETCHED_FROM_ERD": 1759005101
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759001170
+        "FETCHED_FROM_ERD": 1759005101
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759001170
+        "FETCHED_FROM_ERD": 1759005101
       }
     },
     {
@@ -159,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759001170
+        "FETCHED_FROM_ERD": 1759005101
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759001170
+        "FETCHED_FROM_ERD": 1759005101
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759001170
+        "FETCHED_FROM_ERD": 1759005101
       }
     },
     {
@@ -252,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 3.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759001170
+        "FETCHED_FROM_ERD": 1759005101
       }
     }
   ]
