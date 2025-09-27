@@ -185,8 +185,17 @@
       function gpsToFires(latlng) { cityToFires('Your Location', latlng); }
       function upsertUserLoc(latlng) {
         if (userLocMarker) { userLocMarker.setLatLng(latlng); return; }
-        const icon = L.divIcon({ className: 'user-loc-click-catcher', html: '', iconSize: [44,44], iconAnchor: [22,22] });
-        userLocMarker = L.marker(latlng, { icon, pane: 'planesPane', keyboard:false, title:'Your location — tap to see nearby fires' })
+        // Use blue dot location marker like standard GPS indicators
+        userLocMarker = L.circleMarker(latlng, {
+          radius: 8,
+          fillColor: '#007bff',
+          color: '#ffffff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 1,
+          pane: 'planesPane'
+        })
+          .bindTooltip('Your location — tap to see nearby fires', { direction: 'top', offset: [0, -10] })
           .on('click', () => gpsToFires(userLocMarker.getLatLng()))
           .addTo(userLocLayer);
       }
@@ -1710,18 +1719,23 @@ if (typeof map !== 'undefined' && map && map.on){
         const locationBtn = D.querySelector('.control-btn i.fa-location-crosshairs')?.parentElement;
         if (locationBtn) {
           locationBtn.addEventListener('click', () => {
+            // If location marker exists, remove it
+            if (userLocMarker) {
+              LayerManager.layerState.clearLayerGroup(userLocLayer);
+              userLocMarker = null;
+              return;
+            }
+            
+            // Otherwise, get location and show marker
             if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(
-                (position) => {
-                  const lat = position.coords.latitude;
-                  const lng = position.coords.longitude;
-                  map.setView([lat, lng], 12);
-                },
-                (error) => {
-                  console.error('Error getting location:', error);
-                  alert('Unable to get your location. Please check your browser settings.');
-                }
-              );
+              // Use Leaflet's locate method which will trigger locationfound event and show marker
+              map.locate({
+                setView: true,
+                maxZoom: 12,
+                enableHighAccuracy: true,
+                maximumAge: 30000,
+                timeout: 15000
+              });
             } else {
               alert('Geolocation is not supported by this browser.');
             }

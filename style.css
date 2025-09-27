@@ -198,8 +198,7 @@
       letter-spacing:.3px
     }
 
-    /* Make the invisible GPS click-catcher tappable */
-    .user-loc-click-catcher{ pointer-events:auto; }
+    /* User location marker - using default Leaflet marker */
 
     /* Summary modal */
     .fire-summary-overlay{position:fixed;inset:0;display:none;align-items:start;justify-content:center;z-index:3000;background:rgba(0,0,0,.25);backdrop-filter:blur(2px)}
