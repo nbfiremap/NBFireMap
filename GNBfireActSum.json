@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1758990978",
-  "fetched_utc": 1758990978,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1758994198",
+  "fetched_utc": 1758994198,
   "pages": 1,
   "tables": [
     {
@@ -130,17 +130,17 @@
           "Status": "Being Patrolled",
           "Number": "370",
           "Fire Name": "Saint Croix River",
-          "Updated": "Sep-26",
+          "Updated": "Sep-27",
           "Latitude": "45.44907",
           "Longitude": "67.48162",
           "Size": "7.0",
-          "Pers": "2",
+          "Pers": "0",
           "Eng": "0",
           "Tend": "0",
           "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "1"
+          "Ovr": "0"
         },
         {
           "Region": "West",
