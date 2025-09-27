@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1758983473",
-  "fetched_utc": 1758983473,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1758990978",
+  "fetched_utc": 1758990978,
   "pages": 1,
   "tables": [
     {
@@ -175,6 +175,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "2"
+        },
+        {
+          "Region": "West",
+          "Status": "Being Patrolled",
+          "Number": "387",
+          "Fire Name": "387",
+          "Updated": "Sep-27",
+          "Latitude": "45.51117",
+          "Longitude": "66.49760",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
         },
         {
           "Region": "West",
