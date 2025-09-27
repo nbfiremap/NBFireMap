@@ -1517,32 +1517,106 @@ if (typeof map !== 'undefined' && map && map.on){
     if (e.layer === winterRoadsLayer) loadWinterRoads();
   });
 }
-const overlays = {
-        Smoke: smokeLayer,
-            'Fire Risk': riskLayer,
-    'Fire Weather': fwiLayer,
-    'Fire Behavior': fbpLayer,
-        'CWFIS Hotspots — Last 24 hours': cwfis24,
-        'CWFIS Hotspots — Last 7 days': cwfis7,
+      // Create grouped overlays for better organization
+      const overlays = {
+        // Fire & Emergency
         'Fire Perimeters': activePerimeters,
-        'Cities & Towns': cityLayer,
-        // ——— External NB layers ———
+        'CWFIS Hotspots (24h)': cwfis24,
+        'CWFIS Hotspots (7d)': cwfis7,
+        'NB Burn Bans': nbBurnBans,
+        
+        // Fire Weather
+        'Fire Risk': riskLayer,
+        'Fire Weather': fwiLayer,
+        'Fire Behavior': fbpLayer,
+        'Smoke': smokeLayer,
+        
+        // Weather & Environment
+        'Weather Stations': weatherStations,
+        'Weather Radar': noaaRadar,
+        'Lightning': lightningLayer,
+        'AQHI Risk': aqhiLayer,
+        
+        // Transportation
+        'Road Events': eventsCombined,
+        'Winter Roads': winterRoadsLayer,
         'Ferries': ferriesLayer,
         'Road Webcams': webcamsLayer,
-        'Road Events': eventsCombined,
-        'Winter Road Conditions': winterRoadsLayer,
-        Aircraft: planesLayer,
-        'Weather Stations': weatherStations,
-        'AQHI Risk': aqhiLayer,
-        'Weather Radar': noaaRadar,
-        'Lightning Density': lightningLayer,
-        'NB Burn Bans': nbBurnBans,
+        'Aircraft': planesLayer,
+        
+        // Geographic
+        'Cities & Towns': cityLayer,
         'Crown Land': crownProxy,
         'Counties': counties,
-        'Sentinel-2 Imagery': sentinel2
+        'Satellite Imagery': sentinel2
       };
-      L.control.layers(null, overlays, { collapsed: false }).addTo(map);
+      
+      const layerControl = L.control.layers(null, overlays, { 
+        collapsed: false,
+        sortLayers: false // Preserve our grouping order
+      }).addTo(map);
 
+      // Style and organize the legend after creation
+      function styleLegend() {
+        const overlaysList = D.querySelector('.leaflet-control-layers-overlays');
+        if (!overlaysList) return;
+        
+        // Preserve fire status panel if it exists
+        const fireStatusPanel = overlaysList.querySelector('.fire-filter-block');
+        
+        // Collect all original layer labels (preserve event listeners)
+        const allLayers = Array.from(overlaysList.querySelectorAll('label')).filter(label => 
+          !label.closest('.fire-filter-block')
+        );
+        
+        const groups = [
+          { title: 'Fire & Emergency', items: ['Fire Perimeters', 'CWFIS Hotspots (24h)', 'CWFIS Hotspots (7d)', 'NB Burn Bans'] },
+          { title: 'Fire Weather', items: ['Fire Risk', 'Fire Weather', 'Fire Behavior', 'Smoke'] },
+          { title: 'Weather & Environment', items: ['Weather Stations', 'Weather Radar', 'Lightning', 'AQHI Risk'] },
+          { title: 'Transportation', items: ['Road Events', 'Winter Roads', 'Ferries', 'Road Webcams', 'Aircraft'] },
+          { title: 'Geographic', items: ['Cities & Towns', 'Crown Land', 'Counties', 'Satellite Imagery'] }
+        ];
+        
+        // Create a map of layer name to original element
+        const layerMap = new Map();
+        allLayers.forEach(label => {
+          const text = label.querySelector('.text') || label.querySelector('span:last-child');
+          if (text) {
+            layerMap.set(text.textContent.trim(), label);
+          }
+        });
+        
+        // Clear and rebuild with groups (but preserve original elements)
+        overlaysList.innerHTML = '';
+        
+        // Re-add fire status panel at the top if it existed
+        if (fireStatusPanel) {
+          overlaysList.appendChild(fireStatusPanel);
+        }
+        
+        groups.forEach((group, groupIndex) => {
+          // Add group header
+          const header = D.createElement('div');
+          header.className = 'legend-group-header';
+          header.textContent = group.title;
+          overlaysList.appendChild(header);
+          
+          // Add group container
+          const container = D.createElement('div');
+          container.className = 'legend-group';
+          
+          // Find and move original layers for this group (preserves event listeners)
+          group.items.forEach(itemName => {
+            const originalLabel = layerMap.get(itemName);
+            if (originalLabel) {
+              container.appendChild(originalLabel);
+            }
+          });
+          
+          overlaysList.appendChild(container);
+        });
+      }
+      
       // ---- Fire-status filter checkboxes in legend --------------------------
       const FIRE_STATUS = [
         ['Out of Control',  FireDataManager.getColorConfig().oc,  true],
@@ -1573,7 +1647,10 @@ const overlays = {
         block.addEventListener('change', () => { ensureFireClusters(); applyFireFilter(); });
         requestAnimationFrame(sizeLegend);
       }
+      
+      // Inject fire status panel first, then apply styling
       injectFireStatusPanel();
+      setTimeout(styleLegend, 100);
 
       // ---- Move basemap toggle into legend (but keep summary in bottom panel) ----
       function mountBasemapInLegend(){
