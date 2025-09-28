@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 3.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759058774
+        "FETCHED_FROM_ERD": 1759064023
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 7.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759058774
+        "FETCHED_FROM_ERD": 1759064023
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759058774
+        "FETCHED_FROM_ERD": 1759064023
       }
     },
     {
@@ -121,14 +121,14 @@
         "FIRE_STAT_DESC_E": "Under Control",
         "FIRE_STAT_DESC_F": "Maîtrisé ",
         "TIME_DETECTED": 1758374820000,
-        "FIRE_STAT_DATE": 1758963600000,
+        "FIRE_STAT_DATE": 1759049460000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759058774
+        "FETCHED_FROM_ERD": 1759064023
       }
     },
     {
@@ -152,14 +152,14 @@
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1755166920000,
-        "FIRE_STAT_DATE": 1758964320000,
+        "FIRE_STAT_DATE": 1759049580000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759058774
+        "FETCHED_FROM_ERD": 1759064023
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.3,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759058774
+        "FETCHED_FROM_ERD": 1759064023
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 90,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759058774
+        "FETCHED_FROM_ERD": 1759064023
       }
     },
     {
@@ -252,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759058774
+        "FETCHED_FROM_ERD": 1759064023
       }
     }
   ]
