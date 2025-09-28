@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759025829",
-  "fetched_utc": 1759025829,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759031208",
+  "fetched_utc": 1759031208,
   "pages": 1,
   "tables": [
     {
@@ -56,40 +56,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "East",
-          "Status": "Out",
-          "Number": "208",
-          "Fire Name": "Old Field Road",
-          "Updated": "Sep-26",
-          "Latitude": "47.15278",
-          "Longitude": "65.43248",
-          "Size": "1,403.0",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
-        },
-        {
-          "Region": "East",
-          "Status": "Out",
-          "Number": "383",
-          "Fire Name": "Chemin de la Baie",
-          "Updated": "Sep-26",
-          "Latitude": "47.57556",
-          "Longitude": "64.92144",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         },
         {
           "Region": "West",
@@ -192,23 +158,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "364",
-          "Fire Name": "364",
-          "Updated": "Sep-26",
-          "Latitude": "45.14794",
-          "Longitude": "66.36807",
-          "Size": "0.2",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         },
         {
           "Region": "West",
