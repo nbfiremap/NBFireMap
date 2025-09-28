@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759077302",
-  "fetched_utc": 1759077302,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759080568",
+  "fetched_utc": 1759080568,
   "pages": 1,
   "tables": [
     {
@@ -128,23 +128,6 @@
         {
           "Region": "West",
           "Status": "Being Patrolled",
-          "Number": "387",
-          "Fire Name": "387",
-          "Updated": "Sep-27",
-          "Latitude": "45.51117",
-          "Longitude": "66.49760",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Being Patrolled",
           "Number": "388",
           "Fire Name": "Lime Kiln",
           "Updated": "Sep-27",
@@ -168,6 +151,23 @@
           "Latitude": "46.18374",
           "Longitude": "67.35226",
           "Size": "7.0",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "387",
+          "Fire Name": "387",
+          "Updated": "Sep-28",
+          "Latitude": "45.51117",
+          "Longitude": "66.49760",
+          "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
           "Tend": "0",
