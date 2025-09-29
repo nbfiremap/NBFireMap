@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759153355",
-  "fetched_utc": 1759153355,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759156744",
+  "fetched_utc": 1759156744,
   "pages": 1,
   "tables": [
     {
@@ -78,7 +78,7 @@
           "Region": "West",
           "Status": "Being Patrolled",
           "Number": "370",
-          "Fire Name": "365",
+          "Fire Name": "370",
           "Updated": "Sep-29",
           "Latitude": "45.44907",
           "Longitude": "67.48162",
