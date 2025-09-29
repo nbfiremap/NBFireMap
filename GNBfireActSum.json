@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759111892",
-  "fetched_utc": 1759111892,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759115640",
+  "fetched_utc": 1759115640,
   "pages": 1,
   "tables": [
     {
@@ -124,23 +124,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "371",
-          "Fire Name": "371",
-          "Updated": "Sep-27",
-          "Latitude": "46.18374",
-          "Longitude": "67.35226",
-          "Size": "7.0",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         },
         {
           "Region": "West",
