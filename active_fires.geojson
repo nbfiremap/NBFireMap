@@ -9,130 +9,6 @@
   "features": [
     {
       "type": "Feature",
-      "id": 69865,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.71049881803592,
-          46.12233948363302
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69865,
-        "FIRE_NUMBER": "2025366",
-        "FIRE_NUMBER_SHORT": "366",
-        "FIRE_NAME": "366",
-        "DEGREES_LAT": 46.12233,
-        "DEGREES_LONG": 65.7105,
-        "FIRE_STAT_ID": 2,
-        "FIRE_STAT_DESC_E": "Contained",
-        "FIRE_STAT_DESC_F": "Contenu ",
-        "TIME_DETECTED": 1758377580000,
-        "FIRE_STAT_DATE": 1759133040000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 650.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759156736
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 68585,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.47542912698799,
-          46.99147961517266
-        ]
-      },
-      "properties": {
-        "OBJECTID": 68585,
-        "FIRE_NUMBER": "2025256",
-        "FIRE_NUMBER_SHORT": "256",
-        "FIRE_NAME": "Beaver Lake Stream",
-        "DEGREES_LAT": 46.99147,
-        "DEGREES_LONG": 66.47543,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1755166920000,
-        "FIRE_STAT_DATE": 1759049580000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 456.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759156736
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69869,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.48161939661202,
-          45.449079323425835
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69869,
-        "FIRE_NUMBER": "2025370",
-        "FIRE_NUMBER_SHORT": "370",
-        "FIRE_NAME": "370",
-        "DEGREES_LAT": 45.44907,
-        "DEGREES_LONG": 67.48161999999999,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758387600000,
-        "FIRE_STAT_DATE": 1759137660000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 7.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759156736
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69902,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.44277939227904,
-          45.62705935590699
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69902,
-        "FIRE_NUMBER": "2025378",
-        "FIRE_NUMBER_SHORT": "378",
-        "FIRE_NAME": "378",
-        "DEGREES_LAT": 45.62705,
-        "DEGREES_LONG": 67.44278,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758469500000,
-        "FIRE_STAT_DATE": 1759046760000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 1.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759156736
-      }
-    },
-    {
-      "type": "Feature",
       "id": 69982,
       "geometry": {
         "type": "Point",
@@ -159,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 3.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759156736
+        "FETCHED_FROM_ERD": 1759160050
       }
     },
     {
@@ -190,7 +66,131 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759156736
+        "FETCHED_FROM_ERD": 1759160050
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68585,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.47542912698799,
+          46.99147961517266
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68585,
+        "FIRE_NUMBER": "2025256",
+        "FIRE_NUMBER_SHORT": "256",
+        "FIRE_NAME": "Beaver Lake Stream",
+        "DEGREES_LAT": 46.99147,
+        "DEGREES_LONG": 66.47543,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1755166920000,
+        "FIRE_STAT_DATE": 1759049580000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 456.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1759160050
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69865,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.71049881803592,
+          46.12233948363302
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69865,
+        "FIRE_NUMBER": "2025366",
+        "FIRE_NUMBER_SHORT": "366",
+        "FIRE_NAME": "366",
+        "DEGREES_LAT": 46.12233,
+        "DEGREES_LONG": 65.7105,
+        "FIRE_STAT_ID": 2,
+        "FIRE_STAT_DESC_E": "Contained",
+        "FIRE_STAT_DESC_F": "Contenu ",
+        "TIME_DETECTED": 1758377580000,
+        "FIRE_STAT_DATE": 1759133040000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 650.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1759160050
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69902,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.44277939227904,
+          45.62705935590699
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69902,
+        "FIRE_NUMBER": "2025378",
+        "FIRE_NUMBER_SHORT": "378",
+        "FIRE_NAME": "378",
+        "DEGREES_LAT": 45.62705,
+        "DEGREES_LONG": 67.44278,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1758469500000,
+        "FIRE_STAT_DATE": 1759046760000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 1.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1759160050
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69869,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.48161939661202,
+          45.449079323425835
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69869,
+        "FIRE_NUMBER": "2025370",
+        "FIRE_NUMBER_SHORT": "370",
+        "FIRE_NAME": "370",
+        "DEGREES_LAT": 45.44907,
+        "DEGREES_LONG": 67.48161999999999,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1758387600000,
+        "FIRE_STAT_DATE": 1759137660000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 7.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1759160050
       }
     }
   ]
