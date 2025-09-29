@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759142413",
-  "fetched_utc": 1759142413,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759145329",
+  "fetched_utc": 1759145329,
   "pages": 1,
   "tables": [
     {
@@ -59,20 +59,20 @@
         },
         {
           "Region": "West",
-          "Status": "Out of Control",
+          "Status": "Contained",
           "Number": "366",
           "Fire Name": "366",
-          "Updated": "Sep-28",
+          "Updated": "Sep-29",
           "Latitude": "46.12233",
           "Longitude": "65.71050",
           "Size": "650.0",
-          "Pers": "46",
+          "Pers": "50",
           "Eng": "0",
           "Tend": "0",
-          "Trac": "4",
+          "Trac": "6",
           "Air": "0",
           "Heli": "1",
-          "Ovr": "19"
+          "Ovr": "20"
         },
         {
           "Region": "West",
