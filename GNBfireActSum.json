@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759237306",
-  "fetched_utc": 1759237306,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759239747",
+  "fetched_utc": 1759239747,
   "pages": 1,
   "tables": [
     {
@@ -79,7 +79,7 @@
           "Status": "Being Patrolled",
           "Number": "370",
           "Fire Name": "370",
-          "Updated": "Sep-29",
+          "Updated": "Sep-30",
           "Latitude": "45.44907",
           "Longitude": "67.48162",
           "Size": "7.0",
@@ -113,7 +113,7 @@
           "Status": "Being Patrolled",
           "Number": "390",
           "Fire Name": "390",
-          "Updated": "Sep-29",
+          "Updated": "Sep-30",
           "Latitude": "45.16048",
           "Longitude": "66.81248",
           "Size": "0.1",
