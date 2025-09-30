@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759242855",
-  "fetched_utc": 1759242855,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759246342",
+  "fetched_utc": 1759246342,
   "pages": 1,
   "tables": [
     {
@@ -77,23 +77,6 @@
         {
           "Region": "West",
           "Status": "Being Patrolled",
-          "Number": "370",
-          "Fire Name": "370",
-          "Updated": "Sep-30",
-          "Latitude": "45.44907",
-          "Longitude": "67.48162",
-          "Size": "7.0",
-          "Pers": "1",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Being Patrolled",
           "Number": "386",
           "Fire Name": "386",
           "Updated": "Sep-28",
@@ -124,6 +107,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "370",
+          "Fire Name": "370",
+          "Updated": "Sep-30",
+          "Latitude": "45.44907",
+          "Longitude": "67.48162",
+          "Size": "7.0",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
         },
         {
           "Region": "West",
