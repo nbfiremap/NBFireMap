@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759197623",
-  "fetched_utc": 1759197623,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759201700",
+  "fetched_utc": 1759201700,
   "pages": 1,
   "tables": [
     {
@@ -141,40 +141,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "387",
-          "Fire Name": "387",
-          "Updated": "Sep-29",
-          "Latitude": "45.51117",
-          "Longitude": "66.49760",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "388",
-          "Fire Name": "Lime Kiln",
-          "Updated": "Sep-29",
-          "Latitude": "46.27775",
-          "Longitude": "66.74983",
-          "Size": "0.2",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         },
         {
           "Region": "West",
