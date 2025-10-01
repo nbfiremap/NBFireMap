@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759326183",
-  "fetched_utc": 1759326183,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759329561",
+  "fetched_utc": 1759329561,
   "pages": 1,
   "tables": [
     {
@@ -32,13 +32,13 @@
           "Latitude": "46.42718",
           "Longitude": "65.21027",
           "Size": "1.5",
-          "Pers": "22",
-          "Eng": "8",
+          "Pers": "11",
+          "Eng": "0",
           "Tend": "0",
           "Trac": "0",
-          "Air": "4",
+          "Air": "0",
           "Heli": "0",
-          "Ovr": "1"
+          "Ovr": "3"
         },
         {
           "Region": "East",
@@ -62,11 +62,11 @@
           "Status": "Being Patrolled",
           "Number": "365",
           "Fire Name": "365",
-          "Updated": "Sep-30",
+          "Updated": "Oct-01",
           "Latitude": "46.98138",
           "Longitude": "64.97792",
           "Size": "95.0",
-          "Pers": "2",
+          "Pers": "1",
           "Eng": "0",
           "Tend": "0",
           "Trac": "0",
