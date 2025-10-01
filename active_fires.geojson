@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 10,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759339986
+        "FETCHED_FROM_ERD": 1759346825
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759339986
+        "FETCHED_FROM_ERD": 1759346825
       }
     },
     {
@@ -90,14 +90,14 @@
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1755166920000,
-        "FIRE_STAT_DATE": 1759221120000,
+        "FIRE_STAT_DATE": 1759330320000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759339986
+        "FETCHED_FROM_ERD": 1759346825
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759339986
+        "FETCHED_FROM_ERD": 1759346825
       }
     },
     {
@@ -137,8 +137,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -66.10961891699934,
-          45.28395932660411
+          -66.18252895112391,
+          45.473379358729666
         ]
       },
       "properties": {
@@ -146,20 +146,20 @@
         "FIRE_NUMBER": "2025393",
         "FIRE_NUMBER_SHORT": "393",
         "FIRE_NAME": "Burke Brook",
-        "DEGREES_LAT": 45.28395,
-        "DEGREES_LONG": 66.10961999999999,
-        "FIRE_STAT_ID": 1,
-        "FIRE_STAT_DESC_E": "Out of Control",
-        "FIRE_STAT_DESC_F": "Hors contrôle",
-        "TIME_DETECTED": 1759320000000,
-        "FIRE_STAT_DATE": 1759329182000,
+        "DEGREES_LAT": 45.473369999999996,
+        "DEGREES_LONG": 66.18253,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1759316400000,
+        "FIRE_STAT_DATE": 1759325400000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": null,
+        "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759339986
+        "FETCHED_FROM_ERD": 1759346825
       }
     },
     {
@@ -183,14 +183,14 @@
         "FIRE_STAT_DESC_E": "Out of Control",
         "FIRE_STAT_DESC_F": "Hors contrôle",
         "TIME_DETECTED": 1759318200000,
-        "FIRE_STAT_DATE": 1759329182000,
+        "FIRE_STAT_DATE": 1759336022000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": null,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759339986
+        "FETCHED_FROM_ERD": 1759346825
       }
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759339993",
-  "fetched_utc": 1759339993,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759346832",
+  "fetched_utc": 1759346832,
   "pages": 1,
   "tables": [
     {
@@ -45,7 +45,7 @@
           "Status": "Being Patrolled",
           "Number": "256",
           "Fire Name": "Beaver Lake Stream",
-          "Updated": "Sep-30",
+          "Updated": "Oct-01",
           "Latitude": "46.99147",
           "Longitude": "66.47543",
           "Size": "456.0",
@@ -90,6 +90,23 @@
           "Air": "0",
           "Heli": "1",
           "Ovr": "22"
+        },
+        {
+          "Region": "West",
+          "Status": "Being Patrolled",
+          "Number": "393",
+          "Fire Name": "Burke Brook",
+          "Updated": "Oct-01",
+          "Latitude": "45.47337",
+          "Longitude": "66.18253",
+          "Size": "0.1",
+          "Pers": "7",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
         },
         {
           "Region": "West",
