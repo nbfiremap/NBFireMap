@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759354192",
-  "fetched_utc": 1759354192,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759357982",
+  "fetched_utc": 1759357982,
   "pages": 1,
   "tables": [
     {
@@ -107,6 +107,23 @@
           "Air": "0",
           "Heli": "1",
           "Ovr": "22"
+        },
+        {
+          "Region": "West",
+          "Status": "Under Control",
+          "Number": "396",
+          "Fire Name": "396",
+          "Updated": "Oct-01",
+          "Latitude": "45.80058",
+          "Longitude": "67.14917",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
         },
         {
           "Region": "West",
