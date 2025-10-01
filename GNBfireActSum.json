@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759315139",
-  "fetched_utc": 1759315139,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759318165",
+  "fetched_utc": 1759318165,
   "pages": 1,
   "tables": [
     {
@@ -79,14 +79,14 @@
           "Status": "Contained",
           "Number": "366",
           "Fire Name": "366",
-          "Updated": "Sep-30",
+          "Updated": "Oct-01",
           "Latitude": "46.12233",
           "Longitude": "65.71050",
           "Size": "650.0",
-          "Pers": "50",
+          "Pers": "48",
           "Eng": "0",
           "Tend": "0",
-          "Trac": "6",
+          "Trac": "4",
           "Air": "0",
           "Heli": "1",
           "Ovr": "22"
