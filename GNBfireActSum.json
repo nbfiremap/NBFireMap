@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759404444",
-  "fetched_utc": 1759404444,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759409864",
+  "fetched_utc": 1759409864,
   "pages": 1,
   "tables": [
     {
@@ -93,7 +93,7 @@
         },
         {
           "Region": "East",
-          "Status": "Being Patrolled",
+          "Status": "Out",
           "Number": "395",
           "Fire Name": "395",
           "Updated": "Oct-02",
@@ -106,7 +106,7 @@
           "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "1"
+          "Ovr": "0"
         },
         {
           "Region": "West",
@@ -181,7 +181,7 @@
           "Status": "Out",
           "Number": "392",
           "Fire Name": "392",
-          "Updated": "Oct-01",
+          "Updated": "Oct-02",
           "Latitude": "46.92545",
           "Longitude": "67.40813",
           "Size": "0.1",
