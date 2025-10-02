@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759409864",
-  "fetched_utc": 1759409864,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759412324",
+  "fetched_utc": 1759412324,
   "pages": 1,
   "tables": [
     {
@@ -130,7 +130,7 @@
           "Status": "Under Control",
           "Number": "396",
           "Fire Name": "396",
-          "Updated": "Oct-01",
+          "Updated": "Oct-02",
           "Latitude": "45.80058",
           "Longitude": "67.14917",
           "Size": "0.1",
@@ -147,7 +147,7 @@
           "Status": "Being Patrolled",
           "Number": "393",
           "Fire Name": "Burke Brook",
-          "Updated": "Oct-01",
+          "Updated": "Oct-02",
           "Latitude": "45.47337",
           "Longitude": "66.18253",
           "Size": "0.1",
