@@ -35,38 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759423250
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70123,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.14916929972642,
-          45.80058939322467
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70123,
-        "FIRE_NUMBER": "2025396",
-        "FIRE_NUMBER_SHORT": "396",
-        "FIRE_NAME": "396",
-        "DEGREES_LAT": 45.80058,
-        "DEGREES_LONG": 67.14917,
-        "FIRE_STAT_ID": 3,
-        "FIRE_STAT_DESC_E": "Under Control",
-        "FIRE_STAT_DESC_F": "Maîtrisé ",
-        "TIME_DETECTED": 1759337100000,
-        "FIRE_STAT_DATE": 1759339800000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759423250
+        "FETCHED_FROM_ERD": 1759426270
       }
     },
     {
@@ -97,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759423250
+        "FETCHED_FROM_ERD": 1759426270
       }
     },
     {
@@ -128,38 +97,7 @@
         "PERCENT_CONTAINED": 15,
         "FIRE_SIZE": 8.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759423250
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70103,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.18252895112391,
-          45.473379358729666
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70103,
-        "FIRE_NUMBER": "2025393",
-        "FIRE_NUMBER_SHORT": "393",
-        "FIRE_NAME": "Burke Brook",
-        "DEGREES_LAT": 45.473369999999996,
-        "DEGREES_LONG": 66.18253,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1759316400000,
-        "FIRE_STAT_DATE": 1759325400000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759423250
+        "FETCHED_FROM_ERD": 1759426270
       }
     },
     {
@@ -190,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759423250
+        "FETCHED_FROM_ERD": 1759426270
       }
     },
     {
@@ -221,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759423250
+        "FETCHED_FROM_ERD": 1759426270
       }
     }
   ]
