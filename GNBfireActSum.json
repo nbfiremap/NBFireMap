@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759546936",
-  "fetched_utc": 1759546936,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759549059",
+  "fetched_utc": 1759549059,
   "pages": 1,
   "tables": [
     {
@@ -126,23 +126,6 @@
           "Ovr": "1"
         },
         {
-          "Region": "East",
-          "Status": "Out",
-          "Number": "395",
-          "Fire Name": "395",
-          "Updated": "Oct-02",
-          "Latitude": "46.17687",
-          "Longitude": "64.10958",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
-        },
-        {
           "Region": "West",
           "Status": "Contained",
           "Number": "366",
@@ -192,40 +175,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "393",
-          "Fire Name": "Burke Brook",
-          "Updated": "Oct-03",
-          "Latitude": "45.47337",
-          "Longitude": "66.18253",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "396",
-          "Fire Name": "396",
-          "Updated": "Oct-03",
-          "Latitude": "45.80058",
-          "Longitude": "67.14917",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         }
       ]
     }
