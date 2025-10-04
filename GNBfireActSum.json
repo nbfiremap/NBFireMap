@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759591743",
-  "fetched_utc": 1759591743,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759595771",
+  "fetched_utc": 1759595771,
   "pages": 1,
   "tables": [
     {
@@ -178,7 +178,7 @@
         },
         {
           "Region": "West",
-          "Status": "Being Patrolled",
+          "Status": "Out",
           "Number": "398",
           "Fire Name": "398",
           "Updated": "Oct-04",
@@ -191,7 +191,7 @@
           "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "1"
+          "Ovr": "0"
         }
       ]
     }
