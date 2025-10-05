@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759678171",
-  "fetched_utc": 1759678171,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759682152",
+  "fetched_utc": 1759682152,
   "pages": 1,
   "tables": [
     {
@@ -148,6 +148,23 @@
           "Number": "403",
           "Fire Name": "5-404",
           "Updated": "Oct-04",
+          "Latitude": "47.44720",
+          "Longitude": "64.91600",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
+        },
+        {
+          "Region": "East",
+          "Status": "Out",
+          "Number": "405",
+          "Fire Name": "tracadie beach",
+          "Updated": "Oct-05",
           "Latitude": "47.44720",
           "Longitude": "64.91600",
           "Size": "0.1",
