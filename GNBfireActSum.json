@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759689579",
-  "fetched_utc": 1759689579,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759692384",
+  "fetched_utc": 1759692384,
   "pages": 1,
   "tables": [
     {
@@ -141,6 +141,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
+        },
+        {
+          "Region": "East",
+          "Status": "Being Patrolled",
+          "Number": "402",
+          "Fire Name": "5-403",
+          "Updated": "Oct-05",
+          "Latitude": "46.92005",
+          "Longitude": "65.56025",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
         },
         {
           "Region": "East",
