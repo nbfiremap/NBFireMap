@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759674649",
-  "fetched_utc": 1759674649,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759678171",
+  "fetched_utc": 1759678171,
   "pages": 1,
   "tables": [
     {
@@ -218,7 +218,7 @@
           "Updated": "Oct-05",
           "Latitude": "45.89658",
           "Longitude": "65.89878",
-          "Size": "0.0",
+          "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
           "Tend": "0",
