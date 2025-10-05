@@ -9,33 +9,33 @@
   "features": [
     {
       "type": "Feature",
-      "id": 70142,
+      "id": 69864,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -65.29744865044917,
-          45.57363939589897
+          -64.97791860141396,
+          46.98138964751577
         ]
       },
       "properties": {
-        "OBJECTID": 70142,
-        "FIRE_NUMBER": "2025397",
-        "FIRE_NUMBER_SHORT": "397",
-        "FIRE_NAME": "397",
-        "DEGREES_LAT": 45.57363,
-        "DEGREES_LONG": 65.29745,
+        "OBJECTID": 69864,
+        "FIRE_NUMBER": "2025365",
+        "FIRE_NUMBER_SHORT": "365",
+        "FIRE_NAME": "365",
+        "DEGREES_LAT": 46.981379999999994,
+        "DEGREES_LONG": 64.97792,
         "FIRE_STAT_ID": 4,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1759424400000,
-        "FIRE_STAT_DATE": 1759481100000,
+        "TIME_DETECTED": 1758374820000,
+        "FIRE_STAT_DATE": 1759483620000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
+        "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
+        "FETCHED_FROM_ERD": 1759685379
       }
     },
     {
@@ -66,38 +66,7 @@
         "PERCENT_CONTAINED": 50,
         "FIRE_SIZE": 35.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70183,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.01807858091972,
-          46.19841951211728
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70183,
-        "FIRE_NUMBER": "2025400",
-        "FIRE_NUMBER_SHORT": "400",
-        "FIRE_NAME": "Gallagher Ridge Tracks",
-        "DEGREES_LAT": 46.198409999999996,
-        "DEGREES_LONG": 65.01808,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1759495920000,
-        "FIRE_STAT_DATE": 1759658460000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 2.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
+        "FETCHED_FROM_ERD": 1759685379
       }
     },
     {
@@ -128,38 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 69864,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -64.97791860141396,
-          46.98138964751577
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69864,
-        "FIRE_NUMBER": "2025365",
-        "FIRE_NUMBER_SHORT": "365",
-        "FIRE_NAME": "365",
-        "DEGREES_LAT": 46.981379999999994,
-        "DEGREES_LONG": 64.97792,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758374820000,
-        "FIRE_STAT_DATE": 1759483620000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 95.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
+        "FETCHED_FROM_ERD": 1759685379
       }
     },
     {
@@ -190,38 +128,7 @@
         "PERCENT_CONTAINED": 80,
         "FIRE_SIZE": 40.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 68585,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.47542912698799,
-          46.99147961517266
-        ]
-      },
-      "properties": {
-        "OBJECTID": 68585,
-        "FIRE_NUMBER": "2025256",
-        "FIRE_NUMBER_SHORT": "256",
-        "FIRE_NAME": "Beaver Lake Stream",
-        "DEGREES_LAT": 46.99147,
-        "DEGREES_LONG": 66.47543,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1755166920000,
-        "FIRE_STAT_DATE": 1759658280000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 456.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
+        "FETCHED_FROM_ERD": 1759685379
       }
     },
     {
@@ -252,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
+        "FETCHED_FROM_ERD": 1759685379
       }
     },
     {
@@ -283,7 +190,100 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.3,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
+        "FETCHED_FROM_ERD": 1759685379
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70142,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.29744865044917,
+          45.57363939589897
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70142,
+        "FIRE_NUMBER": "2025397",
+        "FIRE_NUMBER_SHORT": "397",
+        "FIRE_NAME": "397",
+        "DEGREES_LAT": 45.57363,
+        "DEGREES_LONG": 65.29745,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1759424400000,
+        "FIRE_STAT_DATE": 1759481100000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1759685379
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68585,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.47542912698799,
+          46.99147961517266
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68585,
+        "FIRE_NUMBER": "2025256",
+        "FIRE_NUMBER_SHORT": "256",
+        "FIRE_NAME": "Beaver Lake Stream",
+        "DEGREES_LAT": 46.99147,
+        "DEGREES_LONG": 66.47543,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1755166920000,
+        "FIRE_STAT_DATE": 1759658280000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 456.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1759685379
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70183,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.01807858091972,
+          46.19841951211728
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70183,
+        "FIRE_NUMBER": "2025400",
+        "FIRE_NUMBER_SHORT": "400",
+        "FIRE_NAME": "Gallagher Ridge Tracks",
+        "DEGREES_LAT": 46.198409999999996,
+        "DEGREES_LONG": 65.01808,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1759495920000,
+        "FIRE_STAT_DATE": 1759658460000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 2.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1759685379
       }
     },
     {
@@ -307,14 +307,14 @@
         "FIRE_STAT_DESC_E": "Out of Control",
         "FIRE_STAT_DESC_F": "Hors contrôle",
         "TIME_DETECTED": 1759516200000,
-        "FIRE_STAT_DATE": 1759671341000,
+        "FIRE_STAT_DATE": 1759674575000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": null,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759682144
+        "FETCHED_FROM_ERD": 1759685379
       }
     }
   ]
