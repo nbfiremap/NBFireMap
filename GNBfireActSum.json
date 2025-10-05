@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759685386",
-  "fetched_utc": 1759685386,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759689579",
+  "fetched_utc": 1759689579,
   "pages": 1,
   "tables": [
     {
@@ -42,7 +42,7 @@
         },
         {
           "Region": "East",
-          "Status": "Out of Control",
+          "Status": "Contained",
           "Number": "401",
           "Fire Name": "401",
           "Updated": "Oct-05",
@@ -51,11 +51,11 @@
           "Size": "40.0",
           "Pers": "18",
           "Eng": "1",
-          "Tend": "0",
+          "Tend": "2",
           "Trac": "5",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "3"
+          "Ovr": "4"
         },
         {
           "Region": "East",
