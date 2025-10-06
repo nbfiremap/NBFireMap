@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759747128",
-  "fetched_utc": 1759747128,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759750166",
+  "fetched_utc": 1759750166,
   "pages": 1,
   "tables": [
     {
@@ -195,10 +195,27 @@
         },
         {
           "Region": "West",
+          "Status": "Under Control",
+          "Number": "406",
+          "Fire Name": "montagne",
+          "Updated": "Oct-06",
+          "Latitude": "47.38355",
+          "Longitude": "68.32612",
+          "Size": "0.5",
+          "Pers": "2",
+          "Eng": "0",
+          "Tend": "1",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
+        },
+        {
+          "Region": "West",
           "Status": "Being Patrolled",
           "Number": "397",
           "Fire Name": "397",
-          "Updated": "Oct-03",
+          "Updated": "Oct-06",
           "Latitude": "45.57363",
           "Longitude": "65.29745",
           "Size": "0.1",
