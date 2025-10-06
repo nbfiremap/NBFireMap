@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759782856",
-  "fetched_utc": 1759782856,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759786183",
+  "fetched_utc": 1759786183,
   "pages": 1,
   "tables": [
     {
@@ -272,6 +272,23 @@
           "Size": "0.1",
           "Pers": "6",
           "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
+        },
+        {
+          "Region": "West",
+          "Status": "Being Patrolled",
+          "Number": "412",
+          "Fire Name": "lookout",
+          "Updated": "Oct-06",
+          "Latitude": "45.84855",
+          "Longitude": "64.84188",
+          "Size": "0.1",
+          "Pers": "3",
+          "Eng": "1",
           "Tend": "0",
           "Trac": "0",
           "Air": "0",
