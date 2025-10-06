@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 40.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 50,
         "FIRE_SIZE": 35.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     },
     {
@@ -159,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 2.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     },
     {
@@ -252,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     },
     {
@@ -283,7 +283,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.5,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     },
     {
@@ -314,7 +314,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.3,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759735920
+        "FETCHED_FROM_ERD": 1759740101
       }
     }
   ]
