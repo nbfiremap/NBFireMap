@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759855288",
-  "fetched_utc": 1759855288,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759858370",
+  "fetched_utc": 1759858370,
   "pages": 1,
   "tables": [
     {
@@ -246,6 +246,23 @@
         },
         {
           "Region": "West",
+          "Status": "Contained",
+          "Number": "416",
+          "Fire Name": "trailer",
+          "Updated": "Oct-07",
+          "Latitude": "46.03644",
+          "Longitude": "65.22925",
+          "Size": "0.2",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
+        },
+        {
+          "Region": "West",
           "Status": "Under Control",
           "Number": "366",
           "Fire Name": "366",
@@ -281,23 +298,6 @@
         {
           "Region": "West",
           "Status": "Being Patrolled",
-          "Number": "406",
-          "Fire Name": "montagne",
-          "Updated": "Oct-07",
-          "Latitude": "47.38355",
-          "Longitude": "68.32612",
-          "Size": "0.5",
-          "Pers": "1",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Being Patrolled",
           "Number": "412",
           "Fire Name": "lookout",
           "Updated": "Oct-07",
@@ -311,6 +311,40 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
+        },
+        {
+          "Region": "West",
+          "Status": "Being Patrolled",
+          "Number": "415",
+          "Fire Name": "hwy 1",
+          "Updated": "Oct-07",
+          "Latitude": "45.99207",
+          "Longitude": "65.13327",
+          "Size": "0.1",
+          "Pers": "3",
+          "Eng": "1",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "406",
+          "Fire Name": "montagne",
+          "Updated": "Oct-07",
+          "Latitude": "47.38355",
+          "Longitude": "68.32612",
+          "Size": "0.5",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
         },
         {
           "Region": "West",
