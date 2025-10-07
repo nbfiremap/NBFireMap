@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759858370",
-  "fetched_utc": 1759858370,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759862680",
+  "fetched_utc": 1759862680,
   "pages": 1,
   "tables": [
     {
@@ -39,23 +39,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "2"
-        },
-        {
-          "Region": "East",
-          "Status": "Contained",
-          "Number": "414",
-          "Fire Name": "Airstrip",
-          "Updated": "Oct-07",
-          "Latitude": "46.01735",
-          "Longitude": "64.73200",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "1"
         },
         {
           "Region": "East",
@@ -141,6 +124,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "0"
+        },
+        {
+          "Region": "East",
+          "Status": "Being Patrolled",
+          "Number": "414",
+          "Fire Name": "Airstrip",
+          "Updated": "Oct-07",
+          "Latitude": "46.01735",
+          "Longitude": "64.73200",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
         },
         {
           "Region": "East",
