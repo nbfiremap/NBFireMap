@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759944772",
-  "fetched_utc": 1759944772,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759949139",
+  "fetched_utc": 1759949139,
   "pages": 1,
   "tables": [
     {
@@ -25,7 +25,7 @@
       "rows": [
         {
           "Region": "East",
-          "Status": "Out of Control",
+          "Status": "Contained",
           "Number": "394",
           "Fire Name": "394",
           "Updated": "Oct-08",
@@ -35,7 +35,7 @@
           "Pers": "11",
           "Eng": "0",
           "Tend": "0",
-          "Trac": "1",
+          "Trac": "0",
           "Air": "0",
           "Heli": "0",
           "Ovr": "2"
