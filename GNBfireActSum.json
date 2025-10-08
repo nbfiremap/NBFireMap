@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759879762",
-  "fetched_utc": 1759879762,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759888862",
+  "fetched_utc": 1759888862,
   "pages": 2,
   "tables": [
     {
@@ -355,6 +355,23 @@
           "Latitude": "46.03644",
           "Longitude": "65.22925",
           "Size": "0.3",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
+        },
+        {
+          "Region": "West",
+          "Status": "Being Patrolled",
+          "Number": "420",
+          "Fire Name": "420",
+          "Updated": "Oct-07",
+          "Latitude": "45.83500",
+          "Longitude": "66.20255",
+          "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
           "Tend": "0",
