@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759941699",
-  "fetched_utc": 1759941699,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759944772",
+  "fetched_utc": 1759944772,
   "pages": 1,
   "tables": [
     {
@@ -39,6 +39,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "2"
+        },
+        {
+          "Region": "East",
+          "Status": "Contained",
+          "Number": "421",
+          "Fire Name": "Elsi",
+          "Updated": "Oct-08",
+          "Latitude": "46.59130",
+          "Longitude": "65.00025",
+          "Size": "1.3",
+          "Pers": "4",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
         },
         {
           "Region": "East",
@@ -280,23 +297,6 @@
         },
         {
           "Region": "West",
-          "Status": "Being Patrolled",
-          "Number": "420",
-          "Fire Name": "420",
-          "Updated": "Oct-08",
-          "Latitude": "45.83500",
-          "Longitude": "66.20255",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "1"
-        },
-        {
-          "Region": "West",
           "Status": "Out",
           "Number": "397",
           "Fire Name": "397",
@@ -337,6 +337,23 @@
           "Updated": "Oct-07",
           "Latitude": "45.61665",
           "Longitude": "66.59295",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "420",
+          "Fire Name": "420",
+          "Updated": "Oct-08",
+          "Latitude": "45.83500",
+          "Longitude": "66.20255",
           "Size": "0.1",
           "Pers": "0",
           "Eng": "0",

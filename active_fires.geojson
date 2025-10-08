@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 55.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 90,
         "FIRE_SIZE": 68.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -159,7 +159,7 @@
         "PERCENT_CONTAINED": 50,
         "FIRE_SIZE": 100.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -252,7 +252,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 2.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70462,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.00024859119867,
+          46.59130957992966
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70462,
+        "FIRE_NUMBER": "2025421",
+        "FIRE_NUMBER_SHORT": "421",
+        "FIRE_NAME": "Elsi",
+        "DEGREES_LAT": 46.591300000000004,
+        "DEGREES_LONG": 65.00025,
+        "FIRE_STAT_ID": 2,
+        "FIRE_STAT_DESC_E": "Contained",
+        "FIRE_STAT_DESC_F": "Contenu ",
+        "TIME_DETECTED": 1759908600000,
+        "FIRE_STAT_DATE": 1759932300000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 60,
+        "FIRE_SIZE": 1.3,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -283,38 +314,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.3,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70442,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.20254897451709,
-          45.834999422041435
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70442,
-        "FIRE_NUMBER": "2025420",
-        "FIRE_NUMBER_SHORT": "420",
-        "FIRE_NAME": "420",
-        "DEGREES_LAT": 45.835,
-        "DEGREES_LONG": 66.20255,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1759849860000,
-        "FIRE_STAT_DATE": 1759915860000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -345,7 +345,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.9,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -376,7 +376,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     },
     {
@@ -407,38 +407,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70462,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.00024859119867,
-          46.59130957992966
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70462,
-        "FIRE_NUMBER": "2025421",
-        "FIRE_NUMBER_SHORT": "421",
-        "FIRE_NAME": "Elsi",
-        "DEGREES_LAT": 46.591300000000004,
-        "DEGREES_LONG": 65.00025,
-        "FIRE_STAT_ID": 1,
-        "FIRE_STAT_DESC_E": "Out of Control",
-        "FIRE_STAT_DESC_F": "Hors contrôle",
-        "TIME_DETECTED": 1759908600000,
-        "FIRE_STAT_DATE": 1759930888000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": null,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1759941691
+        "FETCHED_FROM_ERD": 1759944765
       }
     }
   ]
