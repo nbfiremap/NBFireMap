@@ -119,11 +119,12 @@ jobs:
               return {"type": "FeatureCollection",
                       "features": [esri_feature_to_geojson_feature(f) for f in features]}
 
-          def to_gdf_from_geojson_obj(gj_obj):
-              feats = gj_obj.get("features", []) or []
-              return gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326")
-
-          # ---------- Request builders ----------
+  def to_gdf_from_geojson_obj(gj_obj):
+      feats = gj_obj.get("features", []) or []
+      if not feats:
+          # Create an empty GeoDataFrame with a geometry column
+          return gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
+      return gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326")          # ---------- Request builders ----------
           def cwfis_builder(type_name: str):
               base = "https://cwfis.cfs.nrcan.gc.ca/geoserver/public/ows"
               bbox_val = f"{NB_BBOX[0]},{NB_BBOX[1]},{NB_BBOX[2]},{NB_BBOX[3]},EPSG:4326"
@@ -218,77 +219,75 @@ jobs:
                   raise last_exc
               raise RuntimeError(f"{source_label}: no variants available")
 
-          def consensus_download(builder, label, max_rounds=5, samples=3):
-              for attempt in range(1, max_rounds + 1):
-                  counts, frames = [], []
-                  log(f"[ROUND] {label}: attempt {attempt}/{max_rounds}")
-                  src_label, base, variants = builder()
+  def consensus_download(builder, label, max_rounds=5, samples=3):
+      for attempt in range(1, max_rounds + 1):
+          counts, frames = [], []
+          log(f"[ROUND] {label}: attempt {attempt}/{max_rounds}")
+          src_label, base, variants = builder()
 
-                  for i in range(samples):
-                      try:
-                          if src_label == "ERD":
+          for i in range(samples):
+              try:
+                  if src_label == "ERD":
+                      esri_obj = None
+                      # Try variant 1 then 2 with paging on each
+                      for vidx, p in enumerate(variants, 1):
+                          try:
+                              esri_obj = fetch_esri_with_paging(base, p)
+                              n_try = len(esri_obj.get("features", []))
+                              log(f"[INFO] {label} ERD var{vidx}: features={n_try}")
+                              break
+                          except Exception as e:
+                              log(f"[WARN] {label} ERD var{vidx} failed: {e}")
                               esri_obj = None
-                              # Try variant 1 then 2 with paging on each
-                              for vidx, p in enumerate(variants, 1):
-                                  try:
-                                      esri_obj = fetch_esri_with_paging(base, p)
-                                      n_try = len(esri_obj.get("features", []))
-                                      log(f"[INFO] {label} ERD var{vidx}: features={n_try}")
-                                      break
-                                  except Exception as e:
-                                      log(f"[WARN] {label} ERD var{vidx} failed: {e}")
-                                      esri_obj = None
-                              if esri_obj is None:
-                                  raise RuntimeError(f"{label}: ERD fetch failed for all variants")
-                              gj_obj = esri_to_geojson(esri_obj)
-                              gdf = to_gdf_from_geojson_obj(gj_obj)
-                          else:
-                              # CWFIS - try bbox first, only use CQL if bbox fails
+                      if esri_obj is None:
+                          raise RuntimeError(f"{label}: ERD fetch failed for all variants")
+                      gj_obj = esri_to_geojson(esri_obj)
+                      gdf = to_gdf_from_geojson_obj(gj_obj)
+                  else:
+                      # CWFIS - try bbox first, only use CQL if bbox fails
+                      obj = None
+                      for vidx, (tag, params) in enumerate(variants, 1):
+                          try:
+                              obj = fetch_once(f"{label} copy{i+1}/{samples} {tag}", base, params)
+                              n_try = len(obj.get("features", []))
+                              log(f"[INFO] {label} {tag}: features={n_try}")
+                              break
+                          except Exception as e:
+                              log(f"[WARN] {label} {tag} failed: {e}")
                               obj = None
-                              for vidx, (tag, params) in enumerate(variants, 1):
-                                  try:
-                                      obj = fetch_once(f"{label} copy{i+1}/{samples} {tag}", base, params)
-                                      n_try = len(obj.get("features", []))
-                                      log(f"[INFO] {label} {tag}: features={n_try}")
-                                      break
-                                  except Exception as e:
-                                      log(f"[WARN] {label} {tag} failed: {e}")
-                                      obj = None
-                              if obj is None:
-                                  raise RuntimeError(f"{label}: CWFIS fetch failed for all variants")
-                              gdf = gpd.GeoDataFrame.from_features(obj.get("features", []), crs="EPSG:4326")
+                      if obj is None:
+                          raise RuntimeError(f"{label}: CWFIS fetch failed for all variants")
+                      gdf = to_gdf_from_geojson_obj(gj_obj=obj)
 
-                          counts.append(len(gdf))
-                          frames.append(gdf)
-                          log(f"[INFO] {label}: received_features={len(gdf)}")
-                          time.sleep(0.25)
-                      except Exception as e:
-                          log(f"[ERROR] {label} sample {i+1}: {e}")
-                          # Skip this sample but continue with others
-                          continue
+                  counts.append(len(gdf))
+                  frames.append(gdf)
+                  log(f"[INFO] {label}: received_features={len(gdf)}")
+                  time.sleep(0.25)
+              except Exception as e:
+                  log(f"[ERROR] {label} sample {i+1}: {e}")
+                  # Skip this sample but continue with others
+                  continue
 
-                  if not counts:
-                      log(f"[ERROR] {label}: no successful samples in attempt {attempt}")
-                      continue
+          if not counts:
+              log(f"[ERROR] {label}: no successful samples in attempt {attempt}")
+              continue
 
-                  if len(set(counts)) == 1:
-                      log(f"[OK] {label}: consensus n={counts[0]}")
-                      return frames[0]
-                  log(f"[WARN] {label}: mismatch counts {counts}, retrying…")
-                  time.sleep(1.0)
+          if len(set(counts)) == 1:
+              log(f"[OK] {label}: consensus n={counts[0]}")
+              return frames[0]
+          log(f"[WARN] {label}: mismatch counts {counts}, retrying…")
+          time.sleep(1.0)
 
-              # Fallback to majority sample if we have any
-              if counts:
-                  from collections import Counter
-                  c = Counter(counts)
-                  n, _ = c.most_common(1)[0]
-                  idx = counts.index(n)
-                  log(f"[WARN] {label}: using majority sample n={n}")
-                  return frames[idx]
-              
-              raise RuntimeError(f"{label}: failed to get any successful samples after {max_rounds} rounds")
-
-          # ---------- Run ----------
+      # Fallback to majority sample if we have any
+      if counts:
+          from collections import Counter
+          c = Counter(counts)
+          n, _ = c.most_common(1)[0]
+          idx = counts.index(n)
+          log(f"[WARN] {label}: using majority sample n={n}")
+          return frames[idx]
+      
+      raise RuntimeError(f"{label}: failed to get any successful samples after {max_rounds} rounds")          # ---------- Run ----------
           failures = []
           for ds in DATASETS:
               label = f"{ds['group']}/{ds['key']}"
