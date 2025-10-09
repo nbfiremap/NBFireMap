@@ -73,16 +73,38 @@ jobs:
           TIMEOUT=90
 
           # ---------- Helpers ----------
-          def fetch_once(label, base, params):
-              req = S.prepare_request(requests.Request("GET", base, params=params))
-              log(f"[REQ] {label}: {req.method} {req.url}")
-              r = S.send(req, timeout=TIMEOUT)
-              log(f"[RES] {label}: status={r.status_code} type={r.headers.get('content-type')} bytes={len(r.content)}")
-              r.raise_for_status()
-              ctype = (r.headers.get('content-type') or '').lower()
-              if "json" not in ctype:
-                  log(f"[WARN] {label}: non-JSON response head:\n{r.text[:300]}")
-              return r.json()
+          def fetch_once(label, base, params, retries=3, backoff=0.75):
+              """Fetch JSON with resilience: tolerate empty/non-JSON bodies by returning {}."""
+              last_err = None
+              for attempt in range(1, retries+1):
+                  try:
+                      req = S.prepare_request(requests.Request("GET", base, params=params))
+                      log(f"[REQ] {label} (try {attempt}/{retries}): {req.method} {req.url}")
+                      r = S.send(req, timeout=TIMEOUT)
+                      ctype = (r.headers.get('content-type') or '').lower()
+                      size = len(r.content)
+                      log(f"[RES] {label}: status={r.status_code} type={ctype} bytes={size}")
+                      r.raise_for_status()
+
+                      # Parse JSON if possible; if body is empty or not JSON, return {} gracefully
+                      try:
+                          if size == 0:
+                              log(f"[WARN] {label}: empty body; treating as empty object")
+                              return {}
+                          if "json" not in ctype:
+                              head = r.text[:300]
+                              log(f"[WARN] {label}: non-JSON response; head preview:\n{head}")
+                              # Attempt JSON anyway; if it fails, fall through to {}.
+                          return r.json()
+                      except ValueError as je:
+                          log(f"[WARN] {label}: JSON parse failed ({je}); first 200 bytes: {r.content[:200]!r}")
+                          return {}
+                  except Exception as e:
+                      last_err = e
+                      log(f"[WARN] {label}: request error: {e}")
+                      time.sleep(backoff * attempt)
+              # If all attempts failed hard (e.g., HTTP errors), re-raise to outer logic
+              raise last_err
 
           # Convert an ArcGIS REST "FeatureSet" (f=json) into a GeoJSON FeatureCollection
           # This preserves ALL fields ("attributes") exactly as delivered.
@@ -208,12 +230,16 @@ jobs:
 
           def fetch_geojson_with_fallbacks(source_label, base, params_list):
               # For CWFIS (already GeoJSON)
-              last_obj = None
+              last_obj = {}
               for idx, params in enumerate(params_list, 1):
-                  obj = fetch_once(f"{source_label} try{idx}", base, params)
-                  n = len(obj.get("features", []))
+                  try:
+                      obj = fetch_once(f"{source_label} try{idx}", base, params)
+                  except Exception as e:
+                      log(f"[WARN] {source_label} try{idx}: request failed ({e}); trying next variant")
+                      continue
+                  n = len((obj or {}).get("features", []) or [])
                   log(f"[INFO] {source_label} try{idx}: features={n}")
-                  last_obj = obj
+                  last_obj = obj or {}
                   if n > 0:
                       return obj
               return last_obj
@@ -231,16 +257,17 @@ jobs:
                           esri_obj = None
                           for vidx, p in enumerate(variants, 1):
                               esri_obj = fetch_esri_with_paging(base, p)
-                              n_try = len(esri_obj.get("features", []))
+                              n_try = len(esri_obj.get("features", []) or [])
                               log(f"[INFO] {label} ERD var{vidx}: features={n_try}")
                               if n_try > 0:
                                   break
-                          gj_obj = esri_to_geojson(esri_obj)
+                          gj_obj = esri_to_geojson(esri_obj or {})
                           gdf = to_gdf_from_geojson_obj(gj_obj)
                       else:
                           # CWFIS: already GeoJSON
                           obj = fetch_geojson_with_fallbacks(f"{label} copy{i+1}/{samples}", base, variants)
-                          gdf = gpd.GeoDataFrame.from_features(obj.get("features", []), crs="EPSG:4326")
+                          feats = (obj or {}).get("features", []) or []
+                          gdf = gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326")
 
                       counts.append(len(gdf))
                       frames.append(gdf)
