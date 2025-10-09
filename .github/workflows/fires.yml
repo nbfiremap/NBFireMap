@@ -20,6 +20,9 @@ jobs:
       # PDF → JSON
       GNB_PDF_URL: "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf"
       GNB_SUM_FILE: "GNBfireActSum.json"
+      # New Brunswick Fire Locations (FeatureServer layer → JSON)
+      ERD_FIRE_LOCATIONS_URL: "https://gis-erd-der.gnb.ca/gisserver/rest/services/New_Brunswick_Fires/New_Brunswick_Fire_Locations/FeatureServer/0/query"
+      ERD_FIRE_LOCATIONS_FILE: "erd_fire_locations.json"
 
     steps:
       - name: Checkout
@@ -205,6 +208,33 @@ jobs:
               log(f"{kind}: wrote {outfile} (rows={sigs[0][0]})")
               return True
 
+          # NEW: Fetch FeatureServer layer as plain Esri JSON (with geometry)
+          def attempt_fetch_layer_json(kind, url, outfile, copies=3):
+              payloads, sigs = [], []
+              for i in range(copies):
+                  params = {
+                      "where": "1=1",
+                      "outFields": "*",
+                      "outSR": "4326",
+                      "returnGeometry": "true",
+                      "f": "json"
+                  }
+                  r = arcgis_get(url, params)
+                  data = r.json()
+                  if isinstance(data, dict) and data.get("error"):
+                      raise RuntimeError(f"ArcGIS error for {kind}: {data['error']}")
+                  payloads.append(data)
+                  count, sig = table_to_signature(data)  # signature uses attributes only; fine for stability
+                  log(f"{kind}: copy {i+1}/{copies} -> features={count} sig={sig[:12]}")
+                  time.sleep(1)
+
+              ts = int(time.time())
+              final = add_timestamp_to_table(payloads[0], ts)  # adds FETCHED_FROM_ERD into attributes
+              with open(outfile, "w", encoding="utf-8") as f:
+                  json.dump(final, f, ensure_ascii=False, indent=2)
+              log(f"{kind}: wrote {outfile}")
+              return True
+
           ok = True
           ok &= attempt_fetch_geojson_with_full_attrs(
               kind="active_fires (layer 0)",
@@ -221,6 +251,13 @@ jobs:
               url=os.environ["SUMS_TABLE_URL"],
               outfile=os.environ["SUMS_TABLE_FILE"]
           )
+          # NEW: NB Fire Locations FeatureServer/0 → JSON
+          ok &= attempt_fetch_layer_json(
+              kind="NB Fire Locations (FeatureServer/0)",
+              url=os.environ["ERD_FIRE_LOCATIONS_URL"],
+              outfile=os.environ["ERD_FIRE_LOCATIONS_FILE"]
+          )
+
           log("All datasets fetched successfully." if ok else "Some datasets failed.")
 
       - name: Fetch & parse Activity Summary PDF → GNBfireActSum.json (rows as objects)
@@ -384,7 +421,7 @@ jobs:
             echo "Changes detected; committing…"
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add "${ACTIVE_FIRES_FILE}" "${OUT_FIRES_FILE}" "${SUMS_TABLE_FILE}" "${GNB_SUM_FILE}" || true
+            git add "${ACTIVE_FIRES_FILE}" "${OUT_FIRES_FILE}" "${SUMS_TABLE_FILE}" "${GNB_SUM_FILE}" "${ERD_FIRE_LOCATIONS_FILE}" || true
             git commit -m "Update ERD fire datasets" -m "Run: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
             git push
             echo "Pushed updates."
