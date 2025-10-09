@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759975337",
-  "fetched_utc": 1759975337,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1759979403",
+  "fetched_utc": 1759979403,
   "pages": 1,
   "tables": [
     {
@@ -141,23 +141,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "East",
-          "Status": "Out",
-          "Number": "410",
-          "Fire Name": "410",
-          "Updated": "Oct-07",
-          "Latitude": "47.68743",
-          "Longitude": "65.78808",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         },
         {
           "Region": "East",
@@ -303,40 +286,6 @@
           "Updated": "Oct-08",
           "Latitude": "45.57363",
           "Longitude": "65.29745",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "406",
-          "Fire Name": "montagne",
-          "Updated": "Oct-07",
-          "Latitude": "47.38355",
-          "Longitude": "68.32612",
-          "Size": "0.5",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "409",
-          "Fire Name": "409",
-          "Updated": "Oct-07",
-          "Latitude": "45.61665",
-          "Longitude": "66.59295",
           "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
