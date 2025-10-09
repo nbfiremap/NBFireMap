@@ -319,7 +319,7 @@
           outFireMarkers.push(...outMarkers);
 
           applyFireFilter();
-          refreshSummary();
+          refreshSummary().catch(e => console.error('Failed to refresh summary:', e));
         } catch (e) { console.error('Loading local fires failed:', e); }
       }
 
@@ -1604,11 +1604,23 @@ if (typeof map !== 'undefined' && map && map.on){
         }
         
         groups.forEach((group, groupIndex) => {
-          // Add group header
+          // Add group header with controls
+          const headerContainer = D.createElement('div');
+          headerContainer.className = 'legend-group-header-container';
+          
           const header = D.createElement('div');
           header.className = 'legend-group-header';
           header.textContent = group.title;
-          overlaysList.appendChild(header);
+          
+          const collapseBtn = D.createElement('button');
+          collapseBtn.type = 'button';
+          collapseBtn.className = 'group-collapse-toggle';
+          collapseBtn.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+          collapseBtn.title = 'Collapse group';
+          
+          headerContainer.appendChild(header);
+          headerContainer.appendChild(collapseBtn);
+          overlaysList.appendChild(headerContainer);
           
           // Add group container
           const container = D.createElement('div');
@@ -1623,6 +1635,24 @@ if (typeof map !== 'undefined' && map && map.on){
           });
           
           overlaysList.appendChild(container);
+          
+          // Add collapse/expand functionality - all groups collapsed by default
+          let collapsed = true;
+          container.style.display = 'none';
+          collapseBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+          collapseBtn.title = 'Expand group';
+          
+          collapseBtn.addEventListener('click', () => {
+            collapsed = !collapsed;
+            container.style.display = collapsed ? 'none' : 'block';
+            collapseBtn.innerHTML = collapsed ? 
+              '<i class="fa-solid fa-chevron-down"></i>' : 
+              '<i class="fa-solid fa-chevron-up"></i>';
+            collapseBtn.title = collapsed ? 
+              'Expand group' : 
+              'Collapse group';
+            requestAnimationFrame(sizeLegend);
+          });
         });
       }
       
@@ -1641,19 +1671,75 @@ if (typeof map !== 'undefined' && map && map.on){
         const block = D.createElement('div');
         block.className = 'fire-filter-block';
         block.innerHTML = `
-          <div class="fire-filter-title">Fire Status</div>
-          ${FIRE_STATUS.map(([label, ring, checked]) => `
-            <label class="fire-filter-row" style="display:grid;grid-template-columns:18px 26px 1fr;align-items:center;gap:8px;margin:4px 0;">
-              <input type="checkbox" data-status="${label}" ${checked ? 'checked' : ''} />
-              <span class="legend-badge" style="--ring:${ring}">
-                <i class="fa-solid fa-fire"></i>
-              </span>
-              <span class="text">${label}</span>
-            </label>
-          `).join('')}
+          <div class="fire-filter-header">
+            <div class="fire-filter-title">Fire Status</div>
+            <div class="fire-filter-controls">
+              <button type="button" class="fire-toggle-all" title="Toggle all fire status points">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+              <button type="button" class="fire-collapse-toggle" title="Collapse/expand group">
+                <i class="fa-solid fa-chevron-up"></i>
+              </button>
+            </div>
+          </div>
+          <div class="fire-filter-content">
+            ${FIRE_STATUS.map(([label, ring, checked]) => `
+              <label class="fire-filter-row" style="display:grid;grid-template-columns:18px 26px 1fr;align-items:center;gap:8px;margin:4px 0;">
+                <input type="checkbox" data-status="${label}" ${checked ? 'checked' : ''} />
+                <span class="legend-badge" style="--ring:${ring}">
+                  <i class="fa-solid fa-fire"></i>
+                </span>
+                <span class="text">${label}</span>
+              </label>
+            `).join('')}
+          </div>
         `;
         overlaysList.prepend(block);
-        block.addEventListener('change', () => { ensureFireClusters(); applyFireFilter(); });
+        
+        // Add event listeners
+        block.addEventListener('change', (e) => {
+          if (e.target.type === 'checkbox') {
+            ensureFireClusters(); 
+            applyFireFilter();
+          }
+        });
+        
+        // Toggle all functionality
+        const toggleAllBtn = block.querySelector('.fire-toggle-all');
+        const collapseBtn = block.querySelector('.fire-collapse-toggle');
+        const content = block.querySelector('.fire-filter-content');
+        const checkboxes = block.querySelectorAll('input[type="checkbox"]');
+        
+        let allVisible = true;
+        
+        toggleAllBtn.addEventListener('click', () => {
+          allVisible = !allVisible;
+          checkboxes.forEach(cb => cb.checked = allVisible);
+          toggleAllBtn.innerHTML = allVisible ? 
+            '<i class="fa-solid fa-eye"></i>' : 
+            '<i class="fa-solid fa-eye-slash"></i>';
+          toggleAllBtn.title = allVisible ? 
+            'Hide all fire status points' : 
+            'Show all fire status points';
+          ensureFireClusters();
+          applyFireFilter();
+        });
+        
+        // Collapse/expand functionality
+        let collapsed = false;
+        
+        collapseBtn.addEventListener('click', () => {
+          collapsed = !collapsed;
+          content.style.display = collapsed ? 'none' : 'block';
+          collapseBtn.innerHTML = collapsed ? 
+            '<i class="fa-solid fa-chevron-down"></i>' : 
+            '<i class="fa-solid fa-chevron-up"></i>';
+          collapseBtn.title = collapsed ? 
+            'Expand group' : 
+            'Collapse group';
+          requestAnimationFrame(sizeLegend);
+        });
+        
         requestAnimationFrame(sizeLegend);
       }
       
@@ -1760,7 +1846,7 @@ if (typeof map !== 'undefined' && map && map.on){
             thisBurn: attrs.THIS_YEARS_BURN,
             fetchedAt: attrs.FETCHED_FROM_ERD ?? null
           };
-          refreshSummary();
+          refreshSummary().catch(e => console.error('Failed to refresh summary:', e));
         } catch (e){ console.warn('sums_table load failed:', e); }
       }
       loadSumsBenchmarks();
@@ -1933,12 +2019,68 @@ if (typeof map !== 'undefined' && map && map.on){
         return { css:`conic-gradient(${segs.join(',')})`, legendHTML:legend.join('') };
       }
 
+      function fireCausePieSegments(causeStats){
+        // Define modern, accessible color palette for fire causes
+        const causeColors = {
+          'Lightning': '#F59E0B',       // Amber - natural/weather
+          'Human': '#EF4444',           // Red - danger/human activity
+          'Recreation': '#10B981',      // Emerald - outdoor activities
+          'Equipment': '#3B82F6',       // Blue - mechanical/industrial
+          'Campfire': '#F97316',        // Orange - fire/heat
+          'Debris Burning': '#8B5CF6',  // Violet - controlled burning
+          'Arson': '#DC2626',           // Dark Red - intentional harm
+          'Railroad': '#6B7280',        // Cool Gray - infrastructure
+          'Vehicle': '#06B6D4',         // Cyan - transportation
+          'Structure': '#84CC16',       // Lime - buildings/property
+          'Resident': '#EC4899',        // Pink - residential
+          'Other Industry': '#14B8A6', // Teal - industrial
+          'Unknown': '#9CA3AF'          // Gray - uncertain
+        };
+        
+        // Convert Map to array and sort by count (descending)
+        const sortedCauses = Array.from(causeStats.entries())
+          .sort((a, b) => b[1] - a[1]);
+        
+        const total = Array.from(causeStats.values()).reduce((sum, count) => sum + count, 0);
+        if (total === 0) return { 
+          css:'conic-gradient(#e5e7eb 0 360deg)', 
+          legendHTML:'<div class="legend-item"><span class="legend-swatch" style="background:#e5e7eb"></span><span>No cause data available</span></div>' 
+        };
+
+        let acc = 0;
+        const segs = [];
+        const legend = [];
+        
+        for (const [cause, count] of sortedCauses){
+          if (count <= 0) continue;
+          const start = acc / total * 360;
+          const end   = (acc + count) / total * 360;
+          acc += count;
+          
+          // Get color for this cause, default to a generated color if not defined
+          const color = causeColors[cause] || `hsl(${(cause.charCodeAt(0) * 137) % 360}, 70%, 50%)`;
+          
+          segs.push(`${color} ${start}deg ${end}deg`);
+          legend.push(`
+            <div class="legend-item">
+              <span class="legend-swatch" style="background:${color}"></span>
+              <span>${cause}</span>
+              <span class="legend-count">${count}</span>
+            </div>`);
+        }
+        
+        return { css:`conic-gradient(${segs.join(',')})`, legendHTML:legend.join('') };
+      }
 
 
-      function buildSummaryHTML(){
+
+      async function buildSummaryHTML(){
         const items=[...fireStoreMap.values()]; const year = new Date().getFullYear();
         let totalArea=0, counts={'out of control':0,'being monitored':0,contained:0,'under control':0,'being patrolled':0,extinguished:0,other:0};
         let newToday=0, newYesterday=0, extToday=0, extYesterday=0, totalActive=0, totalExt=0;
+        
+        // Get fire cause statistics
+        const causeStatistics = await FireDataManager.getFireCauseStatistics();
 
         for(const it of items){
           const p=it.props||{};
@@ -1957,6 +2099,7 @@ if (typeof map !== 'undefined' && map && map.on){
         }
 
         const { css:pieCSS, legendHTML } = pieCSSSegments(counts);
+        const { css:causePieCSS, legendHTML:causeLegendHTML } = fireCausePieSegments(causeStatistics.causeStats);
         const totalFiresYear = totalActive + totalExt;
 
         const tableHTML = `
@@ -1996,10 +2139,16 @@ if (typeof map !== 'undefined' && map && map.on){
               const size = toNum(sizeOf(p),1);
               const det  = fmtDateTZ(getDetectedMs(p));
               const extra = (k==='extinguished') ? ` • Out: ${fmtDateTZ(getExtinguishedMs(p))}` : '';
+              
+              // Get fire cause
+              const erdLocation = FireDataManager.findERDFireLocation(p);
+              const cleanedCause = FireDataManager.cleanFireCause(erdLocation?.FIELD_AGENCY_FIRE_CAUSE);
+              const causeText = cleanedCause ? ` • Cause: ${cleanedCause}` : '';
+              
               return `<li style="margin:4px 0;">
                 <a href="#" data-fireid="${it.id}">
                   <span style="font-weight:700">${fireNumShort} • ${name}</span>&nbsp; • &nbsp;${size} ha
-                  <span style="opacity:.8">• ${label}</span>
+                  <span style="opacity:.8">• ${label}${causeText}</span>
                   <span style="opacity:.8">• Detected: ${det}${extra}</span>
                 </a>
               </li>`;
@@ -2022,6 +2171,15 @@ if (typeof map !== 'undefined' && map && map.on){
             <div class="pie-legend">${legendHTML}</div>
           </div>
 
+          <div style="margin:10px 0"><b>Fire Causes</b></div>
+          <div class="pie-wrap" aria-label="Fires by cause pie chart">
+            <div class="pie" style="background:${causePieCSS}"></div>
+            <div class="pie-legend">${causeLegendHTML}</div>
+          </div>
+          <div style="margin-bottom:10px;font-size:12px;opacity:0.8;text-align:center;">
+            Cause data available for ${causeStatistics.totalWithCause} of ${causeStatistics.totalFires} fires (${causeStatistics.coveragePercent.toFixed(1)}%)
+          </div>
+
           <div style="margin:10px 0 2px"><b>Overview</b></div>
           ${tableHTML}
 
@@ -2033,8 +2191,8 @@ if (typeof map !== 'undefined' && map && map.on){
           </div>`;
       }
 
-                  function refreshSummary(){
-        const htmlContent = buildSummaryHTML();
+                  async function refreshSummary(){
+        const htmlContent = await buildSummaryHTML();
         UIPanelManager.updateFireSummaryContent(htmlContent);
         wireSummaryClicks();
         wirePieLegendClicks();

@@ -108,24 +108,56 @@
     .map-ui-hidden .leaflet-control-layers{opacity:0;pointer-events:none}
 
     /* Legend Groups */
+    .legend-group-header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 12px 0 6px 0;
+      padding-bottom: 2px;
+      border-bottom: none;
+    }
+    
+    .legend-group-header-container:first-child {
+      margin-top: 0;
+    }
+    
     .legend-group-header {
       font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
       font-size: var(--fs-12);
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--text);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin: 12px 0 6px 0;
-      padding-bottom: 2px;
-      border-bottom: 1px solid var(--border);
+      margin: 0;
     }
     
-    .legend-group-header:first-child {
-      margin-top: 0;
+    .group-collapse-toggle {
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      border-radius: 4px;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 10px;
+      color: var(--text);
+      transition: background-color 0.15s ease;
+    }
+    
+    .group-collapse-toggle:hover {
+      background: var(--btn-hover);
+    }
+    
+    .group-collapse-toggle:focus-visible {
+      outline: none;
+      box-shadow: var(--focus);
     }
     
     .legend-group {
       margin-bottom: 8px;
+      transition: all 0.2s ease;
     }
     
     .legend-group label {
@@ -153,21 +185,64 @@
     
     /* Fire status block styling */
     .fire-filter-block {
-      background: var(--panel-soft, rgba(0,0,0,0.02));
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 8px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
       margin-bottom: 12px;
+    }
+    
+    .fire-filter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
     }
     
     .fire-filter-title {
       font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
       font-size: var(--fs-12);
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--text);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 6px;
+      margin: 0;
+    }
+    
+    .fire-filter-controls {
+      display: flex;
+      gap: 4px;
+    }
+    
+    .fire-toggle-all,
+    .fire-collapse-toggle {
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      border-radius: 4px;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 10px;
+      color: var(--text);
+      transition: background-color 0.15s ease;
+    }
+    
+    .fire-toggle-all:hover,
+    .fire-collapse-toggle:hover {
+      background: var(--btn-hover);
+    }
+    
+    .fire-toggle-all:focus-visible,
+    .fire-collapse-toggle:focus-visible {
+      outline: none;
+      box-shadow: var(--focus);
+    }
+    
+    .fire-filter-content {
+      transition: all 0.2s ease;
     }\n\n    /* Summary button (now in bottom panel) */\n    .fire-summary-btn.in-legend{position:static!important;left:auto;bottom:auto;width:100%;margin:0;justify-content:center;box-shadow:var(--shadow-soft);border-radius:var(--radius-sm)}
 
     /* Help button */

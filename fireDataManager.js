@@ -18,6 +18,9 @@ window.NBFireMapFireDataManager = (() => {
   // Store the full GNB data including metadata
   let gnbFullData = null;
   
+  // ERD Fire Locations data store for fire cause information
+  let erdFireLocationsData = null;
+  
   // Load GNB fire activity data
   async function loadGNBFireActivityData() {
     if (gnbFireActivityData !== null) return gnbFireActivityData;
@@ -33,6 +36,31 @@ window.NBFireMapFireDataManager = (() => {
       gnbFireActivityData = [];
       gnbFullData = null;
       return [];
+    }
+  }
+  
+  // Load ERD fire locations data for fire cause information
+  async function loadERDFireLocationsData() {
+    if (erdFireLocationsData !== null) return erdFireLocationsData;
+    try {
+      const response = await fetch('erd_fire_locations.geojson', { cache: 'no-store' });
+      const data = await response.json();
+      // Create a map for quick lookups by FIELD_AGENCY_FIRE_ID
+      erdFireLocationsData = new Map();
+      if (data?.features && Array.isArray(data.features)) {
+        data.features.forEach(feature => {
+          const props = feature.properties;
+          if (props?.FIELD_AGENCY_FIRE_ID) {
+            erdFireLocationsData.set(props.FIELD_AGENCY_FIRE_ID, props);
+          }
+        });
+      }
+      console.log(`Loaded ${erdFireLocationsData.size} ERD fire location records`);
+      return erdFireLocationsData;
+    } catch (error) {
+      console.warn('Failed to load ERD fire locations data:', error);
+      erdFireLocationsData = new Map();
+      return erdFireLocationsData;
     }
   }
   
@@ -62,6 +90,38 @@ window.NBFireMapFireDataManager = (() => {
     }
     
     return null;
+  }
+  
+  // Match fire with ERD fire locations data to get fire cause
+  function findERDFireLocation(fireProps) {
+    if (!erdFireLocationsData || erdFireLocationsData.size === 0) return null;
+    
+    const objectId = fireProps?.OBJECTID || fireProps?.ID;
+    
+    if (!objectId) return null;
+    
+    // Try to match by OBJECTID = FIELD_AGENCY_FIRE_ID
+    return erdFireLocationsData.get(objectId) || null;
+  }
+  
+  // Clean up fire cause text by removing French translation, (Final) designation, and handling empty values
+  function cleanFireCause(cause) {
+    if (!cause || typeof cause !== 'string') return null;
+    
+    // Remove leading/trailing whitespace
+    const cleaned = cause.trim();
+    
+    // Return null if empty or just contains "/"
+    if (!cleaned || cleaned === '/') return null;
+    
+    // Remove French translation (everything after and including " / ")
+    let englishOnly = cleaned.split(' / ')[0].trim();
+    
+    // Remove (Final) designation from the cause
+    englishOnly = englishOnly.replace(/\s*\(Final\)\s*$/i, '').trim();
+    
+    // Return null if what remains is empty
+    return englishOnly || null;
   }
   
   // ---- Fire Status & Color Management -----------------------------------
@@ -263,8 +323,8 @@ window.NBFireMapFireDataManager = (() => {
    * Create fire popup content HTML
    */
   async function createFirePopupContent(props, explicitStatus, isOutFire = false) {
-    // Ensure GNB data is loaded
-    await loadGNBFireActivityData();
+    // Ensure both GNB data and ERD fire locations data are loaded
+    await Promise.all([loadGNBFireActivityData(), loadERDFireLocationsData()]);
     const status = explicitStatus || props.FIRE_STAT_DESC_E || 'Unknown';
     const name = getFireName(props);
     const id = getFireId(props);
@@ -278,6 +338,9 @@ window.NBFireMapFireDataManager = (() => {
     
     // Try to match with GNB fire activity data
     const gnbActivity = findGNBFireActivity(props);
+    
+    // Try to match with ERD fire locations data for fire cause
+    const erdLocation = findERDFireLocation(props);
     
     // Get retrieved information - use GNB timestamp when there's a match, otherwise ERD
     let retrievedStr;
@@ -351,6 +414,10 @@ window.NBFireMapFireDataManager = (() => {
           </div>
           <div style="margin-bottom:4px"><b>Area:</b> ${size.toFixed(1)} ha</div>
           ${showContained ? `<div style="margin-bottom:4px"><b>Contained:</b> ${pctStr}</div>` : ''}
+          ${(() => {
+            const cleanedCause = cleanFireCause(erdLocation?.FIELD_AGENCY_FIRE_CAUSE);
+            return cleanedCause ? `<div style="margin-bottom:4px"><b>Cause:</b> ${escHTML(cleanedCause)}</div>` : '';
+          })()}
           ${detectedMs ? `<div style="margin-bottom:4px"><b>Detected:</b> ${fmtDateTime(detectedMs)}</div>` : ''}
           ${dateValue ? `<div style="margin-bottom:4px"><b>${dateLabel}:</b> ${fmtDateTime(dateValue)}</div>` : ''}
           ${gnbActivityHTML}
@@ -543,6 +610,40 @@ window.NBFireMapFireDataManager = (() => {
     return results.sort((a, b) => a.distance - b.distance);
   }
 
+  // ---- Fire Cause Statistics -----------------------------------------------
+  
+  /**
+   * Get fire cause statistics for all fires
+   */
+  async function getFireCauseStatistics() {
+    // Ensure ERD data is loaded
+    await loadERDFireLocationsData();
+    
+    const causeStats = new Map();
+    let totalWithCause = 0;
+    let totalFires = 0;
+    
+    for (const fire of fireStore.values()) {
+      totalFires++;
+      const erdLocation = findERDFireLocation(fire.props);
+      const cleanedCause = cleanFireCause(erdLocation?.FIELD_AGENCY_FIRE_CAUSE);
+      
+      const cause = cleanedCause || 'Unknown';
+      causeStats.set(cause, (causeStats.get(cause) || 0) + 1);
+      
+      if (cleanedCause) {
+        totalWithCause++;
+      }
+    }
+    
+    return {
+      causeStats,
+      totalWithCause,
+      totalFires,
+      coveragePercent: totalFires > 0 ? (totalWithCause / totalFires) * 100 : 0
+    };
+  }
+
   // ---- Public API -------------------------------------------------------
 
   return {
@@ -580,11 +681,20 @@ window.NBFireMapFireDataManager = (() => {
     loadGNBFireActivityData,
     findGNBFireActivity,
     
+    // ERD fire locations data
+    loadERDFireLocationsData,
+    findERDFireLocation,
+    cleanFireCause,
+    
+    // Fire cause analysis
+    getFireCauseStatistics,
+    
     // Status configuration
     getStatusConfig: () => STATUS,
     getColorConfig: () => COLORS
   };
   
-  // Initialize GNB fire activity data loading
+  // Initialize GNB fire activity data loading and ERD fire locations data loading
   loadGNBFireActivityData();
+  loadERDFireLocationsData();
 })();

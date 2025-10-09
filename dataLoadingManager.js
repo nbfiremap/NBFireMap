@@ -23,7 +23,7 @@ window.NBFireMapDataLoadingManager = (() => {
    */
   async function fetchLocalAny(base) {
     // Smart extension selection - fires are .geojson, other data is .json
-    const fireFiles = ['active_fires', 'out_fires'];
+    const fireFiles = ['active_fires', 'out_fires', 'erd_fire_locations'];
     const isFireFile = fireFiles.includes(base);
     
     const attempts = isFireFile ? [
@@ -453,20 +453,22 @@ window.NBFireMapDataLoadingManager = (() => {
    */
   async function loadLocalFires() {
     try {
-      const [activeData, outData, sumsData] = await Promise.all([
+      const [activeData, outData, sumsData, locationsData] = await Promise.all([
         fetchLocalAny('active_fires'),
         fetchLocalAny('out_fires'),
-        fetchLocalAny('sums_table')
+        fetchLocalAny('sums_table'),
+        fetchLocalAny('erd_fire_locations')
       ]);
 
       return {
         active: activeData,
         out: outData,
-        sums: sumsData
+        sums: sumsData,
+        locations: locationsData
       };
     } catch (error) {
       console.warn('Failed to load local fire data:', error);
-      return { active: null, out: null, sums: null };
+      return { active: null, out: null, sums: null, locations: null };
     }
   }
 
