@@ -22,9 +22,9 @@
         "FIRE_NUMBER": "2025394",
         "FIRE_NUMBER_SHORT": "394",
         "FIRE_NAME": "394",
-        "DEGREES_LAT": 47.007419999999996,
-        "DEGREES_LONG": 64.87304999999999,
-        "FIRE_STAT_ID": 2,
+        "DEGREES_LAT": 47.00742,
+        "DEGREES_LONG": 64.87305,
+        "FIRE_STAT_ID": 2.0,
         "FIRE_STAT_DESC_E": "Contained",
         "FIRE_STAT_DESC_F": "Contenu ",
         "TIME_DETECTED": 1759318200000,
@@ -32,10 +32,9 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
+        "PERCENT_CONTAINED": 100.0,
         "FIRE_SIZE": 68.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760016914
+        "FETCHED_FROM_ERD": 1760017400
       }
     },
     {
@@ -54,8 +53,8 @@
         "FIRE_NUMBER_SHORT": "401",
         "FIRE_NAME": "401",
         "DEGREES_LAT": 47.80417,
-        "DEGREES_LONG": 66.30250000000001,
-        "FIRE_STAT_ID": 3,
+        "DEGREES_LONG": 66.3025,
+        "FIRE_STAT_ID": 3.0,
         "FIRE_STAT_DESC_E": "Under Control",
         "FIRE_STAT_DESC_F": "Maîtrisé ",
         "TIME_DETECTED": 1759502400000,
@@ -63,10 +62,9 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 10,
+        "PERCENT_CONTAINED": 10.0,
         "FIRE_SIZE": 55.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760016914
+        "FETCHED_FROM_ERD": 1760017400
       }
     },
     {
@@ -86,7 +84,7 @@
         "FIRE_NAME": "CFB Gagetown 1",
         "DEGREES_LAT": 45.719,
         "DEGREES_LONG": 66.23388,
-        "FIRE_STAT_ID": 6,
+        "FIRE_STAT_ID": 6.0,
         "FIRE_STAT_DESC_E": "Being Monitored",
         "FIRE_STAT_DESC_F": "Sous surveillance",
         "TIME_DETECTED": 1759579200000,
@@ -94,10 +92,9 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 50,
+        "PERCENT_CONTAINED": 50.0,
         "FIRE_SIZE": 100.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760016914
+        "FETCHED_FROM_ERD": 1760017400
       }
     },
     {
@@ -117,7 +114,7 @@
         "FIRE_NAME": "Beaver Lake Stream",
         "DEGREES_LAT": 46.99147,
         "DEGREES_LONG": 66.47543,
-        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_ID": 4.0,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1755166920000,
@@ -125,10 +122,9 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
+        "PERCENT_CONTAINED": 100.0,
         "FIRE_SIZE": 456.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760016914
+        "FETCHED_FROM_ERD": 1760017400
       }
     },
     {
@@ -146,9 +142,9 @@
         "FIRE_NUMBER": "2025365",
         "FIRE_NUMBER_SHORT": "365",
         "FIRE_NAME": "365",
-        "DEGREES_LAT": 46.981379999999994,
+        "DEGREES_LAT": 46.98138,
         "DEGREES_LONG": 64.97792,
-        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_ID": 4.0,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1758374820000,
@@ -156,10 +152,9 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
+        "PERCENT_CONTAINED": 100.0,
         "FIRE_SIZE": 95.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760016914
+        "FETCHED_FROM_ERD": 1760017400
       }
     },
     {
@@ -177,9 +172,9 @@
         "FIRE_NUMBER": "2025400",
         "FIRE_NUMBER_SHORT": "400",
         "FIRE_NAME": "Gallagher Ridge Tracks",
-        "DEGREES_LAT": 46.198409999999996,
+        "DEGREES_LAT": 46.19841,
         "DEGREES_LONG": 65.01808,
-        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_ID": 4.0,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1759495920000,
@@ -187,10 +182,9 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
+        "PERCENT_CONTAINED": 100.0,
         "FIRE_SIZE": 2.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760016914
+        "FETCHED_FROM_ERD": 1760017400
       }
     },
     {
@@ -210,7 +204,7 @@
         "FIRE_NAME": "366",
         "DEGREES_LAT": 46.12233,
         "DEGREES_LONG": 65.7105,
-        "FIRE_STAT_ID": 3,
+        "FIRE_STAT_ID": 3.0,
         "FIRE_STAT_DESC_E": "Under Control",
         "FIRE_STAT_DESC_F": "Maîtrisé ",
         "TIME_DETECTED": 1758377580000,
@@ -218,10 +212,9 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
+        "PERCENT_CONTAINED": 100.0,
         "FIRE_SIZE": 650.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760016914
+        "FETCHED_FROM_ERD": 1760017400
       }
     },
     {
@@ -239,9 +232,9 @@
         "FIRE_NUMBER": "2025411",
         "FIRE_NUMBER_SHORT": "411",
         "FIRE_NAME": "411",
-        "DEGREES_LAT": 46.273379999999996,
+        "DEGREES_LAT": 46.27338,
         "DEGREES_LONG": 66.76275,
-        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_ID": 4.0,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1759764600000,
@@ -249,10 +242,9 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
+        "PERCENT_CONTAINED": 100.0,
         "FIRE_SIZE": 0.9,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760016914
+        "FETCHED_FROM_ERD": 1760017400
       }
     },
     {
@@ -270,9 +262,9 @@
         "FIRE_NUMBER": "2025421",
         "FIRE_NUMBER_SHORT": "421",
         "FIRE_NAME": "Elsi",
-        "DEGREES_LAT": 46.591300000000004,
+        "DEGREES_LAT": 46.5913,
         "DEGREES_LONG": 65.00025,
-        "FIRE_STAT_ID": 2,
+        "FIRE_STAT_ID": 2.0,
         "FIRE_STAT_DESC_E": "Contained",
         "FIRE_STAT_DESC_F": "Contenu ",
         "TIME_DETECTED": 1759908600000,
@@ -280,10 +272,9 @@
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
+        "PERCENT_CONTAINED": 100.0,
         "FIRE_SIZE": 1.3,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760016914
+        "FETCHED_FROM_ERD": 1760017400
       }
     }
   ]
