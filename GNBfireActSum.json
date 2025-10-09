@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760002419",
-  "fetched_utc": 1760002419,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760006396",
+  "fetched_utc": 1760006396,
   "pages": 1,
   "tables": [
     {
@@ -62,7 +62,7 @@
           "Status": "Under Control",
           "Number": "401",
           "Fire Name": "401",
-          "Updated": "Oct-08",
+          "Updated": "Oct-09",
           "Latitude": "47.80417",
           "Longitude": "66.30250",
           "Size": "55.0",
