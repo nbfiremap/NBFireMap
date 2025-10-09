@@ -87,19 +87,16 @@ function testCauseColors() {
   console.log('🎨 Testing fire cause color assignments...');
   
   const causeColors = {
-    'Lightning': '#F59E0B',       // Amber - natural/weather
-    'Human': '#EF4444',           // Red - danger/human activity
-    'Recreation': '#10B981',      // Emerald - outdoor activities
-    'Equipment': '#3B82F6',       // Blue - mechanical/industrial
-    'Campfire': '#F97316',        // Orange - fire/heat
-    'Debris Burning': '#8B5CF6',  // Violet - controlled burning
-    'Arson': '#DC2626',           // Dark Red - intentional harm
-    'Railroad': '#6B7280',        // Cool Gray - infrastructure
-    'Vehicle': '#06B6D4',         // Cyan - transportation
-    'Structure': '#84CC16',       // Lime - buildings/property
-    'Resident': '#EC4899',        // Pink - residential
-    'Other Industry': '#14B8A6', // Teal - industrial
-    'Unknown': '#9CA3AF'          // Gray - uncertain
+    // Clean English causes (French translations and Final designations removed)
+    'Recreation': '#10B981',                    // Emerald - outdoor activities
+    'Resident': '#EC4899',                      // Pink - residential activities
+    'Lightning': '#F59E0B',                     // Amber - natural/weather
+    'Unknown': '#9CA3AF',                       // Gray - unknown
+    'Other Industry': '#14B8A6',                // Teal - industrial
+    'Incendiary': '#DC2626',                    // Dark Red - intentional/arson
+    'Railroads': '#6B7280',                     // Cool Gray - transportation
+    'Miscellaneous': '#8B5CF6',                 // Violet - miscellaneous
+    'No cause data': '#D1D5DB'                  // Light Gray - no cause data available
   };
   
   console.log('🎨 Predefined cause colors:');

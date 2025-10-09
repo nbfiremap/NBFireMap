@@ -2020,21 +2020,29 @@ if (typeof map !== 'undefined' && map && map.on){
       }
 
       function fireCausePieSegments(causeStats){
-        // Define modern, accessible color palette for fire causes
+        // Define color palette for clean English cause values (French and Final removed)
         const causeColors = {
-          'Lightning': '#F59E0B',       // Amber - natural/weather
-          'Human': '#EF4444',           // Red - danger/human activity
-          'Recreation': '#10B981',      // Emerald - outdoor activities
-          'Equipment': '#3B82F6',       // Blue - mechanical/industrial
-          'Campfire': '#F97316',        // Orange - fire/heat
-          'Debris Burning': '#8B5CF6',  // Violet - controlled burning
-          'Arson': '#DC2626',           // Dark Red - intentional harm
-          'Railroad': '#6B7280',        // Cool Gray - infrastructure
-          'Vehicle': '#06B6D4',         // Cyan - transportation
-          'Structure': '#84CC16',       // Lime - buildings/property
-          'Resident': '#EC4899',        // Pink - residential
-          'Other Industry': '#14B8A6', // Teal - industrial
-          'Unknown': '#9CA3AF'          // Gray - uncertain
+          // Primary causes (clean English only)
+          'Recreation': '#10B981',                    // Emerald - outdoor activities
+          'Resident': '#EC4899',                      // Pink - residential activities
+          'Lightning': '#F59E0B',                     // Amber - natural/weather
+          'Unknown': '#9CA3AF',                       // Gray - unknown
+          'Other Industry': '#14B8A6',                // Teal - industrial
+          'Incendiary': '#DC2626',                    // Dark Red - intentional/arson
+          'Railroads': '#6B7280',                     // Cool Gray - transportation
+          'Miscellaneous': '#8B5CF6',                 // Violet - miscellaneous
+          
+          // Additional common causes
+          'Equipment': '#3B82F6',          // Blue - mechanical/industrial
+          'Campfire': '#F97316',           // Orange - fire/heat
+          'Debris Burning': '#A855F7',     // Purple - controlled burning
+          'Human': '#EF4444',              // Red - human activity
+          'Vehicle': '#06B6D4',            // Cyan - vehicles
+          'Structure': '#84CC16',          // Lime - buildings
+          'Arson': '#B91C1C',             // Dark red - intentional harm
+          
+          // No cause data available
+          'No cause data': '#D1D5DB'       // Light Gray - no data available
         };
         
         // Convert Map to array and sort by count (descending)
@@ -2057,6 +2065,9 @@ if (typeof map !== 'undefined' && map && map.on){
           const end   = (acc + count) / total * 360;
           acc += count;
           
+          // Calculate percentage
+          const percentage = ((count / total) * 100).toFixed(1);
+          
           // Get color for this cause, default to a generated color if not defined
           const color = causeColors[cause] || `hsl(${(cause.charCodeAt(0) * 137) % 360}, 70%, 50%)`;
           
@@ -2065,7 +2076,7 @@ if (typeof map !== 'undefined' && map && map.on){
             <div class="legend-item">
               <span class="legend-swatch" style="background:${color}"></span>
               <span>${cause}</span>
-              <span class="legend-count">${count}</span>
+              <span class="legend-count">${count} (${percentage}%)</span>
             </div>`);
         }
         
@@ -2177,7 +2188,7 @@ if (typeof map !== 'undefined' && map && map.on){
             <div class="pie-legend">${causeLegendHTML}</div>
           </div>
           <div style="margin-bottom:10px;font-size:12px;opacity:0.8;text-align:center;">
-            Cause data available for ${causeStatistics.totalWithCause} of ${causeStatistics.totalFires} fires (${causeStatistics.coveragePercent.toFixed(1)}%)
+            Identifiable cause data for ${causeStatistics.totalWithCause} of ${causeStatistics.totalFires} fires (${causeStatistics.coveragePercent.toFixed(1)}%)
           </div>
 
           <div style="margin:10px 0 2px"><b>Overview</b></div>

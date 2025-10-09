@@ -7,16 +7,16 @@
 function testFireCauseCleaning() {
   console.log('🧹 Testing Fire Cause Cleaning Function...');
   
-  // Test cases with expected results
+  // Test cases with expected results - Remove French AND Final designations
   const testCases = [
     { input: 'Recreation / Récréation', expected: 'Recreation' },
     { input: 'Lightning / Foudre', expected: 'Lightning' },
     { input: 'Human / Humaine', expected: 'Human' },
     { input: 'Unknown / Inconnu', expected: 'Unknown' },
-    { input: 'Lightning (Final) / Foudre (Final)', expected: 'Lightning' }, // Remove (Final)
-    { input: 'Unknown (Final) / Inconnu (Final)', expected: 'Unknown' }, // Remove (Final)
-    { input: 'Recreation (Final)', expected: 'Recreation' }, // No French, just (Final)
-    { input: 'Equipment (final) / Équipement (final)', expected: 'Equipment' }, // Case insensitive (Final)
+    { input: 'Lightning (Final) / Foudre (Final)', expected: 'Lightning' }, // Remove both French and (Final)
+    { input: 'Unknown (Final) / Inconnu (Final)', expected: 'Unknown' }, // Remove both French and (Final)
+    { input: 'Recreation (Final)', expected: 'Recreation' }, // Remove (Final), no French to remove
+    { input: 'Equipment (final) / Équipement (final)', expected: 'Equipment' }, // Remove both French and (final)
     { input: 'Campfire', expected: 'Campfire' }, // No French part
     { input: '/', expected: null }, // Just a slash
     { input: '', expected: null }, // Empty string
@@ -28,13 +28,14 @@ function testFireCauseCleaning() {
     { input: '   Lightning (Final) / Foudre (Final)   ', expected: 'Lightning' }, // Whitespace + (Final)
   ];
   
-  // Mock the cleanFireCause function for testing if not available
+  // Mock the cleanFireCause function for testing if not available - Remove French and Final
   function cleanFireCause(cause) {
     if (!cause || typeof cause !== 'string') return null;
     
     const cleaned = cause.trim();
-    if (!cleaned || cleaned === '/') return null;
+    if (!cleaned || cleaned === '/' || cleaned === ' / ') return null;
     
+    // Remove French translation and (Final) designation
     let englishOnly = cleaned.split(' / ')[0].trim();
     englishOnly = englishOnly.replace(/\s*\(Final\)\s*$/i, '').trim();
     return englishOnly || null;

@@ -104,7 +104,7 @@ window.NBFireMapFireDataManager = (() => {
     return erdFireLocationsData.get(objectId) || null;
   }
   
-  // Clean up fire cause text by removing French translation, (Final) designation, and handling empty values
+  // Remove French translation and (Final) designations for clean display
   function cleanFireCause(cause) {
     if (!cause || typeof cause !== 'string') return null;
     
@@ -112,7 +112,7 @@ window.NBFireMapFireDataManager = (() => {
     const cleaned = cause.trim();
     
     // Return null if empty or just contains "/"
-    if (!cleaned || cleaned === '/') return null;
+    if (!cleaned || cleaned === '/' || cleaned === ' / ') return null;
     
     // Remove French translation (everything after and including " / ")
     let englishOnly = cleaned.split(' / ')[0].trim();
@@ -120,7 +120,6 @@ window.NBFireMapFireDataManager = (() => {
     // Remove (Final) designation from the cause
     englishOnly = englishOnly.replace(/\s*\(Final\)\s*$/i, '').trim();
     
-    // Return null if what remains is empty
     return englishOnly || null;
   }
   
@@ -628,12 +627,20 @@ window.NBFireMapFireDataManager = (() => {
       const erdLocation = findERDFireLocation(fire.props);
       const cleanedCause = cleanFireCause(erdLocation?.FIELD_AGENCY_FIRE_CAUSE);
       
-      const cause = cleanedCause || 'Unknown';
-      causeStats.set(cause, (causeStats.get(cause) || 0) + 1);
-      
+      // Show actual cause data as-is, or indicate when no data is available
+      let cause;
       if (cleanedCause) {
-        totalWithCause++;
+        cause = cleanedCause;
+        // Only count as "with cause" if it's not Unknown - treat Unknown as no meaningful data
+        if (!cause.toLowerCase().includes('unknown')) {
+          totalWithCause++;
+        }
+      } else {
+        // No cause data available
+        cause = 'No cause data';
       }
+      
+      causeStats.set(cause, (causeStats.get(cause) || 0) + 1);
     }
     
     return {
