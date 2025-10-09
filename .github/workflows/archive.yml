@@ -94,7 +94,6 @@ jobs:
                           if "json" not in ctype:
                               head = r.text[:300]
                               log(f"[WARN] {label}: non-JSON response; head preview:\n{head}")
-                              # Attempt JSON anyway; if it fails, fall through to {}.
                           return r.json()
                       except ValueError as je:
                           log(f"[WARN] {label}: JSON parse failed ({je}); first 200 bytes: {r.content[:200]!r}")
@@ -103,51 +102,46 @@ jobs:
                       last_err = e
                       log(f"[WARN] {label}: request error: {e}")
                       time.sleep(backoff * attempt)
-              # If all attempts failed hard (e.g., HTTP errors), re-raise to outer logic
               raise last_err
+
+          # Ensure we can return a GeoDataFrame even when there are zero features
+          def empty_gdf():
+              # Explicit empty GeoDataFrame WITH a geometry column + CRS
+              return gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
 
           # Convert an ArcGIS REST "FeatureSet" (f=json) into a GeoJSON FeatureCollection
           # This preserves ALL fields ("attributes") exactly as delivered.
           def esri_feature_to_geojson_feature(f):
               attrs = f.get("attributes", {}) or {}
-
               geom = f.get("geometry")
               if geom is None:
                   gj_geom = None
               else:
-                  # Handle common geometry types from ArcGIS JSON
                   if "x" in geom and "y" in geom:  # Point
                       gj_geom = {"type": "Point", "coordinates": [geom["x"], geom["y"]]}
-                  elif "points" in geom:  # Multipoint (rare here)
+                  elif "points" in geom:  # Multipoint
                       gj_geom = {"type": "MultiPoint", "coordinates": geom["points"]}
                   elif "paths" in geom:  # Polyline
-                      # paths: list of line parts -> MultiLineString if multiple
                       paths = geom["paths"] or []
-                      if len(paths) == 1:
-                          gj_geom = {"type": "LineString", "coordinates": paths[0]}
-                      else:
-                          gj_geom = {"type": "MultiLineString", "coordinates": paths}
+                      gj_geom = {"type": "LineString", "coordinates": paths[0]} if len(paths)==1 \
+                               else {"type": "MultiLineString", "coordinates": paths}
                   elif "rings" in geom:  # Polygon
                       rings = geom["rings"] or []
-                      # ArcGIS uses "unoriented" rings; treat multiple rings as MultiPolygon when needed
-                      # Simplest robust mapping: each ring -> its own Polygon shell (no holes inference)
-                      if len(rings) == 1:
-                          gj_geom = {"type": "Polygon", "coordinates": [rings[0]]}
-                      else:
-                          gj_geom = {"type": "MultiPolygon", "coordinates": [[r] for r in rings]}
+                      gj_geom = {"type": "Polygon", "coordinates": [rings[0]]} if len(rings)==1 \
+                               else {"type": "MultiPolygon", "coordinates": [[r] for r in rings]}
                   else:
-                      # Unknown geometry structure; store raw for debugging but set None
                       gj_geom = None
-
               return {"type": "Feature", "geometry": gj_geom, "properties": attrs}
 
           def esri_to_geojson(esri_obj):
-              features = esri_obj.get("features", []) or []
+              features = (esri_obj or {}).get("features", []) or []
               gj_feats = [esri_feature_to_geojson_feature(f) for f in features]
               return {"type": "FeatureCollection", "features": gj_feats}
 
           def to_gdf_from_geojson_obj(gj_obj):
-              feats = gj_obj.get("features", []) or []
+              feats = (gj_obj or {}).get("features", []) or []
+              if not feats:
+                  return empty_gdf()
               return gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326")
 
           # ---------- Builders (server-side NB filter) ----------
@@ -177,10 +171,10 @@ jobs:
                   "geometry": f"{NB_BBOX[0]},{NB_BBOX[1]},{NB_BBOX[2]},{NB_BBOX[3]}",
                   "inSR": 4326,
                   "spatialRel": "esriSpatialRelIntersects",
-                  "outFields": "*",                 # <— ALL attributes
+                  "outFields": "*",
                   "returnGeometry": "true",
                   "outSR": 4326,
-                  "f": "json",                      # <— IMPORTANT: keep ArcGIS JSON (not GeoJSON) to avoid field loss
+                  "f": "json",
                   "resultRecordCount": 2000,
                   "returnExceededLimitFeatures": "true",
               }
@@ -204,7 +198,6 @@ jobs:
 
           # ---------- Fetch with fallbacks & pagination for ERD ----------
           def fetch_esri_with_paging(base, params):
-              # Try to fetch everything in one go; if server enforces maxRecordCount, walk resultOffset.
               all_feats = []
               offset = 0
               attempts = 0
@@ -215,11 +208,10 @@ jobs:
                   obj = fetch_once(f"ERD page offset={offset}", base, params_page)
                   if isinstance(obj, dict) and obj.get("error"):
                       raise RuntimeError(f"Server error: {obj['error']}")
-                  feats = obj.get("features", []) or []
+                  feats = (obj or {}).get("features", []) or []
                   all_feats.extend(feats)
                   log(f"[INFO] ERD page offset={offset}: +{len(feats)} (total={len(all_feats)})")
                   if len(feats) < int(params.get("resultRecordCount", 2000)):
-                      # last page
                       obj["features"] = all_feats
                       return obj
                   offset += len(feats)
@@ -229,7 +221,7 @@ jobs:
                       return obj
 
           def fetch_geojson_with_fallbacks(source_label, base, params_list):
-              # For CWFIS (already GeoJSON)
+              # For CWFIS (already GeoJSON) but may return XML/blank; treat those as {}
               last_obj = {}
               for idx, params in enumerate(params_list, 1):
                   try:
@@ -252,22 +244,19 @@ jobs:
 
                   for i in range(samples):
                       if src_label == "ERD":
-                          # Preserve all fields: fetch ArcGIS JSON -> convert to GeoJSON in-process
-                          # Try variant 1 then 2 with paging on each
                           esri_obj = None
                           for vidx, p in enumerate(variants, 1):
                               esri_obj = fetch_esri_with_paging(base, p)
-                              n_try = len(esri_obj.get("features", []) or [])
+                              n_try = len((esri_obj or {}).get("features", []) or [])
                               log(f"[INFO] {label} ERD var{vidx}: features={n_try}")
                               if n_try > 0:
                                   break
                           gj_obj = esri_to_geojson(esri_obj or {})
                           gdf = to_gdf_from_geojson_obj(gj_obj)
                       else:
-                          # CWFIS: already GeoJSON
                           obj = fetch_geojson_with_fallbacks(f"{label} copy{i+1}/{samples}", base, variants)
                           feats = (obj or {}).get("features", []) or []
-                          gdf = gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326")
+                          gdf = empty_gdf() if not feats else gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326")
 
                       counts.append(len(gdf))
                       frames.append(gdf)
