@@ -86,7 +86,6 @@ jobs:
                       log(f"[RES] {label}: status={r.status_code} type={ctype} bytes={size}")
                       r.raise_for_status()
 
-                      # Parse JSON if possible; if body is empty or not JSON, return {} gracefully
                       try:
                           if size == 0:
                               log(f"[WARN] {label}: empty body; treating as empty object")
@@ -106,7 +105,6 @@ jobs:
 
           # Ensure we can return a GeoDataFrame even when there are zero features
           def empty_gdf():
-              # Explicit empty GeoDataFrame WITH a geometry column + CRS
               return gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
 
           # Convert an ArcGIS REST "FeatureSet" (f=json) into a GeoJSON FeatureCollection
@@ -189,11 +187,41 @@ jobs:
               }
               return ("ERD", base, [params_env, params_all])
 
+          # NEW: ERD Fire Locations (separate service) — same approach as above, but custom base URL.
+          def erd_custom_builder(base_url: str):
+              params_env = {
+                  "where": "1=1",
+                  "geometryType": "esriGeometryEnvelope",
+                  "geometry": f"{NB_BBOX[0]},{NB_BBOX[1]},{NB_BBOX[2]},{NB_BBOX[3]}",
+                  "inSR": 4326,
+                  "spatialRel": "esriSpatialRelIntersects",
+                  "outFields": "*",
+                  "returnGeometry": "true",
+                  "outSR": 4326,
+                  "f": "json",
+                  "resultRecordCount": 2000,
+                  "returnExceededLimitFeatures": "true",
+              }
+              params_all = {
+                  "where": "1=1",
+                  "outFields": "*",
+                  "returnGeometry": "true",
+                  "outSR": 4326,
+                  "f": "json",
+                  "resultRecordCount": 2000,
+                  "returnExceededLimitFeatures": "true",
+              }
+              return ("ERD", base_url, [params_env, params_all])
+
           DATASETS = [
               {"key": "24_hour_spots",   "group": "cwfis", "builder": lambda: cwfis_builder("public:hotspots_last24hrs")},
               {"key": "fire_perimeters", "group": "cwfis", "builder": lambda: cwfis_builder("public:m3_polygons_current")},
               {"key": "active_fires",    "group": "erd",   "builder": lambda: erd_builder(0)},
               {"key": "out_fires",       "group": "erd",   "builder": lambda: erd_builder(1)},
+              # NEW: Fire Locations (FeatureServer/0) saved to archive/erd/fire_locations_YYYYMMDD.geojson
+              {"key": "fire_locations",  "group": "erd",   "builder": lambda: erd_custom_builder(
+                  "https://gis-erd-der.gnb.ca/gisserver/rest/services/New_Brunswick_Fires/New_Brunswick_Fire_Locations/FeatureServer/0/query"
+              )},
           ]
 
           # ---------- Fetch with fallbacks & pagination for ERD ----------
@@ -221,7 +249,6 @@ jobs:
                       return obj
 
           def fetch_geojson_with_fallbacks(source_label, base, params_list):
-              # For CWFIS (already GeoJSON) but may return XML/blank; treat those as {}
               last_obj = {}
               for idx, params in enumerate(params_list, 1):
                   try:
