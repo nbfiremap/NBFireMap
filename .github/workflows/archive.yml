@@ -1,4 +1,4 @@
-name: Daily Fire Data Archive
+name: TEST
 
 on:
   schedule:
@@ -35,7 +35,7 @@ jobs:
 
       - name: Download and write files (verbose, preserve all ERD fields)
         env:
-          PYTHONUNBUFFERED: "1"        # unbuffered logs
+          PYTHONUNBUFFERED: "1"
         shell: bash
         run: |
           set -xeuo pipefail
@@ -46,12 +46,11 @@ jobs:
 
           import requests
           import geopandas as gpd
-          from shapely.geometry import shape, Point, LineString, Polygon, MultiLineString, MultiPolygon
 
           def log(msg): print(msg, flush=True)
 
           # --- Date / output ---
-          TZ = ZoneInfo("America/Toronto")
+          TZ = ZoneInfo("America/Moncton")
           today_str = datetime.now(TZ).strftime("%Y%m%d")
 
           ROOT = "archive"
@@ -67,86 +66,81 @@ jobs:
           # --- HTTP session ---
           S = requests.Session()
           S.headers.update({
-              "User-Agent": "nb-fire-archive/1.2 (github actions)",
-              "Accept": "application/json, application/geo+json;q=0.9, */*;q=0.8",
+              "User-Agent": "nb-fire-archive/1.3 (github actions)",
+              "Accept": "application/geo+json, application/json;q=0.9, */*;q=0.8",
           })
-          TIMEOUT=90
+          TIMEOUT = 90
 
           # ---------- Helpers ----------
+          def _looks_like_json(text: str) -> bool:
+              t = text.lstrip()
+              return t.startswith("{") or t.startswith("[")
+
           def fetch_once(label, base, params):
               req = S.prepare_request(requests.Request("GET", base, params=params))
               log(f"[REQ] {label}: {req.method} {req.url}")
               r = S.send(req, timeout=TIMEOUT)
-              log(f"[RES] {label}: status={r.status_code} type={r.headers.get('content-type')} bytes={len(r.content)}")
-              r.raise_for_status()
               ctype = (r.headers.get('content-type') or '').lower()
-              if "json" not in ctype:
-                  log(f"[WARN] {label}: non-JSON response head:\n{r.text[:300]}")
-              return r.json()
+              body = r.content
+              log(f"[RES] {label}: status={r.status_code} type={ctype} bytes={len(body)}")
+              r.raise_for_status()
 
-          # Convert an ArcGIS REST "FeatureSet" (f=json) into a GeoJSON FeatureCollection
-          # This preserves ALL fields ("attributes") exactly as delivered.
+              # Only parse as JSON if content-type is JSON-ish or body looks like JSON.
+              if "json" in ctype or _looks_like_json(body.decode("utf-8", errors="ignore")):
+                  return r.json()
+
+              # Not JSON -> log a short head and raise (caller can decide to try a fallback)
+              head = r.text[:300]
+              log(f"[WARN] {label}: non-JSON response head:\n{head}")
+              raise RuntimeError(f"{label}: non-JSON response (content-type={ctype})")
+
+          # ESRI → GeoJSON conversion (preserve ALL fields)
           def esri_feature_to_geojson_feature(f):
               attrs = f.get("attributes", {}) or {}
-
               geom = f.get("geometry")
-              if geom is None:
-                  gj_geom = None
-              else:
-                  # Handle common geometry types from ArcGIS JSON
-                  if "x" in geom and "y" in geom:  # Point
+              gj_geom = None
+              if geom is not None:
+                  if "x" in geom and "y" in geom:
                       gj_geom = {"type": "Point", "coordinates": [geom["x"], geom["y"]]}
-                  elif "points" in geom:  # Multipoint (rare here)
+                  elif "points" in geom:
                       gj_geom = {"type": "MultiPoint", "coordinates": geom["points"]}
-                  elif "paths" in geom:  # Polyline
-                      # paths: list of line parts -> MultiLineString if multiple
-                      paths = geom["paths"] or []
-                      if len(paths) == 1:
-                          gj_geom = {"type": "LineString", "coordinates": paths[0]}
-                      else:
-                          gj_geom = {"type": "MultiLineString", "coordinates": paths}
-                  elif "rings" in geom:  # Polygon
-                      rings = geom["rings"] or []
-                      # ArcGIS uses "unoriented" rings; treat multiple rings as MultiPolygon when needed
-                      # Simplest robust mapping: each ring -> its own Polygon shell (no holes inference)
-                      if len(rings) == 1:
-                          gj_geom = {"type": "Polygon", "coordinates": [rings[0]]}
-                      else:
-                          gj_geom = {"type": "MultiPolygon", "coordinates": [[r] for r in rings]}
-                  else:
-                      # Unknown geometry structure; store raw for debugging but set None
-                      gj_geom = None
-
+                  elif "paths" in geom:
+                      paths = geom.get("paths") or []
+                      gj_geom = {"type": "LineString", "coordinates": paths[0]} if len(paths) == 1 \
+                                else {"type": "MultiLineString", "coordinates": paths}
+                  elif "rings" in geom:
+                      rings = geom.get("rings") or []
+                      gj_geom = {"type": "Polygon", "coordinates": [rings[0]]} if len(rings) == 1 \
+                                else {"type": "MultiPolygon", "coordinates": [[r] for r in rings]}
               return {"type": "Feature", "geometry": gj_geom, "properties": attrs}
 
           def esri_to_geojson(esri_obj):
               features = esri_obj.get("features", []) or []
-              gj_feats = [esri_feature_to_geojson_feature(f) for f in features]
-              return {"type": "FeatureCollection", "features": gj_feats}
+              return {"type": "FeatureCollection",
+                      "features": [esri_feature_to_geojson_feature(f) for f in features]}
 
           def to_gdf_from_geojson_obj(gj_obj):
               feats = gj_obj.get("features", []) or []
               return gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326")
 
-          # ---------- Builders (server-side NB filter) ----------
-          # CWFIS — WFS with bbox filter; fallback to CQL if needed.
+          # ---------- Request builders ----------
           def cwfis_builder(type_name: str):
               base = "https://cwfis.cfs.nrcan.gc.ca/geoserver/public/ows"
-              bbox = f"{NB_BBOX[0]},{NB_BBOX[1]},{NB_BBOX[2]},{NB_BBOX[3]},EPSG:4326"
+              bbox_val = f"{NB_BBOX[0]},{NB_BBOX[1]},{NB_BBOX[2]},{NB_BBOX[3]},EPSG:4326"
               params_bbox = {
                   "service": "WFS", "version": "1.0.0", "request": "GetFeature",
                   "typeName": type_name, "srsName": "EPSG:4326",
-                  "bbox": bbox, "outputFormat": "application/json",
+                  "bbox": bbox_val, "outputFormat": "application/json",
               }
+              # Keep a CQL variant as a last resort, but only attempt if bbox fails (e.g., non-JSON/error).
               params_cql = {
                   "service": "WFS", "version": "1.0.0", "request": "GetFeature",
                   "typeName": type_name, "srsName": "EPSG:4326",
                   "CQL_FILTER": f"BBOX(the_geom,{NB_BBOX[0]},{NB_BBOX[1]},{NB_BBOX[2]},{NB_BBOX[3]})",
                   "outputFormat": "application/json",
               }
-              return ("CWFIS", base, [params_bbox, params_cql])
+              return ("CWFIS", base, [("bbox", params_bbox), ("cql", params_cql)])
 
-          # ERD — ArcGIS REST using f=json to PRESERVE ALL FIELDS; envelope filter with pagination fallback.
           def erd_builder(layer_idx: int):
               base = f"https://gis-erd-der.gnb.ca/arcgis/rest/services/Fire_Dashboards/Public_Fires/MapServer/{layer_idx}/query"
               params_env = {
@@ -155,10 +149,10 @@ jobs:
                   "geometry": f"{NB_BBOX[0]},{NB_BBOX[1]},{NB_BBOX[2]},{NB_BBOX[3]}",
                   "inSR": 4326,
                   "spatialRel": "esriSpatialRelIntersects",
-                  "outFields": "*",                 # <— ALL attributes
+                  "outFields": "*",
                   "returnGeometry": "true",
                   "outSR": 4326,
-                  "f": "json",                      # <— IMPORTANT: keep ArcGIS JSON (not GeoJSON) to avoid field loss
+                  "f": "json",
                   "resultRecordCount": 2000,
                   "returnExceededLimitFeatures": "true",
               }
@@ -180,43 +174,49 @@ jobs:
               {"key": "out_fires",       "group": "erd",   "builder": lambda: erd_builder(1)},
           ]
 
-          # ---------- Fetch with fallbacks & pagination for ERD ----------
+          # ---------- Fetchers ----------
           def fetch_esri_with_paging(base, params):
-              # Try to fetch everything in one go; if server enforces maxRecordCount, walk resultOffset.
               all_feats = []
               offset = 0
               attempts = 0
+              page_size = int(params.get("resultRecordCount", 2000))
               while True:
                   attempts += 1
-                  params_page = dict(params)
-                  params_page["resultOffset"] = offset
+                  params_page = dict(params, resultOffset=offset)
                   obj = fetch_once(f"ERD page offset={offset}", base, params_page)
                   if isinstance(obj, dict) and obj.get("error"):
                       raise RuntimeError(f"Server error: {obj['error']}")
                   feats = obj.get("features", []) or []
                   all_feats.extend(feats)
                   log(f"[INFO] ERD page offset={offset}: +{len(feats)} (total={len(all_feats)})")
-                  if len(feats) < int(params.get("resultRecordCount", 2000)):
-                      # last page
+                  if len(feats) < page_size:
                       obj["features"] = all_feats
                       return obj
                   offset += len(feats)
                   if attempts > 50:
-                      log("[WARN] paging attempts exceeded safeguard; stopping.")
+                      log("[WARN] paging attempts exceeded safeguard; returning partial")
                       obj["features"] = all_feats
                       return obj
 
-          def fetch_geojson_with_fallbacks(source_label, base, params_list):
-              # For CWFIS (already GeoJSON)
-              last_obj = None
-              for idx, params in enumerate(params_list, 1):
-                  obj = fetch_once(f"{source_label} try{idx}", base, params)
-                  n = len(obj.get("features", []))
-                  log(f"[INFO] {source_label} try{idx}: features={n}")
-                  last_obj = obj
-                  if n > 0:
-                      return obj
-              return last_obj
+          def fetch_geojson_with_fallbacks(source_label, base, variants):
+              """
+              For CWFIS: try bbox first. If it returns JSON (even with 0 features), accept and return.
+              Only attempt the CQL fallback if bbox attempt raises (e.g., non-JSON or HTTP error).
+              """
+              last_exc = None
+              for tag, params in variants:
+                  try:
+                      obj = fetch_once(f"{source_label} ({tag})", base, params)
+                      n = len(obj.get("features", []))
+                      log(f"[INFO] {source_label} ({tag}): features={n}")
+                      return obj  # accept success regardless of feature count
+                  except Exception as e:
+                      last_exc = e
+                      log(f"[WARN] {source_label} ({tag}) failed: {e}")
+                      # continue to next variant
+              if last_exc:
+                  raise last_exc
+              raise RuntimeError(f"{source_label}: no variants available")
 
           def consensus_download(builder, label, max_rounds=5, samples=3):
               for attempt in range(1, max_rounds + 1):
@@ -225,27 +225,51 @@ jobs:
                   src_label, base, variants = builder()
 
                   for i in range(samples):
-                      if src_label == "ERD":
-                          # Preserve all fields: fetch ArcGIS JSON -> convert to GeoJSON in-process
-                          # Try variant 1 then 2 with paging on each
-                          esri_obj = None
-                          for vidx, p in enumerate(variants, 1):
-                              esri_obj = fetch_esri_with_paging(base, p)
-                              n_try = len(esri_obj.get("features", []))
-                              log(f"[INFO] {label} ERD var{vidx}: features={n_try}")
-                              if n_try > 0:
-                                  break
-                          gj_obj = esri_to_geojson(esri_obj)
-                          gdf = to_gdf_from_geojson_obj(gj_obj)
-                      else:
-                          # CWFIS: already GeoJSON
-                          obj = fetch_geojson_with_fallbacks(f"{label} copy{i+1}/{samples}", base, variants)
-                          gdf = gpd.GeoDataFrame.from_features(obj.get("features", []), crs="EPSG:4326")
+                      try:
+                          if src_label == "ERD":
+                              esri_obj = None
+                              # Try variant 1 then 2 with paging on each
+                              for vidx, p in enumerate(variants, 1):
+                                  try:
+                                      esri_obj = fetch_esri_with_paging(base, p)
+                                      n_try = len(esri_obj.get("features", []))
+                                      log(f"[INFO] {label} ERD var{vidx}: features={n_try}")
+                                      break
+                                  except Exception as e:
+                                      log(f"[WARN] {label} ERD var{vidx} failed: {e}")
+                                      esri_obj = None
+                              if esri_obj is None:
+                                  raise RuntimeError(f"{label}: ERD fetch failed for all variants")
+                              gj_obj = esri_to_geojson(esri_obj)
+                              gdf = to_gdf_from_geojson_obj(gj_obj)
+                          else:
+                              # CWFIS - try bbox first, only use CQL if bbox fails
+                              obj = None
+                              for vidx, (tag, params) in enumerate(variants, 1):
+                                  try:
+                                      obj = fetch_once(f"{label} copy{i+1}/{samples} {tag}", base, params)
+                                      n_try = len(obj.get("features", []))
+                                      log(f"[INFO] {label} {tag}: features={n_try}")
+                                      break
+                                  except Exception as e:
+                                      log(f"[WARN] {label} {tag} failed: {e}")
+                                      obj = None
+                              if obj is None:
+                                  raise RuntimeError(f"{label}: CWFIS fetch failed for all variants")
+                              gdf = gpd.GeoDataFrame.from_features(obj.get("features", []), crs="EPSG:4326")
 
-                      counts.append(len(gdf))
-                      frames.append(gdf)
-                      log(f"[INFO] {label}: received_features={len(gdf)}")
-                      time.sleep(0.25)
+                          counts.append(len(gdf))
+                          frames.append(gdf)
+                          log(f"[INFO] {label}: received_features={len(gdf)}")
+                          time.sleep(0.25)
+                      except Exception as e:
+                          log(f"[ERROR] {label} sample {i+1}: {e}")
+                          # Skip this sample but continue with others
+                          continue
+
+                  if not counts:
+                      log(f"[ERROR] {label}: no successful samples in attempt {attempt}")
+                      continue
 
                   if len(set(counts)) == 1:
                       log(f"[OK] {label}: consensus n={counts[0]}")
@@ -253,12 +277,16 @@ jobs:
                   log(f"[WARN] {label}: mismatch counts {counts}, retrying…")
                   time.sleep(1.0)
 
-              from collections import Counter
-              c = Counter(counts)
-              n, _ = c.most_common(1)[0]
-              idx = counts.index(n)
-              log(f"[WARN] {label}: using majority sample n={n}")
-              return frames[idx]
+              # Fallback to majority sample if we have any
+              if counts:
+                  from collections import Counter
+                  c = Counter(counts)
+                  n, _ = c.most_common(1)[0]
+                  idx = counts.index(n)
+                  log(f"[WARN] {label}: using majority sample n={n}")
+                  return frames[idx]
+              
+              raise RuntimeError(f"{label}: failed to get any successful samples after {max_rounds} rounds")
 
           # ---------- Run ----------
           failures = []
@@ -268,8 +296,15 @@ jobs:
                   gdf = consensus_download(ds["builder"], label)
                   out_dir = FOLDERS[ds["group"]]
                   out_path = os.path.join(out_dir, f"{ds['key']}_{today_str}.geojson")
-                  if os.path.exists(out_path): os.remove(out_path)
-                  gdf.to_file(out_path, driver="GeoJSON")
+                  if os.path.exists(out_path):
+                      os.remove(out_path)
+
+                  if len(gdf) == 0:
+                      # Write a minimal empty GeoJSON to avoid driver issues with empty GeoDataFrames
+                      with open(out_path, "w", encoding="utf-8") as f:
+                          json.dump({"type": "FeatureCollection", "features": []}, f)
+                  else:
+                      gdf.to_file(out_path, driver="GeoJSON")
                   log(f"[SAVED] {out_path} ({len(gdf)} features)")
               except Exception as e:
                   failures.append((label, str(e)))
