@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760006396",
-  "fetched_utc": 1760006396,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760009383",
+  "fetched_utc": 1760009383,
   "pages": 1,
   "tables": [
     {
@@ -66,13 +66,13 @@
           "Latitude": "47.80417",
           "Longitude": "66.30250",
           "Size": "55.0",
-          "Pers": "13",
+          "Pers": "11",
           "Eng": "1",
-          "Tend": "2",
-          "Trac": "1",
+          "Tend": "1",
+          "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "4"
+          "Ovr": "3"
         },
         {
           "Region": "East",
@@ -198,7 +198,7 @@
           "Status": "Under Control",
           "Number": "366",
           "Fire Name": "366",
-          "Updated": "Oct-08",
+          "Updated": "Oct-09",
           "Latitude": "46.12233",
           "Longitude": "65.71050",
           "Size": "650.0",
@@ -208,7 +208,7 @@
           "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "6"
+          "Ovr": "7"
         },
         {
           "Region": "West",
