@@ -2084,8 +2084,20 @@
                 <div style="margin-bottom:4px"><b>Area:</b> ${size.toFixed(1)} ha</div>
                 ${showContained ? `<div style="margin-bottom:4px"><b>Contained:</b> ${pctStr}</div>` : ''}
                 ${(() => {
-                  const cleanedCause = cleanFireCause(erdLocation?.FIELD_AGENCY_FIRE_CAUSE);
-                  return cleanedCause ? `<div style="margin-bottom:4px"><b>Cause:</b> ${escHTML(cleanedCause)}</div>` : '';
+                  const rawCause = erdLocation?.FIELD_AGENCY_FIRE_CAUSE;
+                  const cleanedCause = cleanFireCause(rawCause);
+                  let causeDisplay;
+                  
+                  if (cleanedCause) {
+                    causeDisplay = cleanedCause;
+                  } else if (rawCause && rawCause.trim() && rawCause.trim() !== '/' && rawCause.trim() !== ' / ') {
+                    // There is actual cause content but it didn't clean properly - likely contains "Unknown"
+                    causeDisplay = 'Unknown';
+                  } else {
+                    // No cause data available (null, empty, or just "/")
+                    causeDisplay = 'No data';
+                  }
+                  return `<div style="margin-bottom:4px"><b>Cause:</b> ${escHTML(causeDisplay)}</div>`;
                 })()}
                 ${detectedMs ? `<div style="margin-bottom:4px"><b>Detected:</b> ${fmtDateTime(detectedMs)}</div>` : ''}
                 ${dateValue ? `<div style="margin-bottom:4px"><b>${dateLabel}:</b> ${fmtDateTime(dateValue)}</div>` : ''}
@@ -2289,11 +2301,24 @@
           await loadERDFireLocationsData();
           
           const causeStats = new Map();
+          const causeAreas = new Map();
           let totalWithCause = 0;
           let totalFires = 0;
+          let totalArea = 0;
+          let naturalCount = 0;
+          let humanCount = 0;
+          let unknownCount = 0;
+          let noCauseCount = 0;
+          let naturalArea = 0;
+          let humanArea = 0;
+          let unknownArea = 0;
+          let noCauseArea = 0;
           
           for (const fire of fireStore.values()) {
             totalFires++;
+            const fireArea = getFireSize(fire.props);
+            totalArea += fireArea;
+            
             const erdLocation = findERDFireLocation(fire.props);
             const cleanedCause = cleanFireCause(erdLocation?.FIELD_AGENCY_FIRE_CAUSE);
             
@@ -2301,22 +2326,45 @@
             let cause;
             if (cleanedCause) {
               cause = cleanedCause;
-              // Only count as "with cause" if it's not Unknown - treat Unknown as no meaningful data
-              if (!cause.toLowerCase().includes('unknown')) {
-                totalWithCause++;
+              totalWithCause++;
+              
+              // Categorize causes
+              if (cause.toLowerCase().includes('lightning')) {
+                naturalCount++;
+                naturalArea += fireArea;
+              } else if (cause.toLowerCase().includes('unknown')) {
+                unknownCount++;
+                unknownArea += fireArea;
+              } else {
+                // Everything else is human-caused
+                humanCount++;
+                humanArea += fireArea;
               }
             } else {
-              // No cause data available
+              // No cause data available - separate from Unknown
               cause = 'No cause data';
+              noCauseCount++;
+              noCauseArea += fireArea;
             }
             
             causeStats.set(cause, (causeStats.get(cause) || 0) + 1);
+            causeAreas.set(cause, (causeAreas.get(cause) || 0) + fireArea);
           }
           
           return {
             causeStats,
+            causeAreas,
             totalWithCause,
             totalFires,
+            totalArea,
+            naturalCount,
+            humanCount,
+            unknownCount,
+            noCauseCount,
+            naturalArea,
+            humanArea,
+            unknownArea,
+            noCauseArea,
             coveragePercent: totalFires > 0 ? (totalWithCause / totalFires) * 100 : 0
           };
         }
@@ -5104,7 +5152,7 @@ if (typeof map !== 'undefined' && map && map.on){
         return { css:`conic-gradient(${segs.join(',')})`, legendHTML:legend.join('') };
       }
 
-      function fireCausePieSegments(causeStats){
+      function fireCausePieSegments(causeStats, causeAreas, totalArea, mode = 'area'){
         // Define color palette for clean English cause values (French and Final removed)
         const causeColors = {
           // Primary causes (clean English only)
@@ -5130,42 +5178,82 @@ if (typeof map !== 'undefined' && map && map.on){
           'No cause data': '#D1D5DB'       // Light Gray - no data available
         };
         
-        // Convert Map to array and sort by count (descending)
+        // Convert Map to array and sort by the selected mode (area or count)
         const sortedCauses = Array.from(causeStats.entries())
-          .sort((a, b) => b[1] - a[1]);
+          .map(([cause, count]) => ({ cause, count, area: causeAreas.get(cause) || 0 }))
+          .sort((a, b) => mode === 'area' ? b.area - a.area : b.count - a.count);
         
-        const total = Array.from(causeStats.values()).reduce((sum, count) => sum + count, 0);
-        if (total === 0) return { 
+        const totalCount = Array.from(causeStats.values()).reduce((sum, count) => sum + count, 0);
+        const totalValue = mode === 'area' ? totalArea : totalCount;
+        
+        if (totalCount === 0 || (mode === 'area' && totalArea === 0)) return { 
           css:'conic-gradient(#e5e7eb 0 360deg)', 
-          legendHTML:'<div class="legend-item"><span class="legend-swatch" style="background:#e5e7eb"></span><span>No cause data available</span></div>' 
+          legendHTML:'<div class="legend-item"><span class="legend-swatch" style="background:#e5e7eb"></span><span>No cause data available</span></div>',
+          tableHTML:'<div style="text-align:center;color:#6b7280;padding:20px;">No cause data available</div>'
         };
 
         let acc = 0;
         const segs = [];
         const legend = [];
+        const tableRows = [];
         
-        for (const [cause, count] of sortedCauses){
-          if (count <= 0) continue;
-          const start = acc / total * 360;
-          const end   = (acc + count) / total * 360;
-          acc += count;
+        for (const {cause, count, area} of sortedCauses){
+          const value = mode === 'area' ? area : count;
+          if (value <= 0) continue;
+          const start = acc / totalValue * 360;
+          const end   = (acc + value) / totalValue * 360;
+          acc += value;
           
-          // Calculate percentage
-          const percentage = ((count / total) * 100).toFixed(1);
+          // Calculate percentages
+          const countPercentage = ((count / totalCount) * 100).toFixed(1);
+          const areaPercentage = totalArea > 0 ? ((area / totalArea) * 100).toFixed(1) : '0.0';
+          const valuePercentage = ((value / totalValue) * 100).toFixed(1);
           
           // Get color for this cause, default to a generated color if not defined
           const color = causeColors[cause] || `hsl(${(cause.charCodeAt(0) * 137) % 360}, 70%, 50%)`;
           
           segs.push(`${color} ${start}deg ${end}deg`);
+          
+          // Legend format - show current mode value in legend
+          const legendValue = mode === 'area' ? `${toNum(area)} ha` : `${count} fires`;
           legend.push(`
             <div class="legend-item">
               <span class="legend-swatch" style="background:${color}"></span>
               <span>${cause}</span>
-              <span class="legend-count">${count} (${percentage}%)</span>
+              <span class="legend-count">${legendValue} (${valuePercentage}%)</span>
             </div>`);
+          
+          // Table row format (for detailed breakdown)
+          tableRows.push(`
+            <tr>
+              <td>
+                <span class="legend-swatch" style="background:${color};display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;"></span>
+                ${cause}
+              </td>
+              <td>${count}</td>
+              <td>${countPercentage}%</td>
+              <td>${toNum(area)} ha</td>
+              <td>${areaPercentage}%</td>
+            </tr>`);
         }
         
-        return { css:`conic-gradient(${segs.join(',')})`, legendHTML:legend.join('') };
+        const tableHTML = `
+          <table class="pro-table compact" aria-label="Fire causes breakdown table">
+            <thead>
+              <tr>
+                <th>Cause</th>
+                <th>Count</th>
+                <th>%</th>
+                <th>Area</th>
+                <th>%</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${tableRows.join('')}
+            </tbody>
+          </table>`;
+        
+        return { css:`conic-gradient(${segs.join(',')})`, legendHTML:legend.join(''), tableHTML };
       }
 
 
@@ -5195,7 +5283,8 @@ if (typeof map !== 'undefined' && map && map.on){
         }
 
         const { css:pieCSS, legendHTML } = pieCSSSegments(counts);
-        const { css:causePieCSS, legendHTML:causeLegendHTML } = fireCausePieSegments(causeStatistics.causeStats);
+        // Use global toggle mode
+        const { css:causePieCSS, legendHTML:causeLegendHTML } = fireCausePieSegments(causeStatistics.causeStats, causeStatistics.causeAreas, causeStatistics.totalArea, fireCauseToggleMode);
         const totalFiresYear = totalActive + totalExt;
 
         const tableHTML = `
@@ -5267,19 +5356,38 @@ if (typeof map !== 'undefined' && map && map.on){
             <div class="pie-legend">${legendHTML}</div>
           </div>
 
+          <div style="margin:10px 0 2px"><b>Overview</b></div>
+          ${tableHTML}
+
+          ${buildBenchmarksHTML()}
+
           <div style="margin:10px 0"><b>Fire Causes</b></div>
+          <div style="margin-bottom:12px;">
+            <div id="fire-cause-toggle" class="modern-toggle" data-mode="area" style="display:inline-flex;align-items:center;cursor:pointer;user-select:none;font-size:11px;">
+              <div class="toggle-track" style="width:90px;height:28px;background:#e5e7eb;border-radius:14px;position:relative;transition:all 0.2s ease;display:flex;align-items:center;padding:0;">
+                <div class="toggle-slider" style="width:43px;height:22px;background:white;border-radius:11px;position:absolute;top:3px;left:3px;transition:all 0.2s ease;box-shadow:0 1px 3px rgba(0,0,0,0.3);"></div>
+                <span class="toggle-area-label" style="font-size:10px;font-weight:600;color:#374151;z-index:2;position:absolute;left:12px;pointer-events:none;">Area</span>
+                <span class="toggle-count-label" style="font-size:10px;font-weight:400;color:#9CA3AF;z-index:2;position:absolute;right:10px;pointer-events:none;">Count</span>
+              </div>
+            </div>
+          </div>
           <div class="pie-wrap" aria-label="Fires by cause pie chart">
             <div class="pie" style="background:${causePieCSS}"></div>
             <div class="pie-legend">${causeLegendHTML}</div>
           </div>
           <div style="margin-bottom:10px;font-size:12px;opacity:0.8;text-align:center;">
-            Identifiable cause data for ${causeStatistics.totalWithCause} of ${causeStatistics.totalFires} fires (${causeStatistics.coveragePercent.toFixed(1)}%)
+            ${fireCauseToggleMode === 'area' ? `
+              Natural: ${toNum(causeStatistics.naturalArea)} ha (${(causeStatistics.naturalArea/causeStatistics.totalArea*100).toFixed(1)}%) • 
+              Human: ${toNum(causeStatistics.humanArea)} ha (${(causeStatistics.humanArea/causeStatistics.totalArea*100).toFixed(1)}%) • 
+              Unknown: ${toNum(causeStatistics.unknownArea)} ha (${(causeStatistics.unknownArea/causeStatistics.totalArea*100).toFixed(1)}%) • 
+              No data: ${toNum(causeStatistics.noCauseArea)} ha (${(causeStatistics.noCauseArea/causeStatistics.totalArea*100).toFixed(1)}%)
+            ` : `
+              Natural: ${causeStatistics.naturalCount} (${(causeStatistics.naturalCount/causeStatistics.totalFires*100).toFixed(1)}%) • 
+              Human: ${causeStatistics.humanCount} (${(causeStatistics.humanCount/causeStatistics.totalFires*100).toFixed(1)}%) • 
+              Unknown: ${causeStatistics.unknownCount} (${(causeStatistics.unknownCount/causeStatistics.totalFires*100).toFixed(1)}%) • 
+              No data: ${causeStatistics.noCauseCount} (${(causeStatistics.noCauseCount/causeStatistics.totalFires*100).toFixed(1)}%)
+            `}
           </div>
-
-          <div style="margin:10px 0 2px"><b>Overview</b></div>
-          ${tableHTML}
-
-          ${buildBenchmarksHTML()}
 
           <div style="margin-top:10px"><b>Fires by status</b> <span style="opacity:.8">(active: largest first; extinguished: most recent first)</span></div>
           <div class="fs-scroll" id="fs-scroll">
@@ -5293,6 +5401,7 @@ if (typeof map !== 'undefined' && map && map.on){
         wireSummaryClicks();
         wirePieLegendClicks();
         wireTrendHover();
+        wireFireCauseToggle();
       }
 
       
@@ -5329,6 +5438,81 @@ if (typeof map !== 'undefined' && map && map.on){
           r.addEventListener('touchcancel', hide);
         });
       }
+
+      // Store fire cause toggle mode globally
+      let fireCauseToggleMode = 'area';
+
+      function wireFireCauseToggle(){
+        const toggle = document.getElementById('fire-cause-toggle');
+        if (!toggle) return;
+        
+        // Initialize toggle state based on global mode
+        const initializeToggle = () => {
+          const track = toggle.querySelector('.toggle-track');
+          const slider = toggle.querySelector('.toggle-slider');
+          const areaLabel = toggle.querySelector('.toggle-area-label');
+          const countLabel = toggle.querySelector('.toggle-count-label');
+          
+          // Set the data attribute to match global state
+          toggle.dataset.mode = fireCauseToggleMode;
+          
+          if (fireCauseToggleMode === 'count') {
+            // Count mode - move slider to right
+            slider.style.transform = 'translateX(44px)';
+            // Highlight count, dim area
+            countLabel.style.color = '#374151';
+            countLabel.style.fontWeight = '600';
+            areaLabel.style.color = '#9CA3AF';
+            areaLabel.style.fontWeight = '400';
+          } else {
+            // Area mode - slider on left
+            slider.style.transform = 'translateX(0px)';
+            // Highlight area, dim count
+            areaLabel.style.color = '#374151';
+            areaLabel.style.fontWeight = '600';
+            countLabel.style.color = '#9CA3AF';
+            countLabel.style.fontWeight = '400';
+          }
+        };
+        
+        // Initialize on load
+        initializeToggle();
+        
+        toggle.addEventListener('click', async () => {
+          const track = toggle.querySelector('.toggle-track');
+          const slider = toggle.querySelector('.toggle-slider');
+          const areaLabel = toggle.querySelector('.toggle-area-label');
+          const countLabel = toggle.querySelector('.toggle-count-label');
+          
+          // Toggle the global mode
+          fireCauseToggleMode = fireCauseToggleMode === 'area' ? 'count' : 'area';
+          toggle.dataset.mode = fireCauseToggleMode;
+          
+          console.log('Toggle clicked, new mode:', fireCauseToggleMode);
+          
+          if (fireCauseToggleMode === 'count') {
+            // Count mode - move slider to right
+            slider.style.transform = 'translateX(44px)';
+            // Highlight count, dim area
+            countLabel.style.color = '#374151';
+            countLabel.style.fontWeight = '600';
+            areaLabel.style.color = '#9CA3AF';
+            areaLabel.style.fontWeight = '400';
+          } else {
+            // Area mode - slider on left
+            slider.style.transform = 'translateX(0px)';
+            // Highlight area, dim count
+            areaLabel.style.color = '#374151';
+            areaLabel.style.fontWeight = '600';
+            countLabel.style.color = '#9CA3AF';
+            countLabel.style.fontWeight = '400';
+          }
+          
+          // Refresh the summary to update the pie chart
+          await refreshSummary();
+        });
+      }
+
     function ensureStatusEnabled(statusKey){
         const target = norm(statusKey);
         const cbs = $$('.fire-filter-block input[type="checkbox"]'); if (!cbs.length) return;
