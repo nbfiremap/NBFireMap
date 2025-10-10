@@ -165,8 +165,7 @@ jobs:
               meta = fetch_layer_meta(url)
               oid_field = get_oid_field(meta)
               all_fields = get_all_field_names(meta)
-              log(f"{kind}: OID field='{oid_field}', fields={len(all_fields)}")
-
+              print(f"{kind}: OID field='{oid_field}', fields={len(all_fields)}")
               payloads, sigs = [], []
               for i in range(copies):
                   base_geo = fetch_geojson(url)
@@ -176,14 +175,13 @@ jobs:
                   count, sig = features_to_signature(merged)
                   payloads.append(merged)
                   sigs.append((count, sig))
-                  log(f"{kind}: copy {i+1}/{copies} -> features={count} sig={sig[:12]}")
+                  print(f"{kind}: copy {i+1}/{copies} -> features={count} sig={sig[:12]}")
                   time.sleep(1)
-
               ts = int(time.time())
               final = add_timestamp_to_geojson(payloads[0], ts)
               with open(outfile, "w", encoding="utf-8") as f:
                   json.dump(final, f, ensure_ascii=False, indent=2)
-              log(f"{kind}: wrote {outfile} (features={sigs[0][0]})")
+              print(f"{kind}: wrote {outfile} (features={sigs[0][0]})")
               return True
 
           def attempt_fetch_table_json(kind, url, outfile, copies=3):
@@ -197,14 +195,13 @@ jobs:
                   payloads.append(data)
                   count, sig = table_to_signature(data)
                   sigs.append((count, sig))
-                  log(f"{kind}: copy {i+1}/{copies} -> rows={count} sig={sig[:12]}")
+                  print(f"{kind}: copy {i+1}/{copies} -> rows={count} sig={sig[:12]}")
                   time.sleep(1)
-
               ts = int(time.time())
               final = add_timestamp_to_table(payloads[0], ts)
               with open(outfile, "w", encoding="utf-8") as f:
                   json.dump(final, f, ensure_ascii=False, indent=2)
-              log(f"{kind}: wrote {outfile} (rows={sigs[0][0]})")
+              print(f"{kind}: wrote {outfile} (rows={sigs[0][0]})")
               return True
 
           # NEW: Fetch FeatureServer layer as GEOJSON for GitHub map viewer
@@ -225,14 +222,13 @@ jobs:
                   count, sig = features_to_signature(data)
                   payloads.append(data)
                   sigs.append((count, sig))
-                  log(f"{kind}: copy {i+1}/{copies} -> features={count} sig={sig[:12]}")
+                  print(f"{kind}: copy {i+1}/{copies} -> features={count} sig={sig[:12]}")
                   time.sleep(1)
-
               ts = int(time.time())
               final = add_timestamp_to_geojson(payloads[0], ts)
               with open(outfile, "w", encoding="utf-8") as f:
                   json.dump(final, f, ensure_ascii=False, indent=2)
-              log(f"{kind}: wrote {outfile}")
+              print(f"{kind}: wrote {outfile}")
               return True
 
           ok = True
@@ -258,6 +254,7 @@ jobs:
               outfile=os.environ["ERD_FIRE_LOCATIONS_FILE"]
           )
 
+          log = print
           log("All datasets fetched successfully." if ok else "Some datasets failed.")
 
       - name: Fetch & parse Activity Summary PDF → GNBfireActSum.json (rows as objects)
@@ -424,7 +421,8 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add "${ACTIVE_FIRES_FILE}" "${OUT_FIRES_FILE}" "${SUMS_TABLE_FILE}" "${GNB_SUM_FILE}" "${ERD_FIRE_LOCATIONS_FILE}" || true
-            git commit -m "Updated $(date -u +'%Y/%m/%d %I:%M %p')"
+            # Use Atlantic Time (America/Moncton) for the commit message timestamp
+            git commit -m "Updated $(TZ=America/Moncton date +'%Y/%m/%d %I:%M %p')"
             git push
             echo "Pushed updates."
           else
