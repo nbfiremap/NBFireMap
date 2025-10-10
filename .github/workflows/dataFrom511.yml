@@ -1,4 +1,4 @@
-name: GNB 511 JSON sync
+name: Hourly 511 Data Sync
 
 on:
   schedule:
