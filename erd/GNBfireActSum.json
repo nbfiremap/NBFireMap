@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760117398",
-  "fetched_utc": 1760117398,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760121705",
+  "fetched_utc": 1760121705,
   "pages": 1,
   "tables": [
     {
@@ -25,17 +25,17 @@
       "rows": [
         {
           "Region": "East",
-          "Status": "Contained",
+          "Status": "Under Control",
           "Number": "394",
           "Fire Name": "394",
           "Updated": "Oct-10",
           "Latitude": "47.00742",
           "Longitude": "64.87305",
           "Size": "68.0",
-          "Pers": "13",
+          "Pers": "11",
           "Eng": "0",
           "Tend": "0",
-          "Trac": "1",
+          "Trac": "2",
           "Air": "0",
           "Heli": "0",
           "Ovr": "2"
@@ -215,7 +215,7 @@
           "Status": "Out",
           "Number": "415",
           "Fire Name": "415",
-          "Updated": "Oct-09",
+          "Updated": "Oct-10",
           "Latitude": "45.99207",
           "Longitude": "65.13327",
           "Size": "0.1",
@@ -232,7 +232,7 @@
           "Status": "Out",
           "Number": "416",
           "Fire Name": "416",
-          "Updated": "Oct-09",
+          "Updated": "Oct-10",
           "Latitude": "46.03644",
           "Longitude": "65.22925",
           "Size": "0.3",
