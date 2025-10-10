@@ -2,7 +2,7 @@ name: Daily Fire Data Archive
 
 on:
   schedule:
-    - cron: "10 9 * * *"   # daily
+    - cron: "10 9 * * *"   # daily (GitHub Actions runs cron in UTC)
   workflow_dispatch: {}
 
 permissions:
@@ -46,13 +46,13 @@ jobs:
 
           import requests
           import geopandas as gpd
-          from shapely.geometry import shape, Point, LineString, Polygon, MultiLineString, MultiPolygon
 
           def log(msg): print(msg, flush=True)
 
-          # --- Date / output ---
-          TZ = ZoneInfo("America/Toronto")
-          today_str = datetime.now(TZ).strftime("%Y%m%d")
+          # --- Date / output (ATLANTIC time) ---
+          ATL = ZoneInfo("America/Moncton")
+          today_str = datetime.now(ATL).strftime("%Y%m%d")
+          archived_stamp = datetime.now(ATL).strftime("%Y-%m-%d %H:%M:%S %Z")
 
           ROOT = "archive"
           FOLDERS = {"cwfis": os.path.join(ROOT, "cwfis"),
@@ -74,7 +74,6 @@ jobs:
 
           # ---------- Helpers ----------
           def fetch_once(label, base, params, retries=3, backoff=0.75):
-              """Fetch JSON with resilience: tolerate empty/non-JSON bodies by returning {}."""
               last_err = None
               for attempt in range(1, retries+1):
                   try:
@@ -85,14 +84,10 @@ jobs:
                       size = len(r.content)
                       log(f"[RES] {label}: status={r.status_code} type={ctype} bytes={size}")
                       r.raise_for_status()
-
                       try:
                           if size == 0:
                               log(f"[WARN] {label}: empty body; treating as empty object")
                               return {}
-                          if "json" not in ctype:
-                              head = r.text[:300]
-                              log(f"[WARN] {label}: non-JSON response; head preview:\n{head}")
                           return r.json()
                       except ValueError as je:
                           log(f"[WARN] {label}: JSON parse failed ({je}); first 200 bytes: {r.content[:200]!r}")
@@ -103,12 +98,9 @@ jobs:
                       time.sleep(backoff * attempt)
               raise last_err
 
-          # Ensure we can return a GeoDataFrame even when there are zero features
           def empty_gdf():
               return gpd.GeoDataFrame(geometry=[], crs="EPSG:4326")
 
-          # Convert an ArcGIS REST "FeatureSet" (f=json) into a GeoJSON FeatureCollection
-          # This preserves ALL fields ("attributes") exactly as delivered.
           def esri_feature_to_geojson_feature(f):
               attrs = f.get("attributes", {}) or {}
               geom = f.get("geometry")
@@ -142,8 +134,19 @@ jobs:
                   return empty_gdf()
               return gpd.GeoDataFrame.from_features(feats, crs="EPSG:4326")
 
-          # ---------- Builders (server-side NB filter) ----------
-          # CWFIS — WFS with bbox filter; fallback to CQL if needed.
+          def write_fc(path: str, fc: dict):
+              """
+              Always rewrite the file and include an 'archived_at' field so today's
+              files change even if upstream data is identical. This lets you manually update.
+              """
+              os.makedirs(os.path.dirname(path), exist_ok=True)
+              fc = dict(fc or {})
+              fc["archived_at"] = archived_stamp
+              with open(path, "w", encoding="utf-8") as f:
+                  json.dump(fc, f, ensure_ascii=False)
+                  f.write("\n")
+
+          # ---------- Builders ----------
           def cwfis_builder(type_name: str):
               base = "https://cwfis.cfs.nrcan.gc.ca/geoserver/public/ows"
               bbox = f"{NB_BBOX[0]},{NB_BBOX[1]},{NB_BBOX[2]},{NB_BBOX[3]},EPSG:4326"
@@ -160,7 +163,6 @@ jobs:
               }
               return ("CWFIS", base, [params_bbox, params_cql])
 
-          # ERD — ArcGIS REST using f=json to PRESERVE ALL FIELDS; envelope filter with pagination fallback.
           def erd_builder(layer_idx: int):
               base = f"https://gis-erd-der.gnb.ca/arcgis/rest/services/Fire_Dashboards/Public_Fires/MapServer/{layer_idx}/query"
               params_env = {
@@ -187,7 +189,6 @@ jobs:
               }
               return ("ERD", base, [params_env, params_all])
 
-          # NEW: ERD Fire Locations (separate service) — same approach as above, but custom base URL.
           def erd_custom_builder(base_url: str):
               params_env = {
                   "where": "1=1",
@@ -218,13 +219,12 @@ jobs:
               {"key": "fire_perimeters", "group": "cwfis", "builder": lambda: cwfis_builder("public:m3_polygons_current")},
               {"key": "active_fires",    "group": "erd",   "builder": lambda: erd_builder(0)},
               {"key": "out_fires",       "group": "erd",   "builder": lambda: erd_builder(1)},
-              # NEW: Fire Locations (FeatureServer/0) saved to archive/erd/fire_locations_YYYYMMDD.geojson
               {"key": "fire_locations",  "group": "erd",   "builder": lambda: erd_custom_builder(
                   "https://gis-erd-der.gnb.ca/gisserver/rest/services/New_Brunswick_Fires/New_Brunswick_Fire_Locations/FeatureServer/0/query"
               )},
           ]
 
-          # ---------- Fetch with fallbacks & pagination for ERD ----------
+          # ---------- Fetch with fallbacks ----------
           def fetch_esri_with_paging(base, params):
               all_feats = []
               offset = 0
@@ -303,27 +303,27 @@ jobs:
               log(f"[WARN] {label}: using majority sample n={n}")
               return frames[idx]
 
-          # ---------- Run ----------
+          # ---------- Run (always rewrite files) ----------
           def write_empty_geojson(path: str):
-              os.makedirs(os.path.dirname(path), exist_ok=True)
-              with open(path, "w", encoding="utf-8") as f:
-                  json.dump({"type": "FeatureCollection", "features": []}, f, ensure_ascii=False)
-                  f.write("\n")
+              write_fc(path, {"type": "FeatureCollection", "features": []})
 
           failures = []
           for ds in DATASETS:
               label = f"{ds['group']}/{ds['key']}"
               try:
                   gdf = consensus_download(ds["builder"], label)
-                  out_dir = FOLDERS[ds["group"]]
+                  out_dir = FOLDERS[ds['group']]
                   out_path = os.path.join(out_dir, f"{ds['key']}_{today_str}.geojson")
-                  if os.path.exists(out_path): os.remove(out_path)
+                  if os.path.exists(out_path):
+                      os.remove(out_path)  # ensure replacement
 
                   if gdf is None or len(gdf) == 0:
                       write_empty_geojson(out_path)
                       log(f"[SAVED] {out_path} (0 features; wrote empty FeatureCollection)")
                   else:
-                      gdf.to_file(out_path, driver="GeoJSON")
+                      # Turn GeoDataFrame into a GeoJSON dict, then stamp and write.
+                      fc = json.loads(gdf.to_json())
+                      write_fc(out_path, fc)
                       log(f"[SAVED] {out_path} ({len(gdf)} features)")
               except Exception as e:
                   failures.append((label, str(e)))
@@ -356,7 +356,8 @@ jobs:
           git add -A archive
 
           if ! git diff --cached --quiet; then
-            git commit -m "Daily archive"
+            ATLANTIC_TS="$(TZ=America/Moncton date +"%Y/%m/%d %I:%M %p")"
+            git commit -m "Archived ${ATLANTIC_TS}"
             for i in 1 2 3 4 5; do
               if git push origin "HEAD:$BRANCH_NAME"; then
                 exit 0
