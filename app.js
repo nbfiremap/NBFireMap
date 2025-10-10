@@ -973,24 +973,17 @@
           const getIconClass = () => {
             const category = getEventCategory(event.EventType, event.EventSubType, startDate);
             
+            // Skip null categories (incidents and flooding are excluded)
+            if (category === null) return 'fa-solid fa-road';
+            
             // All closures (current and future) use prohibition sign
             if (category === 'closures' || category === 'futureClosures') {
               return 'fa-solid fa-ban';
             }
             
-            // Incidents use exclamation mark
-            if (category === 'incidents') {
-              return 'fa-solid fa-triangle-exclamation';
-            }
-            
             // Construction (current and future) uses construction pylon
             if (category === 'construction' || category === 'futureConstruction') {
               return 'fa-solid fa-person-digging';
-            }
-            
-            // Flooding uses water/wave icon
-            if (category === 'flooding') {
-              return 'fa-solid fa-water';
             }
             
             // Default road icon
@@ -1139,7 +1132,7 @@
          * Categorize event by type for the 5 specific subcategories
          */
         function getEventCategory(type, subType = '', startDate = null) {
-          if (!type) return 'incidents';
+          if (!type) return null; // Don't process events without type
           
           const t = type.toLowerCase();
           const st = (subType || '').toLowerCase();
@@ -1149,11 +1142,17 @@
           const startTime = startDate ? (startDate < 9999999999 ? startDate * 1000 : startDate) : null;
           const isFuture = startTime && startTime > Date.now();
           
-          // Flooding - washouts and flood-related events
+          // EXCLUDED: Flooding - washouts and flood-related events (no longer displayed)
           if (t.includes('flood') || st.includes('flood') || 
               st.includes('washout') || t.includes('washout') ||
               st.includes('bridge out')) {
-            return 'flooding';
+            return null; // Don't display flooding events
+          }
+          
+          // EXCLUDED: Incidents - accidents, emergencies, traffic incidents (no longer displayed)
+          if (t === 'accidentsandincidents' || t.includes('incident') || 
+              t.includes('accident') || t.includes('emergency')) {
+            return null; // Don't display incident events
           }
           
           // Closures - road closures, bridge closures, breakups, etc.
@@ -1175,20 +1174,13 @@
             return isFuture ? 'futureConstruction' : 'construction';
           }
           
-          // Incidents - accidents, emergencies, traffic incidents
-          if (t === 'accidentsandincidents' || t.includes('incident') || 
-              t.includes('accident') || t.includes('emergency') ||
-              st.includes('traffic flow restriction')) {
-            return 'incidents';
-          }
-          
           // Default to construction for unknown roadwork-related events
           if (t.includes('road') || t.includes('bridge') || t.includes('highway')) {
             return isFuture ? 'futureConstruction' : 'construction';
           }
           
-          // Final fallback
-          return 'incidents';
+          // Final fallback - return null to skip unknown events
+          return null;
         }
 
         /**
@@ -1203,10 +1195,8 @@
           // Map categories to colors
           if (category === 'closures') return POINT_COLORS.closures;
           if (category === 'futureClosures') return POINT_COLORS.futureClosures;
-          if (category === 'incidents') return POINT_COLORS.incidents;
           if (category === 'construction') return POINT_COLORS.construction;
           if (category === 'futureConstruction') return POINT_COLORS.futureConstruction;
-          if (category === 'flooding') return POINT_COLORS.flooding;
           
           // Fallback to old logic for any unmapped types
           const t = type.toLowerCase();
@@ -1516,27 +1506,80 @@
               const condition = road['Primary Condition'] || 'Unknown';
               const color = getWinterRoadColor(condition);
               
+              // Get status color for winter road condition
+              const getConditionColor = (cond) => {
+                const conditionColors = {
+                  'Bare Dry': '#22c55e',
+                  'Bare Wet': '#3b82f6', 
+                  'Snow Covered': '#f59e0b',
+                  'Ice Covered': '#ef4444',
+                  'Slush': '#8b5cf6'
+                };
+                return conditionColors[cond] || '#6b7280';
+              };
+
+              const conditionColor = getConditionColor(condition);
+              
               const popupContent = `
-                <div class="popup-header">🛣️ ${road.RoadwayName || 'Highway'}</div>
-                <div class="popup-body">
-                  <p><strong>Condition:</strong> ${condition}</p>
-                  <p><strong>Location:</strong> ${road.LocationDescription || 'N/A'}</p>
-                  <p><strong>Visibility:</strong> ${road.Visibility || 'N/A'}</p>
-                  <p><strong>Area:</strong> ${road.AreaName || 'N/A'}</p>
-                  ${road.LastUpdated ? `<p><small>Updated: ${epochToLocal(road.LastUpdated)}</small></p>` : ''}
+                <div style="width:260px;max-width:90vw;overflow-wrap:break-word">
+                  <div style="font-size:15px;font-weight:700;color:#333;margin-bottom:6px;padding-bottom:3px;border-bottom:1px solid #eee">
+                    ${road.RoadwayName || 'Highway'}
+                  </div>
+                  <div style="font-size:12px;line-height:1.3">
+                    <div style="margin-bottom:6px">
+                      <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 6px;border-radius:10px;background:#f8f9fa;border:1px solid #dee2e6;font-weight:600;font-size:11px">
+                        <span style="background:${conditionColor};width:6px;height:6px;border-radius:50%;display:inline-block"></span>${condition}
+                      </span>
+                    </div>
+                    
+                    ${road.LocationDescription ? `
+                      <div style="margin:6px 0;padding:6px;background:#fff;border:1px solid #e9ecef;border-radius:4px">
+                        <div style="word-wrap:break-word"><strong>Route:</strong> ${road.LocationDescription}</div>
+                      </div>
+                    ` : ''}
+                    
+                    ${road.Visibility && road.Visibility !== 'N/A' ? `
+                      <div style="margin:6px 0;padding:6px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:4px">
+                        <div><strong>Visibility:</strong> ${road.Visibility}</div>
+                        ${road.AreaName ? `<div><strong>Area:</strong> ${road.AreaName}</div>` : ''}
+                      </div>
+                    ` : ''}
+                    
+                    ${road.LastUpdated ? `
+                      <div style="margin:6px 0;padding:6px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:4px;font-size:11px;line-height:1.4">
+                        <div><strong>Updated:</strong> ${epochToLocal(road.LastUpdated)}</div>
+                      </div>
+                    ` : ''}
+                    
+                    ${road.downloaded_at ? `
+                      <div style="margin-top:6px;padding:4px 6px;background-color:#f1f5f9;border-radius:3px;font-size:10px;color:#64748b;text-align:center;font-style:italic">
+                        Downloaded from DTI: ${new Date(road.downloaded_at).toLocaleString()}
+                      </div>
+                    ` : ''}
+                  </div>
                 </div>
               `;
 
               try {
                 const decoded = polyline.decode(road.EncodedPolyline);
+                
+                // Create a separate layer group for each segment to prevent auto-connecting
+                const segmentGroup = L.layerGroup();
+                
                 L.polyline(decoded, { 
                   color, 
                   weight: 4, 
                   opacity: 0.8,
-                  className: 'winter-road-segment'
+                  lineCap: 'butt',
+                  lineJoin: 'miter',
+                  fill: false,
+                  interactive: true,
+                  className: `winter-road-segment-${road.Id}`
                 })
                   .bindPopup(popupContent)
-                  .addTo(winterLayer);
+                  .addTo(segmentGroup);
+                
+                segmentGroup.addTo(winterLayer);
               } catch (err) {
                 console.warn('Failed to decode polyline for winter road:', road.Id, err);
               }
@@ -2894,88 +2937,113 @@
         // ---- Events Popup Functions -------------------------------------------
 
         /**
-         * Build popup content for road events
+         * Build popup content for road events - mobile-friendly, compact design
          */
         function buildEventPopup(event) {
           if (!event) return 'No event data';
 
-          // Get event type icon and better display names
-          const getEventIcon = (type, subType, isFullClosure) => {
-            if (isFullClosure) return '<i class="fas fa-ban" style="color: #dc2626;"></i>';
-            if (type === 'accidentsAndIncidents') return '<i class="fas fa-exclamation-triangle" style="color: #ea580c;"></i>';
-            if (type === 'closures') {
-              if (subType && subType.includes('Bridge Out')) return '<i class="fas fa-water" style="color: #0891b2;"></i>';
-              if (subType && subType.includes('Washout')) return '<i class="fas fa-tint" style="color: #0284c7;"></i>';
-              return '<i class="fas fa-road" style="color: #dc2626;"></i>';
-            }
-            if (type === 'roadwork') {
-              if (subType && subType.includes('Bridge')) return '<i class="fas fa-wrench" style="color: #0891b2;"></i>';
-              return '<i class="fas fa-hard-hat" style="color: #0891b2;"></i>';
-            }
-            return '<i class="fas fa-route" style="color: #6b7280;"></i>';
+          // Get simple, clean event type display
+          const getEventTypeDisplay = (type, subType, isFullClosure) => {
+            if (isFullClosure) return 'Road Closed';
+            if (type === 'closures') return 'Road Closure';
+            if (type === 'roadwork' || type === 'construction') return 'Construction';
+            return subType || type || 'Road Event';
           };
 
-          const getSeverityBadge = (severity) => {
-            if (!severity || severity === 'None') return '';
-            const color = severity === 'Major' ? '#dc2626' : severity === 'Minor' ? '#f59e0b' : '#6b7280';
-            return `<span style="background: ${color}; color: white; padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; margin-left: 6px;">${severity.toUpperCase()}</span>`;
+          // Get status color for the dot indicator
+          const getStatusColor = (isFullClosure) => {
+            return isFullClosure ? '#dc2626' : '#f59e0b'; // Red for full, amber for partial
           };
 
-          const getClosureStatus = (isFullClosure, lanesAffected) => {
-            if (isFullClosure) return '<strong style="color: #dc2626;"><i class="fas fa-ban"></i> FULL CLOSURE</strong>';
-            if (lanesAffected && lanesAffected !== 'No Data') return `<span style="color: #f59e0b;"><i class="fas fa-exclamation-triangle"></i> ${lanesAffected}</span>`;
-            return '<span style="color: #059669;"><i class="fas fa-check-circle"></i> Partial/Restrictions Only</span>';
-          };
+          // Format location concisely
+          const location = [event.RoadwayName, event.DirectionOfTravel]
+            .filter(Boolean)
+            .join(' • ');
 
-          // Format restrictions with better presentation
+          // Format restrictions simply
           const restrictions = event.Restrictions || {};
           const restrictionItems = [
-            restrictions.Width ? `Width: ${restrictions.Width}m` : "",
-            restrictions.Height ? `Height: ${restrictions.Height}m` : "",
-            restrictions.Length ? `Length: ${restrictions.Length}m` : "",
-            restrictions.Weight ? `Weight: ${restrictions.Weight}kg` : "",
-            restrictions.Speed ? `Speed: ${restrictions.Speed} km/h` : ""
+            restrictions.Width ? `W:${restrictions.Width}m` : "",
+            restrictions.Height ? `H:${restrictions.Height}m` : "",
+            restrictions.Length ? `L:${restrictions.Length}m` : "",
+            restrictions.Weight ? `${restrictions.Weight}kg` : "",
+            restrictions.Speed ? `${restrictions.Speed}km/h` : ""
           ].filter(Boolean);
 
-          const restrictionsHTML = restrictionItems.length > 0 ? 
-            `<div style="margin: 6px 0; padding: 6px; background: #fef3c7; border-left: 3px solid #f59e0b; border-radius: 3px;">
-              <strong><i class="fas fa-hand" style="color: #f59e0b;"></i> Vehicle Restrictions:</strong><br/>
-              ${restrictionItems.join(' • ')}
-            </div>` : '';
+          const restrictionsText = restrictionItems.length > 0 ? restrictionItems.join(' • ') : null;
 
-          // Format detour information
-          const detourHTML = (event.DetourInstructions && event.DetourInstructions.length) ? 
-            `<div style="margin: 6px 0; padding: 6px; background: #ede9fe; border-left: 3px solid #7c3aed; border-radius: 3px;">
-              <strong><i class="fas fa-route" style="color: #7c3aed;"></i> Detour:</strong><br/>
-              ${escHTML(Array.isArray(event.DetourInstructions) ? 
-                event.DetourInstructions.join(' ') : event.DetourInstructions)}
-            </div>` : '';
+          // Build date section with clear spacing
+          const buildDateSection = () => {
+            const dates = [];
+            if (event.StartDate) {
+              const isUpcoming = event.StartDate > Date.now() / 1000;
+              dates.push(`<div style="margin-bottom:2px"><strong${isUpcoming ? ' style="color:#059669"' : ''}>Start:</strong> ${fmtDateTimeTz(event.StartDate * 1000)}</div>`);
+            }
+            if (event.PlannedEndDate) {
+              dates.push(`<div style="margin-bottom:2px"><strong>End:</strong> ${fmtDateTimeTz(event.PlannedEndDate * 1000)}</div>`);
+            }
+            if (event.LastUpdated) {
+              dates.push(`<div><strong>Updated:</strong> ${fmtDateTimeTz(event.LastUpdated * 1000)}</div>`);
+            }
+            
+            return dates.length > 0 ? `
+              <div style="margin:6px 0;padding:6px;background:#f8f9fa;border:1px solid #e9ecef;border-radius:4px;font-size:11px;line-height:1.4">
+                ${dates.join('')}
+              </div>
+            ` : '';
+          };
 
-          const tableContent = `
-            <div style="margin: 8px 0;">
-              ${getClosureStatus(event.IsFullClosure, event.LanesAffected)}
+          // Build compact content with sections
+          const typeDisplay = getEventTypeDisplay(event.EventType, event.EventSubType, event.IsFullClosure);
+          const statusColor = getStatusColor(event.IsFullClosure);
+          const dateSection = buildDateSection();
+          
+          return `
+            <div style="width:260px;max-width:90vw;overflow-wrap:break-word">
+              <div style="font-size:15px;font-weight:700;color:#333;margin-bottom:6px;padding-bottom:3px;border-bottom:1px solid #eee">
+                ${escHTML(typeDisplay)}
+              </div>
+              <div style="font-size:12px;line-height:1.3">
+                <div style="margin-bottom:6px">
+                  <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 6px;border-radius:10px;background:#f8f9fa;border:1px solid #dee2e6;font-weight:600;font-size:11px">
+                    <span style="background:${statusColor};width:6px;height:6px;border-radius:50%;display:inline-block"></span>${event.IsFullClosure ? 'Full Closure' : 'Partial'}
+                  </span>
+                </div>
+                
+                ${location ? `
+                  <div style="margin:6px 0;padding:6px;background:#fff;border:1px solid #e9ecef;border-radius:4px">
+                    <div style="word-wrap:break-word"><strong>Location:</strong> ${escHTML(location)}</div>
+                  </div>
+                ` : ''}
+                
+                ${event.Description ? `
+                  <div style="margin:6px 0;padding:6px;background:#fff;border:1px solid #e9ecef;border-radius:4px">
+                    <div style="word-wrap:break-word"><strong>Details:</strong> ${escHTML(event.Description)}</div>
+                  </div>
+                ` : ''}
+                
+                ${restrictionsText ? `
+                  <div style="margin:6px 0;padding:6px;background:#fefce8;border:1px solid #fde047;border-radius:4px">
+                    <div style="word-wrap:break-word"><strong>Restrictions:</strong> ${escHTML(restrictionsText)}</div>
+                  </div>
+                ` : ''}
+                
+                ${event.DetourInstructions ? `
+                  <div style="margin:6px 0;padding:6px;background:#fefce8;border:1px solid #fde047;border-radius:4px">
+                    <div style="word-wrap:break-word"><strong>Detour:</strong> ${escHTML(Array.isArray(event.DetourInstructions) ? event.DetourInstructions.join(' ') : event.DetourInstructions)}</div>
+                  </div>
+                ` : ''}
+                
+                ${dateSection}
+                
+                ${event.downloaded_at ? `
+                  <div style="margin-top:6px;padding:4px 6px;background-color:#f1f5f9;border-radius:3px;font-size:10px;color:#64748b;text-align:center;font-style:italic">
+                    Downloaded from DTI: ${new Date(event.downloaded_at).toLocaleString()}
+                  </div>
+                ` : ''}
+              </div>
             </div>
-            <table>
-              ${createTableRow('<i class="fas fa-map-marker-alt" style="color: #dc2626;"></i> Location', `${escHTML(event.RoadwayName || '—')} · ${escHTML(event.DirectionOfTravel || '—')}`)}
-              ${createTableRow('<i class="fas fa-calendar-plus" style="color: #059669;"></i> Reported', event.Reported ? fmtDateTimeTz(event.Reported * 1000) : '—')}
-              ${createTableRow('<i class="fas fa-sync-alt" style="color: #0284c7;"></i> Updated', event.LastUpdated ? fmtDateTimeTz(event.LastUpdated * 1000) : '—')}
-              ${event.StartDate ? createTableRow('<i class="fas fa-play-circle" style="color: #059669;"></i> Starts', fmtDateTimeTz(event.StartDate * 1000)) : ''}
-              ${event.PlannedEndDate ? createTableRow('<i class="fas fa-flag-checkered" style="color: #7c3aed;"></i> Planned End', fmtDateTimeTz(event.PlannedEndDate * 1000)) : ''}
-              ${event.Organization ? createTableRow('<i class="fas fa-building" style="color: #6b7280;"></i> Reported By', escHTML(event.Organization)) : ''}
-            </table>
-            ${restrictionsHTML}
-            ${detourHTML}
-            ${event.Comment ? `<div style="margin-top: 8px; padding: 6px; background: #f0f9ff; border-left: 3px solid #0284c7; border-radius: 3px;"><strong><i class="fas fa-comment" style="color: #0284c7;"></i> Notes:</strong><br/>${escHTML(event.Comment)}</div>` : ''}
           `;
-
-          const icon = getEventIcon(event.EventType, event.EventSubType, event.IsFullClosure);
-          const displayType = escHTML(event.EventSubType || event.EventType);
-          const severityBadge = getSeverityBadge(event.Severity);
-          
-          const title = `${icon} ${displayType}${severityBadge}`;
-          const subtitle = `<div class="muted" style="font-size: 13px; color: #6b7280; margin-bottom: 4px;">${escHTML(event.Description || 'Road Event')}</div>`;
-          
-          return createPopupContainer(title, subtitle + tableContent, { escapeTitle: false });
         }
 
         // ---- Webcam Popup Functions -------------------------------------------
@@ -3582,6 +3650,352 @@
       const setPerimeterLabels = LayerManager.labels.createZoomLabelUpdater(map, perimeterLabelLayers, 11);
       activePerimeters.on('load', setPerimeterLabels);
 
+      // ---- Active Fire Perimeters -------------------------------------------
+      // Shows perimeters with nearby active fires (500m) and matching date ranges
+      const activeFirePerimeterLabelLayers = new Set();
+      let activeFiresData = null; // Cache for active fires data
+
+      // Function to load active fires data
+      async function loadActiveFiresData() {
+        if (activeFiresData !== null) return activeFiresData;
+        try {
+          const data = await fetchLocalAny('active_fires');
+          activeFiresData = data?.features || [];
+          return activeFiresData;
+        } catch (error) {
+          console.warn('Failed to load active fires data for perimeter filtering:', error);
+          activeFiresData = [];
+          return activeFiresData;
+        }
+      }
+
+      // Function to calculate distance between two lat/lng points in meters
+      function calculateDistance(lat1, lng1, lat2, lng2) {
+        const R = 6371000; // Earth's radius in meters
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLng = (lng2 - lng1) * Math.PI / 180;
+        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLng/2) * Math.sin(dLng/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+      }
+
+      // Function to check if a point is inside a polygon using ray casting
+      function pointInPolygon(lat, lng, coords) {
+        let inside = false;
+        for (let i = 0, j = coords.length - 1; i < coords.length; j = i++) {
+          const xi = coords[i][0], yi = coords[i][1];
+          const xj = coords[j][0], yj = coords[j][1];
+          
+          if (((yi > lng) !== (yj > lng)) && (lat < (xj - xi) * (lng - yi) / (yj - yi) + xi)) {
+            inside = !inside;
+          }
+        }
+        return inside;
+      }
+
+      // Function to calculate minimum distance from point to polygon edge
+      function pointToPolygonDistance(pointLat, pointLng, coords) {
+        let minDistance = Infinity;
+        
+        // Check if point is inside polygon first
+        if (pointInPolygon(pointLat, pointLng, coords)) {
+          return 0; // Point is inside the polygon
+        }
+        
+        // Calculate distance to each edge of the polygon
+        for (let i = 0; i < coords.length - 1; i++) {
+          const segmentDistance = pointToLineSegmentDistance(
+            pointLat, pointLng,
+            coords[i][1], coords[i][0],     // lat1, lng1
+            coords[i + 1][1], coords[i + 1][0] // lat2, lng2
+          );
+          minDistance = Math.min(minDistance, segmentDistance);
+        }
+        
+        return minDistance;
+      }
+
+      // Function to calculate distance from point to line segment
+      function pointToLineSegmentDistance(pointLat, pointLng, lat1, lng1, lat2, lng2) {
+        // Convert to approximate Cartesian coordinates for easier calculation
+        const x = pointLng, y = pointLat;
+        const x1 = lng1, y1 = lat1;
+        const x2 = lng2, y2 = lat2;
+        
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        
+        if (dx === 0 && dy === 0) {
+          // Line segment is a point
+          return calculateDistance(pointLat, pointLng, lat1, lng1);
+        }
+        
+        const t = Math.max(0, Math.min(1, ((x - x1) * dx + (y - y1) * dy) / (dx * dx + dy * dy)));
+        const closestLat = y1 + t * dy;
+        const closestLng = x1 + t * dx;
+        
+        return calculateDistance(pointLat, pointLng, closestLat, closestLng);
+      }
+
+      // Function to check if perimeter has nearby active fire
+      function hasNearbyActiveFire(perimeterFeature, activeFires) {
+        const perimeterProps = perimeterFeature.properties || {};
+        const firstDate = perimeterProps.FIRSTDATE;
+        const lastDate = perimeterProps.LASTDATE;
+        
+        if (!firstDate || !lastDate) {
+          return false;
+        }
+        
+        // Convert perimeter dates (epoch milliseconds) to Date objects
+        const perimeterFirstDate = new Date(parseInt(firstDate));
+        const perimeterLastDate = new Date(parseInt(lastDate));
+        
+        // Add/subtract 1 day tolerance (86400000 ms = 1 day)
+        const toleranceMs = 86400000;
+        const dateRangeStart = new Date(perimeterFirstDate.getTime() - toleranceMs);
+        const dateRangeEnd = new Date(perimeterLastDate.getTime() + toleranceMs);
+        
+        // Check if this perimeter has dates in September-October 2025 (when our active fires are)
+        const hasFallDate = dateRangeEnd.getFullYear() === 2025 && 
+                           (dateRangeEnd.getMonth() >= 8 || dateRangeStart.getMonth() <= 9); // Sept-Oct
+        
+        // Log all NB perimeters with fall dates since there should be fewer now
+        if (hasFallDate) {
+          console.log(`Perimeter ${perimeterProps.OBJECTID}: Range ${dateRangeStart.toISOString().split('T')[0]} to ${dateRangeEnd.toISOString().split('T')[0]}`);
+        }
+        
+        // Get perimeter geometry for proper distance calculation
+        let perimeterGeometry = null;
+        if (perimeterFeature.geometry) {
+          if (perimeterFeature.geometry.type === 'Polygon') {
+            perimeterGeometry = perimeterFeature.geometry.coordinates[0];
+          } else if (perimeterFeature.geometry.type === 'MultiPolygon') {
+            // Use the largest polygon for distance calculation
+            let largestPolygon = perimeterFeature.geometry.coordinates[0][0];
+            let maxArea = 0;
+            
+            for (const polygon of perimeterFeature.geometry.coordinates) {
+              const area = polygon[0].length; // Simple approximation
+              if (area > maxArea) {
+                maxArea = area;
+                largestPolygon = polygon[0];
+              }
+            }
+            perimeterGeometry = largestPolygon;
+          }
+        }
+        
+        if (!perimeterGeometry) {
+          if (hasFallDate) {
+            console.log(`  ✗ No geometry found for perimeter ${perimeterProps.OBJECTID}`);
+          }
+          return false;
+        }
+        
+        // Calculate centroid for logging purposes only
+        let perimeterCenter = null;
+        if (perimeterGeometry) {
+          let sumLat = 0, sumLng = 0;
+          for (let i = 0; i < perimeterGeometry.length - 1; i++) {
+            sumLng += perimeterGeometry[i][0];
+            sumLat += perimeterGeometry[i][1];
+          }
+          perimeterCenter = {
+            lat: sumLat / (perimeterGeometry.length - 1),
+            lng: sumLng / (perimeterGeometry.length - 1)
+          };
+        }
+        
+        if (hasFallDate) {
+          console.log(`  Center: ${perimeterCenter.lat.toFixed(5)}, ${perimeterCenter.lng.toFixed(5)}`);
+        }
+        
+        // Check each active fire
+        let nearbyFires = 0;
+        let dateMatches = 0;
+        let hasMatch = false;
+        
+        for (const fireFeature of activeFires) {
+          const fireProps = fireFeature.properties || {};
+          const timeDetected = fireProps.TIME_DETECTED;
+          
+          if (!timeDetected) continue;
+          
+          // Convert fire detection time (epoch milliseconds) to Date
+          const fireDetectedDate = new Date(parseInt(timeDetected));
+          
+          // Calculate distance from fire point to polygon boundary
+          const fireCoords = fireFeature.geometry.coordinates;
+          const distance = pointToPolygonDistance(
+            fireCoords[1], fireCoords[0], // fire lat, lng
+            perimeterGeometry
+          );
+          
+          // Log close fires for all NB perimeters
+          if (distance <= 5000) {
+            if (distance === 0) {
+              console.log(`    Fire ${fireProps.FIRE_NUMBER}: INSIDE perimeter`);
+            } else {
+              console.log(`    Fire ${fireProps.FIRE_NUMBER}: ${Math.round(distance)}m from perimeter edge`);
+            }
+          }
+          
+          if (distance <= 2000) { // 2km buffer from perimeter edge
+            nearbyFires++;
+            if (distance === 0) {
+              console.log(`  - Fire ${fireProps.FIRE_NUMBER} INSIDE perimeter, detected: ${fireDetectedDate.toISOString().split('T')[0]}`);
+            } else {
+              console.log(`  - Fire ${fireProps.FIRE_NUMBER} nearby (${Math.round(distance)}m from edge), detected: ${fireDetectedDate.toISOString().split('T')[0]}`);
+            }
+            console.log(`    Perimeter ${perimeterProps.OBJECTID} dates: ${perimeterFirstDate.toISOString().split('T')[0]} to ${perimeterLastDate.toISOString().split('T')[0]} (+/- 1 day = ${dateRangeStart.toISOString().split('T')[0]} to ${dateRangeEnd.toISOString().split('T')[0]})`);
+            
+            // Check if fire detection time falls within perimeter date range (+/- 1 day)
+            if (fireDetectedDate >= dateRangeStart && fireDetectedDate <= dateRangeEnd) {
+              dateMatches++;
+              hasMatch = true;
+              console.log(`    ✓ Date match! Fire detected within perimeter range`);
+            } else {
+              console.log(`    ✗ Date outside range (${fireDetectedDate.toISOString().split('T')[0]} not in ${dateRangeStart.toISOString().split('T')[0]} - ${dateRangeEnd.toISOString().split('T')[0]})`);
+            }
+          }
+        }
+        
+        if (nearbyFires > 0) {
+          console.log(`  Total nearby fires: ${nearbyFires}, date matches: ${dateMatches}`);
+        }
+        
+        return hasMatch;
+        
+        return false;
+      }
+
+      // Create a custom layer group for active fire perimeters
+      const activeFirePerimeters = L.layerGroup();
+      let activeFirePerimetersLoaded = false;
+      
+      // Function to load and filter active fire perimeters
+      async function loadActiveFirePerimeters() {
+        if (activeFirePerimetersLoaded) return;
+        
+        try {
+          console.log('Loading active fire perimeters...');
+          
+          // Load active fires data first
+          const activeFires = await loadActiveFiresData();
+          console.log(`Loaded ${activeFires.length} active fires for filtering`);
+          
+          // Debug: Show all active fire dates
+          console.log('Active fire detection dates:');
+          activeFires.forEach(fire => {
+            const props = fire.properties || {};
+            const timeDetected = props.TIME_DETECTED;
+            if (timeDetected) {
+              const fireDate = new Date(parseInt(timeDetected));
+              console.log(`  - Fire ${props.FIRE_NUMBER}: ${fireDate.toISOString().split('T')[0]}`);
+            }
+          });
+          
+          // Create a temporary layer to fetch only New Brunswick perimeters
+          const tempLayer = L.esri.featureLayer({
+            url: CONFIG.SERVICES.ACTIVE_PERIMETERS,
+            where: "Province = 'New Brunswick'"
+          });
+          
+          // Load all features and filter them
+          tempLayer.query().run((error, featureCollection) => {
+            if (error) {
+              console.error('Error loading perimeters for filtering:', error);
+              return;
+            }
+            
+            console.log(`Processing ${featureCollection.features.length} perimeters...`);
+            let filteredCount = 0;
+            
+            // Filter features and add matching ones to our layer group
+            featureCollection.features.forEach(feature => {
+              const matchResult = hasNearbyActiveFire(feature, activeFires);
+              if (matchResult) {
+                filteredCount++;
+                console.log(`✓ MATCH: Perimeter ${feature.properties.OBJECTID} will be added to map`);
+                
+                // Create a GeoJSON layer for this filtered perimeter
+                const layer = L.geoJSON(feature, {
+                  pane: 'perimetersPane',
+                  style: () => ({
+                    color: FireDataManager.getColorConfig().perimeter,
+                    weight: 1.2,
+                    fillOpacity: 0.25
+                  }),
+                  onEachFeature: (feature, layer) => {
+                    const ha = feature?.properties?.AREA;
+                    const props = feature.properties || {};
+                    
+                    // Add tooltip for area label
+                    layer.bindTooltip(`<span class="perimeter-label" style="color:${FireDataManager.getColorConfig().perimeter}">${toNum(ha,1)} ha</span>`,
+                      {permanent: true, className: 'perimeter-label-tooltip', direction: 'center', opacity: 0});
+                    activeFirePerimeterLabelLayers.add(layer);
+                    
+                    // Add popup with detailed information
+                    const formatDate = (timestamp) => {
+                      if (!timestamp) return 'N/A';
+                      try {
+                        return new Date(parseInt(timestamp)).toLocaleDateString('en-CA', {
+                          year: 'numeric', month: 'short', day: 'numeric'
+                        });
+                      } catch {
+                        return 'N/A';
+                      }
+                    };
+                    
+                    const popupContent = `
+                      <div class="popup-header">Active Fire Perimeter</div>
+                      <div class="popup-body">
+                        <p><strong>Area:</strong> ${toNum(ha,1)} hectares</p>
+                        <p><strong>Object ID:</strong> ${props.OBJECTID || 'N/A'}</p>
+                        <p><strong>UID:</strong> ${props.UID || 'N/A'}</p>
+                        <p><strong>Province:</strong> ${props.Province || 'N/A'}</p>
+                        <p><strong>Hot Count:</strong> ${props.HCOUNT || 'N/A'}</p>
+                        <p><strong>First Date:</strong> ${formatDate(props.FIRSTDATE)}</p>
+                        <p><strong>Last Date:</strong> ${formatDate(props.LASTDATE)}</p>
+                        <p><em>Shows perimeters with active fire points within 500m and matching date ranges</em></p>
+                        <p><small>Source: Natural Resources Canada</small></p>
+                      </div>
+                    `;
+                    layer.bindPopup(popupContent);
+                  }
+                });
+                
+                // Add to our layer group
+                activeFirePerimeters.addLayer(layer);
+              }
+            });
+            
+            console.log(`Filtered to ${filteredCount} active fire perimeters`);
+            activeFirePerimetersLoaded = true;
+            
+            // Update labels if the layer is currently visible
+            if (map.hasLayer(activeFirePerimeters)) {
+              setActiveFirePerimeterLabels();
+            }
+          });
+          
+        } catch (error) {
+          console.error('Error in loadActiveFirePerimeters:', error);
+        }
+      }
+      
+      const setActiveFirePerimeterLabels = LayerManager.labels.createZoomLabelUpdater(map, activeFirePerimeterLabelLayers, 11);
+      activeFirePerimeters.on('load', setActiveFirePerimeterLabels);
+      
+      // Add active fire perimeters layer to map by default
+      activeFirePerimeters.addTo(map);
+      
+      // Load the layer data immediately since it's enabled by default
+      loadActiveFirePerimeters();
+
       const nbBoundary = L.esri.featureLayer({
         url: CONFIG.SERVICES.CANADA_PROVINCES,
         where:"Name_EN = 'New Brunswick'",
@@ -3634,35 +4048,34 @@
       }
       function stationSVG(p, size=84){
         const fromDeg = Number(p.WindDirection);
-        const toDeg = Number.isFinite(fromDeg) ? (fromDeg + 180) % 360 : 0;
         const kmh = Number(p.WindSpeed_kmh);
         const temp = p.Temperature_C !== '' && p.Temperature_C != null ? Math.round(Number(p.Temperature_C)) : null;
-        const hum  = p.Humidity_Percent !== '' && p.Humidity_Percent != null ? Math.round(Number(p.Humidity_Percent)) : null;
-        const arrowPathD = "M42 14 Q52 30 58 58 Q42 48 42 48 Q42 48 26 58 Q32 30 42 14 Z";
+        const hum = p.Humidity_Percent !== '' && p.Humidity_Percent != null ? Math.round(Number(p.Humidity_Percent)) : null;
         const scale = size/84;
         return `
-          <svg class="ws-svg" width="${84*scale}" height="${92*scale}" viewBox="0 0 84 92" aria-hidden="true" role="img" style="position:relative; z-index:1; filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))">
-            <circle cx="42" cy="42" r="34" fill="#0b0f19" stroke="#ffffff" stroke-width="2.5"/>
-            <g transform="rotate(${toDeg} 42 42)">
-              <path d="${arrowPathD}" fill="#999999" stroke="#999999" stroke-width="1.8" stroke-linejoin="round"></path>
-              <g transform="rotate(${-toDeg} 42 42)">
-                <text x="42" y="26" text-anchor="middle" class="ws-small">From ${degToCompass(fromDeg)}</text>
-                <text x="42" y="42" text-anchor="middle" class="ws-speed">${Number.isFinite(kmh) ? kmh : '—'} km/h</text>
-                <text x="42" y="58" text-anchor="middle" class="ws-small">${temp != null ? temp + '°C' : '—'}${hum != null ? ' • ' + hum + '%' : ''}</text>
+          <svg class="ws-svg" width="${84*scale}" height="${84*scale}" viewBox="0 0 84 84" aria-hidden="true" role="img" style="position:relative; z-index:1; filter:drop-shadow(0 1px 3px rgba(0,0,0,.2))">
+            <circle cx="42" cy="42" r="39" fill="#0b0f19" stroke="#38f" stroke-width="3"></circle>
+            ${Number.isFinite(fromDeg) ? `
+              <g transform="rotate(${fromDeg} 42 42)">
+                <path d="M42 12 L48 12 L48 42 L56 34 L42 48 L28 34 L36 42 L36 12 Z" fill="#38f" stroke="#fff" stroke-width="1"></path>
               </g>
-            </g>
+            ` : ''}
+            <text x="42" y="22" text-anchor="middle" class="ws-small">From ${Number.isFinite(fromDeg) ? degToCompass(fromDeg) : '—'}</text>
+            <text x="42" y="58" text-anchor="middle" class="ws-speed">${Number.isFinite(kmh) ? kmh : '—'} km/h</text>
+            <text x="42" y="70" text-anchor="middle" class="ws-small">${temp != null ? temp + '°C' : '—'}</text>
+            <text x="42" y="80" text-anchor="middle" class="ws-small">${hum != null ? hum + '%' : '—'}</text>
           </svg>`;
       }
       function makeStationMarker(feature, latlng) {
         const p = feature.properties || {};
-        const icon = L.divIcon({ className: 'ws-div', html: stationSVG(p, 84), iconSize: [84, 92], iconAnchor: [42, 54], popupAnchor: [0, -44] });
+        const icon = L.divIcon({ className: 'ws-div', html: stationSVG(p, 84), iconSize: [84, 84], iconAnchor: [42, 42], popupAnchor: [0, -42] });
         const m = L.marker(latlng, { icon, pane: 'weatherPane' });
         m.options._stationProps = p;
         const fromDeg = Number(p.WindDirection);
         const kmh = Number(p.WindSpeed_kmh);
         const temp = p.Temperature_C !== '' && p.Temperature_C != null ? Math.round(Number(p.Temperature_C)) : null;
         const hum  = p.Humidity_Percent !== '' && p.Humidity_Percent != null ? Math.round(Number(p.Humidity_Percent)) : null;
-        m.bindTooltip(`Wind: ${Number.isFinite(kmh) ? kmh : '—'} km/h • From ${degToCompass(fromDeg)}${temp != null ? ' • ' + temp + '°C' : ''}${hum != null ? ' • ' + hum + '%' : ''}`, { direction: 'top', offset: [0, -36], opacity: 0 });
+        m.bindTooltip(`Wind: ${Number.isFinite(kmh) ? kmh : '—'} km/h • From ${degToCompass(fromDeg)}${temp != null ? ' • ' + temp + '°C' : ''}${hum != null ? ' • ' + hum + '%' : ''}`, { direction: 'top', offset: [0, -42], opacity: 0 });
         m.bindPopup(stationPopupHTML(p), { pane: 'alwaysOnTopPopup' });
         return m;
       }
@@ -3686,12 +4099,12 @@
             html: `
               <div style="position:relative;display:inline-grid;place-items:center">
                 ${stationSVG(p, 84)}
-                <div style="position:absolute;bottom:8px;right:8px;z-index:2;background:var(--panel-strong);border:2px solid #111827;border-radius:999px;
-                            font:800 12px/1.1 Inter,system-ui,Arial;padding:4px 7px;box-shadow:0 2px 8px rgba(0,0,0,.18);pointer-events:none">
+                <div style="position:absolute;bottom:4px;right:4px;z-index:2;background:#38f;border:2px solid #ffffff;border-radius:12px;
+                            font:700 10px/1.1 Inter,system-ui,Arial;color:#ffffff;padding:2px 6px;box-shadow:0 1px 3px rgba(0,0,0,.2);pointer-events:none">
                   ${cluster.getChildCount()}
                 </div>
               </div>`,
-            iconSize: [84, 92], iconAnchor: [42, 54], popupAnchor: [0, -44] });
+            iconSize: [84, 84], iconAnchor: [42, 42], popupAnchor: [0, -42] });
         }
       });
 
@@ -4473,21 +4886,17 @@ async function loadEvents(){
     window._eventMarkersByCategory = {
       closures: [],
       futureClosures: [],
-      incidents: [],
       construction: [],
-      futureConstruction: [],
-      flooding: []
+      futureConstruction: []
     };
   }
   
   if (!window._eventLinesByCategory) {
     window._eventLinesByCategory = {
       closures: [],
-      futureClosures: [],
-      incidents: [],  
+      futureClosures: [], 
       construction: [],
-      futureConstruction: [],
-      flooding: []
+      futureConstruction: []
     };
   }
   
@@ -4497,13 +4906,17 @@ async function loadEvents(){
 
     function addPoint(e){
       if (typeof e.Latitude !== 'number' || typeof e.Longitude !== 'number') return;
+      
+      // Check category first - skip events that should not be displayed (incidents and flooding)
+      const category = DataLoadingManager.getEventCategory(e.EventType, e.EventSubType, e.StartDate);
+      if (category === null) return;
+      
       const icon = createEventIcon(e);
       const marker = L.marker([e.Latitude, e.Longitude], { icon })
         .bindPopup(PopupUtils.buildEventPopup(e));
       
       // Store event data for clustering and filtering
       marker.options._eventData = e;
-      const category = DataLoadingManager.getEventCategory(e.EventType, e.EventSubType, e.StartDate);
       marker._eventCategory = category;
       
       console.log(`Adding marker for event: ${e.EventType}/${e.EventSubType} -> category: ${category}`);
@@ -4522,54 +4935,185 @@ async function loadEvents(){
 
     
 const LINE_STYLES = {
-  fullClosure: { color: '#dc2626', weight: 6, opacity: 1.0 },      // bright red for full closures
-  partialClosure: { color: '#f59e0b', weight: 4, opacity: 0.9 },   // amber for partial closures  
-  detour: { color: '#0891b2', weight: 4, dashArray: '12,8', opacity: 1.0 } // bright cyan for detours
+  fullClosure: { 
+    outline: { color: '#000000', weight: 8, opacity: 1.0, lineCap: 'square' },        // black outline for full closures
+    main: { color: '#dc2626', weight: 6, opacity: 1.0, lineCap: 'square' }            // solid red for full closures
+  },
+  partialClosure: { 
+    outline: { color: '#000000', weight: 6, opacity: 1.0, lineCap: 'square' },        // black outline for partial closures
+    green: { color: '#22c55e', weight: 4, dashArray: '12,12', dashOffset: '12', opacity: 1.0, lineCap: 'square' }, // green dashes offset
+    red: { color: '#dc2626', weight: 4, dashArray: '12,12', opacity: 1.0, lineCap: 'square' } // red dashes
+  },
+  detour: { 
+    outline: { color: '#000000', weight: 7, opacity: 1.0, lineCap: 'square' },        // solid black outline for detours
+    white: { color: '#ffffff', weight: 5, dashArray: '15,15', dashOffset: '15', opacity: 1.0, lineCap: 'square' }, // white dashes offset
+    blue: { color: '#0891b2', weight: 5, dashArray: '15,15', opacity: 1.0, lineCap: 'square' } // blue dashes
+  }
 };
+// Global array to track existing lines for overlap detection
+if (!window._existingLineCoords) {
+  window._existingLineCoords = [];
+}
+
 function addEncodedLine(encoded, event){
       try{
         const coords = polyline.decode(encoded).map(([lat, lng]) => [lat, lng]);
         if (coords && coords.length){
-          const lineStyle = event.IsFullClosure ? LINE_STYLES.fullClosure : LINE_STYLES.partialClosure;
-          const pl = L.polyline(coords, lineStyle);
-          pl.bindPopup(PopupUtils.buildEventPopup(event));
+          // Store coordinates for overlap detection
+          window._existingLineCoords.push(coords);
           
-          // Store event data for category filtering
-          const category = DataLoadingManager.getEventCategory(event.EventType, event.EventSubType, event.StartDate);
-          pl._eventCategory = category;
-          pl._isDetour = false;
-          
-          // Add to category tracking
-          if (window._eventLinesByCategory && window._eventLinesByCategory[category]) {
-            window._eventLinesByCategory[category].push(pl);
+          if (event.IsFullClosure) {
+            // Full closure - solid red with black outline
+            const outlineStyle = { ...LINE_STYLES.fullClosure.outline, dashArray: null };
+            const outlinePl = L.polyline(coords, outlineStyle);
+            const mainPl = L.polyline(coords, LINE_STYLES.fullClosure.main);
+            
+            const popup = PopupUtils.buildEventPopup(event);
+            outlinePl.bindPopup(popup);
+            mainPl.bindPopup(popup);
+            
+            // Store event data for category filtering
+            const category = DataLoadingManager.getEventCategory(event.EventType, event.EventSubType, event.StartDate);
+            
+            // Skip events that should not be displayed (incidents and flooding)
+            if (category === null) return;
+            
+            [outlinePl, mainPl].forEach(line => {
+              line._eventCategory = category;
+              line._isDetour = false;
+            });
+            
+            // Add to category tracking
+            if (window._eventLinesByCategory && window._eventLinesByCategory[category]) {
+              window._eventLinesByCategory[category].push(outlinePl);
+              window._eventLinesByCategory[category].push(mainPl);
+            }
+            
+            outlinePl.addTo(eventsLineLayer);
+            mainPl.addTo(eventsLineLayer);
+          } else {
+            // Partial closure - red and green dashed with black outline
+            const outlineStyle = { ...LINE_STYLES.partialClosure.outline, dashArray: null };
+            const outlinePl = L.polyline(coords, outlineStyle);
+            const greenPl = L.polyline(coords, LINE_STYLES.partialClosure.green);
+            const redPl = L.polyline(coords, LINE_STYLES.partialClosure.red);
+            
+            const popup = PopupUtils.buildEventPopup(event);
+            outlinePl.bindPopup(popup);
+            greenPl.bindPopup(popup);
+            redPl.bindPopup(popup);
+            
+            // Store event data for category filtering
+            const category = DataLoadingManager.getEventCategory(event.EventType, event.EventSubType, event.StartDate);
+            
+            // Skip events that should not be displayed (incidents and flooding)
+            if (category === null) return;
+            
+            [outlinePl, greenPl, redPl].forEach(line => {
+              line._eventCategory = category;
+              line._isDetour = false;
+            });
+            
+            // Add to category tracking
+            if (window._eventLinesByCategory && window._eventLinesByCategory[category]) {
+              window._eventLinesByCategory[category].push(outlinePl);
+              window._eventLinesByCategory[category].push(greenPl);
+              window._eventLinesByCategory[category].push(redPl);
+            }
+            
+            outlinePl.addTo(eventsLineLayer);
+            greenPl.addTo(eventsLineLayer);
+            redPl.addTo(eventsLineLayer);
           }
-          
-          // Add only to individual line layer - zoom control will manage combined layer
-          pl.addTo(eventsLineLayer);
+
         }
       }catch(e){}
     }
 
+    // Function to check if detour line overlaps with existing lines
+    function checkOverlap(detourCoords) {
+      const threshold = 0.0005; // ~50m tolerance for overlap detection
+      
+      for (let existingCoords of window._existingLineCoords) {
+        for (let detourPoint of detourCoords) {
+          for (let existingPoint of existingCoords) {
+            const latDiff = Math.abs(detourPoint[0] - existingPoint[0]);
+            const lngDiff = Math.abs(detourPoint[1] - existingPoint[1]);
+            
+            if (latDiff < threshold && lngDiff < threshold) {
+              return true; // Overlap detected
+            }
+          }
+        }
+      }
+      return false; // No overlap
+    }
+    
     function addDetourLine(encoded, event){
       try{
         const coords = polyline.decode(encoded).map(([lat, lng]) => [lat, lng]);
         if (coords && coords.length){
-          const pl = L.polyline(coords, LINE_STYLES.detour);
-          const detourPopup = '<b><i class="fas fa-route" style="color: #0891b2;"></i> Detour</b><br/>' + PopupUtils.buildEventPopup(event);
-          pl.bindPopup(detourPopup);
-          
           // Store event data for category filtering
           const category = DataLoadingManager.getEventCategory(event.EventType, event.EventSubType, event.StartDate);
-          pl._eventCategory = category;
-          pl._isDetour = true;
           
-          // Add to category tracking
+          // Skip events that should not be displayed (incidents and flooding)
+          if (category === null) return;
+          
+          // Only apply offset where there's overlap with existing lines
+          const hasOverlap = checkOverlap(coords);
+          const finalCoords = hasOverlap ? coords.map(([lat, lng]) => [lat + 0.0001, lng + 0.0001]) : coords;
+          
+          // Create simple detour popup header
+          const detourPopup = `
+            <div style="min-width:240px;max-width:280px">
+              <div style="font-size:16px;font-weight:700;color:#333;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #eee">
+                Detour Route
+              </div>
+              <div style="font-size:13px;line-height:1.4">
+                <div style="margin-bottom:6px">
+                  <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:12px;background:#f8f9fa;border:1px solid #dee2e6;font-weight:600;font-size:12px">
+                    <span style="background:#0891b2;width:8px;height:8px;border-radius:50%;display:inline-block"></span>Alternative Route
+                  </span>
+                </div>
+                ${event.Description ? `<div style="margin-bottom:4px"><b>Details:</b> ${escHTML(event.Description)}</div>` : ''}
+                ${event.DetourInstructions ? `<div style="margin-bottom:4px"><b>Instructions:</b> ${escHTML(Array.isArray(event.DetourInstructions) ? event.DetourInstructions.join(' ') : event.DetourInstructions)}</div>` : ''}
+              </div>
+            </div>
+          `;
+          
+          // Create solid black outline polyline (drawn first, underneath)
+          const outlineStyle = { ...LINE_STYLES.detour.outline, dashArray: null };
+          const outlinePl = L.polyline(finalCoords, outlineStyle);
+          
+          // Create white dashed polyline (drawn second, middle layer)
+          const whitePl = L.polyline(finalCoords, LINE_STYLES.detour.white);
+          
+          // Create blue dashed polyline (drawn third, on top)
+          const bluePl = L.polyline(finalCoords, LINE_STYLES.detour.blue);
+          
+          // Bind popup to all three layers so clicking anywhere works
+          outlinePl.bindPopup(detourPopup);
+          whitePl.bindPopup(detourPopup);
+          bluePl.bindPopup(detourPopup);
+          
+          // Store category data on all lines
+          [outlinePl, whitePl, bluePl].forEach(line => {
+            line._eventCategory = category;
+            line._isDetour = true;
+          });
+          outlinePl._isDetourOutline = true; // Flag to identify outline
+          
+          // Add to category tracking (we'll track all three lines together)
           if (window._eventLinesByCategory && window._eventLinesByCategory[category]) {
-            window._eventLinesByCategory[category].push(pl);
+            window._eventLinesByCategory[category].push(outlinePl);
+            window._eventLinesByCategory[category].push(whitePl);
+            window._eventLinesByCategory[category].push(bluePl);
           }
           
-          // Add only to individual detour layer - zoom control will manage combined layer
-          pl.addTo(eventsDetourLayer);
+          // Add all three lines to detour layer (in order: outline, white, blue)
+          outlinePl.addTo(eventsDetourLayer);
+          whitePl.addTo(eventsDetourLayer);
+          bluePl.addTo(eventsDetourLayer);
         }
       }catch(e){}
     }
@@ -4657,12 +5201,14 @@ if (typeof map !== 'undefined' && map && map.on){
     if (e.layer === webcamsLayer) loadWebcams();
     if (e.layer === eventsCombined || e.layer === eventsPointLayer || e.layer === eventsLineLayer || e.layer === eventsDetourLayer) loadEvents();
     if (e.layer === winterRoadsLayer) loadWinterRoads();
+    if (e.layer === activeFirePerimeters) loadActiveFirePerimeters();
   });
 }
       // Create grouped overlays for better organization
       const overlays = {
         // Fire & Emergency
         'Fire Perimeters': activePerimeters,
+        'Active Fire Perimeters': activeFirePerimeters,
         'CWFIS Hotspots (24h)': cwfis24,
         'CWFIS Hotspots (7d)': cwfis7,
         'NB Burn Bans': nbBurnBans,
@@ -4712,7 +5258,7 @@ if (typeof map !== 'undefined' && map && map.on){
         );
         
         const groups = [
-          { title: 'Fire & Emergency', items: ['Fire Perimeters', 'CWFIS Hotspots (24h)', 'CWFIS Hotspots (7d)', 'NB Burn Bans'] },
+          { title: 'Fire & Emergency', items: ['Fire Perimeters', 'Active Fire Perimeters', 'CWFIS Hotspots (24h)', 'CWFIS Hotspots (7d)', 'NB Burn Bans'] },
           { title: 'Fire Weather', items: ['Fire Risk', 'Fire Weather', 'Fire Behavior', 'Smoke'] },
           { title: 'Weather & Environment', items: ['Weather Stations', 'Weather Radar', 'Lightning', 'AQHI Risk'] },
           { title: 'Transportation', items: ['Road Events', 'Winter Roads', 'Ferries', 'Road Webcams', 'Aircraft'] },
@@ -6350,7 +6896,7 @@ doc.autoTable({
           '<div style="font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:6px;">',
           '<i class="fas fa-road" style="color:#fd7e14;"></i> Road Events Legend</div>',
           
-          // 5 Simple Subcategories - Square markers to match map icons
+          // EventType-based categories from events.json
           '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
           '<input type="checkbox" id="closuresToggle" checked style="margin:0;">',
           '<div style="width:16px;height:16px;background:#dc2626;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:8px;font-weight:bold;"><i class="fa-solid fa-ban"></i></div>',
@@ -6362,11 +6908,6 @@ doc.autoTable({
           'Future Closures</label>',
           
           '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
-          '<input type="checkbox" id="incidentsToggle" checked style="margin:0;">',
-          '<div style="width:16px;height:16px;background:#dc2626;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:7px;font-weight:bold;"><i class="fa-solid fa-triangle-exclamation"></i></div>',
-          'Incidents</label>',
-          
-          '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
           '<input type="checkbox" id="constructionToggle" checked style="margin:0;">',
           '<div style="width:16px;height:16px;background:#ea580c;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:7px;font-weight:bold;"><i class="fa-solid fa-person-digging"></i></div>',
           'Construction</label>',
@@ -6374,12 +6915,7 @@ doc.autoTable({
           '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
           '<input type="checkbox" id="futureConstructionToggle" style="margin:0;">',
           '<div style="width:16px;height:16px;background:#2563eb;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:7px;font-weight:bold;"><i class="fa-solid fa-person-digging"></i></div>',
-          'Future Construction</label>',
-          
-          '<label style="display:flex;align-items:center;gap:4px;margin:4px 0;cursor:pointer;">',
-          '<input type="checkbox" id="floodingToggle" checked style="margin:0;">',
-          '<div style="width:16px;height:16px;background:#0891b2;border:2px solid white;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:7px;font-weight:bold;"><i class="fa-solid fa-water"></i></div>',
-          'Flooding</label>'
+          'Future Construction</label>'
         ].join('');
         return el;
       }
@@ -6401,10 +6937,8 @@ doc.autoTable({
             const categoryMappings = [
               { id: 'closuresToggle', category: 'closures' },
               { id: 'futureClosuresToggle', category: 'futureClosures' },
-              { id: 'incidentsToggle', category: 'incidents' },
               { id: 'constructionToggle', category: 'construction' },
-              { id: 'futureConstructionToggle', category: 'futureConstruction' },
-              { id: 'floodingToggle', category: 'flooding' }
+              { id: 'futureConstructionToggle', category: 'futureConstruction' }
             ];
             
             // Use setTimeout to ensure DOM elements are ready and use event delegation
