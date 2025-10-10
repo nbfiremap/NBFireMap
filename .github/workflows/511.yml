@@ -1,5 +1,4 @@
 name: Hourly 511 Data Sync
-
 on:
   schedule:
     - cron: "22 * * * *"   # :22 past every hour (UTC)
@@ -22,10 +21,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Install jq
+      - name: Install jq and tzdata
         run: |
           sudo apt-get update
-          sudo apt-get install -y jq
+          sudo apt-get install -y jq tzdata
 
       - name: Fetch and commit (always commit on success)
         env:
@@ -50,15 +49,16 @@ jobs:
             [events]="event"
           )
 
-          timestamp="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          # Generate timestamp for file metadata (UTC) and for commit message (Atlantic)
+          timestamp_utc="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          timestamp_at="$(TZ=America/Halifax date +"%Y/%m/%d %I:%M %p")"
 
           add_ts() {
-            jq --arg ts "$timestamp" 'if type=="array" then map(. + {downloaded_at:$ts}) else . + {downloaded_at:$ts} end'
+            jq --arg ts "$timestamp_utc" 'if type=="array" then map(. + {downloaded_at:$ts}) else . + {downloaded_at:$ts} end'
           }
 
           for name in webcams winterroads ferries events; do
             extra=""
-            # Only cameras uses lang=en per your examples
             if [ "$name" = "webcams" ]; then
               extra="&lang=en"
             fi
@@ -76,7 +76,7 @@ jobs:
                 rm -f "$tmp"
 
                 git add "$dest"
-                git commit -m "Update DTI 511 Datasets" || true
+                git commit -m "Updated $timestamp_at" || true
                 echo "Committed $dest (or nothing changed)"
               else
                 echo "Invalid JSON for $name; skipping commit." >&2
@@ -92,3 +92,4 @@ jobs:
       - name: Push commits (if any)
         run: |
           git push || echo "Nothing to push."
+
