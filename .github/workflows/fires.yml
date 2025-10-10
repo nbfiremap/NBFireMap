@@ -2,6 +2,7 @@ name: Fetch ERD Fire Datasets
 
 on:
   schedule:
+    # Runs at 21 minutes after every hour (UTC)
     - cron: "21 * * * *"
   workflow_dispatch: {}
 
@@ -16,9 +17,10 @@ jobs:
       ACTIVE_FIRES_FILE: "active_fires.geojson"
       OUT_FIRES_FILE: "out_fires.geojson"
       SUMS_TABLE_FILE: "sums_table.json"
+      # PDF → JSON
       GNB_PDF_URL: "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf"
       GNB_SUM_FILE: "GNBfireActSum.json"
-      # New Brunswick Fire Locations (FeatureServer layer → GeoJSON)
+      # NB Fire Locations (FeatureServer layer → GeoJSON)
       ERD_FIRE_LOCATIONS_URL: "https://gis-erd-der.gnb.ca/gisserver/rest/services/New_Brunswick_Fires/New_Brunswick_Fire_Locations/FeatureServer/0/query"
       ERD_FIRE_LOCATIONS_FILE: "erd_fire_locations.geojson"
 
@@ -116,6 +118,31 @@ jobs:
                   raise RuntimeError("GeoJSON did not contain a FeatureCollection")
               return data
 
+          def attributes_index_by_oid(attrs_json, oid_field):
+              index = {}
+              for f in attrs_json.get("features", []):
+                  attrs = f.get("attributes") or {}
+                  if oid_field in attrs:
+                      index[attrs[oid_field]] = attrs
+              return index
+
+          def merge_geojson_with_attrs(geojson_obj, attrs_by_oid, all_fields, oid_field):
+              for f in geojson_obj.get("features", []):
+                  props = f.get("properties")
+                  if props is None or not isinstance(props, dict):
+                      props = {}
+                      f["properties"] = props
+                  oid_val = props.get(oid_field)
+                  source = attrs_by_oid.get(oid_val, {})
+                  for name in all_fields:
+                      if name not in props or props[name] is None:
+                          if name in source:
+                              props[name] = source[name]
+                          else:
+                              if name not in props:
+                                  props[name] = None
+              return geojson_obj
+
           def add_timestamp_to_geojson(data, timestamp):
               for f in data.get("features", []):
                   props = f.setdefault("properties", {})
@@ -138,14 +165,10 @@ jobs:
               for i in range(copies):
                   base_geo = fetch_geojson(url)
                   attrs_json_resp = arcgis_get(url, {"where":"1=1","outFields":"*","returnGeometry":"false","f":"json"}).json()
-                  # merge attributes for completeness
-                  by_oid = {f["attributes"][oid_field]: f["attributes"] for f in attrs_json_resp.get("features", []) if oid_field in f.get("attributes",{})}
-                  for feat in base_geo.get("features", []):
-                      oid = feat.get("properties", {}).get(oid_field)
-                      if oid in by_oid:
-                          feat["properties"].update(by_oid[oid])
-                  count, sig = features_to_signature(base_geo)
-                  payloads.append(base_geo)
+                  attrs_by_oid = attributes_index_by_oid(attrs_json_resp, oid_field)
+                  merged = merge_geojson_with_attrs(base_geo, attrs_by_oid, all_fields, oid_field)
+                  count, sig = features_to_signature(merged)
+                  payloads.append(merged)
                   sigs.append((count, sig))
                   log(f"{kind}: copy {i+1}/{copies} -> features={count} sig={sig[:12]}")
                   time.sleep(1)
@@ -234,9 +257,155 @@ jobs:
       - name: Fetch & parse Activity Summary PDF → GNBfireActSum.json (rows as objects)
         shell: python
         run: |
-          # (unchanged)
-          # ...
-          print("PDF parsing step completed")
+          import os, io, time, json, re, requests, pdfplumber
+
+          url1=os.environ["GNB_PDF_URL"]
+          cache_busted_url = f"{url1}?t={int(time.time())}"
+
+          pdf_url = cache_busted_url
+          out_json = os.environ["GNB_SUM_FILE"]
+          ts = int(time.time())
+
+          def clean(s):
+              if s is None: return ""
+              return re.sub(r"\s+", " ", str(s)).strip()
+
+          result = {"source": pdf_url, "fetched_utc": ts, "pages": 0, "tables": []}
+
+          r = requests.get(pdf_url, timeout=90)
+          r.raise_for_status()
+          data = io.BytesIO(r.content)
+
+          with pdfplumber.open(data) as pdf:
+              result["pages"] = len(pdf.pages)
+
+              # Try real tables first
+              for pnum, page in enumerate(pdf.pages, start=1):
+                  tables = page.extract_tables(
+                      table_settings={
+                          "vertical_strategy": "lines",
+                          "horizontal_strategy": "lines",
+                          "intersection_y_tolerance": 2,
+                          "intersection_x_tolerance": 2,
+                          "snap_tolerance": 3,
+                          "min_words_vertical": 1,
+                          "min_words_horizontal": 1,
+                          "text_x_tolerance": 2,
+                          "text_y_tolerance": 2,
+                          "join_tolerance": 3,
+                      }
+                  ) or []
+                  for t in tables:
+                      if not t or len(t) < 2:
+                          continue
+                      header = [clean(x) for x in t[0]]
+                      keep_idx = [i for i, h in enumerate(header) if h]
+                      header = [header[i] for i in keep_idx]
+                      rows_obj = []
+                      for row in t[1:]:
+                          row = row or []
+                          row_clean = [clean(x) for x in row]
+                          row_keep = [row_clean[i] if i < len(row_clean) else "" for i in keep_idx]
+                          if len(row_keep) < len(header):
+                              row_keep += [""] * (len(header) - len(row_keep))
+                          elif len(row_keep) > len(header):
+                              row_keep = row_keep[:len(header)]
+                          if any(v for v in row_keep):
+                              rows_obj.append(dict(zip(header, row_keep)))
+                      if rows_obj:
+                          result["tables"].append({"page": pnum, "headers": header, "rows": rows_obj})
+
+              # Fallback: custom line parser (Status → # → Name → Date → Lat → Lon → Size → 7 ints)
+              if not result["tables"]:
+                  headers = ["Region","Status","Number","Fire Name","Updated","Latitude","Longitude","Size","Pers","Eng","Tend","Trac","Air","Heli","Ovr"]
+                  rows = []
+                  region_totals = []
+                  province_total = None
+
+                  status_opts = ["Out of Control","Under Control","Being Patrolled","Contained","Out"]
+
+                  def starts_with_status(line):
+                      for s in status_opts:
+                          if line.startswith(s + " "):
+                              return s, line[len(s):].strip()
+                      return None, line
+
+                  def parse_data_line(line, current_region):
+                      status, rest = starts_with_status(line)
+                      if not status:
+                          return None
+                      parts = rest.split()
+                      if not parts or not parts[0].isdigit():
+                          return None
+                      num = parts[0]; parts = parts[1:]
+
+                      # date token like Aug-27
+                      date_idx = next((i for i,tok in enumerate(parts) if re.fullmatch(r"[A-Za-z]{3}-\d{1,2}", tok)), None)
+                      if date_idx is None or date_idx + 8 >= len(parts):
+                          return None
+
+                      fire_name = " ".join(parts[:date_idx])
+                      updated = parts[date_idx]
+                      tail = parts[date_idx+1:]
+
+                      lat, lon, size = tail[0], tail[1], tail[2]
+                      ints = tail[3:3+7]
+                      if len(ints) != 7:
+                          return None
+
+                      return {
+                          "Region": current_region or "",
+                          "Status": status,
+                          "Number": num,
+                          "Fire Name": fire_name,
+                          "Updated": updated,
+                          "Latitude": lat,
+                          "Longitude": lon,
+                          "Size": size,
+                          "Pers": ints[0],
+                          "Eng": ints[1],
+                          "Tend": ints[2],
+                          "Trac": ints[3],
+                          "Air": ints[4],
+                          "Heli": ints[5],
+                          "Ovr": ints[6],
+                      }
+
+                  def try_region_total(line):
+                      m = re.match(r"^Total for (.+?) Region\s+([0-9,]+(?:\.\d+)?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$", line)
+                      if not m: return None
+                      return {"Region": m.group(1), "Size": m.group(2), "Pers": m.group(3), "Eng": m.group(4),
+                              "Tend": m.group(5), "Trac": m.group(6), "Air": m.group(7), "HeliOvr": m.group(8)}
+
+                  def try_province_total(line):
+                      m = re.match(r"^Total for Province\s+([0-9,]+(?:\.\d+)?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$", line)
+                      if not m: return None
+                      return {"Size": m.group(1), "Pers": m.group(2), "Eng": m.group(3),
+                              "Tend": m.group(4), "Trac": m.group(5), "Air": m.group(6), "HeliOvr": m.group(7)}
+
+                  for page in pdf.pages:
+                      text = page.extract_text() or ""
+                      lines = [clean(x) for x in text.splitlines() if clean(x)]
+                      current_region = ""
+                      for line in lines:
+                          if re.fullmatch(r".+ Region", line):
+                              current_region = line.replace(" Region",""); continue
+                          rt = try_region_total(line)
+                          if rt: region_totals.append(rt); continue
+                          pt = try_province_total(line)
+                          if pt: province_total = pt; continue
+                          row = parse_data_line(line, current_region)
+                          if row: rows.append(row)
+
+                  if rows:
+                      result["tables"].append({"page": 0, "headers": headers, "rows": rows})
+                  if region_totals: result["region_totals"] = region_totals
+                  if province_total: result["province_total"] = province_total
+
+          with open(out_json, "w", encoding="utf-8") as f:
+              json.dump(result, f, ensure_ascii=False, indent=2)
+
+          print(f"Wrote {out_json}. Tables: {len(result.get('tables', []))}; rows: {sum(len(t['rows']) for t in result.get('tables', [])) if result.get('tables') else 0}")
 
       - name: Commit and push (if changed)
         shell: bash
