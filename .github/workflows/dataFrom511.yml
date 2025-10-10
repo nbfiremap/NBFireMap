@@ -73,7 +73,7 @@ jobs:
                 rm -f "$tmp"
 
                 git add "$dest"
-                git commit -m "Update ${dest} from 511 (downloaded_at: $timestamp UTC)"
+                git commit -m "Update DTI 511 datasets"
                 echo "Committed $dest"
               else
                 echo "Invalid JSON for $name; skipping commit." >&2
