@@ -356,7 +356,7 @@ jobs:
           git add -A archive
 
           if ! git diff --cached --quiet; then
-            git commit -m "Daily fire archive for $(date -u +%Y-%m-%d)"
+            git commit -m "Daily archive"
             for i in 1 2 3 4 5; do
               if git push origin "HEAD:$BRANCH_NAME"; then
                 exit 0
