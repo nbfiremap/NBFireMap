@@ -1,0 +1,94 @@
+name: Hourly 511 Data Sync
+
+on:
+  schedule:
+    - cron: "22 * * * *"   # :22 past every hour (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Fetch and commit (always commit on success)
+        env:
+          API_KEY: ${{ secrets.GNB511_API_KEY }}
+        shell: bash
+        run: |
+          set -u -o pipefail
+
+          if [ -z "${API_KEY:-}" ]; then
+            echo "Missing GNB511_API_KEY secret." >&2
+            exit 1
+          fi
+
+          # Ensure the 511 folder exists
+          mkdir -p 511
+
+          # Map repo filenames -> API path slug
+          declare -A SLUG=(
+            [webcams]="cameras"
+            [winterroads]="winterroads"
+            [ferries]="ferryterminals"
+            [events]="event"
+          )
+
+          timestamp="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+
+          add_ts() {
+            jq --arg ts "$timestamp" 'if type=="array" then map(. + {downloaded_at:$ts}) else . + {downloaded_at:$ts} end'
+          }
+
+          for name in webcams winterroads ferries events; do
+            extra=""
+            # Only cameras uses lang=en per your examples
+            if [ "$name" = "webcams" ]; then
+              extra="&lang=en"
+            fi
+
+            url="https://511.gnb.ca/api/v2/get/${SLUG[$name]}?key=${API_KEY}&format=json${extra}"
+            dest="511/${name}.json"
+            tmp="$(mktemp)"
+
+            echo "::group::Fetching $name => $dest"
+            echo "GET $url"
+
+            if curl -fsSL --retry 3 --retry-delay 5 --connect-timeout 20 --max-time 120 "$url" -o "$tmp"; then
+              if jq -e . >/dev/null 2>&1 <"$tmp"; then
+                add_ts <"$tmp" >"$dest"
+                rm -f "$tmp"
+
+                git add "$dest"
+                git commit -m "Update ${dest} from 511 (downloaded_at: $timestamp UTC)" || true
+                echo "Committed $dest (or nothing changed)"
+              else
+                echo "Invalid JSON for $name; skipping commit." >&2
+                rm -f "$tmp"
+              fi
+            else
+              echo "Request failed for $name; skipping." >&2
+              rm -f "$tmp"
+            fi
+            echo "::endgroup::"
+          done
+
+      - name: Push commits (if any)
+        run: |
+          git push || echo "Nothing to push."
