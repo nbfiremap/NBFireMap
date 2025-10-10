@@ -1,4 +1,4 @@
-name: Fetch ERD Fire Datasets
+name: Hourly Fire Data Sync
 
 on:
   schedule:
