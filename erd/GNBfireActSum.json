@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760207678",
-  "fetched_utc": 1760207678,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760210582",
+  "fetched_utc": 1760210582,
   "pages": 1,
   "tables": [
     {
@@ -124,6 +124,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "5"
+        },
+        {
+          "Region": "West",
+          "Status": "Under Control",
+          "Number": "422",
+          "Fire Name": "423-Albright",
+          "Updated": "Oct-11",
+          "Latitude": "46.05906",
+          "Longitude": "66.20143",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
         },
         {
           "Region": "West",
