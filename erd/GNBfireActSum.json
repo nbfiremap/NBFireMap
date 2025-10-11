@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760189455",
-  "fetched_utc": 1760189455,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760192895",
+  "fetched_utc": 1760192895,
   "pages": 1,
   "tables": [
     {
@@ -79,17 +79,17 @@
           "Status": "Being Patrolled",
           "Number": "401",
           "Fire Name": "401",
-          "Updated": "Oct-10",
+          "Updated": "Oct-11",
           "Latitude": "47.80417",
           "Longitude": "66.30250",
           "Size": "55.0",
-          "Pers": "7",
-          "Eng": "1",
-          "Tend": "1",
+          "Pers": "1",
+          "Eng": "0",
+          "Tend": "0",
           "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "3"
+          "Ovr": "1"
         },
         {
           "Region": "East",
