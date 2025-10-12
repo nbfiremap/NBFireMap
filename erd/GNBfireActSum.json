@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760308232",
-  "fetched_utc": 1760308232,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760311632",
+  "fetched_utc": 1760311632,
   "pages": 1,
   "tables": [
     {
@@ -116,6 +116,23 @@
           "Updated": "Oct-11",
           "Latitude": "47.72397",
           "Longitude": "64.70462",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
+        },
+        {
+          "Region": "East",
+          "Status": "Out",
+          "Number": "425",
+          "Fire Name": "425",
+          "Updated": "Oct-12",
+          "Latitude": "47.28505",
+          "Longitude": "65.03830",
           "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
