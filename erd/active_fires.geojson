@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760268255
+        "FETCHED_FROM_ERD": 1760273521
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 55.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760268255
+        "FETCHED_FROM_ERD": 1760273521
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 50,
         "FIRE_SIZE": 100.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760268255
+        "FETCHED_FROM_ERD": 1760273521
       }
     },
     {
@@ -128,38 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760268255
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70483,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.20299894520014,
-          45.19930930977286
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70483,
-        "FIRE_NUMBER": "2025423",
-        "FIRE_NUMBER_SHORT": "423",
-        "FIRE_NAME": "424-",
-        "DEGREES_LAT": 45.1993,
-        "DEGREES_LONG": 66.203,
-        "FIRE_STAT_ID": 3,
-        "FIRE_STAT_DESC_E": "Under Control",
-        "FIRE_STAT_DESC_F": "Maîtrisé ",
-        "TIME_DETECTED": 1760196840000,
-        "FIRE_STAT_DATE": 1760200020000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760268255
+        "FETCHED_FROM_ERD": 1760273521
       }
     },
     {
@@ -190,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 1.3,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760268255
+        "FETCHED_FROM_ERD": 1760273521
       }
     },
     {
@@ -221,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760268255
+        "FETCHED_FROM_ERD": 1760273521
       }
     },
     {
@@ -252,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 68.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760268255
+        "FETCHED_FROM_ERD": 1760273521
       }
     },
     {
@@ -283,7 +252,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760268255
+        "FETCHED_FROM_ERD": 1760273521
       }
     }
   ]

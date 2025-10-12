@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760268266",
-  "fetched_utc": 1760268266,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760273532",
+  "fetched_utc": 1760273532,
   "pages": 1,
   "tables": [
     {
@@ -84,12 +84,12 @@
           "Longitude": "66.30250",
           "Size": "55.0",
           "Pers": "1",
-          "Eng": "0",
+          "Eng": "1",
           "Tend": "0",
           "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "1"
+          "Ovr": "0"
         },
         {
           "Region": "East",
@@ -161,10 +161,10 @@
         },
         {
           "Region": "West",
-          "Status": "Under Control",
+          "Status": "Out",
           "Number": "423",
-          "Fire Name": "424-",
-          "Updated": "Oct-11",
+          "Fire Name": "423",
+          "Updated": "Oct-12",
           "Latitude": "45.19930",
           "Longitude": "66.20300",
           "Size": "0.1",
