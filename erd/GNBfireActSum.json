@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760294206",
-  "fetched_utc": 1760294206,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760297032",
+  "fetched_utc": 1760297032,
   "pages": 1,
   "tables": [
     {
@@ -144,10 +144,10 @@
         },
         {
           "Region": "West",
-          "Status": "Under Control",
+          "Status": "Being Patrolled",
           "Number": "422",
           "Fire Name": "423-Albright",
-          "Updated": "Oct-11",
+          "Updated": "Oct-12",
           "Latitude": "46.05906",
           "Longitude": "66.20143",
           "Size": "0.1",
