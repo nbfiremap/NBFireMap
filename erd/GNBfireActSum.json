@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760407331",
-  "fetched_utc": 1760407331,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760411407",
+  "fetched_utc": 1760411407,
   "pages": 1,
   "tables": [
     {
@@ -126,23 +126,6 @@
           "Ovr": "1"
         },
         {
-          "Region": "East",
-          "Status": "Out",
-          "Number": "425",
-          "Fire Name": "425",
-          "Updated": "Oct-12",
-          "Latitude": "47.28505",
-          "Longitude": "65.03830",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
-        },
-        {
           "Region": "West",
           "Status": "Contained",
           "Number": "426",
@@ -184,23 +167,6 @@
           "Updated": "Oct-13",
           "Latitude": "46.05906",
           "Longitude": "66.20143",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "423",
-          "Fire Name": "423",
-          "Updated": "Oct-12",
-          "Latitude": "45.19930",
-          "Longitude": "66.20300",
           "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
