@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760452579",
-  "fetched_utc": 1760452579,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760455997",
+  "fetched_utc": 1760455997,
   "pages": 1,
   "tables": [
     {
@@ -124,6 +124,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "0"
+        },
+        {
+          "Region": "West",
+          "Status": "Contained",
+          "Number": "428",
+          "Fire Name": "Giberson Slope",
+          "Updated": "Oct-14",
+          "Latitude": "47.25663",
+          "Longitude": "66.84292",
+          "Size": "0.1",
+          "Pers": "5",
+          "Eng": "1",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
         },
         {
           "Region": "West",
