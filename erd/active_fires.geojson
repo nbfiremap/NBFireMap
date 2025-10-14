@@ -35,69 +35,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760441245
+        "FETCHED_FROM_ERD": 1760446862
       }
     },
     {
       "type": "Feature",
-      "id": 69864,
+      "id": 70104,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -64.97791860141396,
-          46.98138964751577
+          -64.87304856559749,
+          47.007429653726525
         ]
       },
       "properties": {
-        "OBJECTID": 69864,
-        "FIRE_NUMBER": "2025365",
-        "FIRE_NUMBER_SHORT": "365",
-        "FIRE_NAME": "365",
-        "DEGREES_LAT": 46.981379999999994,
-        "DEGREES_LONG": 64.97792,
+        "OBJECTID": 70104,
+        "FIRE_NUMBER": "2025394",
+        "FIRE_NUMBER_SHORT": "394",
+        "FIRE_NAME": "394",
+        "DEGREES_LAT": 47.007419999999996,
+        "DEGREES_LONG": 64.87304999999999,
         "FIRE_STAT_ID": 4,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758374820000,
-        "FIRE_STAT_DATE": 1760347320000,
+        "TIME_DETECTED": 1759318200000,
+        "FIRE_STAT_DATE": 1760431020000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 95.0,
+        "FIRE_SIZE": 68.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760441245
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70202,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.30249910701042,
-          47.80417975582065
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70202,
-        "FIRE_NUMBER": "2025401",
-        "FIRE_NUMBER_SHORT": "401",
-        "FIRE_NAME": "401",
-        "DEGREES_LAT": 47.80417,
-        "DEGREES_LONG": 66.30250000000001,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1759502400000,
-        "FIRE_STAT_DATE": 1760344200000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 55.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760441245
+        "FETCHED_FROM_ERD": 1760446862
       }
     },
     {
@@ -128,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760441245
+        "FETCHED_FROM_ERD": 1760446862
       }
     },
     {
@@ -159,7 +128,7 @@
         "PERCENT_CONTAINED": 50,
         "FIRE_SIZE": 100.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760441245
+        "FETCHED_FROM_ERD": 1760446862
       }
     },
     {
@@ -190,69 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760441245
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70562,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -64.53904841424787,
-          46.20308952209027
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70562,
-        "FIRE_NUMBER": "2025427",
-        "FIRE_NUMBER_SHORT": "427",
-        "FIRE_NAME": "Riverside 2",
-        "DEGREES_LAT": 46.20308,
-        "DEGREES_LONG": 64.53905,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1760364360000,
-        "FIRE_STAT_DATE": 1760371440000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760441245
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70104,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -64.87304856559749,
-          47.007429653726525
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70104,
-        "FIRE_NUMBER": "2025394",
-        "FIRE_NUMBER_SHORT": "394",
-        "FIRE_NAME": "394",
-        "DEGREES_LAT": 47.007419999999996,
-        "DEGREES_LONG": 64.87304999999999,
-        "FIRE_STAT_ID": 3,
-        "FIRE_STAT_DESC_E": "Under Control",
-        "FIRE_STAT_DESC_F": "Maîtrisé ",
-        "TIME_DETECTED": 1759318200000,
-        "FIRE_STAT_DATE": 1760347320000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 68.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760441245
+        "FETCHED_FROM_ERD": 1760446862
       }
     },
     {
@@ -283,7 +190,100 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760441245
+        "FETCHED_FROM_ERD": 1760446862
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70202,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.30249910701042,
+          47.80417975582065
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70202,
+        "FIRE_NUMBER": "2025401",
+        "FIRE_NUMBER_SHORT": "401",
+        "FIRE_NAME": "401",
+        "DEGREES_LAT": 47.80417,
+        "DEGREES_LONG": 66.30250000000001,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1759502400000,
+        "FIRE_STAT_DATE": 1760431380000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 55.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760446862
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70562,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.53904841424787,
+          46.20308952209027
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70562,
+        "FIRE_NUMBER": "2025427",
+        "FIRE_NUMBER_SHORT": "427",
+        "FIRE_NAME": "Riverside 2",
+        "DEGREES_LAT": 46.20308,
+        "DEGREES_LONG": 64.53905,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1760364360000,
+        "FIRE_STAT_DATE": 1760433000000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760446862
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69864,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.97791860141396,
+          46.98138964751577
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69864,
+        "FIRE_NUMBER": "2025365",
+        "FIRE_NUMBER_SHORT": "365",
+        "FIRE_NAME": "365",
+        "DEGREES_LAT": 46.981379999999994,
+        "DEGREES_LONG": 64.97792,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1758374820000,
+        "FIRE_STAT_DATE": 1760431500000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 95.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760446862
       }
     }
   ]
