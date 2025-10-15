@@ -9,68 +9,6 @@
   "features": [
     {
       "type": "Feature",
-      "id": 70582,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.8429192684041,
-          47.25663965112342
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70582,
-        "FIRE_NUMBER": "2025428",
-        "FIRE_NUMBER_SHORT": "428",
-        "FIRE_NAME": "Giberson Slope",
-        "DEGREES_LAT": 47.25663,
-        "DEGREES_LONG": 66.84291999999999,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1760434200000,
-        "FIRE_STAT_DATE": 1760517240000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760553810
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70603,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.20389894992182,
-          45.300189327841835
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70603,
-        "FIRE_NUMBER": "2025430",
-        "FIRE_NUMBER_SHORT": "430",
-        "FIRE_NAME": "430",
-        "DEGREES_LAT": 45.30018,
-        "DEGREES_LONG": 66.2039,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1760446800000,
-        "FIRE_STAT_DATE": 1760525640000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760553810
-      }
-    },
-    {
-      "type": "Feature",
       "id": 70482,
       "geometry": {
         "type": "Point",
@@ -97,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760553810
+        "FETCHED_FROM_ERD": 1760556384
       }
     },
     {
@@ -128,7 +66,7 @@
         "PERCENT_CONTAINED": 50,
         "FIRE_SIZE": 100.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760553810
+        "FETCHED_FROM_ERD": 1760556384
       }
     },
     {
@@ -159,38 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760553810
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 68585,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.47542912698799,
-          46.99147961517266
-        ]
-      },
-      "properties": {
-        "OBJECTID": 68585,
-        "FIRE_NUMBER": "2025256",
-        "FIRE_NUMBER_SHORT": "256",
-        "FIRE_NAME": "Beaver Lake Stream",
-        "DEGREES_LAT": 46.99147,
-        "DEGREES_LONG": 66.47543,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1755166920000,
-        "FIRE_STAT_DATE": 1760521860000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 456.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760553810
+        "FETCHED_FROM_ERD": 1760556384
       }
     },
     {
@@ -221,7 +128,69 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 68.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760553810
+        "FETCHED_FROM_ERD": 1760556384
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70582,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.8429192684041,
+          47.25663965112342
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70582,
+        "FIRE_NUMBER": "2025428",
+        "FIRE_NUMBER_SHORT": "428",
+        "FIRE_NAME": "Giberson Slope",
+        "DEGREES_LAT": 47.25663,
+        "DEGREES_LONG": 66.84291999999999,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1760434200000,
+        "FIRE_STAT_DATE": 1760517240000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760556384
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70603,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.20389894992182,
+          45.300189327841835
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70603,
+        "FIRE_NUMBER": "2025430",
+        "FIRE_NUMBER_SHORT": "430",
+        "FIRE_NAME": "430",
+        "DEGREES_LAT": 45.30018,
+        "DEGREES_LONG": 66.2039,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1760446800000,
+        "FIRE_STAT_DATE": 1760525640000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760556384
       }
     },
     {
@@ -252,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760553810
+        "FETCHED_FROM_ERD": 1760556384
       }
     },
     {
@@ -283,7 +252,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 55.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760553810
+        "FETCHED_FROM_ERD": 1760556384
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68585,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.47542912698799,
+          46.99147961517266
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68585,
+        "FIRE_NUMBER": "2025256",
+        "FIRE_NUMBER_SHORT": "256",
+        "FIRE_NAME": "Beaver Lake Stream",
+        "DEGREES_LAT": 46.99147,
+        "DEGREES_LONG": 66.47543,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1755166920000,
+        "FIRE_STAT_DATE": 1760521860000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 456.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760556384
       }
     }
   ]
