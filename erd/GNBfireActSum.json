@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760533275",
-  "fetched_utc": 1760533275,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760535839",
+  "fetched_utc": 1760535839,
   "pages": 1,
   "tables": [
     {
@@ -179,23 +179,6 @@
         {
           "Region": "West",
           "Status": "Being Patrolled",
-          "Number": "426",
-          "Fire Name": "426",
-          "Updated": "Oct-14",
-          "Latitude": "46.09943",
-          "Longitude": "67.71168",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Being Patrolled",
           "Number": "428",
           "Fire Name": "Giberson Slope",
           "Updated": "Oct-15",
@@ -226,6 +209,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "2"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "426",
+          "Fire Name": "426",
+          "Updated": "Oct-15",
+          "Latitude": "46.09943",
+          "Longitude": "67.71168",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
         }
       ]
     }
