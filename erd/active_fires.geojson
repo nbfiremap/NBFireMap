@@ -9,33 +9,33 @@
   "features": [
     {
       "type": "Feature",
-      "id": 70104,
+      "id": 70582,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -64.87304856559749,
-          47.007429653726525
+          -66.8429192684041,
+          47.25663965112342
         ]
       },
       "properties": {
-        "OBJECTID": 70104,
-        "FIRE_NUMBER": "2025394",
-        "FIRE_NUMBER_SHORT": "394",
-        "FIRE_NAME": "394",
-        "DEGREES_LAT": 47.007419999999996,
-        "DEGREES_LONG": 64.87304999999999,
+        "OBJECTID": 70582,
+        "FIRE_NUMBER": "2025428",
+        "FIRE_NUMBER_SHORT": "428",
+        "FIRE_NAME": "Giberson Slope",
+        "DEGREES_LAT": 47.25663,
+        "DEGREES_LONG": 66.84291999999999,
         "FIRE_STAT_ID": 4,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1759318200000,
-        "FIRE_STAT_DATE": 1760431020000,
+        "TIME_DETECTED": 1760434200000,
+        "FIRE_STAT_DATE": 1760517240000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 68.0,
+        "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
       }
     },
     {
@@ -97,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 50,
         "FIRE_SIZE": 100.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
       }
     },
     {
@@ -152,45 +152,45 @@
         "FIRE_STAT_DESC_E": "Under Control",
         "FIRE_STAT_DESC_F": "Maîtrisé ",
         "TIME_DETECTED": 1758377580000,
-        "FIRE_STAT_DATE": 1760439780000,
+        "FIRE_STAT_DATE": 1760516760000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
       }
     },
     {
       "type": "Feature",
-      "id": 70582,
+      "id": 70602,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -66.8429192684041,
-          47.25663965112342
+          -65.51811881600317,
+          47.51067972493598
         ]
       },
       "properties": {
-        "OBJECTID": 70582,
-        "FIRE_NUMBER": "2025428",
-        "FIRE_NUMBER_SHORT": "428",
-        "FIRE_NAME": "Giberson Slope",
-        "DEGREES_LAT": 47.25663,
-        "DEGREES_LONG": 66.84291999999999,
-        "FIRE_STAT_ID": 2,
-        "FIRE_STAT_DESC_E": "Contained",
-        "FIRE_STAT_DESC_F": "Contenu ",
-        "TIME_DETECTED": 1760434200000,
-        "FIRE_STAT_DATE": 1760441700000,
+        "OBJECTID": 70602,
+        "FIRE_NUMBER": "2025429",
+        "FIRE_NUMBER_SHORT": "429",
+        "FIRE_NAME": "429",
+        "DEGREES_LAT": 47.51067,
+        "DEGREES_LONG": 65.51812,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1760445000000,
+        "FIRE_STAT_DATE": 1760522160000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
       }
     },
     {
@@ -221,7 +221,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
       }
     },
     {
@@ -245,76 +245,45 @@
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1755166920000,
-        "FIRE_STAT_DATE": 1760440560000,
+        "FIRE_STAT_DATE": 1760521860000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
       }
     },
     {
       "type": "Feature",
-      "id": 70202,
+      "id": 70104,
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -66.30249910701042,
-          47.80417975582065
+          -64.87304856559749,
+          47.007429653726525
         ]
       },
       "properties": {
-        "OBJECTID": 70202,
-        "FIRE_NUMBER": "2025401",
-        "FIRE_NUMBER_SHORT": "401",
-        "FIRE_NAME": "401",
-        "DEGREES_LAT": 47.80417,
-        "DEGREES_LONG": 66.30250000000001,
+        "OBJECTID": 70104,
+        "FIRE_NUMBER": "2025394",
+        "FIRE_NUMBER_SHORT": "394",
+        "FIRE_NAME": "394",
+        "DEGREES_LAT": 47.007419999999996,
+        "DEGREES_LONG": 64.87304999999999,
         "FIRE_STAT_ID": 4,
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1759502400000,
-        "FIRE_STAT_DATE": 1760431380000,
+        "TIME_DETECTED": 1759318200000,
+        "FIRE_STAT_DATE": 1760517240000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 55.0,
+        "FIRE_SIZE": 68.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70602,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.51811881600317,
-          47.51067972493598
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70602,
-        "FIRE_NUMBER": "2025429",
-        "FIRE_NUMBER_SHORT": "429",
-        "FIRE_NAME": "429",
-        "DEGREES_LAT": 47.51067,
-        "DEGREES_LONG": 65.51812,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1760445000000,
-        "FIRE_STAT_DATE": 1760456400000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
       }
     },
     {
@@ -338,14 +307,45 @@
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1758374820000,
-        "FIRE_STAT_DATE": 1760431500000,
+        "FIRE_STAT_DATE": 1760517120000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 95.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760527648
+        "FETCHED_FROM_ERD": 1760533264
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70202,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.30249910701042,
+          47.80417975582065
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70202,
+        "FIRE_NUMBER": "2025401",
+        "FIRE_NUMBER_SHORT": "401",
+        "FIRE_NAME": "401",
+        "DEGREES_LAT": 47.80417,
+        "DEGREES_LONG": 66.30250000000001,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1759502400000,
+        "FIRE_STAT_DATE": 1760517180000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 55.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760533264
       }
     }
   ]
