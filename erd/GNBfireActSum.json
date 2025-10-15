@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760546183",
-  "fetched_utc": 1760546183,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760549479",
+  "fetched_utc": 1760549479,
   "pages": 1,
   "tables": [
     {
@@ -93,23 +93,6 @@
         },
         {
           "Region": "East",
-          "Status": "Being Patrolled",
-          "Number": "429",
-          "Fire Name": "429",
-          "Updated": "Oct-15",
-          "Latitude": "47.51067",
-          "Longitude": "65.51812",
-          "Size": "0.1",
-          "Pers": "2",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
-        },
-        {
-          "Region": "East",
           "Status": "Out",
           "Number": "421",
           "Fire Name": "Elsi",
@@ -133,6 +116,23 @@
           "Updated": "Oct-14",
           "Latitude": "46.20308",
           "Longitude": "64.53905",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
+        },
+        {
+          "Region": "East",
+          "Status": "Out",
+          "Number": "429",
+          "Fire Name": "429",
+          "Updated": "Oct-15",
+          "Latitude": "47.51067",
+          "Longitude": "65.51812",
           "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
