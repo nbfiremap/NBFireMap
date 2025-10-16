@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760611053",
-  "fetched_utc": 1760611053,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760614113",
+  "fetched_utc": 1760614113,
   "pages": 1,
   "tables": [
     {
@@ -161,12 +161,12 @@
         },
         {
           "Region": "West",
-          "Status": "Being Patrolled",
-          "Number": "430",
-          "Fire Name": "430",
+          "Status": "Out",
+          "Number": "426",
+          "Fire Name": "426",
           "Updated": "Oct-15",
-          "Latitude": "45.30018",
-          "Longitude": "66.20390",
+          "Latitude": "46.09943",
+          "Longitude": "67.71168",
           "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
@@ -174,16 +174,16 @@
           "Trac": "0",
           "Air": "0",
           "Heli": "0",
-          "Ovr": "1"
+          "Ovr": "0"
         },
         {
           "Region": "West",
           "Status": "Out",
-          "Number": "426",
-          "Fire Name": "426",
-          "Updated": "Oct-15",
-          "Latitude": "46.09943",
-          "Longitude": "67.71168",
+          "Number": "430",
+          "Fire Name": "430",
+          "Updated": "Oct-16",
+          "Latitude": "45.30018",
+          "Longitude": "66.20390",
           "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
