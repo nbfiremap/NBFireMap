@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760649984",
-  "fetched_utc": 1760649984,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760653806",
+  "fetched_utc": 1760653806,
   "pages": 1,
   "tables": [
     {
@@ -67,6 +67,23 @@
           "Longitude": "66.30250",
           "Size": "55.0",
           "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
+        },
+        {
+          "Region": "East",
+          "Status": "Being Patrolled",
+          "Number": "431",
+          "Fire Name": "wendell road",
+          "Updated": "Oct-16",
+          "Latitude": "46.06582",
+          "Longitude": "64.77260",
+          "Size": "0.2",
+          "Pers": "1",
           "Eng": "0",
           "Tend": "0",
           "Trac": "0",
