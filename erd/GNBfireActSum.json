@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760736504",
-  "fetched_utc": 1760736504,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760740282",
+  "fetched_utc": 1760740282,
   "pages": 1,
   "tables": [
     {
@@ -73,6 +73,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
+        },
+        {
+          "Region": "East",
+          "Status": "Being Patrolled",
+          "Number": "432",
+          "Fire Name": "432",
+          "Updated": "Oct-17",
+          "Latitude": "46.98088",
+          "Longitude": "65.84492",
+          "Size": "0.1",
+          "Pers": "1",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
         },
         {
           "Region": "East",
