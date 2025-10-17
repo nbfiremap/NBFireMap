@@ -4,12 +4,12 @@
     "Latitude": 45.348138,
     "Longitude": -66.224483,
     "Name": "Westfield",
-    "Status": "Service reduced to 1 ferry",
+    "Status": "Service Suspended (scheduled maintenance)",
     "Delays": "None",
     "ServiceDisruption": "None",
     "Area": "Saint John",
-    "LastUpdated": 1757566550,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "LastUpdated": 1760668723,
+    "downloaded_at": "2025-10-17T03:11:12Z"
   },
   {
     "Id": 14,
@@ -21,7 +21,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1759926333,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "downloaded_at": "2025-10-17T03:11:12Z"
   },
   {
     "Id": 15,
@@ -33,7 +33,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1757845624,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "downloaded_at": "2025-10-17T03:11:12Z"
   },
   {
     "Id": 16,
@@ -45,7 +45,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1760654193,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "downloaded_at": "2025-10-17T03:11:12Z"
   },
   {
     "Id": 17,
@@ -57,7 +57,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1760456147,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "downloaded_at": "2025-10-17T03:11:12Z"
   },
   {
     "Id": 18,
@@ -69,7 +69,7 @@
     "ServiceDisruption": "4 hours",
     "Area": "Saint John",
     "LastUpdated": 1758577192,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "downloaded_at": "2025-10-17T03:11:12Z"
   },
   {
     "Id": 19,
@@ -81,7 +81,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1741035923,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "downloaded_at": "2025-10-17T03:11:12Z"
   },
   {
     "Id": 20,
@@ -93,7 +93,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1760659352,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "downloaded_at": "2025-10-17T03:11:12Z"
   },
   {
     "Id": 21,
@@ -105,7 +105,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1760630097,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "downloaded_at": "2025-10-17T03:11:12Z"
   },
   {
     "Id": 22,
@@ -117,6 +117,6 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1760533312,
-    "downloaded_at": "2025-10-17T02:03:25Z"
+    "downloaded_at": "2025-10-17T03:11:12Z"
   }
 ]
