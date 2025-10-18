@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760805286",
-  "fetched_utc": 1760805286,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760808495",
+  "fetched_utc": 1760808495,
   "pages": 1,
   "tables": [
     {
@@ -62,7 +62,7 @@
           "Status": "Being Patrolled",
           "Number": "432",
           "Fire Name": "432",
-          "Updated": "Oct-17",
+          "Updated": "Oct-18",
           "Latitude": "46.98088",
           "Longitude": "65.84492",
           "Size": "0.1",

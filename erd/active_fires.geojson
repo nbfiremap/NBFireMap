@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760805274
+        "FETCHED_FROM_ERD": 1760808479
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 50,
         "FIRE_SIZE": 100.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760805274
+        "FETCHED_FROM_ERD": 1760808479
       }
     },
     {
@@ -90,14 +90,14 @@
         "FIRE_STAT_DESC_E": "Being Patrolled",
         "FIRE_STAT_DESC_F": "Patrouillé ",
         "TIME_DETECTED": 1760720400000,
-        "FIRE_STAT_DATE": 1760725800000,
+        "FIRE_STAT_DATE": 1760792400000,
         "FIRE_OF_NOTE_INDCTR": 0,
         "FIRE_NOTE_ENG": "No",
         "FIRE_NOTE_FR": "Non",
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760805274
+        "FETCHED_FROM_ERD": 1760808479
       }
     },
     {
@@ -128,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 68.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760805274
+        "FETCHED_FROM_ERD": 1760808479
       }
     },
     {
@@ -159,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760805274
+        "FETCHED_FROM_ERD": 1760808479
       }
     },
     {
@@ -190,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760805274
+        "FETCHED_FROM_ERD": 1760808479
       }
     }
   ]
