@@ -35,7 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760901869
+        "FETCHED_FROM_ERD": 1760905873
       }
     },
     {
@@ -66,7 +66,7 @@
         "PERCENT_CONTAINED": 50,
         "FIRE_SIZE": 100.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760901869
+        "FETCHED_FROM_ERD": 1760905873
       }
     },
     {
@@ -97,7 +97,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760901869
+        "FETCHED_FROM_ERD": 1760905873
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70662,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.55242849042607,
+          47.859729803594995
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70662,
+        "FIRE_NUMBER": "2025433",
+        "FIRE_NUMBER_SHORT": "433",
+        "FIRE_NAME": "Grand Ruisseau",
+        "DEGREES_LAT": 47.859719999999996,
+        "DEGREES_LONG": 64.55243,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1760879760000,
+        "FIRE_STAT_DATE": 1760886600000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760905873
       }
     },
     {
@@ -128,7 +159,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760901869
+        "FETCHED_FROM_ERD": 1760905873
       }
     },
     {
@@ -159,7 +190,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760901869
+        "FETCHED_FROM_ERD": 1760905873
       }
     }
   ]

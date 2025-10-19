@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760901880",
-  "fetched_utc": 1760901880,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760905885",
+  "fetched_utc": 1760905885,
   "pages": 1,
   "tables": [
     {
@@ -56,6 +56,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "0"
+        },
+        {
+          "Region": "East",
+          "Status": "Being Patrolled",
+          "Number": "433",
+          "Fire Name": "Grand Ruisseau",
+          "Updated": "Oct-19",
+          "Latitude": "47.85972",
+          "Longitude": "64.55243",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
         },
         {
           "Region": "East",
