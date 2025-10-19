@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760884203",
-  "fetched_utc": 1760884203,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760887723",
+  "fetched_utc": 1760887723,
   "pages": 1,
   "tables": [
     {
@@ -43,23 +43,6 @@
         {
           "Region": "East",
           "Status": "Being Patrolled",
-          "Number": "394",
-          "Fire Name": "394",
-          "Updated": "Oct-18",
-          "Latitude": "47.00742",
-          "Longitude": "64.87305",
-          "Size": "68.0",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "1"
-        },
-        {
-          "Region": "East",
-          "Status": "Being Patrolled",
           "Number": "432",
           "Fire Name": "432",
           "Updated": "Oct-18",
@@ -67,6 +50,23 @@
           "Longitude": "65.84492",
           "Size": "0.1",
           "Pers": "1",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
+        },
+        {
+          "Region": "East",
+          "Status": "Out",
+          "Number": "394",
+          "Fire Name": "394",
+          "Updated": "Oct-19",
+          "Latitude": "47.00742",
+          "Longitude": "64.87305",
+          "Size": "68.0",
+          "Pers": "0",
           "Eng": "0",
           "Tend": "0",
           "Trac": "0",
