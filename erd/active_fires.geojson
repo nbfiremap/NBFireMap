@@ -9,68 +9,6 @@
   "features": [
     {
       "type": "Feature",
-      "id": 70482,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.20142898535913,
-          46.05906946138277
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70482,
-        "FIRE_NUMBER": "2025422",
-        "FIRE_NUMBER_SHORT": "422",
-        "FIRE_NAME": "423-Albright",
-        "DEGREES_LAT": 46.059059999999995,
-        "DEGREES_LONG": 66.20143,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1760194380000,
-        "FIRE_STAT_DATE": 1760345160000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760926689
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70422,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.23387898065579,
-          45.71900940135717
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70422,
-        "FIRE_NUMBER": "2025417",
-        "FIRE_NUMBER_SHORT": "417",
-        "FIRE_NAME": "CFB Gagetown 1",
-        "DEGREES_LAT": 45.719,
-        "DEGREES_LONG": 66.23388,
-        "FIRE_STAT_ID": 6,
-        "FIRE_STAT_DESC_E": "Being Monitored",
-        "FIRE_STAT_DESC_F": "Sous surveillance",
-        "TIME_DETECTED": 1759579200000,
-        "FIRE_STAT_DATE": 1759852440000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 50,
-        "FIRE_SIZE": 100.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760926689
-      }
-    },
-    {
-      "type": "Feature",
       "id": 70642,
       "geometry": {
         "type": "Point",
@@ -97,69 +35,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760926689
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70662,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -64.55242849042607,
-          47.859729803594995
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70662,
-        "FIRE_NUMBER": "2025433",
-        "FIRE_NUMBER_SHORT": "433",
-        "FIRE_NAME": "Grand Ruisseau",
-        "DEGREES_LAT": 47.859719999999996,
-        "DEGREES_LONG": 64.55243,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1760879760000,
-        "FIRE_STAT_DATE": 1760886600000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760926689
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 68585,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -66.47542912698799,
-          46.99147961517266
-        ]
-      },
-      "properties": {
-        "OBJECTID": 68585,
-        "FIRE_NUMBER": "2025256",
-        "FIRE_NUMBER_SHORT": "256",
-        "FIRE_NAME": "Beaver Lake Stream",
-        "DEGREES_LAT": 46.99147,
-        "DEGREES_LONG": 66.47543,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1755166920000,
-        "FIRE_STAT_DATE": 1760521860000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 456.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760926689
+        "FETCHED_FROM_ERD": 1760931145
       }
     },
     {
@@ -190,7 +66,131 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1760926689
+        "FETCHED_FROM_ERD": 1760931145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70482,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.20142898535913,
+          46.05906946138277
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70482,
+        "FIRE_NUMBER": "2025422",
+        "FIRE_NUMBER_SHORT": "422",
+        "FIRE_NAME": "423-Albright",
+        "DEGREES_LAT": 46.059059999999995,
+        "DEGREES_LONG": 66.20143,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1760194380000,
+        "FIRE_STAT_DATE": 1760345160000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760931145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70422,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.23387898065579,
+          45.71900940135717
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70422,
+        "FIRE_NUMBER": "2025417",
+        "FIRE_NUMBER_SHORT": "417",
+        "FIRE_NAME": "CFB Gagetown 1",
+        "DEGREES_LAT": 45.719,
+        "DEGREES_LONG": 66.23388,
+        "FIRE_STAT_ID": 6,
+        "FIRE_STAT_DESC_E": "Being Monitored",
+        "FIRE_STAT_DESC_F": "Sous surveillance",
+        "TIME_DETECTED": 1759579200000,
+        "FIRE_STAT_DATE": 1759852440000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 50,
+        "FIRE_SIZE": 100.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760931145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70662,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.55242849042607,
+          47.859729803594995
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70662,
+        "FIRE_NUMBER": "2025433",
+        "FIRE_NUMBER_SHORT": "433",
+        "FIRE_NAME": "Grand Ruisseau",
+        "DEGREES_LAT": 47.859719999999996,
+        "DEGREES_LONG": 64.55243,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1760879760000,
+        "FIRE_STAT_DATE": 1760886600000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760931145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68585,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.47542912698799,
+          46.99147961517266
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68585,
+        "FIRE_NUMBER": "2025256",
+        "FIRE_NUMBER_SHORT": "256",
+        "FIRE_NAME": "Beaver Lake Stream",
+        "DEGREES_LAT": 46.99147,
+        "DEGREES_LONG": 66.47543,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1755166920000,
+        "FIRE_STAT_DATE": 1760521860000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 456.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1760931145
       }
     }
   ]
