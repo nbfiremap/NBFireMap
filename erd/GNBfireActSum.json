@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760978376",
-  "fetched_utc": 1760978376,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760981494",
+  "fetched_utc": 1760981494,
   "pages": 1,
   "tables": [
     {
@@ -144,12 +144,29 @@
         },
         {
           "Region": "West",
-          "Status": "Being Patrolled",
+          "Status": "Out",
           "Number": "422",
           "Fire Name": "423-Albright",
-          "Updated": "Oct-14",
+          "Updated": "Oct-20",
           "Latitude": "46.05906",
           "Longitude": "66.20143",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "436",
+          "Fire Name": "18 road",
+          "Updated": "Oct-20",
+          "Latitude": "46.05880",
+          "Longitude": "66.20142",
           "Size": "0.1",
           "Pers": "0",
           "Eng": "0",
