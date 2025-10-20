@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760965190",
-  "fetched_utc": 1760965190,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1760967723",
+  "fetched_utc": 1760967723,
   "pages": 1,
   "tables": [
     {
@@ -112,7 +112,7 @@
           "Region": "East",
           "Status": "Out",
           "Number": "435",
-          "Fire Name": "Feu eglise",
+          "Fire Name": "435",
           "Updated": "Oct-20",
           "Latitude": "47.68163",
           "Longitude": "67.26788",
