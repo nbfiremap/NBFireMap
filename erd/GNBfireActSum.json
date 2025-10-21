@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761012424",
-  "fetched_utc": 1761012424,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761016480",
+  "fetched_utc": 1761016480,
   "pages": 1,
   "tables": [
     {
@@ -39,23 +39,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "East",
-          "Status": "Out",
-          "Number": "394",
-          "Fire Name": "394",
-          "Updated": "Oct-19",
-          "Latitude": "47.00742",
-          "Longitude": "64.87305",
-          "Size": "68.0",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         },
         {
           "Region": "East",
