@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761046077",
-  "fetched_utc": 1761046077,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761051742",
+  "fetched_utc": 1761051742,
   "pages": 1,
   "tables": [
     {
@@ -62,7 +62,7 @@
           "Status": "Out",
           "Number": "433",
           "Fire Name": "Grand Ruisseau",
-          "Updated": "Oct-20",
+          "Updated": "Oct-21",
           "Latitude": "47.85972",
           "Longitude": "64.55243",
           "Size": "0.1",
@@ -79,7 +79,7 @@
           "Status": "Out",
           "Number": "434",
           "Fire Name": "Rue Alex",
-          "Updated": "Oct-20",
+          "Updated": "Oct-21",
           "Latitude": "47.86472",
           "Longitude": "64.63079",
           "Size": "0.1",
@@ -113,7 +113,7 @@
           "Status": "Being Patrolled",
           "Number": "366",
           "Fire Name": "366",
-          "Updated": "Oct-20",
+          "Updated": "Oct-21",
           "Latitude": "46.12233",
           "Longitude": "65.71050",
           "Size": "650.0",
