@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761185095",
-  "fetched_utc": 1761185095,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761189160",
+  "fetched_utc": 1761189160,
   "pages": 1,
   "tables": [
     {
@@ -56,23 +56,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "437",
-          "Fire Name": "437",
-          "Updated": "Oct-22",
-          "Latitude": "45.11643",
-          "Longitude": "66.35903",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         }
       ]
     }
