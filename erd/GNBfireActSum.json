@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761417514",
-  "fetched_utc": 1761417514,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761424282",
+  "fetched_utc": 1761424282,
   "pages": 1,
   "tables": [
     {
@@ -56,6 +56,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "403",
+          "Fire Name": "McLean Road",
+          "Updated": "Oct-25",
+          "Latitude": "46.11025",
+          "Longitude": "65.86798",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
         }
       ]
     }
