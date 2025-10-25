@@ -9,7 +9,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1760670843,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   },
   {
     "Id": 14,
@@ -21,7 +21,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1759926333,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   },
   {
     "Id": 15,
@@ -33,7 +33,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1757845624,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   },
   {
     "Id": 16,
@@ -45,7 +45,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1761353713,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   },
   {
     "Id": 17,
@@ -57,7 +57,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1761042697,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   },
   {
     "Id": 18,
@@ -69,7 +69,7 @@
     "ServiceDisruption": "4 hours",
     "Area": "Saint John",
     "LastUpdated": 1758577192,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   },
   {
     "Id": 19,
@@ -81,7 +81,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1741035923,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   },
   {
     "Id": 20,
@@ -93,7 +93,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1761350423,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   },
   {
     "Id": 21,
@@ -105,7 +105,7 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1761239844,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   },
   {
     "Id": 22,
@@ -117,6 +117,6 @@
     "ServiceDisruption": "None",
     "Area": "Saint John",
     "LastUpdated": 1760533312,
-    "downloaded_at": "2025-10-25T05:32:50Z"
+    "downloaded_at": "2025-10-25T06:41:12Z"
   }
 ]
