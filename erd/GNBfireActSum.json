@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761391537",
-  "fetched_utc": 1761391537,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761396793",
+  "fetched_utc": 1761396793,
   "pages": 1,
   "tables": [
     {
@@ -56,23 +56,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "417",
-          "Fire Name": "CFB Gagetown 1",
-          "Updated": "Oct-24",
-          "Latitude": "45.71900",
-          "Longitude": "66.23388",
-          "Size": "650.0",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         }
       ]
     }
