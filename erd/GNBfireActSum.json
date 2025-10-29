@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761766019",
-  "fetched_utc": 1761766019,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761770090",
+  "fetched_utc": 1761770090,
   "pages": 1,
   "tables": [
     {
@@ -25,23 +25,6 @@
       "rows": [
         {
           "Region": "East",
-          "Status": "Under Control",
-          "Number": "417",
-          "Fire Name": "Powerline",
-          "Updated": "Oct-29",
-          "Latitude": "47.64721",
-          "Longitude": "65.72890",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "3",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "10"
-        },
-        {
-          "Region": "East",
           "Status": "Being Patrolled",
           "Number": "256",
           "Fire Name": "Beaver Lake Stream",
@@ -56,6 +39,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
+        },
+        {
+          "Region": "East",
+          "Status": "Being Patrolled",
+          "Number": "417",
+          "Fire Name": "Powerline",
+          "Updated": "Oct-29",
+          "Latitude": "47.64721",
+          "Longitude": "65.72890",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "1",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "3"
         },
         {
           "Region": "West",
