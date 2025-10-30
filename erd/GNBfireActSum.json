@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761823725",
-  "fetched_utc": 1761823725,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761829244",
+  "fetched_utc": 1761829244,
   "pages": 1,
   "tables": [
     {
@@ -45,7 +45,7 @@
           "Status": "Being Patrolled",
           "Number": "417",
           "Fire Name": "Powerline",
-          "Updated": "Oct-29",
+          "Updated": "Oct-30",
           "Latitude": "47.64721",
           "Longitude": "65.72890",
           "Size": "0.1",
@@ -62,11 +62,11 @@
           "Status": "Being Patrolled",
           "Number": "366",
           "Fire Name": "366",
-          "Updated": "Oct-22",
+          "Updated": "Oct-30",
           "Latitude": "46.12233",
           "Longitude": "65.71050",
           "Size": "650.0",
-          "Pers": "1",
+          "Pers": "0",
           "Eng": "0",
           "Tend": "0",
           "Trac": "0",
