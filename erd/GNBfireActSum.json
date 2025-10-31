@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761928879",
-  "fetched_utc": 1761928879,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761931948",
+  "fetched_utc": 1761931948,
   "pages": 1,
   "tables": [
     {
@@ -56,6 +56,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "3"
+        },
+        {
+          "Region": "East",
+          "Status": "Being Patrolled",
+          "Number": "439",
+          "Fire Name": "rue du veterant",
+          "Updated": "Oct-31",
+          "Latitude": "47.82572",
+          "Longitude": "64.55797",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "1"
         },
         {
           "Region": "West",
