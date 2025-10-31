@@ -9,6 +9,37 @@
   "features": [
     {
       "type": "Feature",
+      "id": 70802,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.69077950846312,
+          46.221209452893156
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70802,
+        "FIRE_NUMBER": "2025438",
+        "FIRE_NUMBER_SHORT": "438",
+        "FIRE_NAME": "East McBride Road",
+        "DEGREES_LAT": 46.2212,
+        "DEGREES_LONG": 67.69078,
+        "FIRE_STAT_ID": 3,
+        "FIRE_STAT_DESC_E": "Under Control",
+        "FIRE_STAT_DESC_F": "Maîtrisé ",
+        "TIME_DETECTED": 1761842040000,
+        "FIRE_STAT_DATE": 1761845400000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1761924743
+      }
+    },
+    {
+      "type": "Feature",
       "id": 69865,
       "geometry": {
         "type": "Point",
@@ -35,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1761921376
+        "FETCHED_FROM_ERD": 1761924743
       }
     },
     {
@@ -66,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1761921376
+        "FETCHED_FROM_ERD": 1761924743
       }
     },
     {
@@ -97,7 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1761921376
+        "FETCHED_FROM_ERD": 1761924743
       }
     }
   ]
