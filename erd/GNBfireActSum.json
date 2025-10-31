@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761924754",
-  "fetched_utc": 1761924754,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1761928879",
+  "fetched_utc": 1761928879,
   "pages": 1,
   "tables": [
     {
@@ -59,23 +59,6 @@
         },
         {
           "Region": "West",
-          "Status": "Out of Control",
-          "Number": "438",
-          "Fire Name": "East McBride Road",
-          "Updated": "Oct-31",
-          "Latitude": "46.22120",
-          "Longitude": "67.69078",
-          "Size": "0.1",
-          "Pers": "6",
-          "Eng": "1",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "1"
-        },
-        {
-          "Region": "West",
           "Status": "Being Patrolled",
           "Number": "366",
           "Fire Name": "366",
@@ -90,6 +73,23 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
+        },
+        {
+          "Region": "West",
+          "Status": "Out",
+          "Number": "438",
+          "Fire Name": "East McBride Road",
+          "Updated": "Oct-31",
+          "Latitude": "46.22120",
+          "Longitude": "67.69078",
+          "Size": "0.1",
+          "Pers": "0",
+          "Eng": "0",
+          "Tend": "0",
+          "Trac": "0",
+          "Air": "0",
+          "Heli": "0",
+          "Ovr": "0"
         }
       ]
     }
