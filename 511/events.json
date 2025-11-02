@@ -33,12 +33,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/25/2023 9:08:00 AM-03:00:00",
+        "StartDate": "5/25/2023 9:08:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -52,7 +52,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 6,
@@ -88,12 +88,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "12/31/2019 3:02:00 PM-03:00:00",
+        "StartDate": "12/31/2019 3:02:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -107,7 +107,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 8,
@@ -143,12 +143,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "2/5/2014 2:40:00 PM-03:00:00",
+        "StartDate": "2/5/2014 2:40:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -162,7 +162,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 13,
@@ -198,12 +198,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/16/2023 2:50:00 PM-03:00:00",
+        "StartDate": "5/16/2023 2:50:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -217,7 +217,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 14,
@@ -252,7 +252,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 19,
@@ -287,7 +287,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 20,
@@ -322,7 +322,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 21,
@@ -365,7 +365,7 @@
     ],
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 24,
@@ -401,12 +401,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "12/21/2023 9:09:00 AM-03:00:00",
-        "EndDate": "1/30/2026 9:00:00 PM-03:00:00",
+        "StartDate": "12/21/2023 9:09:00 AM-04:00:00",
+        "EndDate": "1/30/2026 9:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -420,7 +420,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 27,
@@ -456,12 +456,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "4/9/2024 8:00:00 AM-03:00:00",
+        "StartDate": "4/9/2024 8:00:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -475,7 +475,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 30,
@@ -511,12 +511,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "2/8/2022 9:32:00 AM-03:00:00",
-        "EndDate": "12/31/2032 9:33:00 PM-03:00:00",
+        "StartDate": "2/8/2022 9:32:00 AM-04:00:00",
+        "EndDate": "12/31/2032 9:33:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -530,7 +530,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 33,
@@ -566,12 +566,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "3/1/2023 7:00:00 AM-03:00:00",
-        "EndDate": "10/3/2026 6:00:00 PM-03:00:00",
+        "StartDate": "3/1/2023 7:00:00 AM-04:00:00",
+        "EndDate": "10/3/2026 6:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -585,7 +585,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 34,
@@ -621,12 +621,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "2/27/2016 8:21:00 AM-03:00:00",
+        "StartDate": "2/27/2016 8:21:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -640,7 +640,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 37,
@@ -676,12 +676,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/16/2023 2:44:00 PM-03:00:00",
+        "StartDate": "5/16/2023 2:44:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -695,7 +695,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 40,
@@ -731,12 +731,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "3/14/2023 8:49:00 PM-03:00:00",
+        "StartDate": "3/14/2023 8:49:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -750,7 +750,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 41,
@@ -785,7 +785,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 42,
@@ -820,7 +820,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 43,
@@ -855,7 +855,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 44,
@@ -891,12 +891,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "2/23/2023 3:07:00 PM-03:00:00",
+        "StartDate": "2/23/2023 3:07:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -910,7 +910,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 51,
@@ -946,12 +946,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "12/14/2020 12:00:00 AM-03:00:00",
+        "StartDate": "12/14/2020 12:00:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -965,7 +965,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 52,
@@ -1001,12 +1001,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/10/2024 5:00:00 AM-03:00:00",
+        "StartDate": "9/10/2024 5:00:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1020,7 +1020,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 56,
@@ -1056,12 +1056,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/24/2024 7:00:00 AM-03:00:00",
-        "EndDate": "1/1/2030 7:00:00 PM-03:00:00",
+        "StartDate": "10/24/2024 7:00:00 AM-04:00:00",
+        "EndDate": "1/1/2030 7:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1075,7 +1075,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 58,
@@ -1111,12 +1111,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "3/26/2024 1:30:00 PM-03:00:00",
-        "EndDate": "12/31/2028 12:01:00 PM-03:00:00",
+        "StartDate": "3/26/2024 1:30:00 PM-04:00:00",
+        "EndDate": "12/31/2028 12:01:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1130,7 +1130,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 59,
@@ -1166,12 +1166,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "3/17/2021 12:01:00 AM-03:00:00",
+        "StartDate": "3/17/2021 12:01:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1185,7 +1185,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 60,
@@ -1220,7 +1220,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 66,
@@ -1255,7 +1255,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 67,
@@ -1291,12 +1291,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "3/4/2024 11:25:00 AM-03:00:00",
-        "EndDate": "3/3/2034 11:26:00 AM-03:00:00",
+        "StartDate": "3/4/2024 11:25:00 AM-04:00:00",
+        "EndDate": "3/3/2034 11:26:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1310,7 +1310,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 68,
@@ -1346,12 +1346,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "11/5/2024 10:00:00 AM-03:00:00",
-        "EndDate": "12/31/2034 10:00:00 AM-03:00:00",
+        "StartDate": "11/5/2024 10:00:00 AM-04:00:00",
+        "EndDate": "12/31/2034 10:00:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1365,7 +1365,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 69,
@@ -1401,12 +1401,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/1/2023 7:00:00 AM-03:00:00",
+        "StartDate": "5/1/2023 7:00:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1420,7 +1420,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 71,
@@ -1456,12 +1456,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/16/2023 2:01:00 PM-03:00:00",
+        "StartDate": "5/16/2023 2:01:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1475,7 +1475,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 72,
@@ -1511,12 +1511,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/2/2023 3:18:00 PM-03:00:00",
+        "StartDate": "10/2/2023 3:18:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1530,7 +1530,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 159,
@@ -1566,12 +1566,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "12/17/2024 4:32:00 PM-03:00:00",
+        "StartDate": "12/17/2024 4:32:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1585,7 +1585,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 219,
@@ -1620,7 +1620,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 220,
@@ -1661,7 +1661,7 @@
     ],
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 221,
@@ -1697,12 +1697,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "2/13/2025 10:14:00 AM-03:00:00",
+        "StartDate": "2/13/2025 10:14:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1716,7 +1716,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 222,
@@ -1752,12 +1752,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "2/13/2025 10:17:00 AM-03:00:00",
+        "StartDate": "2/13/2025 10:17:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1771,7 +1771,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 236,
@@ -1807,12 +1807,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "2/27/2025 12:00:00 PM-03:00:00",
+        "StartDate": "2/27/2025 12:00:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1826,7 +1826,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 237,
@@ -1862,12 +1862,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "2/27/2025 12:03:00 PM-03:00:00",
+        "StartDate": "2/27/2025 12:03:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1881,7 +1881,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 371,
@@ -1917,12 +1917,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "3/31/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/30/2025 9:00:00 PM-03:00:00",
+        "StartDate": "3/31/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/30/2025 9:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1936,7 +1936,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 379,
@@ -1972,12 +1972,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "4/21/2025 9:06:00 AM-03:00:00",
-        "EndDate": "11/15/2025 9:07:00 AM-03:00:00",
+        "StartDate": "4/21/2025 9:06:00 AM-04:00:00",
+        "EndDate": "11/15/2025 9:07:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -1991,7 +1991,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 416,
@@ -2027,12 +2027,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "4/3/2025 4:21:00 PM-03:00:00",
+        "StartDate": "4/3/2025 4:21:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2046,7 +2046,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 433,
@@ -2082,12 +2082,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "4/7/2025 7:00:00 AM-03:00:00",
+        "StartDate": "4/7/2025 7:00:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2101,7 +2101,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 434,
@@ -2137,12 +2137,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "4/7/2025 7:00:00 AM-03:00:00",
+        "StartDate": "4/7/2025 7:00:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2156,7 +2156,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 443,
@@ -2192,12 +2192,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "4/14/2025 10:00:00 AM-03:00:00",
+        "StartDate": "4/14/2025 10:00:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2211,7 +2211,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 475,
@@ -2247,12 +2247,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "4/24/2025 9:52:00 AM-03:00:00",
-        "EndDate": "11/15/2025 9:52:00 AM-03:00:00",
+        "StartDate": "4/24/2025 9:52:00 AM-04:00:00",
+        "EndDate": "11/15/2025 9:52:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2266,7 +2266,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 550,
@@ -2311,12 +2311,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/7/2025 3:33:00 PM-03:00:00",
-        "EndDate": "11/15/2025 3:33:00 PM-03:00:00",
+        "StartDate": "5/7/2025 3:33:00 PM-04:00:00",
+        "EndDate": "11/15/2025 3:33:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2330,7 +2330,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 569,
@@ -2366,12 +2366,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu:</b><br/>6:00 AM - 9:00 PM<br/><br/><b>Fri:</b><br/>6:00 AM - 5:00 PM<br/><br/><b>Sat, Sun:</b><br/>Paused all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/12/2025 9:23:00 AM-03:00:00",
+        "StartDate": "5/12/2025 9:23:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "06:00:00-03:00:00",
-            "EndTime": "20:59:59-03:00:00"
+            "StartTime": "06:00:00-04:00:00",
+            "EndTime": "20:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2382,12 +2382,12 @@
         ]
       },
       {
-        "StartDate": "5/12/2025 9:23:00 AM-03:00:00",
+        "StartDate": "5/12/2025 9:23:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "06:00:00-03:00:00",
-            "EndTime": "16:59:59-03:00:00"
+            "StartTime": "06:00:00-04:00:00",
+            "EndTime": "16:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2395,7 +2395,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 570,
@@ -2431,12 +2431,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu:</b><br/>6:00 AM - 9:00 PM<br/><br/><b>Fri:</b><br/>6:00 AM - 5:00 PM<br/><br/><b>Sat, Sun:</b><br/>Paused all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/12/2025 9:18:00 AM-03:00:00",
+        "StartDate": "5/12/2025 9:18:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "06:00:00-03:00:00",
-            "EndTime": "20:59:59-03:00:00"
+            "StartTime": "06:00:00-04:00:00",
+            "EndTime": "20:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2447,12 +2447,12 @@
         ]
       },
       {
-        "StartDate": "5/12/2025 9:18:00 AM-03:00:00",
+        "StartDate": "5/12/2025 9:18:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "06:00:00-03:00:00",
-            "EndTime": "16:59:59-03:00:00"
+            "StartTime": "06:00:00-04:00:00",
+            "EndTime": "16:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2460,7 +2460,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 611,
@@ -2496,12 +2496,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/26/2025 7:56:00 PM-03:00:00",
-        "EndDate": "11/28/2025 7:00:00 AM-03:00:00",
+        "StartDate": "5/26/2025 7:56:00 PM-04:00:00",
+        "EndDate": "11/28/2025 7:00:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2515,7 +2515,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 612,
@@ -2551,12 +2551,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "4/1/2025 2:16:00 PM-03:00:00",
-        "EndDate": "11/30/2025 11:00:00 PM-03:00:00",
+        "StartDate": "4/1/2025 2:16:00 PM-04:00:00",
+        "EndDate": "11/30/2025 11:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2570,7 +2570,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 685,
@@ -2606,12 +2606,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "5/30/2025 9:14:00 AM-03:00:00",
-        "EndDate": "12/1/2025 5:00:00 PM-03:00:00",
+        "StartDate": "5/30/2025 9:14:00 AM-04:00:00",
+        "EndDate": "12/1/2025 5:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2625,7 +2625,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 707,
@@ -2661,12 +2661,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "11/22/2024 4:46:00 PM-03:00:00",
+        "StartDate": "11/22/2024 4:46:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2680,7 +2680,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 754,
@@ -2722,12 +2722,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "6/16/2025 6:00:00 AM-03:00:00",
-        "EndDate": "9/25/2026 6:00:00 PM-03:00:00",
+        "StartDate": "6/16/2025 6:00:00 AM-04:00:00",
+        "EndDate": "9/25/2026 6:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2741,7 +2741,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 864,
@@ -2777,12 +2777,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "7/21/2025 8:00:00 AM-03:00:00",
-        "EndDate": "10/31/2025 4:00:00 PM-03:00:00",
+        "StartDate": "7/21/2025 8:00:00 AM-04:00:00",
+        "EndDate": "10/31/2025 4:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2796,7 +2796,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 880,
@@ -2832,12 +2832,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "6/27/2025 2:08:00 PM-03:00:00",
+        "StartDate": "6/27/2025 2:08:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2851,7 +2851,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 905,
@@ -2887,12 +2887,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "7/10/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/5/2025 9:00:00 PM-03:00:00",
+        "StartDate": "7/10/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/5/2025 9:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2906,7 +2906,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 912,
@@ -2941,7 +2941,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 913,
@@ -2977,12 +2977,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "7/3/2025 11:44:00 AM-03:00:00",
+        "StartDate": "7/3/2025 11:44:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -2996,7 +2996,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 921,
@@ -3032,12 +3032,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "7/7/2025 8:00:00 AM-03:00:00",
+        "StartDate": "7/7/2025 8:00:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3051,7 +3051,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 981,
@@ -3087,12 +3087,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "7/14/2025 6:00:00 AM-03:00:00",
-        "EndDate": "12/19/2025 12:00:00 AM-03:00:00",
+        "StartDate": "7/14/2025 6:00:00 AM-04:00:00",
+        "EndDate": "12/19/2025 12:00:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3106,7 +3106,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 991,
@@ -3141,7 +3141,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1025,
@@ -3176,7 +3176,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1036,
@@ -3212,12 +3212,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "7/22/2025 1:56:00 PM-03:00:00",
+        "StartDate": "7/22/2025 1:56:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3231,7 +3231,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1049,
@@ -3276,12 +3276,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "7/28/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/7/2025 9:00:00 PM-03:00:00",
+        "StartDate": "7/28/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/7/2025 9:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3295,7 +3295,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1109,
@@ -3344,7 +3344,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1129,
@@ -3380,12 +3380,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "8/6/2025 12:53:00 PM-03:00:00",
+        "StartDate": "8/6/2025 12:53:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3399,7 +3399,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1139,
@@ -3435,12 +3435,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "8/11/2025 6:00:00 AM-03:00:00",
-        "EndDate": "11/4/2025 9:00:00 PM-03:00:00",
+        "StartDate": "8/11/2025 6:00:00 AM-04:00:00",
+        "EndDate": "11/4/2025 9:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3454,7 +3454,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1250,
@@ -3490,12 +3490,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "8/27/2025 12:36:00 PM-03:00:00",
-        "EndDate": "11/15/2025 12:36:00 PM-03:00:00",
+        "StartDate": "8/27/2025 12:36:00 PM-04:00:00",
+        "EndDate": "11/15/2025 12:36:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3509,7 +3509,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1265,
@@ -3545,12 +3545,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "8/28/2025 6:43:00 PM-03:00:00",
+        "StartDate": "8/28/2025 6:43:00 PM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3564,7 +3564,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1277,
@@ -3600,12 +3600,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/2/2025 9:34:00 AM-03:00:00",
+        "StartDate": "9/2/2025 9:34:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3619,7 +3619,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1288,
@@ -3655,12 +3655,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/8/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/14/2025 6:00:00 PM-03:00:00",
+        "StartDate": "9/8/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/14/2025 6:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3674,7 +3674,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1322,
@@ -3710,12 +3710,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/7/2025 8:22:00 PM-03:00:00",
-        "EndDate": "11/15/2025 12:26:00 PM-03:00:00",
+        "StartDate": "9/7/2025 8:22:00 PM-04:00:00",
+        "EndDate": "11/15/2025 12:26:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3729,7 +3729,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1323,
@@ -3765,12 +3765,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/7/2025 8:23:00 PM-03:00:00",
-        "EndDate": "11/15/2025 12:25:00 PM-03:00:00",
+        "StartDate": "9/7/2025 8:23:00 PM-04:00:00",
+        "EndDate": "11/15/2025 12:25:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3784,7 +3784,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1344,
@@ -3820,12 +3820,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/15/2025 7:00:00 AM-03:00:00",
-        "EndDate": "12/5/2025 7:00:00 PM-03:00:00",
+        "StartDate": "9/15/2025 7:00:00 AM-04:00:00",
+        "EndDate": "12/5/2025 7:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3839,7 +3839,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1353,
@@ -3875,12 +3875,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/12/2025 6:00:00 AM-03:00:00",
-        "EndDate": "11/21/2025 5:00:00 PM-03:00:00",
+        "StartDate": "9/12/2025 6:00:00 AM-04:00:00",
+        "EndDate": "11/21/2025 5:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3894,7 +3894,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1379,
@@ -3930,12 +3930,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/12/2025 8:03:00 AM-03:00:00",
+        "StartDate": "9/12/2025 8:03:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -3949,7 +3949,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1428,
@@ -3985,12 +3985,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/13/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/10/2025 5:00:00 PM-03:00:00",
+        "StartDate": "10/13/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/10/2025 5:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4004,7 +4004,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1447,
@@ -4040,12 +4040,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/16/2025 7:00:00 AM-03:00:00",
+        "StartDate": "9/16/2025 7:00:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4059,7 +4059,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1481,
@@ -4095,12 +4095,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri:</b><br/>7:00 AM - 7:00 PM<br/><br/><b>Sat, Sun:</b><br/>Paused all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "9/29/2025 12:00:00 PM-03:00:00",
-        "EndDate": "11/14/2025 7:00:00 PM-03:00:00",
+        "StartDate": "9/29/2025 12:00:00 PM-04:00:00",
+        "EndDate": "11/14/2025 7:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "07:00:00-03:00:00",
-            "EndTime": "18:59:59-03:00:00"
+            "StartTime": "07:00:00-04:00:00",
+            "EndTime": "18:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4112,7 +4112,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1506,
@@ -4148,12 +4148,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri:</b><br/>7:00 AM - 7:00 PM<br/><br/><b>Sat, Sun:</b><br/>Paused all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/4/2025 8:37:00 AM-03:00:00",
+        "StartDate": "10/4/2025 8:37:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "07:00:00-03:00:00",
-            "EndTime": "18:59:59-03:00:00"
+            "StartTime": "07:00:00-04:00:00",
+            "EndTime": "18:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4165,7 +4165,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1512,
@@ -4201,12 +4201,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/6/2025 10:00:00 AM-03:00:00",
-        "EndDate": "11/28/2025 4:30:00 PM-03:00:00",
+        "StartDate": "10/6/2025 10:00:00 AM-04:00:00",
+        "EndDate": "11/28/2025 4:30:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4220,7 +4220,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1523,
@@ -4256,12 +4256,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/9/2025 7:00:00 AM-03:00:00",
-        "EndDate": "12/18/2025 7:00:00 PM-03:00:00",
+        "StartDate": "10/9/2025 7:00:00 AM-04:00:00",
+        "EndDate": "12/18/2025 7:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4275,7 +4275,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1548,
@@ -4310,7 +4310,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1554,
@@ -4370,7 +4370,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1555,
@@ -4406,12 +4406,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri:</b><br/>7:00 AM - 7:00 PM<br/><br/><b>Sat, Sun:</b><br/>Paused all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/20/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/14/2025 6:00:00 PM-03:00:00",
+        "StartDate": "10/20/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/14/2025 6:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "07:00:00-03:00:00",
-            "EndTime": "18:59:59-03:00:00"
+            "StartTime": "07:00:00-04:00:00",
+            "EndTime": "18:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4423,7 +4423,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1556,
@@ -4459,12 +4459,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri:</b><br/>7:00 AM - 7:00 PM<br/><br/><b>Sat, Sun:</b><br/>Paused all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/20/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/14/2025 7:00:00 PM-03:00:00",
+        "StartDate": "10/20/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/14/2025 7:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "07:00:00-03:00:00",
-            "EndTime": "18:59:59-03:00:00"
+            "StartTime": "07:00:00-04:00:00",
+            "EndTime": "18:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4476,7 +4476,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1563,
@@ -4512,12 +4512,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/17/2025 4:25:00 PM-03:00:00",
-        "EndDate": "11/23/2025 7:00:00 PM-03:00:00",
+        "StartDate": "10/17/2025 4:25:00 PM-04:00:00",
+        "EndDate": "11/23/2025 7:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4531,7 +4531,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1566,
@@ -4567,12 +4567,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/22/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/19/2025 7:00:00 PM-03:00:00",
+        "StartDate": "10/22/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/19/2025 7:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4586,7 +4586,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1568,
@@ -4622,12 +4622,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/22/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/19/2025 7:00:00 PM-03:00:00",
+        "StartDate": "10/22/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/19/2025 7:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4641,7 +4641,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1570,
@@ -4690,7 +4690,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1571,
@@ -4739,7 +4739,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1572,
@@ -4788,7 +4788,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1573,
@@ -4837,7 +4837,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1578,
@@ -4873,12 +4873,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri:</b><br/>8:00 AM - 7:00 PM<br/><br/><b>Sat, Sun:</b><br/>Paused all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/27/2025 8:00:00 AM-03:00:00",
-        "EndDate": "11/7/2025 6:30:00 PM-03:00:00",
+        "StartDate": "10/27/2025 8:00:00 AM-04:00:00",
+        "EndDate": "11/7/2025 6:30:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "08:00:00-03:00:00",
-            "EndTime": "18:59:59-03:00:00"
+            "StartTime": "08:00:00-04:00:00",
+            "EndTime": "18:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4890,7 +4890,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1581,
@@ -4926,12 +4926,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri:</b><br/>7:00 AM - 6:00 PM<br/><br/><b>Sat, Sun:</b><br/>Paused all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/27/2025 7:00:00 AM-03:00:00",
-        "EndDate": "11/7/2025 6:00:00 PM-03:00:00",
+        "StartDate": "10/27/2025 7:00:00 AM-04:00:00",
+        "EndDate": "11/7/2025 6:00:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "07:00:00-03:00:00",
-            "EndTime": "17:59:59-03:00:00"
+            "StartTime": "07:00:00-04:00:00",
+            "EndTime": "17:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -4943,7 +4943,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1582,
@@ -4998,7 +4998,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1584,
@@ -5047,7 +5047,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1585,
@@ -5096,7 +5096,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1586,
@@ -5132,12 +5132,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/24/2025 9:18:00 AM-03:00:00",
+        "StartDate": "10/24/2025 9:18:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5151,7 +5151,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1587,
@@ -5187,12 +5187,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/24/2025 10:26:00 AM-03:00:00",
+        "StartDate": "10/24/2025 10:26:00 AM-04:00:00",
         "EndDate": null,
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5206,7 +5206,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1589,
@@ -5259,7 +5259,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1593,
@@ -5309,7 +5309,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1594,
@@ -5345,12 +5345,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/28/2025 11:22:00 AM-03:00:00",
-        "EndDate": "11/4/2025 11:22:00 AM-03:00:00",
+        "StartDate": "10/28/2025 11:22:00 AM-04:00:00",
+        "EndDate": "11/4/2025 11:22:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5364,7 +5364,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1595,
@@ -5400,12 +5400,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/28/2025 11:23:00 AM-03:00:00",
-        "EndDate": "11/4/2025 11:23:00 AM-03:00:00",
+        "StartDate": "10/28/2025 11:23:00 AM-04:00:00",
+        "EndDate": "11/4/2025 11:23:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5419,7 +5419,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1596,
@@ -5455,12 +5455,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/28/2025 11:24:00 AM-03:00:00",
-        "EndDate": "11/4/2025 11:24:00 AM-03:00:00",
+        "StartDate": "10/28/2025 11:24:00 AM-04:00:00",
+        "EndDate": "11/4/2025 11:24:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5474,7 +5474,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1597,
@@ -5510,12 +5510,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/28/2025 11:26:00 AM-03:00:00",
-        "EndDate": "11/4/2025 11:27:00 AM-03:00:00",
+        "StartDate": "10/28/2025 11:26:00 AM-04:00:00",
+        "EndDate": "11/4/2025 11:27:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5529,7 +5529,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1602,
@@ -5565,12 +5565,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/29/2025 4:09:00 PM-03:00:00",
-        "EndDate": "11/21/2025 4:10:00 PM-03:00:00",
+        "StartDate": "10/29/2025 4:09:00 PM-04:00:00",
+        "EndDate": "11/21/2025 4:10:00 PM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5584,7 +5584,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1603,
@@ -5619,7 +5619,7 @@
     "DetourInstructions": "",
     "Recurrence": "",
     "RecurrenceSchedules": "",
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1605,
@@ -5669,7 +5669,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1606,
@@ -5722,7 +5722,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1607,
@@ -5758,12 +5758,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/31/2025 11:30:00 AM-03:00:00",
-        "EndDate": "11/7/2025 11:30:00 AM-03:00:00",
+        "StartDate": "10/31/2025 11:30:00 AM-04:00:00",
+        "EndDate": "11/7/2025 11:30:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5777,7 +5777,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1608,
@@ -5813,12 +5813,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/31/2025 11:31:00 AM-03:00:00",
-        "EndDate": "11/7/2025 11:32:00 AM-03:00:00",
+        "StartDate": "10/31/2025 11:31:00 AM-04:00:00",
+        "EndDate": "11/7/2025 11:32:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5832,7 +5832,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1609,
@@ -5868,12 +5868,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/31/2025 11:32:00 AM-03:00:00",
-        "EndDate": "11/7/2025 11:33:00 AM-03:00:00",
+        "StartDate": "10/31/2025 11:32:00 AM-04:00:00",
+        "EndDate": "11/7/2025 11:33:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5887,7 +5887,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1610,
@@ -5923,12 +5923,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/31/2025 11:34:00 AM-03:00:00",
-        "EndDate": "11/7/2025 11:34:00 AM-03:00:00",
+        "StartDate": "10/31/2025 11:34:00 AM-04:00:00",
+        "EndDate": "11/7/2025 11:34:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5942,7 +5942,7 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   },
   {
     "ID": 1611,
@@ -5978,12 +5978,12 @@
     "Recurrence": "<b>Mon, Tue, Wed, Thu, Fri, Sat, Sun:</b><br/>Active all day<br/><br/>",
     "RecurrenceSchedules": [
       {
-        "StartDate": "10/31/2025 11:35:00 AM-03:00:00",
-        "EndDate": "11/7/2025 11:35:00 AM-03:00:00",
+        "StartDate": "10/31/2025 11:35:00 AM-04:00:00",
+        "EndDate": "11/7/2025 11:35:00 AM-04:00:00",
         "Times": [
           {
-            "StartTime": "00:00:00-03:00:00",
-            "EndTime": "23:59:59-03:00:00"
+            "StartTime": "00:00:00-04:00:00",
+            "EndTime": "23:59:59-04:00:00"
           }
         ],
         "DaysOfWeek": [
@@ -5997,6 +5997,6 @@
         ]
       }
     ],
-    "downloaded_at": "2025-11-02T04:37:26Z"
+    "downloaded_at": "2025-11-02T05:33:25Z"
   }
 ]
