@@ -1,6 +1,6 @@
 {
-  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1762050022",
-  "fetched_utc": 1762050022,
+  "source": "https://www3.gnb.ca/public/fire-feu/activitysum_e.pdf?t=1762054263",
+  "fetched_utc": 1762054263,
   "pages": 1,
   "tables": [
     {
@@ -90,23 +90,6 @@
           "Air": "0",
           "Heli": "0",
           "Ovr": "1"
-        },
-        {
-          "Region": "West",
-          "Status": "Out",
-          "Number": "438",
-          "Fire Name": "East McBride Road",
-          "Updated": "Oct-31",
-          "Latitude": "46.22120",
-          "Longitude": "67.69078",
-          "Size": "0.1",
-          "Pers": "0",
-          "Eng": "0",
-          "Tend": "0",
-          "Trac": "0",
-          "Air": "0",
-          "Heli": "0",
-          "Ovr": "0"
         }
       ]
     }
