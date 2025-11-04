@@ -9,6 +9,37 @@
   "features": [
     {
       "type": "Feature",
+      "id": 70803,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.55796849077043,
+          47.82572979787268
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70803,
+        "FIRE_NUMBER": "2025439",
+        "FIRE_NUMBER_SHORT": "439",
+        "FIRE_NAME": "rue du veterant",
+        "DEGREES_LAT": 47.82572,
+        "DEGREES_LONG": 64.55797,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1761846600000,
+        "FIRE_STAT_DATE": 1761904800000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 0.1,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1762234437
+      }
+    },
+    {
+      "type": "Feature",
       "id": 69865,
       "geometry": {
         "type": "Point",
@@ -35,7 +66,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 650.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1762230974
+        "FETCHED_FROM_ERD": 1762234437
       }
     },
     {
@@ -66,7 +97,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 0.1,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1762230974
+        "FETCHED_FROM_ERD": 1762234437
       }
     },
     {
@@ -97,38 +128,7 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1762230974
-      }
-    },
-    {
-      "type": "Feature",
-      "id": 70803,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -64.55796849077043,
-          47.82572979787268
-        ]
-      },
-      "properties": {
-        "OBJECTID": 70803,
-        "FIRE_NUMBER": "2025439",
-        "FIRE_NUMBER_SHORT": "439",
-        "FIRE_NAME": "rue du veterant",
-        "DEGREES_LAT": 47.82572,
-        "DEGREES_LONG": 64.55797,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1761846600000,
-        "FIRE_STAT_DATE": 1761904800000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 0.1,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1762230974
+        "FETCHED_FROM_ERD": 1762234437
       }
     }
   ]
