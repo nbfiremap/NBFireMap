@@ -9,37 +9,6 @@
   "features": [
     {
       "type": "Feature",
-      "id": 69865,
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -65.71049881803592,
-          46.12233948363302
-        ]
-      },
-      "properties": {
-        "OBJECTID": 69865,
-        "FIRE_NUMBER": "2025366",
-        "FIRE_NUMBER_SHORT": "366",
-        "FIRE_NAME": "366",
-        "DEGREES_LAT": 46.12233,
-        "DEGREES_LONG": 65.7105,
-        "FIRE_STAT_ID": 4,
-        "FIRE_STAT_DESC_E": "Being Patrolled",
-        "FIRE_STAT_DESC_F": "Patrouillé ",
-        "TIME_DETECTED": 1758377580000,
-        "FIRE_STAT_DATE": 1762334940000,
-        "FIRE_OF_NOTE_INDCTR": 0,
-        "FIRE_NOTE_ENG": "No",
-        "FIRE_NOTE_FR": "Non",
-        "PERCENT_CONTAINED": 100,
-        "FIRE_SIZE": 650.0,
-        "SHAPE": null,
-        "FETCHED_FROM_ERD": 1762522759
-      }
-    },
-    {
-      "type": "Feature",
       "id": 68585,
       "geometry": {
         "type": "Point",
@@ -66,7 +35,38 @@
         "PERCENT_CONTAINED": 100,
         "FIRE_SIZE": 456.0,
         "SHAPE": null,
-        "FETCHED_FROM_ERD": 1762522759
+        "FETCHED_FROM_ERD": 1762526067
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69865,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.71049881803592,
+          46.12233948363302
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69865,
+        "FIRE_NUMBER": "2025366",
+        "FIRE_NUMBER_SHORT": "366",
+        "FIRE_NAME": "366",
+        "DEGREES_LAT": 46.12233,
+        "DEGREES_LONG": 65.7105,
+        "FIRE_STAT_ID": 4,
+        "FIRE_STAT_DESC_E": "Being Patrolled",
+        "FIRE_STAT_DESC_F": "Patrouillé ",
+        "TIME_DETECTED": 1758377580000,
+        "FIRE_STAT_DATE": 1762334940000,
+        "FIRE_OF_NOTE_INDCTR": 0,
+        "FIRE_NOTE_ENG": "No",
+        "FIRE_NOTE_FR": "Non",
+        "PERCENT_CONTAINED": 100,
+        "FIRE_SIZE": 650.0,
+        "SHAPE": null,
+        "FETCHED_FROM_ERD": 1762526067
       }
     }
   ]
